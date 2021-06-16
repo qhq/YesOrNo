@@ -4,7 +4,7 @@
     "task": [
         "0 7-23/1 * * * https://raw.githubusercontent.com/songyangzz/QuantumultX/master/testflight.js, tag=TestFlight监测, img-url=https://raw.githubusercontent.com/Orz-3/task/master/testflight.png",
         "0 7-20/6 * * * https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/appstore/AppMonitor.js, tag=App价格监控, img-url=https://raw.githubusercontent.com/Orz-3/task/master/appstore.png",
-        "0 1 * * * https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.js, tag=光明随心订, img-url=https://gitee.com/qhqcz/quan-x/raw/master/icons/gmsxd.png",
+        "0 1 * * * https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.js, tag=光明随心订, img-url=https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/gmsxd.png",
         "10 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/ithome/ithome.js, tag=IT之家, img-url=https://raw.githubusercontent.com/Orz-3/task/master/ithome.png",
         "1 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.js, tag=WPS, img-url=https://raw.githubusercontent.com/Orz-3/task/master/wps.png",
         "0 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.js, tag=字幕组, img-url=https://raw.githubusercontent.com/Orz-3/task/master/zimuzu.png",
@@ -39,7 +39,7 @@
         "9 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.js, tag=中国移动, img-url=https://raw.githubusercontent.com/Orz-3/task/master/10086.png,enabled=false",
         "8 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.js, tag=中国联通, img-url=https://raw.githubusercontent.com/Orz-3/task/master/10010.png",
         "1 1 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.js, tag=苏宁, img-url=https://raw.githubusercontent.com/Orz-3/task/master/suning.png",
-        "2 8 * * * jd_bean_change.js, tag=京豆变动通知, img-url=https://gitee.com/qhqcz/quan-x/raw/master/icons/bean.png",
+        "2 8 * * * jd_bean_change.js, tag=京豆变动通知, img-url=https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/bean.png",
         "0 1,12,18 * * * https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js, tag=京东签到, img-url=https://raw.githubusercontent.com/Orz-3/task/master/jd.png",
         "5 0 * * * https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_priceProtect.js, tag=京东价格保护, img-url=https://raw.githubusercontent.com/ZCY01/img/master/pricev1.png, enabled=true",
         "0 1 * * * https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_factory.js, tag=京喜工厂, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdgc.png",
