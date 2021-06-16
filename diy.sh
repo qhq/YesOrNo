@@ -223,7 +223,7 @@ echo -e "=================================\n"
 echo -e "============ Star261脚本 ============"
 
 perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo商圈云助力已添加"
-perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10\").then((text) => (\\$\.inviteList = text.split('\\\n')))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo个人云助力已添加"
+perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = text.split('\\\n')))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo个人云助力已添加"
 perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo内置KO"
 #sed -i "/PK互助码：/a if \(process\.env\.Auto_Post\){\nlet nowTime = new Date\(\)\.getTime\(\) + new Date\(\)\.getTimezoneOffset\(\) \* 60 \* 1000 + 8 \* 60 \* 60 \* 1000;\nif \(new Date\(nowTime\)\.getHours\(\) === 0\) {\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/zoopk/\${data\.data\.result\.groupInfo\.groupAssistInviteId}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}\n}" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zooPK自动上传"
 sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zoo已放弃上半场"
