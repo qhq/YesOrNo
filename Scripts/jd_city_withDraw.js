@@ -1,7 +1,7 @@
 /*
 
 [rewrte_local]
-^https?://api\.m\.jd\.com/client\.action url script-request-body https://gitee.com/qhqcz/quan-x/raw/master/Scripts/jd_city_withDrawal.js
+^https?://api\.m\.jd\.com/client\.action url script-request-body https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/jd_city_withDrawal.js
 
 [MITM]
 hostname = api.m.jd.com

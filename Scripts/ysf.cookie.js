@@ -2,11 +2,11 @@
 Quantumult X
 [rewrite_local]
 # 云闪付签到
-^https:\/\/youhui\.95516\.com\/newsign\/api url script-request-header https://gitee.com/qhqcz/quan-x/raw/master/Scripts/ysf.cookie.js
+^https:\/\/youhui\.95516\.com\/newsign\/api url script-request-header https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/ysf.cookie.js
 
 [task_local]
 # 云闪付签到
-0 6 * * * https://gitee.com/qhqcz/quan-x/raw/master/Scripts/ysf.js, tag=云闪付签到, img-url=https://gitee.com/qhqcz/quan-x/raw/master/icons/ysf.png, enabled=true
+0 6 * * * https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/ysf.js, tag=云闪付签到, img-url=https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/ysf.png, enabled=true
 */
 
 const $ = new Env('云闪付签到');

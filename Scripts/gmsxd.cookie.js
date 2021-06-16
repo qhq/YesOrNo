@@ -2,11 +2,11 @@
 Quantumult X
 [rewrite_local]
 # 光明随心订签到
-^https?:\/\/m.4008117117.com/api/user/web/identify/getEmployee url script-request-header https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.cookie.js
+^https?:\/\/m.4008117117.com/api/user/web/identify/getEmployee url script-request-header https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.cookie.js
 
 [task_local]
 #光明随心订签到
-0 7 * * * https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.js, tag=光明随心订签到, img-url=https://gitee.com/qhqcz/quan-x/raw/master/icons/gmsxd.png, enabled=true
+0 7 * * * https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.js, tag=光明随心订签到, img-url=https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/gmsxd.png, enabled=true
 */
 
 const cookieName = '光明随心订'

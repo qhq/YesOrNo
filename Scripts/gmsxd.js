@@ -8,7 +8,7 @@ const cookieVal = $.getdata(cookieKey)
         $.desc = ' 请获取根据说明获取 cookie，点击前往';
         notify.sendNotify('光明随心订', $.desc, {
             'open-url':
-                'https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.cookie.js',
+                'https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.cookie.js',
         });
 
         $.done();
