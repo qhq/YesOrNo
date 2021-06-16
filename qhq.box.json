@@ -50,7 +50,7 @@
       "scripts": [
         {
           "name": "城城分现金提现",
-          "script": "https://gitee.com/qhqcz/quan-x/raw/master/Scripts/jd_city_withDraw.js"
+          "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/jd_city_withDraw.js"
         }
       ],
       "author": "@qhq",
@@ -66,15 +66,15 @@
       "keys": [
         "qhq_gmsxd_cookie"
       ],
-      "script": "https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.js",
+      "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.js",
       "author": "@qhq",
       "repo": "https://gitee.com/qhqcz/quan-x/",
       "icons": [
         "",
-        "https://gitee.com/qhqcz/quan-x/raw/master/icons/gmsxd.png"
+        "https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/gmsxd.png"
       ],
       "descs_html": [
-        "<h4 align=\"center\">获取Cookie请查看随心订签到脚本说明<a href=\"https://gitee.com/qhqcz/quan-x/raw/master/Scripts/gmsxd.cookie.js\">脚本注释</a></h4>"
+        "<h4 align=\"center\">获取Cookie请查看随心订签到脚本说明<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/gmsxd.cookie.js\">脚本注释</a></h4>"
       ]
     },
     {
@@ -83,12 +83,12 @@
       "keys": [
         "qhq_ysf_keys"
       ],
-      "script": "https://gitee.com/qhqcz/quan-x/raw/master/Scripts/ysf.js",
+      "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/ysf.js",
       "author": "@qhq",
       "repo": "https://gitee.com/qhqcz/quan-x/",
       "icons": [
         "",
-        "https://gitee.com/qhqcz/quan-x/raw/master/icons/ysf.png"
+        "https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/ysf.png"
       ]
     }
   ]

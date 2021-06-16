@@ -41,7 +41,7 @@ if [ ${iCan} = "true" ]; then
   # https://raw.sevencdn.com/
   # 1.从作者库中随意挑选一个脚本地址，每个作者的地址添加一个即可，无须重复添加
   # 2.将地址最后的 “脚本名称+后缀” 剪切到下一个变量里（my_scripts_list_xxx）
-  scripts_base_url_1=https://gitee.com/qhqcz/quan-x/raw/master/Scripts/
+  scripts_base_url_1=${PROXY_URL}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
   scripts_base_url_2=https://gitee.com/Sunert/Scripts/raw/master/Task/ #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
   scripts_base_url_3=${PROXY_URL}https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/
   scripts_base_url_4=${PROXY_URL}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
@@ -120,7 +120,7 @@ fi
 ############################## 同步 diy.sh ##########################################
 #cd $ConfigDir
 #echo -e "开始更新 diy.sh "
-#wget -q --no-check-certificate https://gitee.com/qhqcz/quan-x/raw/master/diy.sh -O diy.sh.new
+#wget -q --no-check-certificate https://raw.githubusercontent.com/qhq/YesOrNo/main/diy.sh -O diy.sh.new
 #if [ $? -eq 0 ]; then
 #  mv -f diy.sh.new diy.sh
 #  echo -e "更新 diy.sh 完成"
