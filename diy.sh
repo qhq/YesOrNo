@@ -67,7 +67,7 @@ if [ ${iCan} = "true" ]; then
   my_scripts_list_9="jx_mc_coin.js"
   my_scripts_list_10="jd_qqtmy.js jd_wsdlb.js jd_ry618.js"
   my_scripts_list_11="jd_zoo.js jd_zooCollect.js jd_star_shop.js jd_jxmc.js"
-  my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_carnivalcity.js jd_jdfactory.js jd_sgmh.js"
+  my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_carnivalcity.js jd_jdfactory.js jd_sgmh.js jd_api_test.js"
 
   ############################## 随机函数 ##########################################
   rand() {
