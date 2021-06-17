@@ -343,7 +343,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="zooJointeam01 qhqcz_jd_superBrand"
+js_List="zooJointeam01 qhqcz_jd_superBrand Ariszy_zy_618jc"
 for js_item in $js_List
   do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
