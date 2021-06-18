@@ -59,14 +59,14 @@ if [ ${iCan} = "true" ]; then
   my_scripts_list_1="91wii.js jd_live_lottery_social.js post_code.js jd_bean_change.js"
   my_scripts_list_2="baidu_speed.js txnews.js txnews_task.js youth.js Youth_Read.js jukan.js"
   my_scripts_list_3="iQIYI.js"
-  my_scripts_list_4="jd_lotteryMachine.js jd_zoo.js"
-  my_scripts_list_5="long_half_redrain.js long_super_redrain.js long_hby_lottery.js"
-  my_scripts_list_6="zooBaojiexiaoxiaole.js zooLongzhou.js zooLimitbox.js zooSupershophf.js"
+  my_scripts_list_4="jd_lotteryMachine.js"
+  my_scripts_list_5="long_half_redrain.js long_super_redrain.js"
+  my_scripts_list_6="zooElecsport.js"
   my_scripts_list_7="ddo_pk.js"
   my_scripts_list_8="zy_618jc.js"
-  my_scripts_list_9="jx_mc_coin.js"
-  my_scripts_list_10="jd_qqtmy.js jd_wsdlb.js jd_ry618.js"
-  my_scripts_list_11="jd_zoo.js jd_zooCollect.js jd_star_shop.js jd_jxmc.js"
+  my_scripts_list_9="jx_mc_coin.js jx_mc_emptycabbage.js"
+  my_scripts_list_10="jd_wsdlb.js"
+  my_scripts_list_11="jd_star_shop.js jd_jxmc.js"
   my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_carnivalcity.js jd_jdfactory.js jd_sgmh.js jd_api_test.js"
 
   ############################## 随机函数 ##########################################
@@ -326,14 +326,14 @@ sed -i 's|^\d.*bash jd jd_bean_change|#5 9 \* \* \* bash jd jd_bean_change|' ${C
 
 #检查添加京喜团ID变量
 if [[ `grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh` -ne '0' ]]; then
-  perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="STLN1hIO2zZB3gm_hWORrw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+  perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="bozIUUFcANuUdWpw3QdvPw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
 else
-  perl -0777 -i -pe 's/## export/## export\n#京喜团ID\nexport TUAN_ACTIVEID="STLN1hIO2zZB3gm_hWORrw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+  perl -0777 -i -pe 's/## export/## export\n#京喜团ID\nexport TUAN_ACTIVEID="bozIUUFcANuUdWpw3QdvPw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
 fi
 
 ## 注释指定活动
 echo -e "========== 暂时停用脚本 =========="
-js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh"
+js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc"
 for js_item in $js_List
   do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
@@ -343,7 +343,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="zooJointeam01 qhqcz_jd_superBrand Ariszy_zy_618jc"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo jd_zoo jd_zooCollect"
 for js_item in $js_List
   do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
@@ -351,4 +351,3 @@ for js_item in $js_List
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
 echo -e "=================================\n"
-
