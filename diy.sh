@@ -84,7 +84,7 @@ if [ ${iCan} = "true" ]; then
     my_scripts_list_9="jx_mc_coin.js jx_mc_emptycabbage.js"
     my_scripts_list_10="jd_wsdlb.js"
     my_scripts_list_11="jd_star_shop.js jd_jxmc.js"
-    my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_carnivalcity.js jd_jdfactory.js jd_sgmh.js jd_api_test.js"
+    my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_jdfactory.js jd_sgmh.js jd_api_test.js"
     my_scripts_list_13="jd_ddnc_farmpark.js"
 
     ############################## 随机函数 ##########################################
@@ -337,7 +337,7 @@ fi
 
 ## 注释指定活动
 echo -e "========== 暂时停用脚本 =========="
-js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_zoo jd_zooCollect jd_xtg"
+js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_zoo jd_zooCollect jd_xtg jd_carnivalcity"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -346,7 +346,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
