@@ -51,7 +51,7 @@ if [ ${iCan} = "true" ]; then
 
     ############################## 作者昵称（必填）##############################
     # 使用空格隔开
-    author_list="qhqcz Sunert NobyDa yangtingxiao longzhuzhu zooPanda ddo Ariszy moposmall panghu star261 jdShare MoPoQAQ Wenmoux"
+    author_list="qhqcz Sunert NobyDa yangtingxiao longzhuzhu zooPanda ddo Ariszy moposmall panghu star261 jdShare Wenmoux"
     ############################## 作者脚本地址URL（必填）##############################
     # 例如：https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js
     # https://raw.sevencdn.com/
@@ -69,8 +69,7 @@ if [ ${iCan} = "true" ]; then
     scripts_base_url_10=${PROXY_URL}https://raw.githubusercontent.com/panghu999/panghu/master/
     scripts_base_url_11=${PROXY_URL}https://raw.githubusercontent.com/star261/jd/main/scripts/
     scripts_base_url_12=${PROXY_URL}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    scripts_base_url_13=${PROXY_URL}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-    scripts_base_url_14=${PROXY_URL}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+    scripts_base_url_13=${PROXY_URL}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
 
     ############################## 作者脚本名称（必填）##############################
     # 将相应作者的脚本填写到以下变量中
@@ -86,8 +85,7 @@ if [ ${iCan} = "true" ]; then
     my_scripts_list_10="jd_wsdlb.js"
     my_scripts_list_11="jd_star_shop.js jd_jxmc.js"
     my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_carnivalcity.js jd_jdfactory.js jd_sgmh.js jd_api_test.js"
-    my_scripts_list_13="jx_cfdtx.js jdJxncTokens.js"
-    my_scripts_list_14="jd_SplitRedPacket.js jd_ddnc_farmpark.js"
+    my_scripts_list_13="jd_SplitRedPacket.js jd_ddnc_farmpark.js"
 
     ############################## 随机函数 ##########################################
     rand() {
@@ -348,7 +346,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo jd_zoo jd_zooCollect txnews txnews_task"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
