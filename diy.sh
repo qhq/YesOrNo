@@ -212,45 +212,6 @@ sed -i 's|production\.status === 3|production.status === 3 && process.env.jxsx|'
 
 echo -e "=================================\n"
 
-############################## yangtingxiao脚本 ##########################################
-echo -e "============ yangtingxiao脚本 ============"
-
-#perl -0777 -i -pe "s|.*?jd_nianBeastShareCode.*?\]\)\)|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (shareCodeList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo商圈云助力已添加"
-#perl -0777 -i -pe "s|await zoo_getHomeData\('\S+-\S+'\);|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (shareCodeList = JSON\.parse(text)\.data))\nfor (let i in shareCodeList) {\nif (shareCodeList[i]) await zoo_getHomeData(shareCodeList[i]);\n}|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo个人云助力已添加"
-
-#sed -i 's|doPkSkill = true|doPkSkill = false|' $ScriptsDir/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo自动技能已禁用"
-#sed -i "/let doPkSkill/a if (new Date()\.getHours()>= 18) {doPkSkill = true;}else{doPkSkill = false;}" ${ScriptsDir}/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo已放弃上半场"
-
-#sed -i "
-#/商圈助力/ {
-#n
-#a console\.log\(merge\.nickname\+\`去助力PK码：\`\+inviteId\);switch \(data\.data\.bizCode\) \{case 0:console\.log\(\`助力成功\`\);break;case -201:console\.log\(\`助力已满\`\);\$\.oneInviteInfo\.max = true;break;case -202:console\.log\(\`已助力\`\);break;case -8:console\.log\(\`已经助力过该队伍\`\);break;case -6:case 108:console\.log\(\`助力次数已用光\`\);\$\.canHelp = false;break;default: console\.log\(\`怪兽大作战助力失败：\${JSON\.stringify\(data\)}\`\);\}
-#}" ${ScriptsDir}/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo商圈助力结果"
-
-echo -e "=================================\n"
-
-############################## Star261脚本 ##########################################
-echo -e "============ Star261脚本 ============"
-
-#perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo商圈云助力已添加"
-#perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo个人云助力已添加"
-#perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo内置KO"
-#sed -i "/PK互助码：/a if \(process\.env\.Auto_Post\){\nlet nowTime = new Date\(\)\.getTime\(\) + new Date\(\)\.getTimezoneOffset\(\) \* 60 \* 1000 + 8 \* 60 \* 60 \* 1000;\nif \(new Date\(nowTime\)\.getHours\(\) === 0\) {\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/zoopk/\${data\.data\.result\.groupInfo\.groupAssistInviteId}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}\n}" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zooPK自动上传"
-#sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zoo已放弃上半场"
-
-#let codeList = \[\]; 下3行
-#\(codeList = JSON\.parse\(text\)\.data\)\)
-#sed -i "
-#/inviteCodeList\[k\]\.code/ {
-#n
-#n
-#n
-#n
-#a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/name\/jxmc\/10\/5\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
-#}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e "京喜牧场已内置私库"
-
-echo -e "=================================\n"
-
 ############################## jdShare脚本 ##########################################
 echo -e "============ jdShare脚本 ============"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jdShare_jd_jdfactory.js >/dev/null 2>&1 && echo -e "东东工厂库链接已替换"
