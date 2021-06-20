@@ -194,11 +194,11 @@ perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.
 perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jdcash/10/1\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e "领现金库链接已替换"
 perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jdcrazyjoy/20\`|ig" ${ScriptsDir}/jd_crazy_joy.js >/dev/null 2>&1 && echo -e "疯狂JOY库链接已替换"
 
-perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo商圈云助力已添加"
-perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo个人云助力已添加"
-perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo内置KO"
+#perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo商圈云助力已添加"
+#perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo个人云助力已添加"
+#perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e "jd_zoo内置KO"
 #sed -i "/PK互助码：/a if \(process\.env\.Auto_Post\){\nlet nowTime = new Date\(\)\.getTime\(\) + new Date\(\)\.getTimezoneOffset\(\) \* 60 \* 1000 + 8 \* 60 \* 60 \* 1000;\nif \(new Date\(nowTime\)\.getHours\(\) === 0\) {\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/zoopk/\${data\.data\.result\.groupInfo\.groupAssistInviteId}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}\n}" ${ScriptsDir}/jd_zoo.js && echo -e "jd_zooPK自动上传"
-sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/jd_zoo.js && echo -e "jd_zoo已放弃上半场"
+#sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/jd_zoo.js && echo -e "jd_zoo已放弃上半场"
 
 sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂团ID自动上传"
 sed -i "
@@ -215,13 +215,13 @@ echo -e "=================================\n"
 ############################## yangtingxiao脚本 ##########################################
 echo -e "============ yangtingxiao脚本 ============"
 
-perl -0777 -i -pe "s|.*?jd_nianBeastShareCode.*?\]\)\)|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (shareCodeList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo商圈云助力已添加"
-perl -0777 -i -pe "s|await zoo_getHomeData\('\S+-\S+'\);|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (shareCodeList = JSON\.parse(text)\.data))\nfor (let i in shareCodeList) {\nif (shareCodeList[i]) await zoo_getHomeData(shareCodeList[i]);\n}|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo个人云助力已添加"
+#perl -0777 -i -pe "s|.*?jd_nianBeastShareCode.*?\]\)\)|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (shareCodeList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo商圈云助力已添加"
+#perl -0777 -i -pe "s|await zoo_getHomeData\('\S+-\S+'\);|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (shareCodeList = JSON\.parse(text)\.data))\nfor (let i in shareCodeList) {\nif (shareCodeList[i]) await zoo_getHomeData(shareCodeList[i]);\n}|ig" ${ScriptsDir}/yangtingxiao_jd_zoo.js >/dev/null 2>&1 && echo -e "yangtingxiao_jd_zoo个人云助力已添加"
 
-sed -i 's|doPkSkill = true|doPkSkill = false|' $ScriptsDir/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo自动技能已禁用"
-sed -i "/let doPkSkill/a if (new Date()\.getHours()>= 18) {doPkSkill = true;}else{doPkSkill = false;}" ${ScriptsDir}/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo已放弃上半场"
+#sed -i 's|doPkSkill = true|doPkSkill = false|' $ScriptsDir/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo自动技能已禁用"
+#sed -i "/let doPkSkill/a if (new Date()\.getHours()>= 18) {doPkSkill = true;}else{doPkSkill = false;}" ${ScriptsDir}/yangtingxiao_jd_zoo.js && echo -e "yangtingxiao_jd_zoo已放弃上半场"
 
-sed -i "
+#sed -i "
 /商圈助力/ {
 n
 a console\.log\(merge\.nickname\+\`去助力PK码：\`\+inviteId\);switch \(data\.data\.bizCode\) \{case 0:console\.log\(\`助力成功\`\);break;case -201:console\.log\(\`助力已满\`\);\$\.oneInviteInfo\.max = true;break;case -202:console\.log\(\`已助力\`\);break;case -8:console\.log\(\`已经助力过该队伍\`\);break;case -6:case 108:console\.log\(\`助力次数已用光\`\);\$\.canHelp = false;break;default: console\.log\(\`怪兽大作战助力失败：\${JSON\.stringify\(data\)}\`\);\}
@@ -232,11 +232,11 @@ echo -e "=================================\n"
 ############################## Star261脚本 ##########################################
 echo -e "============ Star261脚本 ============"
 
-perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo商圈云助力已添加"
-perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo个人云助力已添加"
-perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo内置KO"
+#perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo商圈云助力已添加"
+#perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo个人云助力已添加"
+#perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/star261_jd_zoo.js >/dev/null 2>&1 && echo -e "star261_jd_zoo内置KO"
 #sed -i "/PK互助码：/a if \(process\.env\.Auto_Post\){\nlet nowTime = new Date\(\)\.getTime\(\) + new Date\(\)\.getTimezoneOffset\(\) \* 60 \* 1000 + 8 \* 60 \* 60 \* 1000;\nif \(new Date\(nowTime\)\.getHours\(\) === 0\) {\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/zoopk/\${data\.data\.result\.groupInfo\.groupAssistInviteId}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}\n}" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zooPK自动上传"
-sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zoo已放弃上半场"
+#sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/star261_jd_zoo.js && echo -e "star261_jd_zoo已放弃上半场"
 
 #let codeList = \[\]; 下3行
 #\(codeList = JSON\.parse\(text\)\.data\)\)
@@ -270,6 +270,7 @@ n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/jxtuan\/20\/2\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
 }" ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂已内置私库"
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
+sed -i 's|production\.status === 3|production.status === 3 && process.env.jxsx|' ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
 echo -e "=================================\n"
 
