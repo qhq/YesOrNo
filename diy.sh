@@ -309,7 +309,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity MoPoQAQ_jdJxncTokens MoPoQAQ_jx_cfdtx"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
