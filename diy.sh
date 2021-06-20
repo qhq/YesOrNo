@@ -208,7 +208,7 @@ n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/jxtuan\/20\/2\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
 }" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂已内置私库"
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
-sed -i 's|production.status === 3|production.status === 3 && process.env.jxsx|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
+sed -i 's|production\.status === 3|production.status === 3 && process.env.jxsx|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
 echo -e "=================================\n"
 
