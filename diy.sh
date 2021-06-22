@@ -51,7 +51,7 @@ if [ ${iCan} = "true" ]; then
 
     ############################## 作者昵称（必填）##############################
     # 使用空格隔开
-    author_list="qhqcz Sunert NobyDa yangtingxiao longzhuzhu zooPanda ddo Ariszy moposmall panghu star261 jdShare Wenmoux"
+    author_list="qhqcz Sunert NobyDa yangtingxiao longzhuzhu zooPanda ddo Ariszy moposmall panghu star261 Wenmoux"
     ############################## 作者脚本地址URL（必填）##############################
     # 例如：https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js
     # https://raw.sevencdn.com/
@@ -68,8 +68,8 @@ if [ ${iCan} = "true" ]; then
     scripts_base_url_9=${PROXY_URL}https://raw.githubusercontent.com/moposmall/Script/main/Me/
     scripts_base_url_10=${PROXY_URL}https://raw.githubusercontent.com/panghu999/panghu/master/
     scripts_base_url_11=${PROXY_URL}https://raw.githubusercontent.com/star261/jd/main/scripts/
-    scripts_base_url_12=${PROXY_URL}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    scripts_base_url_13=${PROXY_URL}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+    #scripts_base_url_12=${PROXY_URL}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+    scripts_base_url_12=${PROXY_URL}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
 
     ############################## 作者脚本名称（必填）##############################
     # 将相应作者的脚本填写到以下变量中
@@ -84,8 +84,8 @@ if [ ${iCan} = "true" ]; then
     my_scripts_list_9="jx_mc_coin.js jx_mc_emptycabbage.js"
     my_scripts_list_10="jd_wsdlb.js"
     my_scripts_list_11="jd_star_shop.js jd_jxmc.js"
-    my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_jdfactory.js jd_sgmh.js jd_api_test.js jd_EsportsManager.js jd_joy_new.js"
-    my_scripts_list_13="jd_ddnc_farmpark.js"
+    #my_scripts_list_12="jd_cfd.js jd_dreamFactory.js jd_fruit.js jd_health.js jd_pet.js jd_plantBean.js jd_jdfactory.js jd_sgmh.js jd_api_test.js jd_EsportsManager.js jd_joy_new.js"
+    my_scripts_list_12="jd_ddnc_farmpark.js"
 
     ############################## 随机函数 ##########################################
     rand() {
@@ -177,8 +177,9 @@ done
 
 echo -e "=================================\n"
 
-############################## Lxk0301脚本 ##########################################
-echo -e "============ Lxk0301脚本 ============"
+
+############################## Lxk0301 脚本 ##########################################
+echo -e "============ Lxk0301 脚本 ============"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
@@ -214,28 +215,30 @@ sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_S
 
 echo -e "=================================\n"
 
-############################## jdShare脚本 ##########################################
-echo -e "============ jdShare脚本 ============"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jdShare_jd_jdfactory.js >/dev/null 2>&1 && echo -e "东东工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jdShare_jd_fruit.js >/dev/null 2>&1 && echo -e "东东农场库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jdShare_jd_plantBean.js >/dev/null 2>&1 && echo -e "种豆得豆库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/pet/20/5\`|ig" ${ScriptsDir}/jdShare_jd_pet.js >/dev/null 2>&1 && echo -e "东东萌宠库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxfactory/20/2\`|ig" ${ScriptsDir}/jdShare_jd_dreamFactory.js >/dev/null 2>&1 && echo -e "京喜工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxcfd/20/2\`|ig" ${ScriptsDir}/jdShare_jd_cfd.js >/dev/null 2>&1 && echo -e "京喜财富岛库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/health/20/5\`|ig" ${ScriptsDir}/jdShare_jd_health.js >/dev/null 2>&1 && echo -e "健康社区库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/sgmh/20/5\`|ig" ${ScriptsDir}/jdShare_jd_sgmh.js >/dev/null 2>&1 && echo -e "闪购盲盒库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/carnivalcity/20/2\`|ig" ${ScriptsDir}/jdShare_jd_carnivalcity.js >/dev/null 2>&1 && echo -e "手机狂欢城库链接已替换"
-sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂团ID自动上传"
+
+##############################  JDHelloWorld 脚本 ##########################################
+echo -e "============  JDHelloWorld 脚本 ============"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e "东东工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e "东东农场库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e "种豆得豆库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/pet/20/5\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e "东东萌宠库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxfactory/20/2\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e "京喜工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxcfd/20/2\`|ig" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e "京喜财富岛库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/health/20/5\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e "健康社区库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/sgmh/20/5\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e "闪购盲盒库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/carnivalcity/20/2\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e "手机狂欢城库链接已替换"
+sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂团ID自动上传"
 sed -i "
 /await jdDreamFactory()/ {
 n
 n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/jxtuan\/20\/2\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
-}" ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂已内置私库"
-sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
-sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jdShare_jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
+}" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂已内置私库"
+sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
+sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
 echo -e "=================================\n"
+
 
 echo -e "============ 处理脚本 ============"
 HtmlDir=${ShellDir}/panel/public
@@ -263,8 +266,8 @@ sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && 
 
 if [ ${iCan} = "true" ]; then
     echo -e "腾讯新闻"
-    sed -i "s/process\.env\.\w*\?$/''/g" ${ScriptsDir}/Sunert_txnews_task.js
-    sed -i "33r ${ScriptsDir}/Sunert_txnews_task.txt" ${ScriptsDir}/Sunert_txnews_task.js
+    #sed -i "s/process\.env\.\w*\?$/''/g" ${ScriptsDir}/Sunert_txnews_task.js
+    #sed -i "33r ${ScriptsDir}/Sunert_txnews_task.txt" ${ScriptsDir}/Sunert_txnews_task.js
     sed -i "s/process\.env\.\w*\?\.split()/''/g" ${ScriptsDir}/Sunert_txnews.js
     sed -i "32r ${ScriptsDir}/Sunert_txnews.txt" ${ScriptsDir}/Sunert_txnews.js
     echo -e "百度极速"
@@ -311,7 +314,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity MoPoQAQ_jdJxncTokens MoPoQAQ_jx_cfdtx longzhuzhu_jd_half_redrain longzhuzhu_jd_super_redrain qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity MoPoQAQ_jdJxncTokens MoPoQAQ_jx_cfdtx longzhuzhu_jd_half_redrain longzhuzhu_jd_super_redrain qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
