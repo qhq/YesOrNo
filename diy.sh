@@ -73,7 +73,7 @@ if [ ${iCan} = "true" ]; then
 
     ############################## 作者脚本名称（必填）##############################
     # 将相应作者的脚本填写到以下变量中
-    my_scripts_list_1="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
+    my_scripts_list_1="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js"
     my_scripts_list_2="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
     my_scripts_list_3="iQIYI.js"
     my_scripts_list_4="jd_lotteryMachine.js"
@@ -322,7 +322,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new"
+js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new qhqcz_jd_speed"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
