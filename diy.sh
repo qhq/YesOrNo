@@ -73,7 +73,7 @@ if [ ${iCan} = "true" ]; then
 
     ############################## 作者脚本名称（必填）##############################
     # 将相应作者的脚本填写到以下变量中
-    my_scripts_list_1="91wii.js jd_live_lottery_social.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
+    my_scripts_list_1="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
     my_scripts_list_2="baidu_speed.js youth.js Youth_Read.js jukan.js"
     my_scripts_list_3="iQIYI.js"
     my_scripts_list_4="jd_lotteryMachine.js"
@@ -311,7 +311,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity MoPoQAQ_jdJxncTokens MoPoQAQ_jx_cfdtx longzhuzhu_jd_half_redrain longzhuzhu_jd_super_redrain qhqcz_jd_joy qhqcz_JDJRValidator"
+js_List="qhqcz_jd_superBrand Ariszy_zy_618jc jd_superBrand jd_limitBox jd_ry618 jd_qqtmy long_hby_lottery adolf_flp adolf_superbox zooBaojiexiaoxiaole zooLongzhou zooLimitbox zooSupershophf star261_jd_zooMap star261_jd_zooCollect star261_jd_zoo yangtingxiao_jd_zoo txnews txnews_task Wenmoux_jd_SplitRedPacket jdShare_jd_carnivalcity MoPoQAQ_jdJxncTokens MoPoQAQ_jx_cfdtx longzhuzhu_jd_half_redrain longzhuzhu_jd_super_redrain qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
