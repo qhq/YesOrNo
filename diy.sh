@@ -314,7 +314,8 @@ echo -e "=================================\n"
 echo -e "========== 强制开启脚本 =========="
 js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_joy"
 for js_item in $js_List; do
-    sed -i "s|^#[\s|]\([0-9].*bash\) jd $js_item|\1 jd $js_item|" ${ListCron} && echo -e "$js_item 已开启"
+    sed -i "s/^#\([0-9].*bash\) jd jd_sgmh/\1 jd jd_sgmh/g" ${ListCron}
+    sed -i "s/^# \([0-9].*bash\) jd jd_sgmh/\1 jd jd_sgmh/g" ${ListCron} && echo -e "$js_item 已开启"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "=================================\n"
