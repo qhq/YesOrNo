@@ -83,7 +83,7 @@ if [ ${iCan} = "true" ]; then
     my_scripts_list_8="zy_618jc.js"
     my_scripts_list_9="jx_mc_coin.js jx_mc_emptycabbage.js"
     my_scripts_list_10="jd_wsdlb.js"
-    my_scripts_list_11="jd_star_shop.js jd_jxmc.js"
+    my_scripts_list_11="jd_star_shop.js jd_jxmc.js star_dreamFactory_tuan.js"
     my_scripts_list_12="jd_ddnc_farmpark.js"
     my_scripts_list_13="jd_joy_new.js jd_joy_reward_new.js"
 
