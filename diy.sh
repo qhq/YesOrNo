@@ -62,7 +62,7 @@ if [ ${iCan} = "true" ]; then
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-    my_scripts_list_qhqcz="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
+    my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
 
     # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
     scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
