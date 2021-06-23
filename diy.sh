@@ -153,7 +153,7 @@ if [ ${iCan} = "true" ]; then
         done
         #index=$(($index + 1))
     done
-    echo -e "+------------------------------------------+\n"
+    echo -e "+--------------------------------------------+\n"
 fi
 
 ############################## 同步 diy.sh ##########################################
@@ -236,7 +236,7 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂内置已KO"
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂失效通知开关"
 
-echo -e "+---------------------------------------------+\n"
+echo -e "+--------------------------------------------+\n"
 
 
 
