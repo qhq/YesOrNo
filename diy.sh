@@ -58,7 +58,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu ddo Andy moposmall panghu star261 Wenmoux JDHelloWorld"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu ddo Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -104,7 +104,10 @@ if [ ${iCan} = "true" ]; then
     scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
     my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js"
 
-
+    # 写着玩
+    scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
+    my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
+    
     ############################## 随机函数 ##########################################
     rand() {
         min=$1
