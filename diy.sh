@@ -112,6 +112,7 @@ if [ ${iCan} = "true" ]; then
         num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
         echo $(($num % $max + $min))
     }
+    echo -e "+----------------- 下载脚本 -----------------+"
     cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
     #index=1
     for author in $author_list; do
@@ -149,6 +150,7 @@ if [ ${iCan} = "true" ]; then
         done
         #index=$(($index + 1))
     done
+    echo -e "+------------------------------------------+\n"
 fi
 
 ############################## 同步 diy.sh ##########################################
@@ -193,7 +195,7 @@ for file in $(ls $ScriptsDir); do
     fi
 done
 
-echo -e "+----------------- -----------------+\n"
+echo -e "+------------------------------------------+\n"
 
 
 
@@ -231,7 +233,7 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
-echo -e "+----------------- -----------------+\n"
+echo -e "+-----------------------------------------------+\n"
 
 
 
@@ -255,7 +257,7 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂内置已KO"
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
-echo -e "+----------------- -----------------+\n"
+echo -e "+----------------------------------------------------+\n"
 
 
 
@@ -298,7 +300,7 @@ if [ ${iCan} = "true" ]; then
     sed -i "/YouthBodys = \[process\.env\.YOUTH_READ\]$/r ${ScriptsDir}/Sunert_Youth_Read.txt" ${ScriptsDir}/Sunert_Youth_Read.js
     sed -i "/timebodyVal = \$\.getdata('autotime_zq');$/r ${ScriptsDir}/Sunert_Youth_Read_Time.txt" ${ScriptsDir}/Sunert_Youth_Read.js
 fi
-echo -e "+----------------- -----------------+\n"
+echo -e "+------------------------------------------+\n"
 
 #sed -i '380c #[ -d ${ShellDir}/.git ] && Git_PullShell' /jd/git_pull.sh && echo "ExtraShell" >>/jd/git_pull.sh
 #git fetch --all && git reset --hard
@@ -326,7 +328,7 @@ for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
-echo -e "+----------------- -----------------+\n"
+echo -e "+----------------------------------------------+\n"
 echo -e "+----------------- 强制开启脚本 -----------------+"
 js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_joy_new"
 for js_item in $js_List; do
@@ -334,7 +336,7 @@ for js_item in $js_List; do
     sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e "$js_item 已开启"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
-echo -e "+----------------- -----------------+\n"
+echo -e "+----------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+----------------- 失效/过期脚本 -----------------+"
@@ -344,4 +346,4 @@ for js_item in $js_List; do
 done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
-echo -e "+----------------- -----------------+\n"
+echo -e "+----------------------------------------------+\n"
