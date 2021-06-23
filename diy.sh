@@ -261,7 +261,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+---------------- 处理脚本 ----------------+"
+echo -e "+----------------- 处理脚本 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
     if [ "${file##*.}" = "html" ]; then
@@ -300,7 +300,7 @@ if [ ${iCan} = "true" ]; then
     sed -i "/YouthBodys = \[process\.env\.YOUTH_READ\]$/r ${ScriptsDir}/Sunert_Youth_Read.txt" ${ScriptsDir}/Sunert_Youth_Read.js
     sed -i "/timebodyVal = \$\.getdata('autotime_zq');$/r ${ScriptsDir}/Sunert_Youth_Read_Time.txt" ${ScriptsDir}/Sunert_Youth_Read.js
 fi
-echo -e "+------------------------------------------+\n"
+echo -e "+--------------------------------------------+\n"
 
 #sed -i '380c #[ -d ${ShellDir}/.git ] && Git_PullShell' /jd/git_pull.sh && echo "ExtraShell" >>/jd/git_pull.sh
 #git fetch --all && git reset --hard
@@ -322,28 +322,28 @@ else
 fi
 
 ## 注释指定活动
-echo -e "+-------------- 暂时停用脚本 --------------+"
+echo -e "+--------------- 暂时停用脚本 ---------------+"
 js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
-echo -e "+------------------------------------------+\n"
-echo -e "+-------------- 强制开启脚本 --------------+"
+echo -e "+--------------------------------------------+\n"
+echo -e "+--------------- 强制开启脚本 ---------------+"
 js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_joy_new"
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
     sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e "$js_item 已开启"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
-echo -e "+------------------------------------------+\n"
+echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
-echo -e "+-------------- 失效/过期脚本 --------------+"
+echo -e "+--------------- 失效/过期脚本 ---------------+"
 js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new zooPanda_zooElecsport NobyDa_iQIYI"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
-echo -e "+------------------------------------------+\n"
+echo -e "+--------------------------------------------+\n"
