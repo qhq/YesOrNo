@@ -115,7 +115,7 @@ if [ ${iCan} = "true" ]; then
         num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
         echo $(($num % $max + $min))
     }
-    echo -e "+---------------- 下载脚本 ----------------+"
+    echo -e "+----------------- 下载脚本 -----------------+"
     cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
     #index=1
     for author in $author_list; do
@@ -169,7 +169,7 @@ fi
 #fi
 
 ############################## 文件处理 ##########################################
-echo -e "+---------------- 清理内置 ----------------+"
+echo -e "+----------------- 清理内置 -----------------+"
 
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
@@ -198,11 +198,11 @@ for file in $(ls $ScriptsDir); do
     fi
 done
 
-echo -e "+------------------------------------------+\n"
+echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+-------------- Lxk0301 脚本 --------------+"
+echo -e "+--------------- Lxk0301 脚本 ---------------+"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
@@ -236,11 +236,11 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂内置已KO"
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂失效通知开关"
 
-echo -e "+-------------------------------------------+\n"
+echo -e "+---------------------------------------------+\n"
 
 
 
-echo -e "+------------ JDHelloWorld 脚本 ------------+"
+echo -e "+------------- JDHelloWorld 脚本 -------------+"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
@@ -264,7 +264,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+----------------- 处理脚本 -----------------+"
+echo -e "+------------------ 处理脚本 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
     if [ "${file##*.}" = "html" ]; then
@@ -325,7 +325,7 @@ else
 fi
 
 ## 注释指定活动
-echo -e "+--------------- 暂时停用脚本 ---------------+"
+echo -e "+---------------- 暂时停用脚本 ---------------+"
 js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change jd_carnivalcity"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
