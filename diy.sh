@@ -112,7 +112,7 @@ if [ ${iCan} = "true" ]; then
         num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
         echo $(($num % $max + $min))
     }
-    echo -e "+----------------- 下载脚本 -----------------+"
+    echo -e "+---------------- 下载脚本 ----------------+"
     cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
     #index=1
     for author in $author_list; do
@@ -166,7 +166,7 @@ fi
 #fi
 
 ############################## 文件处理 ##########################################
-echo -e "+----------------- 清理内置 -----------------+"
+echo -e "+---------------- 清理内置 ----------------+"
 
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
@@ -199,7 +199,7 @@ echo -e "+------------------------------------------+\n"
 
 
 
-echo -e "+----------------- Lxk0301 脚本 -----------------+"
+echo -e "+---------------- Lxk0301 脚本 ----------------+"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
@@ -237,7 +237,7 @@ echo -e "+-----------------------------------------------+\n"
 
 
 
-echo -e "+----------------- JDHelloWorld 脚本 -----------------+"
+echo -e "+---------------- JDHelloWorld 脚本 ----------------+"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e "东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e "东东农场库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e "种豆得豆库链接已替换"
@@ -261,7 +261,7 @@ echo -e "+----------------------------------------------------+\n"
 
 
 
-echo -e "+----------------- 处理脚本 -----------------+"
+echo -e "+---------------- 处理脚本 ----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
     if [ "${file##*.}" = "html" ]; then
@@ -322,14 +322,14 @@ else
 fi
 
 ## 注释指定活动
-echo -e "+----------------- 暂时停用脚本 -----------------+"
+echo -e "+---------------- 暂时停用脚本 ----------------+"
 js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+----------------------------------------------+\n"
-echo -e "+----------------- 强制开启脚本 -----------------+"
+echo -e "+---------------- 强制开启脚本 ----------------+"
 js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_carnivalcity jd_jdfactory jd_sgmh jd_star_shop jd_jxmc jd_joy_new"
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
@@ -339,7 +339,7 @@ done
 echo -e "+----------------------------------------------+\n"
 
 ## 删除过期活动
-echo -e "+----------------- 失效/过期脚本 -----------------+"
+echo -e "+---------------- 失效/过期脚本 ----------------+"
 js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new zooPanda_zooElecsport NobyDa_iQIYI"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
