@@ -323,7 +323,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change jd_carnivalcity jd_star_shop"
+js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change jd_carnivalcity"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
