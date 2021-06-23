@@ -42,57 +42,68 @@ fi
 if [ ${iCan} = "true" ]; then
 
     ## 短期或长期活动：
+    # jd_try.js                    京东试用
+    # jd_sqdyj.js                  省钱大赢家翻翻乐             （柠檬版）
+    # jd_sq.js                     省钱大赢家翻翻乐获取邀请码
     # jd_wsdlb.js                  柠檬我是大老板农场           （需要种水果）
     # jd_SplitRedPacket.js         天降红包                    （默认助力第一个账号）
-    # jd_star_store.js             明星小店                    （最新修复版）
     # jd_ddnc_farmpark.js          东东乐园
-    # jx_pasture.js                京喜牧场                    （最新修复版）
     # jx_cfdtx.js                  京喜财富岛提现
     # jx_mc_coin.js                京喜牧场收集金币
     # jx_mc_emptycabbage.js        京喜牧场清空白菜
-    # adolf_oneplus.js             赢一加新品手机
-    # ddo_pk.js                    京享值PK                     （新一期）
+    # Andy_sendBeans.js            送豆得豆
+    # ddo_pk.js                    京享值PK
     # long_half_redrain.js         半点红包雨
     # long_super_redrain.js        整点红包雨
-    # zooElecsport.js              东东电竞经理
 
-    ############################## 作者昵称（必填）##############################
-    # 使用空格隔开
-    author_list="qhqcz Sunert NobyDa yangtingxiao longzhuzhu zooPanda ddo Ariszy moposmall panghu star261 Wenmoux JDHelloWorld"
-    ############################## 作者脚本地址URL（必填）##############################
-    # 例如：https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js
-    # https://raw.sevencdn.com/
-    # 1.从作者库中随意挑选一个脚本地址，每个作者的地址添加一个即可，无须重复添加
-    # 2.将地址最后的 “脚本名称+后缀” 剪切到下一个变量里（my_scripts_list_xxx）
-    scripts_base_url_1=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-    scripts_base_url_2=https://gitee.com/Sunert/Scripts/raw/master/Task/ #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
-    scripts_base_url_3=${DownloadJudgment}https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/
-    scripts_base_url_4=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
-    scripts_base_url_5=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
-    scripts_base_url_6=${DownloadJudgment}https://raw.githubusercontent.com/zooPanda/zoo/dev/ #https://raw.githubusercontent.com/sngxpro/AutoSyncScript/zooPanda/
-    scripts_base_url_7=${DownloadJudgment}https://raw.githubusercontent.com/hyzaw/scripts/main/
-    scripts_base_url_8=${DownloadJudgment}https://raw.githubusercontent.com/sngxpro/AutoSyncScript/ZhiYi-N/Scripts/
-    scripts_base_url_9=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
-    scripts_base_url_10=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    scripts_base_url_11=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
-    scripts_base_url_12=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-    scripts_base_url_13=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+    ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    ############################## 作者脚本名称（必填）##############################
-    # 将相应作者的脚本填写到以下变量中
-    my_scripts_list_1="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
-    my_scripts_list_2="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
-    my_scripts_list_3="iQIYI.js"
-    my_scripts_list_4="jd_lotteryMachine.js"
-    my_scripts_list_5="long_half_redrain.js long_super_redrain.js"
-    my_scripts_list_6="zooElecsport.js"
-    my_scripts_list_7="ddo_pk.js"
-    my_scripts_list_8="zy_618jc.js"
-    my_scripts_list_9="jx_mc_coin.js jx_mc_emptycabbage.js"
-    my_scripts_list_10="jd_wsdlb.js"
-    my_scripts_list_11="jd_star_shop.js jd_jxmc.js star_dreamFactory_tuan.js"
-    my_scripts_list_12="jd_ddnc_farmpark.js"
-    my_scripts_list_13="jd_joy_new.js jd_joy_reward_new.js"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu ddo Andy moposmall panghu star261 Wenmoux JDHelloWorld"
+
+    # 自用库
+    scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
+    my_scripts_list_qhqcz="91wii.js post_code.js jd_bean_change.js jd_necklace.js jd_jxsign.js jd_speed.js"
+
+    # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
+    scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
+    my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
+
+    # yangtingxiao
+    scripts_base_url_yangtingxiao=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
+    my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
+
+    # 龙王庙红包雨
+    scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
+    my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
+
+    # 京享值pk
+    scripts_base_url_ddo=${DownloadJudgment}https://raw.githubusercontent.com/hyzaw/scripts/main/
+    my_scripts_list_ddo="ddo_pk.js"
+
+    # Andy
+    scripts_base_url_Andy=${DownloadJudgment}https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/
+    my_scripts_list_Andy="Andy_sendBeans.js"
+
+    # moposmall
+    scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
+    my_scripts_list_moposmall="jx_mc_coin.js jx_mc_emptycabbage.js"
+
+    # 柠檬/panghu
+    scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
+    my_scripts_list_panghu="jd_wsdlb.js"
+
+    # star
+    scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
+    my_scripts_list_star261="jd_star_shop.js jd_jxmc.js star_dreamFactory_tuan.js"
+
+    # Wenmoux
+    scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+    my_scripts_list_Wenmoux="jd_SplitRedPacket.js jd_ddnc_farmpark.js"
+
+    # 二代
+    scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js"
+
 
     ############################## 随机函数 ##########################################
     rand() {
@@ -102,13 +113,13 @@ if [ ${iCan} = "true" ]; then
         echo $(($num % $max + $min))
     }
     cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
-    index=1
+    #index=1
     for author in $author_list; do
         echo -e "下载 $author 的脚本"
         # 下载my_scripts_list中的每个js文件，重命名增加前缀"作者昵称_"，增加后缀".new"
-        eval scripts_list=\$my_scripts_list_${index}
+        eval scripts_list=\$my_scripts_list_$author
         #echo $scripts_list
-        eval url_list=\$scripts_base_url_${index}
+        eval url_list=\$scripts_base_url_$author
         #echo $url_list
         for js in $scripts_list; do
             eval url=$url_list$js
@@ -136,7 +147,7 @@ if [ ${iCan} = "true" ]; then
                 echo -e "更新 $name 失败，使用上一次正常的版本...\n"
             fi
         done
-        index=$(($index + 1))
+        #index=$(($index + 1))
     done
 fi
 
@@ -185,7 +196,7 @@ done
 echo -e "=================================\n"
 
 
-############################## Lxk0301 脚本 ##########################################
+
 echo -e "============ Lxk0301 脚本 ============"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
@@ -223,7 +234,7 @@ sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_S
 echo -e "=================================\n"
 
 
-##############################  JDHelloWorld 脚本 ##########################################
+
 echo -e "============  JDHelloWorld 脚本 ============"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e "东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e "东东农场库链接已替换"
@@ -245,6 +256,7 @@ sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e "�
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e "京喜工厂失效通知开关"
 
 echo -e "=================================\n"
+
 
 
 echo -e "============ 处理脚本 ============"
@@ -285,9 +297,8 @@ if [ ${iCan} = "true" ]; then
     sed -i "/delbody = 0;/a let readtimes;" ${ScriptsDir}/Sunert_Youth_Read.js
     sed -i "/YouthBodys = \[process\.env\.YOUTH_READ\]$/r ${ScriptsDir}/Sunert_Youth_Read.txt" ${ScriptsDir}/Sunert_Youth_Read.js
     sed -i "/timebodyVal = \$\.getdata('autotime_zq');$/r ${ScriptsDir}/Sunert_Youth_Read_Time.txt" ${ScriptsDir}/Sunert_Youth_Read.js
-
-    echo -e "=================================\n"
 fi
+echo -e "=================================\n"
 
 #sed -i '380c #[ -d ${ShellDir}/.git ] && Git_PullShell' /jd/git_pull.sh && echo "ExtraShell" >>/jd/git_pull.sh
 #git fetch --all && git reset --hard
@@ -299,9 +310,7 @@ fi
 #  echo -e '# 京东试用脚本添加的取关定时任务\n5 10 * * * bash jd jd_unsubscribe' >>${ListCron}
 #fi
 
-#sed -i 's|11 9 \* \* \* bash jd qhqcz_post_code|1 0,9 * * * bash jd qhqcz_post_code|'  ${ConfigDir}/crontab.list
-#sed -i 's|^.*bash jd jd_xtg$|30 11 \* \* \* bash jd jd_xtg|' ${ConfigDir}/crontab.list
-sed -i 's|^\d.*bash jd jd_bean_change|#5 9 \* \* \* bash jd jd_bean_change|' ${ConfigDir}/crontab.list
+
 
 #检查添加京喜团ID变量
 if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
@@ -312,7 +321,7 @@ fi
 
 ## 注释指定活动
 echo -e "========== 暂时停用脚本 =========="
-js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets"
+js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e "$js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -329,7 +338,7 @@ echo -e "=================================\n"
 
 ## 删除过期活动
 echo -e "========== 失效/过期脚本 =========="
-js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new"
+js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new zooPanda_zooElecsport NobyDa_iQIYI"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item 已删除"
 done
