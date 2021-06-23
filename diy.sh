@@ -30,7 +30,14 @@ if [ $? -ne 0 ]; then
         echo "${Host_IP[$i]} ${Host_Name[$i]}" >>/etc/hosts
     done
 fi
+
 PROXY_URL=https://ghproxy.com/
+##############################  定  义  下  载  代  理  （内置功能）  ##############################
+if [[ ${EnableExtraShellProxyDownload} == true ]]; then
+  DownloadJudgment=${ExtraShellProxyUrl}
+else
+  DownloadJudgment=
+fi
 
 if [ ${iCan} = "true" ]; then
 
@@ -57,19 +64,19 @@ if [ ${iCan} = "true" ]; then
     # https://raw.sevencdn.com/
     # 1.从作者库中随意挑选一个脚本地址，每个作者的地址添加一个即可，无须重复添加
     # 2.将地址最后的 “脚本名称+后缀” 剪切到下一个变量里（my_scripts_list_xxx）
-    scripts_base_url_1=${PROXY_URL}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
+    scripts_base_url_1=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
     scripts_base_url_2=https://gitee.com/Sunert/Scripts/raw/master/Task/ #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
-    scripts_base_url_3=${PROXY_URL}https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/
-    scripts_base_url_4=${PROXY_URL}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
-    scripts_base_url_5=${PROXY_URL}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
-    scripts_base_url_6=${PROXY_URL}https://raw.githubusercontent.com/zooPanda/zoo/dev/ #https://raw.githubusercontent.com/sngxpro/AutoSyncScript/zooPanda/
-    scripts_base_url_7=${PROXY_URL}https://raw.githubusercontent.com/hyzaw/scripts/main/
-    scripts_base_url_8=${PROXY_URL}https://raw.githubusercontent.com/sngxpro/AutoSyncScript/ZhiYi-N/Scripts/
-    scripts_base_url_9=${PROXY_URL}https://raw.githubusercontent.com/moposmall/Script/main/Me/
-    scripts_base_url_10=${PROXY_URL}https://raw.githubusercontent.com/panghu999/panghu/master/
-    scripts_base_url_11=${PROXY_URL}https://raw.githubusercontent.com/star261/jd/main/scripts/
-    scripts_base_url_12=${PROXY_URL}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-    scripts_base_url_13=${PROXY_URL}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+    scripts_base_url_3=${DownloadJudgment}https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/
+    scripts_base_url_4=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
+    scripts_base_url_5=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
+    scripts_base_url_6=${DownloadJudgment}https://raw.githubusercontent.com/zooPanda/zoo/dev/ #https://raw.githubusercontent.com/sngxpro/AutoSyncScript/zooPanda/
+    scripts_base_url_7=${DownloadJudgment}https://raw.githubusercontent.com/hyzaw/scripts/main/
+    scripts_base_url_8=${DownloadJudgment}https://raw.githubusercontent.com/sngxpro/AutoSyncScript/ZhiYi-N/Scripts/
+    scripts_base_url_9=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
+    scripts_base_url_10=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
+    scripts_base_url_11=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
+    scripts_base_url_12=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+    scripts_base_url_13=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
 
     ############################## 作者脚本名称（必填）##############################
     # 将相应作者的脚本填写到以下变量中
