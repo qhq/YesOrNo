@@ -203,41 +203,11 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+--------------- Lxk0301 脚本 ---------------+"
+#echo -e "+--------------- Lxk0301 脚本 ---------------+"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/pet/20/5\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxfactory/20/2\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxcfd/20/1\`|ig" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/health/20/5\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/sgmh/20/5\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/carnivalcity/20/2\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/city/10/1\`|ig" ${ScriptsDir}/jd_city.js >/dev/null 2>&1 && echo -e " 城城分现金库链接已替换"
-perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jdzz/20/5\`|ig" ${ScriptsDir}/jd_jdzz.js >/dev/null 2>&1 && echo -e " 京东赚赚库链接已替换"
-perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jdcash/10/1\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
-perl -0777 -i -pe "s|https:\/\/code\.chiang\.fun\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jdcrazyjoy/20\`|ig" ${ScriptsDir}/jd_crazy_joy.js >/dev/null 2>&1 && echo -e " 疯狂JOY库链接已替换"
-
-#perl -0777 -i -pe "s|//pk助力|//pk助力\nawait \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoopk/10\").then((text) => (\\$\.pkInviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e " jd_zoo商圈云助力已添加"
-#perl -0777 -i -pe "s|//pk助力|await \\$\.getScript(\"http://xinhunshang.xyz:6001/submit_activity_codes/get/zoo/10/5\").then((text) => (\\$\.inviteList = JSON\.parse(text)\.data))|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e " jd_zoo个人云助力已添加"
-#perl -0777 -i -pe "s|\\$\.inviteId = \\$\.oneInviteInfo\.inviteId;|\\$\.inviteId = \\$\.oneInviteInfo|ig" ${ScriptsDir}/jd_zoo.js >/dev/null 2>&1 && echo -e " jd_zoo内置KO"
-#sed -i "/PK互助码：/a if \(process\.env\.Auto_Post\){\nlet nowTime = new Date\(\)\.getTime\(\) + new Date\(\)\.getTimezoneOffset\(\) \* 60 \* 1000 + 8 \* 60 \* 60 \* 1000;\nif \(new Date\(nowTime\)\.getHours\(\) === 0\) {\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/zoopk/\${data\.data\.result\.groupInfo\.groupAssistInviteId}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}\n}" ${ScriptsDir}/jd_zoo.js && echo -e " jd_zooPK自动上传"
-#sed -i "s/$.doSkillFlag = true;/ if (new Date()\.getHours()>= 18) {\\$\.doSkillFlag = true;}else{\\$\.doSkillFlag = false;}/" ${ScriptsDir}/jd_zoo.js && echo -e " jd_zoo已放弃上半场"
-
-sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
-sed -i "
-/await jdDreamFactory()/ {
-n
-n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/jxtuan\/20\/2\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
-}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂已内置私库"
-sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂内置已KO"
-sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂失效通知开关"
-
-echo -e "+--------------------------------------------+\n"
+#echo -e "+--------------------------------------------+\n"
 
 
 
