@@ -181,7 +181,7 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/\\$\{\\$.UserName\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
-    if [ "${file##*.}" = "j1s" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
+    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
         echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file})
         perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[)([\s\S]*?)(\])/\1''\3/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
