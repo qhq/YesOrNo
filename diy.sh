@@ -180,7 +180,7 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         #perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         #perl -0777 -i -pe "s/\\$\{\\$.UserName\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/\\$\{\\$.[nick|User]Name\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        perl -0777 -i -pe "s/\\$\{\\$.(nick|User)Name\}/\\$\{\\$.custName \|\| \\$.nickName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
