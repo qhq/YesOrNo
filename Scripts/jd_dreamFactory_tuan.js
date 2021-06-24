@@ -63,7 +63,6 @@ if ($.isNode()) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
       $.index = i + 1;
       $.isLogin = true;
-      $.nickName = '';
       $.tuanNum = 0;//成团人数
       await TotalBean();
       console.log(`\n******开始【京东账号${$.index}】${$.custName || $.nickName || $.UserName}*********\n`);
@@ -106,7 +105,7 @@ if ($.isNode()) {
           let item = $.tuanIds[j];
           $.tuanMax = false;
           if (!$.canHelp) break;
-          console.log(`账号${$.custName || $.nickName || $.UserName} 去参加团 ${item}`);
+          console.log(`账号${$.nickName || $.UserName} 去参加团 ${item}`);
           await JoinTuan(item);
           await $.wait(2000);
           if($.tuanMax){$.tuanIds.shift();j--;}
