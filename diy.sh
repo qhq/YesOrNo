@@ -171,7 +171,7 @@ fi
 ############################## 文件处理 ##########################################
 echo -e "+----------------- 清理内置 -----------------+"
 
-exJS=(qhqcz_post_code.js) #需排除的脚本
+exJS=(qhqcz_post_code.js passerby_jd_cfd2.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
     #[[ ${array[@]/${var}/} != ${array[@]} ]] && echo "Yes" || echo "No"
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName" ${ScriptsDir}/${file}) -ne '0' ]; then
