@@ -39,7 +39,7 @@ else
   DownloadJudgment=
 fi
 
-if [ ${iCan} = "true" ]; then
+if [ ${iCan} = "true1" ]; then
 
     ## 短期或长期活动：
     # jd_try.js                    京东试用
@@ -183,6 +183,12 @@ for file in $(ls $ScriptsDir); do
         echo -en " ${file} | "
         echo $(grep -nEi "(helpAu.*?) = true" ${ScriptsDir}/${file})
         perl -0777 -i -pe "s/(helpAu.*?) = true/\1 = false/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    fi
+    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "await getAuthorShareCode(|\d)\(\);$" ${ScriptsDir}/${file}) -ne '0' ]; then
+        echo -en " ${file} | "
+        echo $(grep -nEi "await getAuthorShareCode(|\d)\(\);$" ${ScriptsDir}/${file})
+        perl -0777 -i -pe "s/await getAuthorShareCode(|\d)\(\);//ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        #sed -ig "/await getAuthorShareCode\(\|\S\)();$/d" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
 done
 
