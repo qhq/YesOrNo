@@ -22,7 +22,7 @@ const $ = new Env('京喜工厂开团');
 const JD_API_HOST = 'https://m.jingxi.com';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-const openTuanCK = $.isNode() ? (process.env.OPEN_DREAMFACTORY_TUAN ? process.env.OPEN_DREAMFACTORY_TUAN : '1'):'1';
+const openTuanCK = $.isNode() ? (process.env.OPEN_DREAMFACTORY_TUAN ? process.env.OPEN_DREAMFACTORY_TUAN : '1,2,3'):'1,2,3';
 const helpFlag = false;//是否参考作者团
 let tuanActiveId = ``;
 let cookiesArr = [], cookie = '', message = '';
@@ -86,33 +86,32 @@ if ($.isNode()) {
   //打乱CK,再进行参团
   if (!Array.prototype.derangedArray) {Array.prototype.derangedArray = function() {for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);return this;};}
   cookiesArr.derangedArray();
-  for (let i = 0; i < cookiesArr.length && $.tuanIds.length>0; i++) {
-    if (cookiesArr[i]) {
-      $.index = i + 1;
-      cookie = cookiesArr[i];
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-      // if($.jdFactoryHelpList[$.UserName]){
-      //   console.log(`${$.custName || $.nickName || $.UserName},参团次数已用完`)
-      //   continue;
-      // }
-      $.isLogin = true;
-      $.canHelp = true;//能否参团
-      await TotalBean();
-      if (!$.isLogin) {continue;}
-      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-      if ((cookiesArr && cookiesArr.length >= ($.tuanNum || 5)) && $.canHelp) {
-        for (let j = 0; j < $.tuanIds.length; j++) {
-          let item = $.tuanIds[j];
-          $.tuanMax = false;
-          if (!$.canHelp) break;
-          console.log(`账号${$.nickName || $.UserName} 去参加团 ${item}`);
-          await JoinTuan(item);
-          await $.wait(2000);
-          if($.tuanMax){$.tuanIds.shift();j--;}
+
+  for (let j = 0; j < $.tuanIds.length; j++) {
+    let item = $.tuanIds[j];
+    $.tuanMax = false;
+    for (let i = 0; i < cookiesArr.length && $.tuanIds.length>0; i++) {
+      if (cookiesArr[i]) {
+        $.index = i + 1;
+        cookie = cookiesArr[i];
+        $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+        $.isLogin = true;
+        $.canHelp = true;//能否参团
+        await TotalBean();
+        if (!$.isLogin) {continue;}
+        if ((cookiesArr && cookiesArr.length >= ($.tuanNum || 5)) && $.canHelp) {
+            console.log(`账号${$.custName || $.nickName || $.UserName} 去参加团 ${item}`);
+            await JoinTuan(item);
+            if (!$.canHelp) {cookiesArr.splice(i, 1);}
+            await $.wait(2000);
+            //if($.tuanMax){$.tuanIds.shift();j--;}
+            if($.tuanMax) break;
         }
       }
     }
+
   }
+
   let res = [];
   if(helpFlag){
     await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2').then((text) => (res = JSON.parse(text).data))
