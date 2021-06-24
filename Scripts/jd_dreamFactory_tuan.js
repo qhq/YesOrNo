@@ -23,7 +23,7 @@ const JD_API_HOST = 'https://m.jingxi.com';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const openTuanCK = $.isNode() ? (process.env.OPEN_DREAMFACTORY_TUAN ? process.env.OPEN_DREAMFACTORY_TUAN : '1,2,3,4,5'):'1,2,3,4,5';
-const helpFlag = true;//是否参考作者团
+const helpFlag = false;//是否参考作者团
 let tuanActiveId = ``;
 let cookiesArr = [], cookie = '', message = '';
 $.tuanIds = [];
@@ -66,10 +66,10 @@ if ($.isNode()) {
       $.nickName = '';
       $.tuanNum = 0;//成团人数
       await TotalBean();
-      console.log(`\n******开始【京东账号${$.index}】${$.nickName || $.UserName}*********\n`);
+      console.log(`\n******开始【京东账号${$.index}】${$.custName || $.nickName || $.UserName}*********\n`);
       if (!$.isLogin) {
-        $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
-        if ($.isNode()) {await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);}
+        $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.custName || $.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
+        if ($.isNode()) {await notify.sendNotify(`${$.name}cookie已失效 - ${$.custName || $.nickName || $.UserName}`, `京东账号${$.index} ${$.custName || $.nickName || $.UserName}\n请重新登录获取cookie`);}
         runFlag = false;
         continue;
       }
@@ -81,7 +81,9 @@ if ($.isNode()) {
     return;
   }
   console.log(`\n===============开始账号内参团===================`);
-  console.log('获取到的内部团ID'+`${$.tuanIds}\n`);
+    await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2').then((text) => ($.tuanIds = $.tuanIds.concat(JSON.parse(text).data)));
+
+  console.log('获取到的内部团ID：'+`${$.tuanIds}\n`);
   //打乱CK,再进行参团
   if (!Array.prototype.derangedArray) {Array.prototype.derangedArray = function() {for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);return this;};}
   cookiesArr.derangedArray();
@@ -91,7 +93,7 @@ if ($.isNode()) {
       cookie = cookiesArr[i];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
       // if($.jdFactoryHelpList[$.UserName]){
-      //   console.log(`${$.UserName},参团次数已用完`)
+      //   console.log(`${$.custName || $.nickName || $.UserName},参团次数已用完`)
       //   continue;
       // }
       $.isLogin = true;
@@ -104,7 +106,7 @@ if ($.isNode()) {
           let item = $.tuanIds[j];
           $.tuanMax = false;
           if (!$.canHelp) break;
-          console.log(`账号${$.UserName} 去参加团 ${item}`);
+          console.log(`账号${$.custName || $.nickName || $.UserName} 去参加团 ${item}`);
           await JoinTuan(item);
           await $.wait(2000);
           if($.tuanMax){$.tuanIds.shift();j--;}
@@ -114,7 +116,7 @@ if ($.isNode()) {
   }
   let res = [];
   if(helpFlag){
-    res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/dreamFactory_tuan.json');
+    await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2').then((text) => (res = JSON.parse(text).data))
     if(!res){
       res = [];
     }
@@ -129,7 +131,7 @@ if ($.isNode()) {
         $.index = i + 1;
         cookie = cookiesArr[i];
         $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-        console.log(`账号${$.UserName} 去参加作者团： ${thisTuanID}`);
+        console.log(`账号${$.custName || $.nickName || $.UserName} 去参加作者团： ${thisTuanID}`);
         await JoinTuan(thisTuanID);
         await $.wait(2000);
       }
@@ -234,9 +236,9 @@ function userInfo() {
               } else {
                 $.unActive = false;//标记是否开启了京喜活动或者选购了商品进行生产
                 if (!data.factoryList) {
-                  console.log(`【提示】京东账号${$.index}[${$.nickName}]京喜工厂活动未开始\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 开启活动\n`);
+                  console.log(`【提示】京东账号${$.index}[${$.custName || $.nickName || $.UserName}]京喜工厂活动未开始\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 开启活动\n`);
                 } else if (data.factoryList && !data.productionList) {
-                  console.log(`【提示】京东账号${$.index}[${$.nickName}]京喜工厂未选购商品\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 选购\n`)
+                  console.log(`【提示】京东账号${$.index}[${$.custName || $.nickName || $.UserName}]京喜工厂未选购商品\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 选购\n`)
                 }
               }
             } else {
@@ -288,6 +290,7 @@ async function tuanActivity() {
                 }
               }
             } else {
+            await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/${tuanId}/${$.UserName}`).then((text) => (console.log(text)));
               $.tuanIds.push(tuanId);
               $.log(`\n此团未达领取团奖励人数：${tuanNum}人\n`)
             }
