@@ -233,7 +233,7 @@ sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_S
 sed -i "/【水果名称】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFruitCode?code=' + $.farmInfo.farmUserPro.shareCode}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场passerby互助码激活已添加"
 sed -i "/好友互助码】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFactoryCode?code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂passerby互助码激活已添加"
 sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/activeJdCfdCode?code=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 财富岛passerby互助码激活已添加"
-sed -i "s|QueryUserInfo\`\), \(err,|QueryUserInfo`), async (err,|" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
+sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
 
 echo -e "+--------------------------------------------+\n"
 
