@@ -259,7 +259,14 @@ echo -e "+---------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-
+sed -i "
+/inviteCodeList\[k\]\.code/ {
+n
+n
+n
+n
+a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/name\/jxmc\/10\/5\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
+}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e "京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
 
 
