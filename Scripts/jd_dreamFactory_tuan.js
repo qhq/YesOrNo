@@ -22,7 +22,7 @@ const $ = new Env('京喜工厂开团');
 const JD_API_HOST = 'https://m.jingxi.com';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-const openTuanCK = $.isNode() ? (process.env.OPEN_DREAMFACTORY_TUAN ? process.env.OPEN_DREAMFACTORY_TUAN : '1,2,3,4,5'):'1,2,3,4,5';
+const openTuanCK = $.isNode() ? (process.env.OPEN_DREAMFACTORY_TUAN ? process.env.OPEN_DREAMFACTORY_TUAN : '1'):'1';
 const helpFlag = false;//是否参考作者团
 let tuanActiveId = ``;
 let cookiesArr = [], cookie = '', message = '';
