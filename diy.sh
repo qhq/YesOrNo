@@ -204,7 +204,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-#echo -e "+--------------- Lxk0301 脚本 ---------------+"
+#echo -e "+-------------- Lxk0301 脚本 ---------------+"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
@@ -212,7 +212,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+------------- JDHelloWorld 脚本 -------------+"
+echo -e "+------------ JDHelloWorld 脚本 -------------+"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
@@ -240,7 +240,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+--------------- passerby 脚本 ---------------+"
+echo -e "+-------------- passerby 脚本 ---------------+"
 #perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/passerby_jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/passerby_jd_fruit2.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
 #perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/passerby_jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
@@ -255,7 +255,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 
-echo -e "+---------------- star261 脚本 ---------------+"
+echo -e "+--------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
@@ -270,7 +270,7 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\
 echo -e "+--------------------------------------------+\n"
 
 
-echo -e "+------------------ 处理脚本 -----------------+"
+echo -e "+----------------- 处理脚本 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
     if [ "${file##*.}" = "html" ]; then
@@ -331,14 +331,14 @@ else
 fi
 
 ## 注释指定活动
-echo -e "+---------------- 暂时停用脚本 ---------------+"
+echo -e "+--------------- 暂时停用脚本 ---------------+"
 js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change jd_carnivalcity passerby_jd_fruit2 passerby_jd_dreamFactory2"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
-echo -e "+---------------- 强制开启脚本 ---------------+"
+echo -e "+--------------- 强制开启脚本 ---------------+"
 js_List="jd_cfd jd_dreamFactory jd_fruit jd_health jd_pet jd_plantBean jd_jdfactory jd_sgmh jd_jxmc jd_joy_new"
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
@@ -348,7 +348,7 @@ done
 echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
-echo -e "+--------------- 失效/过期脚本 ---------------+"
+echo -e "+-------------- 失效/过期脚本 ---------------+"
 js_List="qhqcz_jd_joy qhqcz_JDJRValidator qhqcz_jd_live_lottery_social qhqcz_jd_cash jdShare_jd_cfd jdShare_jd_dreamFactory jdShare_jd_fruit jdShare_jd_health jdShare_jd_pet jdShare_jd_plantBean jdShare_jd_jdfactory jdShare_jd_sgmh jdShare_jd_api_test jdShare_jd_EsportsManager jdShare_jd_joy_new zooPanda_zooElecsport NobyDa_iQIYI Ariszy_zy_618jc Wenmoux_jd_SplitRedPacket qhqcz_jd_speed star261_star_dreamFactory_tuan"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
