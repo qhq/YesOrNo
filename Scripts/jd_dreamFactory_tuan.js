@@ -83,7 +83,7 @@ if ($.isNode()) {
     return;
   }
   console.log(`\n===============开始账号内参团===================`);
-    await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/5/2').then((text) => ($.tuanIds = $.tuanIds.concat(JSON.parse(text).data)));
+    await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/5').then((text) => ($.tuanIds = $.tuanIds.concat(JSON.parse(text).data)));
 
   console.log('获取到的内部团ID：'+`${$.tuanIds}\n`);
   //打乱CK,再进行参团
