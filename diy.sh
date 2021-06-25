@@ -213,21 +213,21 @@ echo -e "+--------------------------------------------+\n"
 
 
 echo -e "+------------- JDHelloWorld 脚本 -------------+"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/pet/20/5\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxfactory/20/2\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxcfd/20/1\`|ig" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/health/20/5\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/sgmh/20/5\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/carnivalcity/20/2\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\`|ig" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
 sed -i "
 /await jdDreamFactory()/ {
 n
 n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/jxtuan\/20\/2\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
+a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxtuan\/2\/20\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
 }" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂已内置私库"
 sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂内置已KO"
 sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂失效通知开关"
@@ -241,23 +241,23 @@ echo -e "+--------------------------------------------+\n"
 
 
 echo -e "+--------------- passerby 脚本 ---------------+"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/ddfactory/20/5\`|ig" ${ScriptsDir}/passerby_jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/farm/20/5\`|ig" ${ScriptsDir}/passerby_jd_fruit2.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/bean/20/5\`|ig" ${ScriptsDir}/passerby_jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/pet/20/5\`|ig" ${ScriptsDir}/passerby_jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
-perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxfactory/20/2\`|ig" ${ScriptsDir}/passerby_jd_dreamFactory2.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxcfd/20/1\`|ig" ${ScriptsDir}/passerby_jd_cfd2.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/health/20/5\`|ig" ${ScriptsDir}/passerby_jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/sgmh/20/5\`|ig" ${ScriptsDir}/passerby_jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/submit_activity_codes/get/carnivalcity/20/2\`|ig" ${ScriptsDir}/passerby_jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/passerby_jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/passerby_jd_fruit2.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/passerby_jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/passerby_jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
+perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/passerby_jd_dreamFactory2.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\`|ig" ${ScriptsDir}/passerby_jd_cfd2.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/passerby_jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/passerby_jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
+#perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/passerby_jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 
 echo -e "+--------------------------------------------+\n"
 
 
 
 echo -e "+---------------- star261 脚本 ---------------+"
-#perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-#sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/submit_activity_codes/get/jxtuan/20/2').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+#perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+#sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 sed -i "
 /inviteCodeList\[k\]\.code/ {
@@ -265,7 +265,7 @@ n
 n
 n
 n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/submit_activity_codes\/get\/name\/jxmc\/10\/5\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
+a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
 }" ${ScriptsDir}/star261_jd_jxmc.js && echo -e "京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
 
