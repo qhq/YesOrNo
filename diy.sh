@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-26 13:26\n"
+echo -e "2021-06-26 13:39\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -296,6 +296,7 @@ sed -i 's|Name3=.*\?)|Name3=(Fruit Pet Bean JdFactory dreamFactory Joy Jdzz Cash
 sed -i "/## 生成互助规则模板/a  HelpType = 1" $ShellDir/export_sharecodes.sh && echo -e " 修改生成互助规则模板"
 sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
+sed -i 's|&& allMessage)|\&\& allMessage.indexof("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 
 if [ ${iCan} = "true" ]; then
     echo -e " 腾讯新闻"
