@@ -1202,9 +1202,9 @@ function getUrlData(url, name) {
 async function getShareCode() {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
     console.log(`======账号${$.index}开始======\n`)
-    await getcarnivalcityHelp();
-    if (new Date(nowTime).getHours() > 1) {
-		await getJDFruit();
+    //await getcarnivalcityHelp();
+    //if (new Date(nowTime).getHours() > 1) {
+	await getJDFruit();
         await getJdPet();
         await getPlantBean();
         await getJdFactory();
@@ -1215,8 +1215,8 @@ async function getShareCode() {
         await getSgmh();
         await getCFD();
         await getJdCash();
-		await getJxmc();
-    }
+	await getJxmc();
+    //}
     console.log(`\n======账号${$.index}结束======\n`)
 }
 // prettier-ignore
