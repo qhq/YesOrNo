@@ -104,7 +104,7 @@ if [ ${iCan} = "true" ]; then
 
     # 二代
     scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js"
+    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js jd_cfd_SlotMachine.js"
 
     # 写着玩
     scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
