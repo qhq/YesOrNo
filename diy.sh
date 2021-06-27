@@ -88,7 +88,7 @@ if [ ${iCan} = "true" ]; then
 
     # moposmall
     scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
-    my_scripts_list_moposmall="jx_mc_coin.js jx_mc_emptycabbage.js"
+    my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
     # 柠檬/panghu
     scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
@@ -297,6 +297,7 @@ sed -i "/## 生成互助规则模板/a  HelpType = 1" $ShellDir/export_sharecode
 sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
 sed -i 's|&& allMessage)|\&\& allMessage.indexof("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
+sed -i 's|&& allMessage)|\&\& allMessage.indexof("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
 
 if [ ${iCan} = "true" ]; then
     echo -e " 腾讯新闻"
