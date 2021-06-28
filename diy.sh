@@ -300,6 +300,7 @@ sed -i 's|&& allMessage)|\&\& allMessage.indexof("可以收取")!=-1)|' ${Script
 sed -i 's|&& allMessage)|\&\& allMessage.indexof("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
 sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
+sed -i "s|let updateFlag = false;|let updateFlag = true;|" ${ShellDir}/panel/server.js && echo -e " CK自动添加已关闭"
 
 if [ ${iCan} = "true" ]; then
     echo -e " 腾讯新闻"
@@ -339,7 +340,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2"
+js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -356,7 +357,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="jd_big_winner jd_star_shop jd_cfd_SlotMachine ddo_pk"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
