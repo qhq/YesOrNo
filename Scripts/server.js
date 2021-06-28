@@ -884,7 +884,7 @@ app.post('/updateCookie', function (request, response) {
         const content = getFileContentByName(confFile);
         const lines = content.split('\n');
         const pt_pin = cookie.match(/pt_pin=.+?;/)[0];
-        let updateFlag = true;
+        let updateFlag = false;
         let lastIndex = 0;
         let maxCookieCount = 0;
         for (var i = 0; i < lines.length; i++) {
@@ -920,6 +920,7 @@ app.post('/updateCookie', function (request, response) {
             }
         }
         let CookieCount = Number(maxCookieCount) + 1;
+	    /**
         if (!updateFlag) {
             const newLine = [
                 'Cookie',
@@ -934,12 +935,14 @@ app.post('/updateCookie', function (request, response) {
             //提交备注
             lines.splice(lastIndex + 1, 0, newLine);
         }
+	**/
         saveNewConf('config.sh', lines.join('\n'));
 
         response.send({
             err: 0,
             msg: updateFlag ?
-                `[更新成功]\n当前用户量:(${maxCookieCount})` : `[新的Cookie]\n当前用户量:(${CookieCount})`,
+                //`[更新成功]\n当前用户量:(${maxCookieCount})` : `[新的Cookie]\n当前用户量:(${CookieCount})`,
+                `[更新成功]\n本服用户量:(${maxCookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
         });
     } else {
         response.send({
