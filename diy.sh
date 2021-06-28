@@ -159,16 +159,18 @@ if [ ${iCan} = "true" ]; then
 fi
 
 ############################## 同步 diy.sh ##########################################
-#cd $ConfigDir
-#echo -e "开始更新 diy.sh "
-#wget -q --no-check-certificate https://raw.githubusercontent.com/qhq/YesOrNo/main/diy.sh -O diy.sh.new
-#if [ $? -eq 0 ]; then
-#  mv -f diy.sh.new diy.sh
-#  echo -e "更新 diy.sh 完成"
-#else
-#  rm -rf diy.sh.new
-#  echo -e "更新 diy.sh 失败，使用上一次正常的版本...\n"
-#fi
+cd $ConfigDir
+echo -e "开始更新 server.js "
+wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
+if [ $? -eq 0 ]; then
+  mv -f server.js.new server.js
+  echo -e "更新 server.js 完成"
+else
+  rm -rf server.js.new
+  echo -e "更新 server.js 失败，使用上一次正常的版本...\n"
+fi
+cp /jd/config/server.js /jd/panel/server.js
+pm2 restart /jd/panel/server.js
 
 ############################## 文件处理 ##########################################
 echo -e "+----------------- 清理内置 -----------------+"
