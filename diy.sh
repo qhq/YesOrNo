@@ -356,7 +356,7 @@ echo -e "+--------------------------------------------+\n"
 
 ############################## 同步文件 ##########################################
 cd $ConfigDir
-echo -e "开始更新 server.js "
+echo -e "下载 server.js "
 wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
 if [ $? -eq 0 ]; then
   mv -f server.js.new server.js
