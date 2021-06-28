@@ -269,7 +269,7 @@ n
 n
 n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
-}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e "京喜牧场已内置私库"
+}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
 
 
