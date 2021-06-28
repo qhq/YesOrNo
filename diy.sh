@@ -60,7 +60,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu ddo Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -96,7 +96,7 @@ if [ ${iCan} = "true" ]; then
 
     # star
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
-    my_scripts_list_star261="jd_star_shop.js jd_jxmc.js"
+    my_scripts_list_star261="jd_jxmc.js"
 
     # Wenmoux
     scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
@@ -104,7 +104,7 @@ if [ ${iCan} = "true" ]; then
 
     # 二代
     scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js jd_cfd_SlotMachine.js"
+    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js"
 
     # 写着玩
     scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
@@ -339,7 +339,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_joy_run jd_joy_feedPets jd_bean_change jd_carnivalcity passerby_jd_fruit2 passerby_jd_dreamFactory2"
+js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -356,7 +356,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="jd_big_winner"
+js_List="jd_big_winner jd_star_shop jd_cfd_SlotMachine ddo_pk"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
