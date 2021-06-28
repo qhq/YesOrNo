@@ -121,7 +121,7 @@ if [ ${iCan} = "true" ]; then
     cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
     #index=1
     for author in $author_list; do
-        echo -e "下载 $author 的脚本"
+        echo -e " 下载 $author 的脚本"
         # 下载my_scripts_list中的每个js文件，重命名增加前缀"作者昵称_"，增加后缀".new"
         eval scripts_list=\$my_scripts_list_$author
         #echo $scripts_list
@@ -129,7 +129,7 @@ if [ ${iCan} = "true" ]; then
         #echo $url_list
         for js in $scripts_list; do
             eval url=$url_list$js
-            echo "地址 $url"
+            echo " 地址 $url"
             eval name=$author"_"$js
             #echo $name
             wget -q --no-check-certificate $url -O $name.new
@@ -138,7 +138,7 @@ if [ ${iCan} = "true" ]; then
             # 随机添加个cron到crontab.list
             if [ $? -eq 0 ]; then
                 mv -f $name.new $name
-                echo -e "更新 $name 完成...\n"
+                echo -e " 更新 $name 完成...\n"
                 croname=$(echo "$name" | awk -F\. '{print $1}')
                 script_date=$(cat $name | grep "http" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
                 if [ -z "${script_date}" ]; then
@@ -150,7 +150,7 @@ if [ ${iCan} = "true" ]; then
                 fi
             else
                 [ -f $name.new ] && rm -f $name.new
-                echo -e "更新 $name 失败，使用上一次正常的版本...\n"
+                echo -e " 更新 $name 失败，使用上一次正常的版本...\n"
             fi
         done
         #index=$(($index + 1))
