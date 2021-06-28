@@ -158,20 +158,6 @@ if [ ${iCan} = "true" ]; then
     echo -e "+--------------------------------------------+\n"
 fi
 
-############################## 同步 diy.sh ##########################################
-cd $ConfigDir
-echo -e "开始更新 server.js "
-wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
-if [ $? -eq 0 ]; then
-  mv -f server.js.new server.js
-  echo -e "更新 server.js 完成"
-else
-  rm -rf server.js.new
-  echo -e "更新 server.js 失败，使用上一次正常的版本...\n"
-fi
-cp /jd/config/server.js /jd/panel/server.js
-pm2 restart /jd/panel/server.js
-
 ############################## 文件处理 ##########################################
 echo -e "+----------------- 清理内置 -----------------+"
 
@@ -366,3 +352,18 @@ done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
 echo -e "+--------------------------------------------+\n"
+
+
+############################## 同步文件 ##########################################
+cd $ConfigDir
+echo -e "开始更新 server.js "
+wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
+if [ $? -eq 0 ]; then
+  mv -f server.js.new server.js
+  echo -e "更新 server.js 完成"
+else
+  rm -rf server.js.new
+  echo -e "更新 server.js 失败，使用上一次正常的版本...\n"
+fi
+cp /jd/config/server.js /jd/panel/server.js
+pm2 restart /jd/panel/server.js
