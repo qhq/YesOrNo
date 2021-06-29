@@ -45,7 +45,7 @@ var configString = 'config sample crontab diy';
 
 var s_token, cookies, guid, lsid, lstoken, okl_token, token, userCookie = ''
 
-const CK_ATUO_ADD = process.env.CK_ATUO_ADD ? process.env.CK_ATUO_ADD : 'false';
+const CK_AUTO_ADD = process.env.CK_AUTO_ADD ? process.env.CK_AUTO_ADD : 'false';
     
 function praseSetCookies(response) {
     s_token = response.body.s_token
@@ -923,7 +923,7 @@ app.post('/updateCookie', function (request, response) {
             }
         }
         let CookieCount = Number(maxCookieCount) + 1;
-        if (!updateFlag && CK_ATUO_ADD == 'true') {
+        if (!updateFlag && CK_AUTO_ADD == 'true') {
             let newLine = [
                 'Cookie',
                 CookieCount,
@@ -944,7 +944,7 @@ app.post('/updateCookie', function (request, response) {
         response.send({
             err: 0,
             msg: updateFlag ?
-                `[更新成功]\n当前用户量:(${maxCookieCount})` : CK_ATUO_ADD == 'true' ? `[新的Cookie]\n当前用户量:(${CookieCount})` : `服务器配置不自动添加Cookie\n如需启用请添加export CK_ATUO_ADD="true"`,
+                `[更新成功]\n当前用户量:(${maxCookieCount})` : CK_AUTO_ADD == 'true' ? `[新的Cookie]\n当前用户量:(${CookieCount})` : `服务器配置不自动添加Cookie\n如需启用请添加export CK_AUTO_ADD="true"`,
                 //`[更新成功]\n本服用户量:(${maxCookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
         });
     } else {
