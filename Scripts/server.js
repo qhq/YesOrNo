@@ -931,11 +931,13 @@ app.post('/updateCookie', function (request, response) {
                 '"',
                 cookie,
                 '"',
-                '  #',
-                userMsg,
+                //'  #',
+                //userMsg,
             ].join('');
             //提交备注
             lines.splice(lastIndex + 1, 0, newLine);
+        	const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString(), ' 备注：', userMsg].join('');
+        	lines.splice(lastIndex + 2, 0, newLine);
         }
         saveNewConf('config.sh', lines.join('\n'));
 
