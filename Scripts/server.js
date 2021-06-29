@@ -45,6 +45,9 @@ var configString = 'config sample crontab diy';
 
 var s_token, cookies, guid, lsid, lstoken, okl_token, token, userCookie = ''
 
+const CK_ATUO_ADD =
+  process.env.CK_ATUO_ADD ? process.env.CK_ATUO_ADD : 'false';
+    
 function praseSetCookies(response) {
     s_token = response.body.s_token
     guid = response.headers['set-cookie'][0]
@@ -910,18 +913,18 @@ app.post('/updateCookie', function (request, response) {
 	                if (
 	                    lineNext.match(/上次更新：/)
 		                ) {
-		                	const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString()].join('');
+		                    const bz = lineNext.split('备注：')[1];
+		                	const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString(), ' 备注：', bz ? bz : userMsg].join('');
                     		lines[i+1] = newLine;
 	                	} else {
-		                	const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString()].join('');
+		                	const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString(), ' 备注：', userMsg].join('');
 			            	lines.splice(lastIndex + 1, 0, newLine);
 			        }
                 }
             }
         }
         let CookieCount = Number(maxCookieCount) + 1;
-	    /**
-        if (!updateFlag) {
+        if (!updateFlag && CK_ATUO_ADD) {
             const newLine = [
                 'Cookie',
                 CookieCount,
@@ -935,14 +938,13 @@ app.post('/updateCookie', function (request, response) {
             //提交备注
             lines.splice(lastIndex + 1, 0, newLine);
         }
-	**/
         saveNewConf('config.sh', lines.join('\n'));
 
         response.send({
             err: 0,
             msg: updateFlag ?
-                //`[更新成功]\n当前用户量:(${maxCookieCount})` : `[新的Cookie]\n当前用户量:(${CookieCount})`,
-                `[更新成功]\n本服用户量:(${maxCookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
+                `[更新成功]\n当前用户量:(${maxCookieCount})` : CK_ATUO_ADD ? `[新的Cookie]\n当前用户量:(${CookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
+                //`[更新成功]\n本服用户量:(${maxCookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
         });
     } else {
         response.send({
