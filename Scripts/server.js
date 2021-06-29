@@ -931,8 +931,8 @@ app.post('/updateCookie', function (request, response) {
                 '"',
                 cookie,
                 '"',
-                //'  #',
-                //userMsg,
+                '  #',
+                userMsg,
             ].join('');
             //提交备注
             lines.splice(lastIndex + 1, 0, newLine);
