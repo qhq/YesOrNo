@@ -924,7 +924,7 @@ app.post('/updateCookie', function (request, response) {
         }
         let CookieCount = Number(maxCookieCount) + 1;
         if (!updateFlag && CK_ATUO_ADD) {
-            const newLine = [
+            let newLine = [
                 'Cookie',
                 CookieCount,
                 '=',
@@ -936,7 +936,7 @@ app.post('/updateCookie', function (request, response) {
             ].join('');
             //提交备注
             lines.splice(lastIndex + 1, 0, newLine);
-            const newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString(), ' 备注：', userMsg].join('');
+            newLine = ['## ', pt_pin, ' 上次更新：', new Date().toLocaleDateString(), ' 备注：', userMsg].join('');
             lines.splice(lastIndex + 1, 0, newLine);
         }
         saveNewConf('config.sh', lines.join('\n'));
