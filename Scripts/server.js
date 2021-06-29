@@ -45,8 +45,7 @@ var configString = 'config sample crontab diy';
 
 var s_token, cookies, guid, lsid, lstoken, okl_token, token, userCookie = ''
 
-const CK_ATUO_ADD =
-  process.env.CK_ATUO_ADD ? process.env.CK_ATUO_ADD : 'false';
+const CK_ATUO_ADD = process.env.CK_ATUO_ADD ? process.env.CK_ATUO_ADD : 'false';
     
 function praseSetCookies(response) {
     s_token = response.body.s_token
