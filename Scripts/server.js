@@ -923,7 +923,7 @@ app.post('/updateCookie', function (request, response) {
             }
         }
         let CookieCount = Number(maxCookieCount) + 1;
-        if (!updateFlag && CK_AUTO_ADD == 'true') {
+        if (!updateFlag && CK_AUTO_ADD === 'true') {
             let newLine = [
                 'Cookie',
                 CookieCount,
@@ -944,7 +944,7 @@ app.post('/updateCookie', function (request, response) {
         response.send({
             err: 0,
             msg: updateFlag ?
-                `[更新成功]\n当前用户量:(${maxCookieCount})` : CK_AUTO_ADD == 'true' ? `[新的Cookie]\n当前用户量:(${CookieCount})` : `服务器配置不自动添加Cookie\n如需启用请添加export CK_AUTO_ADD="true"`,
+                `[更新成功]\n当前用户量:(${maxCookieCount})` : CK_AUTO_ADD === 'true' ? `[新的Cookie]\n当前用户量:(${CookieCount})` : `服务器配置不自动添加Cookie\n如需启用请添加export CK_AUTO_ADD="true"`,
                 //`[更新成功]\n本服用户量:(${maxCookieCount})` : `非本服用户\n本服用户量:(${CookieCount})`,
         });
     } else {
