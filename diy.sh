@@ -320,7 +320,11 @@ echo -e "+--------------------------------------------+\n"
 #if [ $? -ne 0 ]; then
 #  echo -e '# 京东试用脚本添加的取关定时任务\n5 10 * * * bash jd jd_unsubscribe' >>${ListCron}
 #fi
+## 修正定时
+#grep -q "jdJxncTokens" ${ListCron} && sed -i '/&*jdJxncTokens/c#4 8 * * * bash jd jdJxncTokens' ${ListCron}
 
+## bug fix
+#[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
 
 
 #检查添加京喜团ID变量
