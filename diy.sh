@@ -350,9 +350,9 @@ echo -e "+--------------------------------------------+\n"
 
 #检查添加京喜团ID变量
 if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
-    perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="bozIUUFcANuUdWpw3QdvPw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+    perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="T_zZaWP6by9yA1wehxM4mg=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
 else
-    perl -0777 -i -pe 's/## export/## export\n#京喜团ID\nexport TUAN_ACTIVEID="bozIUUFcANuUdWpw3QdvPw=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+    perl -0777 -i -pe 's/## export/## export\n#京喜团ID\nexport TUAN_ACTIVEID="T_zZaWP6by9yA1wehxM4mg=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
 fi
 
 ## 注释指定活动
