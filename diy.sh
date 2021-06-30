@@ -25,9 +25,9 @@ echo -e "2021-06-30 17:01\n"
 
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
-	echo '${ScriptsDir}/${Cron##* }.js'
+	echo '$ScriptsDir/$Cron##* .js'
 	if [ -d ${ScriptsDir}/${Cron##* }.js ]; then
-		echo -e '${ScriptsDir}/${Cron##* }.js'
+		echo -e "GG"
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
 	fi
 done
