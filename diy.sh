@@ -28,9 +28,9 @@ for Cron in ${JsList}; do
 	#echo -e "${ScriptsDir}/${Cron##* }.js"
 	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
 		jname=`sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js`
-		jname=$(echo ${jname/"/'})
-		jname=$(echo ${jname#*'})
-		jname=$(echo ${jname%*'})
+		jname=$(echo ${jname/\"/\'})
+		jname=$(echo ${jname#*\'})
+		jname=$(echo ${jname%*\'})
 		echo "$jname"
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
 	fi
