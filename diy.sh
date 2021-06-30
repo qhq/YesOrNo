@@ -23,6 +23,14 @@ fi
 
 echo -e "2021-06-29 22:54\n"
 
+JsList=$(awk '{match($0,/bash jd (\w+)/,a);print a[1]}'  ${ConfigDir}/crontab.list)
+for Cron in ${JsList}; do
+	if [ -d ${ScriptsDir}/${Cron}.js ]; then
+		echo -e '${ScriptsDir}/${Cron}.js'
+    		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
+	fi
+done
+
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
 Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com' 'raw.githubusercontent.com')
