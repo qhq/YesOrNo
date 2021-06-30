@@ -34,7 +34,7 @@ for Cron in ${JsList}; do
 		jbz=$(echo ${jbz#*\'})
 		jbz=$(echo ${jbz%\'*})
 		echo "$jname : $jbz"
-		if  [ -n "$jbz" ] ;then
+		if  [ -n "$jbz" ] && [ $(grep -cEi "# $jbz" ${ListCron} -eq '0' ] ;then
 			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
 		fi
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
