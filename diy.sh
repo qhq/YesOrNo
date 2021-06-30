@@ -174,7 +174,7 @@ for Cron in ${JsList}; do
 		jbz=$(echo ${jbz#*\'})
 		jbz=$(echo ${jbz%\'*})
 		echo "$jname : $jbz"
-		grep -cEi "^# ${jbz}\$" ${ListCron}
+		#grep -cEi "^# ${jbz}\$" ${ListCron}
 		if  [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ];then
 			echo "$jname : $jbz"
 			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
