@@ -21,8 +21,8 @@ else
     fi
 fi
 
-echo -e "2021-06-30 15:54\n"
-
+echo -e "2021-06-30 15:59\n"
+awk '{match($0,/bash jd (\w+)/,a);print a[1]}'  ${ConfigDir}/crontab.list
 JsList=$(awk '{match($0,/bash jd (\w+)/,a);print a[1]}'  ${ConfigDir}/crontab.list)
 echo "${JsList}"
 for Cron in ${JsList}; do
