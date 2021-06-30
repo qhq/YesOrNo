@@ -27,7 +27,8 @@ JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
 	#echo -e "${ScriptsDir}/${Cron##* }.js"
 	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-		echo -e "GG"
+		eval jname=grep -Eo "new Env(\S+);" ${ScriptsDir}/${Cron##* }.js
+		echo "$jname"
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
 	fi
 done
