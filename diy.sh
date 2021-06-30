@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-30 22:56\n"
+echo -e "2021-06-30 22:57\n"
 
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
@@ -34,7 +34,7 @@ for Cron in ${JsList}; do
 		jbz=$(echo ${jbz#*\'})
 		jbz=$(echo ${jbz%\'*})
 		echo "$jname : $jbz"
-		if  [ -n "$jbz" ] && [ $(grep -cEi "# $jbz" ${ListCron} -eq '0' ] ;then
+		if  [ -n "$jbz" ] && [ $(grep -cEi "# $jbz" ${ListCron}) -eq '0' ] ;then
 			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
 		fi
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
