@@ -24,6 +24,7 @@ fi
 echo -e "2021-06-29 22:54\n"
 
 JsList=$(awk '{match($0,/bash jd (\w+)/,a);print a[1]}'  ${ConfigDir}/crontab.list)
+echo "${JsList}"
 for Cron in ${JsList}; do
 	if [ -d ${ScriptsDir}/${Cron}.js ]; then
 		echo -e '${ScriptsDir}/${Cron}.js'
