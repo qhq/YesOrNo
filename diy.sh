@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-30 22:29\n"
+echo -e "2021-06-30 22:38\n"
 
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
