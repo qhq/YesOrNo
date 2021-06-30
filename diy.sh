@@ -98,9 +98,9 @@ if [ ${iCan} = "true" ]; then
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
     my_scripts_list_star261="jd_jxmc.js"
 
-    # Wenmoux
+    # Wenmoux 温某人
     scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-    my_scripts_list_Wenmoux="jd_ddnc_farmpark.js"
+    my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js"
 
     # 二代
     scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
