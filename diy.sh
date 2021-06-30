@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-30 23:40\n"
+echo -e "2021-06-30 23:50\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -174,8 +174,8 @@ for Cron in ${JsList}; do
 		jbz=$(echo ${jbz#*\'})
 		jbz=$(echo ${jbz%\'*})
 		echo "$jname : $jbz"
-		grep -cEi "# ${jbz}" ${ListCron}
-		if  [ -n "$jbz" ] && [ $(grep -cEi "# ${jbz}" ${ListCron}) -eq '0' ];then
+		grep -cEi "^# ${jbz}\$" ${ListCron}
+		if  [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ];then
 			echo "$jname : $jbz"
 			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
 		fi
