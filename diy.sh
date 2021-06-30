@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-30 23:39\n"
+echo -e "2021-06-30 23:40\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -92,7 +92,7 @@ if [ ${iCan} = "true" ]; then
 
     # 柠檬/panghu
     scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    my_scripts_list_panghu="jd_wsdlb.js jd_hwsx.js"
+    my_scripts_list_panghu="jd_wsdlb.js jd_hwsx.js jd_lsj.js"
 
     # star
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
