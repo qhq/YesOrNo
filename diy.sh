@@ -21,17 +21,18 @@ else
     fi
 fi
 
-echo -e "2021-06-30 22:41\n"
+echo -e "2021-06-30 22:50\n"
 
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
 	#echo -e "${ScriptsDir}/${Cron##* }.js"
 	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
 		jname=`sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js`
+		echo -n "1:$jname"
 		jname=$(echo ${jname/\"/\'})
 		jname=$(echo ${jname#*\'})
-		jname=$(echo ${jname%*\'})
-		echo "$jname"
+		jname=$(echo ${jname%\'*})
+		echo "2:$jname"
     		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
 	fi
 done
