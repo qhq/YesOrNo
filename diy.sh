@@ -23,24 +23,6 @@ fi
 
 echo -e "2021-06-30 22:57\n"
 
-JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
-for Cron in ${JsList}; do
-	#echo -e "${ScriptsDir}/${Cron##* }.js"
-	jname=${Cron##* }
-	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-		jbz=`sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js`
-		jbz=$(echo ${jbz/\"/\'})
-		jbz=$(echo ${jbz/\"/\'})
-		jbz=$(echo ${jbz#*\'})
-		jbz=$(echo ${jbz%\'*})
-		echo "$jname : $jbz"
-		if  [ -n "$jbz" ] && [ $(grep -cEi "# $jbz" ${ListCron}) -eq '0' ] ;then
-			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
-		fi
-    		#perl -i -ne "{print unless / ${Cron}( |$)/}" ${ListCron}
-	fi
-done
-
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
 Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com' 'raw.githubusercontent.com')
@@ -180,7 +162,26 @@ if [ ${iCan} = "true" ]; then
     echo -e "+--------------------------------------------+\n"
 fi
 
-############################## 文件处理 ##########################################
+echo -e "+----------------- 添加注释 -----------------+"
+JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
+for Cron in ${JsList}; do
+	#echo -e "${ScriptsDir}/${Cron##* }.js"
+	jname=${Cron##* }
+	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
+		jbz=`sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js`
+		jbz=$(echo ${jbz/\"/\'})
+		jbz=$(echo ${jbz/\"/\'})
+		jbz=$(echo ${jbz#*\'})
+		jbz=$(echo ${jbz%\'*})
+		if  [ -n "$jbz" ] && [ $(grep -cEi "# $jbz" ${ListCron}) -eq '0' ] ;then
+			echo "$jname : $jbz"
+			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+		fi
+	fi
+done
+echo -e "+--------------------------------------------+\n"
+
+
 echo -e "+----------------- 清理内置 -----------------+"
 
 exJS=(qhqcz_post_code.js) #需排除的脚本
