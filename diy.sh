@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-06-30 23:50\n"
+echo -e "2021-07-01 14:50\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -104,7 +104,7 @@ if [ ${iCan} = "true" ]; then
 
     # 二代
     scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    my_scripts_list_JDHelloWorld="jd_joy_new.js jd_joy_reward_new.js jd_api_test.js"
+    my_scripts_list_JDHelloWorld="jd_joy_reward_new.js jd_api_test.js"
 
     # 写着玩
     scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
@@ -357,7 +357,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="longzhuzhu_long_super_redrain longzhuzhu_long_half_redrain jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner"
+js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -374,7 +374,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
