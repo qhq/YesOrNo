@@ -60,7 +60,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -113,6 +113,10 @@ if [ ${iCan} = "true" ]; then
     # SuperManito
     scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
     my_scripts_list_SuperManito="jd_jxzpk.js"
+    
+    # songyangzz
+    scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
+    my_scripts_list_songyangzz="jd_joy.js"
     
     ############################## 随机函数 ##########################################
     rand() {
