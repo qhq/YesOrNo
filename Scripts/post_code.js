@@ -222,7 +222,8 @@ function getJdFactory() {
                                             `【京东账号${$.index}（${$.UserName}）东东工厂】${item.assistTaskDetailVo.taskToken}`
                                         );
                                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ddfactory/${item.assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
-                                        $.wait(2000);
+					submitCode(item.assistTaskDetailVo.taskToken,'ddfactory');
+					$.wait(2000);
                                     }
                                 });
                             }
@@ -1198,6 +1199,32 @@ function getUrlData(url, name) {
   }
 }
 //惊喜牧场获取互助码结束
+
+//helpu
+function submitCode(code,type) {
+  return new Promise(async resolve => {
+  $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${code}&type=${type}`, timeout: 10000}, (err, resp, data) => {
+    try {
+      if (err) {
+        console.log(`${JSON.stringify(err)}`)
+        console.log(`${$.name} API请求失败，请检查网路重试`)
+      } else {
+        if (data) {
+          //console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
+          data = JSON.parse(data);
+	  console.log(data);
+        }
+      }
+    } catch (e) {
+      $.logErr(e, resp)
+    } finally {
+      resolve(data);
+    }
+  })
+  await $.wait(15000);
+  resolve()
+})
+}
 
 async function getShareCode() {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
