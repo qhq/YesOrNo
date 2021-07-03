@@ -92,7 +92,7 @@ if [ ${iCan} = "true" ]; then
 
     # 柠檬/panghu
     scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    my_scripts_list_panghu="jd_wsdlb.js jd_hwsx.js jd_lsj.js"
+    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js"
 
     # star
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
@@ -378,7 +378,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new panghu_jd_hwsx"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
