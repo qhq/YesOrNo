@@ -438,6 +438,7 @@ function getJdPet() {
                             `【京东账号${$.index}（${$.UserName}）京东萌宠】${$.petInfo.shareCode}`
                         );
                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/pet/${$.petInfo.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
+submitCode($.petInfo.shareCode,'pet');
                         $.wait(2000);
 
                     } else if (initPetTownRes.code === "0") {
@@ -577,6 +578,7 @@ async function getPlantBean() {
             $.myPlantUuid = getParam(shareUrl, "plantUuid");
             console.log(`【京东账号${$.index}（${$.UserName}）种豆得豆】${$.myPlantUuid}`);
             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/bean/${$.myPlantUuid}/${$.UserName}`).then((text) => (console.log(text)));
+submitCode($.myPlantUuid,'bean');
             $.wait(2000);
         } else {
             console.log(
@@ -647,6 +649,7 @@ async function getJDFruit() {
                 `【京东账号${$.index}（${$.UserName}）京东农场】${$.farmInfo.farmUserPro.shareCode}`
             );
             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/farm/${$.farmInfo.farmUserPro.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
+	    submitCode($.farmInfo.farmUserPro.shareCode,'farm');
             $.wait(2000);
         } else {
             /*console.log(
@@ -735,6 +738,7 @@ async function getSgmh(timeout = 0) {
                         const invites = data.data.result.taskVos.filter(item => item['taskName'] === '邀请好友助力');
                         console.log(`【京东账号${$.index}（${$.UserName}）闪购盲盒】${invites && invites[0]['assistTaskDetailVo']['taskToken']}`)
                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/sgmh/${invites && invites[0]['assistTaskDetailVo']['taskToken']}/${$.UserName}`).then((text) => (console.log(text)));
+			submitCode(invites && invites[0]['assistTaskDetailVo']['taskToken'],'sgmh');
                         $.wait(2000);
                     }
                 } catch (e) {
@@ -854,6 +858,7 @@ function getJdCash() {
                         if (data.code === 0 && data.data.result) {
                             console.log(`【京东账号${$.index}（${$.UserName}）签到领现金】${data.data.result.inviteCode}`);
                             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdcash/${data.data.result.inviteCode}/${$.UserName}`).then((text) => (console.log(text)));
+submitCode(data.data.result.inviteCode,'cash');
                             $.wait(2000);
                         }
                     }
@@ -957,6 +962,7 @@ async function getJxmc() {
 		}
 		$.log(`【京东账号${$.index}（${$.UserName}）惊喜牧场】${$.homeInfo.sharekey}`);
 		$.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/${$.homeInfo.sharekey}/${$.UserName}`).then((text) => (console.log(text)));
+	    	submitCode($.homeInfo.sharekey,'jxfactory');
 		$.wait(2000);
 	}
 }
