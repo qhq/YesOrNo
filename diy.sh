@@ -7,7 +7,7 @@ if [ -f ${FileDiy} ]; then
     echo " "
 else
     echo -e "当前系统时间：$(date "+%Y-%m-%d %H:%M")"
-    grep -iq "const diy = true;" ${JD_DIR}/scripts/getJDCookie.js
+    grep -iq "const diy = true;" ${JD_DIR}/scripts/sendNotify.js
     if [ $? -ne 0 ]; then
         echo "上次Pull执行DIY失败"
         #bash git_pull >> ${JD_DIR}/log/git_pull.log 2>&1
@@ -303,7 +303,7 @@ for file in $(ls $HtmlDir); do
         #sed -i '/<canvas id="sakura"/' ${HtmlDir}/${file}
     fi
 done
-sed -i '/此方式得到的cookie有效期为30天/a const diy = true;' $ScriptsDir/getJDCookie.js && echo -e " DIY已标记"
+sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
 sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
