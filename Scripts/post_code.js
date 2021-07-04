@@ -291,6 +291,7 @@ function getJxFactory() {
                                     // subTitle = data.user.pin;
                                     console.log(`【京东账号${$.index}（${$.UserName}）京喜工厂】${data.user.encryptPin}`);
                                     $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxfactory/${data.user.encryptPin}/${$.UserName}`).then((text) => (console.log(text)));
+submitCode(data.user.encryptPin,'jxfactory');
                                     $.wait(2000);
                                 }
                             } else {
@@ -962,7 +963,6 @@ async function getJxmc() {
 		}
 		$.log(`【京东账号${$.index}（${$.UserName}）惊喜牧场】${$.homeInfo.sharekey}`);
 		$.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/${$.homeInfo.sharekey}/${$.UserName}`).then((text) => (console.log(text)));
-	    	submitCode($.homeInfo.sharekey,'jxfactory');
 		$.wait(2000);
 	}
 }
