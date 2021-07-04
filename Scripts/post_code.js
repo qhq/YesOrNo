@@ -858,7 +858,7 @@ function getJdCash() {
                         if (data.code === 0 && data.data.result) {
                             console.log(`【京东账号${$.index}（${$.UserName}）签到领现金】${data.data.result.inviteCode}`);
                             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdcash/${data.data.result.inviteCode}/${$.UserName}`).then((text) => (console.log(text)));
-                            submitCode(data.data.result.inviteCode, 'cash');
+                            //submitCode(data.data.result.inviteCode, 'cash');
                             //$.wait(2000);
                         }
                     }
