@@ -8,7 +8,7 @@
  */
 const $ = new Env("获取互助码");
 const JD_API_HOST = "https://api.m.jd.com/client.action";
-let cookiesArr = [], cookie = '', message;
+let cookiesArr = [], cookie = '',message,ddfactoryCode=[],jxfactoryCode=[],petCode=[],sgmhCode=[],beanCode=[],farmCode=[];
 $.appId = 10028;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 !function (n) { "use strict"; function r(n, r) { var t = (65535 & n) + (65535 & r); return (n >> 16) + (r >> 16) + (t >> 16) << 16 | 65535 & t } function t(n, r) { return n << r | n >>> 32 - r } function u(n, u, e, o, c, f) { return r(t(r(r(u, n), r(o, f)), c), e) } function e(n, r, t, e, o, c, f) { return u(r & t | ~r & e, n, r, o, c, f) } function o(n, r, t, e, o, c, f) { return u(r & e | t & ~e, n, r, o, c, f) } function c(n, r, t, e, o, c, f) { return u(r ^ t ^ e, n, r, o, c, f) } function f(n, r, t, e, o, c, f) { return u(t ^ (r | ~e), n, r, o, c, f) } function i(n, t) { n[t >> 5] |= 128 << t % 32, n[14 + (t + 64 >>> 9 << 4)] = t; var u, i, a, h, g, l = 1732584193, d = -271733879, v = -1732584194, C = 271733878; for (u = 0; u < n.length; u += 16)i = l, a = d, h = v, g = C, d = f(d = f(d = f(d = f(d = c(d = c(d = c(d = c(d = o(d = o(d = o(d = o(d = e(d = e(d = e(d = e(d, v = e(v, C = e(C, l = e(l, d, v, C, n[u], 7, -680876936), d, v, n[u + 1], 12, -389564586), l, d, n[u + 2], 17, 606105819), C, l, n[u + 3], 22, -1044525330), v = e(v, C = e(C, l = e(l, d, v, C, n[u + 4], 7, -176418897), d, v, n[u + 5], 12, 1200080426), l, d, n[u + 6], 17, -1473231341), C, l, n[u + 7], 22, -45705983), v = e(v, C = e(C, l = e(l, d, v, C, n[u + 8], 7, 1770035416), d, v, n[u + 9], 12, -1958414417), l, d, n[u + 10], 17, -42063), C, l, n[u + 11], 22, -1990404162), v = e(v, C = e(C, l = e(l, d, v, C, n[u + 12], 7, 1804603682), d, v, n[u + 13], 12, -40341101), l, d, n[u + 14], 17, -1502002290), C, l, n[u + 15], 22, 1236535329), v = o(v, C = o(C, l = o(l, d, v, C, n[u + 1], 5, -165796510), d, v, n[u + 6], 9, -1069501632), l, d, n[u + 11], 14, 643717713), C, l, n[u], 20, -373897302), v = o(v, C = o(C, l = o(l, d, v, C, n[u + 5], 5, -701558691), d, v, n[u + 10], 9, 38016083), l, d, n[u + 15], 14, -660478335), C, l, n[u + 4], 20, -405537848), v = o(v, C = o(C, l = o(l, d, v, C, n[u + 9], 5, 568446438), d, v, n[u + 14], 9, -1019803690), l, d, n[u + 3], 14, -187363961), C, l, n[u + 8], 20, 1163531501), v = o(v, C = o(C, l = o(l, d, v, C, n[u + 13], 5, -1444681467), d, v, n[u + 2], 9, -51403784), l, d, n[u + 7], 14, 1735328473), C, l, n[u + 12], 20, -1926607734), v = c(v, C = c(C, l = c(l, d, v, C, n[u + 5], 4, -378558), d, v, n[u + 8], 11, -2022574463), l, d, n[u + 11], 16, 1839030562), C, l, n[u + 14], 23, -35309556), v = c(v, C = c(C, l = c(l, d, v, C, n[u + 1], 4, -1530992060), d, v, n[u + 4], 11, 1272893353), l, d, n[u + 7], 16, -155497632), C, l, n[u + 10], 23, -1094730640), v = c(v, C = c(C, l = c(l, d, v, C, n[u + 13], 4, 681279174), d, v, n[u], 11, -358537222), l, d, n[u + 3], 16, -722521979), C, l, n[u + 6], 23, 76029189), v = c(v, C = c(C, l = c(l, d, v, C, n[u + 9], 4, -640364487), d, v, n[u + 12], 11, -421815835), l, d, n[u + 15], 16, 530742520), C, l, n[u + 2], 23, -995338651), v = f(v, C = f(C, l = f(l, d, v, C, n[u], 6, -198630844), d, v, n[u + 7], 10, 1126891415), l, d, n[u + 14], 15, -1416354905), C, l, n[u + 5], 21, -57434055), v = f(v, C = f(C, l = f(l, d, v, C, n[u + 12], 6, 1700485571), d, v, n[u + 3], 10, -1894986606), l, d, n[u + 10], 15, -1051523), C, l, n[u + 1], 21, -2054922799), v = f(v, C = f(C, l = f(l, d, v, C, n[u + 8], 6, 1873313359), d, v, n[u + 15], 10, -30611744), l, d, n[u + 6], 15, -1560198380), C, l, n[u + 13], 21, 1309151649), v = f(v, C = f(C, l = f(l, d, v, C, n[u + 4], 6, -145523070), d, v, n[u + 11], 10, -1120210379), l, d, n[u + 2], 15, 718787259), C, l, n[u + 9], 21, -343485551), l = r(l, i), d = r(d, a), v = r(v, h), C = r(C, g); return [l, d, v, C] } function a(n) { var r, t = "", u = 32 * n.length; for (r = 0; r < u; r += 8)t += String.fromCharCode(n[r >> 5] >>> r % 32 & 255); return t } function h(n) { var r, t = []; for (t[(n.length >> 2) - 1] = void 0, r = 0; r < t.length; r += 1)t[r] = 0; var u = 8 * n.length; for (r = 0; r < u; r += 8)t[r >> 5] |= (255 & n.charCodeAt(r / 8)) << r % 32; return t } function g(n) { return a(i(h(n), 8 * n.length)) } function l(n, r) { var t, u, e = h(n), o = [], c = []; for (o[15] = c[15] = void 0, e.length > 16 && (e = i(e, 8 * n.length)), t = 0; t < 16; t += 1)o[t] = 909522486 ^ e[t], c[t] = 1549556828 ^ e[t]; return u = i(o.concat(h(r)), 512 + 8 * r.length), a(i(c.concat(u), 640)) } function d(n) { var r, t, u = ""; for (t = 0; t < n.length; t += 1)r = n.charCodeAt(t), u += "0123456789abcdef".charAt(r >>> 4 & 15) + "0123456789abcdef".charAt(15 & r); return u } function v(n) { return unescape(encodeURIComponent(n)) } function C(n) { return g(v(n)) } function A(n) { return d(C(n)) } function m(n, r) { return l(v(n), v(r)) } function s(n, r) { return d(m(n, r)) } function b(n, r, t) { return r ? t ? m(r, n) : s(r, n) : t ? C(n) : A(n) } $.md5 = b }();
@@ -40,9 +40,36 @@ if ($.isNode()) {
             if (!$.isLogin) {
                 continue
             }
-            await getShareCode()
+            await getShareCode();
+			$.wait(2000);
         }
     }
+	console.log(`======提交help库开始======\n`)
+	for(var i=0;i<sgmhCode.length;i++){
+		await submitCode(sgmhCode[i], 'sgmh');
+		$.wait(1000);
+	}
+	for(var i=0;i<farmCode.length;i++){
+		await submitCode(farmCode[i], 'farm');
+		$.wait(1000);
+	}
+	for(var i=0;i<beanCode.length;i++){
+		await submitCode(beanCode[i], 'bean');
+		$.wait(1000);
+	}
+	for(var i=0;i<petCode.length;i++){
+		await submitCode(petCode[i], 'pet');
+		$.wait(1000);
+	}
+	for(var i=0;i<jxfactoryCode.length;i++){
+		await submitCode(jxfactoryCode[i], 'jxfactory');
+		$.wait(1000);
+	}
+	for(var i=0;i<ddfactoryCode.length;i++){
+		await submitCode(ddfactoryCode[i], 'ddfactory');
+		$.wait(1000);
+	}
+	console.log(`======提交help库结束======\n`)
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -221,13 +248,14 @@ function getJdFactory() {
                                         console.log(
                                             `【京东账号${$.index}（${$.UserName}）东东工厂】${item.assistTaskDetailVo.taskToken}`
                                         );
+										ddfactoryCode.push(item.assistTaskDetailVo.taskToken);
                                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ddfactory/${item.assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
-                                        submitCode(item.assistTaskDetailVo.taskToken, 'ddfactory');
                                         //$.wait(2000);
                                     }
                                 });
                             }
                         }
+						ddfactoryCode.push('');
                     }
                 } catch (e) {
                     $.logErr(e, resp);
@@ -290,8 +318,8 @@ function getJxFactory() {
                                     $.encryptPin = data.user.encryptPin;
                                     // subTitle = data.user.pin;
                                     console.log(`【京东账号${$.index}（${$.UserName}）京喜工厂】${data.user.encryptPin}`);
+									jxfactoryCode.push(data.user.encryptPin);
                                     $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxfactory/${data.user.encryptPin}/${$.UserName}`).then((text) => (console.log(text)));
-                                    submitCode(data.user.encryptPin, 'jxfactory');
                                     //$.wait(2000);
                                 }
                             } else {
@@ -438,8 +466,8 @@ function getJdPet() {
                         console.log(
                             `【京东账号${$.index}（${$.UserName}）京东萌宠】${$.petInfo.shareCode}`
                         );
+						petCode.push($.petInfo.shareCode);
                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/pet/${$.petInfo.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
-                        submitCode($.petInfo.shareCode, 'pet');
                         //$.wait(2000);
                     } else if (initPetTownRes.code === "0") {
                         console.log(`初始化萌宠失败:  ${initPetTownRes.message}`);
@@ -577,8 +605,8 @@ async function getPlantBean() {
             const shareUrl = $.plantBeanIndexResult.data.jwordShareInfo.shareUrl;
             $.myPlantUuid = getParam(shareUrl, "plantUuid");
             console.log(`【京东账号${$.index}（${$.UserName}）种豆得豆】${$.myPlantUuid}`);
+			beanCode.push($.myPlantUuid);
             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/bean/${$.myPlantUuid}/${$.UserName}`).then((text) => (console.log(text)));
-            submitCode($.myPlantUuid, 'bean');
             //$.wait(2000);
         } else {
             console.log(
@@ -648,8 +676,8 @@ async function getJDFruit() {
             console.log(
                 `【京东账号${$.index}（${$.UserName}）京东农场】${$.farmInfo.farmUserPro.shareCode}`
             );
+			farmCode.push($.farmInfo.farmUserPro.shareCode);
             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/farm/${$.farmInfo.farmUserPro.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
-            submitCode($.farmInfo.farmUserPro.shareCode, 'farm');
             //$.wait(2000);
         } else {
             /*console.log(
@@ -737,8 +765,8 @@ async function getSgmh(timeout = 0) {
                     if (data.data.bizCode === 0) {
                         const invites = data.data.result.taskVos.filter(item => item['taskName'] === '邀请好友助力');
                         console.log(`【京东账号${$.index}（${$.UserName}）闪购盲盒】${invites && invites[0]['assistTaskDetailVo']['taskToken']}`)
-                        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/sgmh/${invites && invites[0]['assistTaskDetailVo']['taskToken']}/${$.UserName}`).then((text) => (console.log(text)));
-                        submitCode(invites && invites[0]['assistTaskDetailVo']['taskToken'], 'sgmh');
+                        sgmhCode.push(invites && invites[0]['assistTaskDetailVo']['taskToken']);
+						$.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/sgmh/${invites && invites[0]['assistTaskDetailVo']['taskToken']}/${$.UserName}`).then((text) => (console.log(text)));
                         //$.wait(2000);
                     }
                 } catch (e) {
@@ -858,7 +886,6 @@ function getJdCash() {
                         if (data.code === 0 && data.data.result) {
                             console.log(`【京东账号${$.index}（${$.UserName}）签到领现金】${data.data.result.inviteCode}`);
                             $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdcash/${data.data.result.inviteCode}/${$.UserName}`).then((text) => (console.log(text)));
-                            //submitCode(data.data.result.inviteCode, 'cash');
                             //$.wait(2000);
                         }
                     }
@@ -913,41 +940,6 @@ function taskHalthUrl(function_id, body = {}) {
 }
 //京东健康获取互助码结束
 
-//狂欢城获取互助码结束
-function getcarnivalcityHelp() {
-    return new Promise(resolve => {
-        const body = {
-            t: Date.now()
-        }
-        const options = taskUrl("/khc/task/getSupport", body);
-        $.get(options, async (err, resp, data) => {
-            try {
-                if (err) {
-                    console.log(`${JSON.stringify(err)}`)
-                    console.log(`${$.name} API请求失败，请检查网路重试`)
-                } else {
-                    data = JSON.parse(data);
-                    if (data.code === 200) {
-                        //console.log(`\n\n${$.name}互助码每天都变化,旧的不可继续使用`);
-                        $.log(`【京东账号${$.index}（${$.UserName}）手机狂欢城】${data.data.shareId}`);
-                        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/carnivalcity/${data.data.shareId}/${$.UserName}`).then((text) => (console.log(text)));
-                        //$.wait(2000);
-                        //$.temp.push(data.data.shareId);
-                    } else {
-                        console.log(`获取邀请码失败：${JSON.stringify(data)}`);
-                        if (data.code === 1002) $.blockAccount = true;
-                    }
-                }
-            } catch (e) {
-                $.logErr(e, resp)
-            } finally {
-                resolve(data);
-            }
-        })
-    })
-}
-//狂欢城获取互助码结束
-
 //惊喜牧场获取互助码开始
 const JXUserAgent = $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``) : ``;
 async function getJxmc() {
@@ -957,7 +949,8 @@ async function getJxmc() {
         return;
     } else {
         if (!$.homeInfo.petinfo) {
-            console.log(`\n温馨提示：${$.UserName} 请先手动完成【新手指导任务】再运行脚本再运行脚本\n`);
+			$.log(`【京东账号${$.index}（${$.UserName}）惊喜牧场】请先手动完成【新手指导任务】再运行脚本再运行脚本`);
+            //console.log(`\n温馨提示：${$.UserName} 请先手动完成【新手指导任务】再运行脚本再运行脚本\n`);
             return;
         }
         $.log(`【京东账号${$.index}（${$.UserName}）惊喜牧场】${$.homeInfo.sharekey}`);
@@ -1205,61 +1198,52 @@ function getUrlData(url, name) {
 }
 //惊喜牧场获取互助码结束
 
-//helpu
+//提交help库
 function submitCode(code, type) {
-    return new Promise(async resolve => {
-        $.get({ url: `http://www.helpu.cf/jdcodes/submit.php?code=${code}&type=${type}`, timeout: 10000 }, (err, resp, data) => {
-            try {
-                if (err) {
-                    console.log(`${JSON.stringify(err)}`)
-                    console.log(`${$.name} API请求失败，请检查网路重试`)
-                } else {
-                    if (data) {
-                        //console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
-                        data = JSON.parse(data);
-                        console.log('helpu：'+data.data[0]);
-                    }
-                }
-            } catch (e) {
-                $.logErr(e, resp)
-            } finally {
-                resolve(data);
-            }
-        })
-        await $.wait(15000);
-        resolve()
-    })
+	 return new Promise(async resolve => {
+		$.get({ url: `http://www.helpu.cf/jdcodes/submit.php?code=${code}&type=${type}`, timeout: 10000 }, (err, resp, data) => {
+			try {
+				if (err) {
+					console.log(`${JSON.stringify(err)}`)
+					console.log(`${$.name} API请求失败，请检查网路重试`)
+				} else {
+					if (data) {
+						if('Type ERROR'==data){
+							console.log(type);
+							return ;
+						}
+						data = JSON.parse(data);
+						console.log('helpu：'+data.data[0]+'-'+code);
+					}
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve(data);
+			}
+		})
+		await $.wait(15000);
+		resolve()
+	})
+
 }
 
-async function getShareCode() {
+async function getShareCode(num) {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
     console.log(`======账号${$.index}开始======\n`)
-    //await getcarnivalcityHelp();
     //if (new Date(nowTime).getHours() > 1) {
     await getJDFruit();
-    $.wait(2000);
     await getJdPet();
-    $.wait(2000);
     await getPlantBean();
-    $.wait(2000);
     await getJdFactory();
-    $.wait(2000);
     await getJxFactory();
-    $.wait(2000);
     await getJxNc();
-    $.wait(2000);
     await getJdZZ();
-    $.wait(2000);
     await getJoy();
-    $.wait(2000);
     await getSgmh();
-    $.wait(2000);
     await getCFD();
-    $.wait(2000);
     await getJdCash();
-    $.wait(2000);
     await getJxmc();
-    $.wait(2000);
     //}
     console.log(`\n======账号${$.index}结束======\n`)
 }
