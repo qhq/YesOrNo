@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-03 14:50\n"
+echo -e "2021-07-05 14:50\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -196,7 +196,7 @@ for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName" ${ScriptsDir}/${file}) -ne '0' ] && [ $(grep -cEi "custName" ${ScriptsDir}/${file}) -eq '0' ]; then
         #perl -0777 -i -pe "s/(^|.*?)\\$.nickName = (['\\$].+)\n/\1\\$.nickName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
         #perl -0777 -i -pe "s/(^|\s+)\\$.nickName = (''|\\$.*?);/\1\\$.nickName = \2;\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/(.*?) \\$.nickName = (.*?)\n/\1 \\$.nickName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
+        perl -0777 -i -pe "s/(.*?) \\$.nickName = (.*?)\n/\1 \\$.nickName = \2\n\1 \\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
         #perl -0777 -i -pe "s/(^|.*?)\\$.UserName = (decodeURIComponent.*?)\n/\1\\$.UserName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
