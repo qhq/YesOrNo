@@ -361,7 +361,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner"
+js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -378,7 +378,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen jd_star_shop"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
