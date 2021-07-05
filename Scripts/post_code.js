@@ -43,7 +43,7 @@ if ($.isNode()) {
             await getShareCode();
 			$.wait(2000);
         }
-    }
+    }/*
 	console.log(`======提交help库开始======\n`)
 	for(var i=0;i<sgmhCode.length;i++){
 		await submitCode(sgmhCode[i], 'sgmh');
@@ -70,6 +70,7 @@ if ($.isNode()) {
 		$.wait(1000);
 	}
 	console.log(`======提交help库结束======\n`)
+*/
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
