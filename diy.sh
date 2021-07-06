@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-06 12:35\n"
+echo -e "2021-07-06 12:45\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -60,7 +60,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz cdle"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz cdle qqsdff"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -92,7 +92,7 @@ if [ ${iCan} = "true" ]; then
 
     # 柠檬/panghu
     scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js"
+    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js"
 
     # star
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
@@ -121,6 +121,10 @@ if [ ${iCan} = "true" ]; then
     # cdle
     scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
     my_scripts_list_cdle="jd_dogsEmploy.js"
+    
+    # qqsdff
+    scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
+    my_scripts_list_cdle="jxzpk.js"
     
     ############################## 随机函数 ##########################################
     rand() {
