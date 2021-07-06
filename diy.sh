@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-06 12:45\n"
+echo -e "2021-07-06 13:25\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -91,7 +91,7 @@ if [ ${iCan} = "true" ]; then
     my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js"
 
     # star
-    scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
+    scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
     my_scripts_list_star261="jd_jxmc.js"
 
     # Wenmoux 温某人
