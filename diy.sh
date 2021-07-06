@@ -175,12 +175,12 @@ echo -e "+-------------- 处理ts/py文件 ---------------+"
 isok="false"
 for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "ts" ]; then
-        if [ isok = "false" ]; then
-            echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
-            npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
-        fi
         [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
         if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
+	    if [ isok = "false" ]; then
+	       echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
+	        npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
+	    fi
             tsc ${ScriptsDir}/${file}
             echo " ${file}已转成${file%%.*}.js"
         fi
