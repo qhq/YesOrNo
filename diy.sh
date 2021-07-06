@@ -60,7 +60,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz cdle qqsdff"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito cdle qqsdff"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -409,7 +409,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen jd_joy_reward_new"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace qhqcz_jd_superBrand  Wenmoux_jd_superBrand JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen jd_joy_reward_new songyangzz_jd_joy"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
