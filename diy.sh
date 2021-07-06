@@ -117,7 +117,7 @@ scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/
 my_scripts_list_cdle="jd_dogsEmploy.js"
 
 # qqsdff
-scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
+scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
 my_scripts_list_qqsdff="jd_jbczy.js"
 
 ############################## 随机函数 ##########################################
