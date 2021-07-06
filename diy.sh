@@ -58,7 +58,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito qqsdff"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -116,6 +116,9 @@ my_scripts_list_songyangzz="jd_joy.js"
 scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
 my_scripts_list_cdle="jd_dogsEmploy.js"
 
+# qqsdff
+scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
+my_scripts_list_qqsdff="jd_jbczy.js"
 
 ############################## 随机函数 ##########################################
 rand() {
