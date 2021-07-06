@@ -26,7 +26,7 @@ echo -e "2021-07-06 20:35\n"
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
 Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com' 'raw.githubusercontent.com')
-cat /etc/hosts | grep "^\d.+?raw.githubusercontent.com" -q
+cat /etc/hosts | grep -qPi "^\d.+?raw.githubusercontent.com"
 if [ $? -ne 0 ]; then
     for ((i = 0; i <= ${#Host_IP[@]}; i++)); do
         echo "${Host_IP[$i]} ${Host_Name[$i]}" >>/etc/hosts
