@@ -36,140 +36,136 @@ fi
 PROXY_URL=https://ghproxy.com/
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
 if [[ ${EnableExtraShellProxyDownload} == true ]]; then
-  DownloadJudgment=${ExtraShellProxyUrl}
+    DownloadJudgment=${ExtraShellProxyUrl}
 else
-  DownloadJudgment=
+    DownloadJudgment=
 fi
 
-if [ ${iCan} = "true" ]; then
+## 短期或长期活动：
+# jd_try.js                    京东试用
+# jd_sqdyj.js                  省钱大赢家翻翻乐             （柠檬版）
+# jd_sq.js                     省钱大赢家翻翻乐获取邀请码
+# jd_wsdlb.js                  柠檬我是大老板农场           （需要种水果）
+# jd_SplitRedPacket.js         天降红包                    （默认助力第一个账号）
+# jd_ddnc_farmpark.js          东东乐园
+# jx_cfdtx.js                  京喜财富岛提现
+# jx_mc_coin.js                京喜牧场收集金币
+# jx_mc_emptycabbage.js        京喜牧场清空白菜
+# Andy_sendBeans.js            送豆得豆
+# ddo_pk.js                    京享值PK
+# long_half_redrain.js         半点红包雨
+# long_super_redrain.js        整点红包雨
 
-    ## 短期或长期活动：
-    # jd_try.js                    京东试用
-    # jd_sqdyj.js                  省钱大赢家翻翻乐             （柠檬版）
-    # jd_sq.js                     省钱大赢家翻翻乐获取邀请码
-    # jd_wsdlb.js                  柠檬我是大老板农场           （需要种水果）
-    # jd_SplitRedPacket.js         天降红包                    （默认助力第一个账号）
-    # jd_ddnc_farmpark.js          东东乐园
-    # jx_cfdtx.js                  京喜财富岛提现
-    # jx_mc_coin.js                京喜牧场收集金币
-    # jx_mc_emptycabbage.js        京喜牧场清空白菜
-    # Andy_sendBeans.js            送豆得豆
-    # ddo_pk.js                    京享值PK
-    # long_half_redrain.js         半点红包雨
-    # long_super_redrain.js        整点红包雨
+##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
+author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito cdle qqsdff"
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito cdle qqsdff"
+# 自用库
+scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
+my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js"
 
-    # 自用库
-    scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-    my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js"
+# 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
+scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
+my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
 
-    # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
-    scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
-    my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
+# yangtingxiao
+scripts_base_url_yangtingxiao=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
+my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
 
-    # yangtingxiao
-    scripts_base_url_yangtingxiao=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
-    my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
+# 龙王庙红包雨
+scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
+my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
 
-    # 龙王庙红包雨
-    scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
-    my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
+# Andy
+scripts_base_url_Andy=${DownloadJudgment}https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/
+my_scripts_list_Andy="Andy_sendBeans.js"
 
-    # Andy
-    scripts_base_url_Andy=${DownloadJudgment}https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/
-    my_scripts_list_Andy="Andy_sendBeans.js"
+# moposmall
+scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
+my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
-    # moposmall
-    scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
-    my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
+# 柠檬/panghu
+scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
+my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js jd_pk.js"
 
-    # 柠檬/panghu
-    scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js jd_pk.js"
+# star
+scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
+my_scripts_list_star261="jd_jxmc.js"
 
-    # star
-    scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
-    my_scripts_list_star261="jd_jxmc.js"
+# Wenmoux 温某人
+scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js"
 
-    # Wenmoux 温某人
-    scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-    my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js"
+# 二代
+scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+my_scripts_list_JDHelloWorld="jd_api_test.js"
 
-    # 二代
-    scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-    my_scripts_list_JDHelloWorld="jd_api_test.js"
+# 写着玩
+scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
+my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
-    # 写着玩
-    scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
-    my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
-    
-    # SuperManito
-    scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-    my_scripts_list_SuperManito="jd_jxzpk.js"
-    
-    # songyangzz
-    scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
-    my_scripts_list_songyangzz="jd_joy.js"
-    
-    # cdle
-    scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
-    my_scripts_list_cdle="jd_dogsEmploy.js"
-    
-    # qqsdff
-    scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
-    my_scripts_list_cdle="jxzpk.js"
-    
-    ############################## 随机函数 ##########################################
-    rand() {
-        min=$1
-        max=$(($2 - $min + 1))
-        num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
-        echo $(($num % $max + $min))
-    }
-    echo -e "+----------------- 下载脚本 -----------------+"
-    cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
-    #index=1
-    for author in $author_list; do
-        echo -e " 下载 $author 的脚本"
-        # 下载my_scripts_list中的每个js文件，重命名增加前缀"作者昵称_"，增加后缀".new"
-        eval scripts_list=\$my_scripts_list_$author
-        #echo $scripts_list
-        eval url_list=\$scripts_base_url_$author
-        #echo $url_list
-        for js in $scripts_list; do
-            eval url=$url_list$js
-            echo " 地址 $url"
-            eval name=$author"_"$js
-            #echo $name
-            wget -q --no-check-certificate $url -O $name.new
+# SuperManito
+scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
+my_scripts_list_SuperManito="jd_jxzpk.js"
 
-            # 如果上一步下载没问题，才去掉后缀".new"，如果上一步下载有问题，就保留之前正常下载的版本
-            # 随机添加个cron到crontab.list
-            if [ $? -eq 0 ]; then
-                mv -f $name.new $name
-                echo -e " 更新 $name 完成...\n"
-                croname=$(echo "$name" | awk -F\. '{print $1}')
-                script_date=$(cat $name | grep "http" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
-                if [ -z "${script_date}" ]; then
-                    cron_min=$(rand 1 59)
-                    cron_hour=$(rand 7 9)
-                    [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${cron_min} ${cron_hour} * * * bash jd $croname" /jd/config/crontab.list
-                else
-                    [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${script_date} bash jd $croname" /jd/config/crontab.list
-                fi
+# songyangzz
+scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
+my_scripts_list_songyangzz="jd_joy.js"
+
+# cdle
+scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
+my_scripts_list_cdle="jd_dogsEmploy.js"
+
+# qqsdff
+scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
+my_scripts_list_cdle="jxzpk.js"
+
+############################## 随机函数 ##########################################
+rand() {
+    min=$1
+    max=$(($2 - $min + 1))
+    num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
+    echo $(($num % $max + $min))
+}
+echo -e "+----------------- 下载脚本 -----------------+"
+cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
+#index=1
+for author in $author_list; do
+    echo -e " 下载 $author 的脚本"
+    # 下载my_scripts_list中的每个js文件，重命名增加前缀"作者昵称_"，增加后缀".new"
+    eval scripts_list=\$my_scripts_list_$author
+    #echo $scripts_list
+    eval url_list=\$scripts_base_url_$author
+    #echo $url_list
+    for js in $scripts_list; do
+        eval url=$url_list$js
+        echo " 地址 $url"
+        eval name=$author"_"$js
+        #echo $name
+        wget -q --no-check-certificate $url -O $name.new
+
+        # 如果上一步下载没问题，才去掉后缀".new"，如果上一步下载有问题，就保留之前正常下载的版本
+        # 随机添加个cron到crontab.list
+        if [ $? -eq 0 ]; then
+            mv -f $name.new $name
+            echo -e " 更新 $name 完成...\n"
+            croname=$(echo "$name" | awk -F\. '{print $1}')
+            script_date=$(cat $name | grep "http" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
+            if [ -z "${script_date}" ]; then
+                cron_min=$(rand 1 59)
+                cron_hour=$(rand 7 9)
+                [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${cron_min} ${cron_hour} * * * bash jd $croname" /jd/config/crontab.list
             else
-                [ -f $name.new ] && rm -f $name.new
-                echo -e " 更新 $name 失败，使用上一次正常的版本...\n"
+                [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${script_date} bash jd $croname" /jd/config/crontab.list
             fi
-        done
-        #index=$(($index + 1))
+        else
+            [ -f $name.new ] && rm -f $name.new
+            echo -e " 更新 $name 失败，使用上一次正常的版本...\n"
+        fi
     done
-    echo -e "+--------------------------------------------+\n"
-fi
-
+    #index=$(($index + 1))
+done
+echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- 处理ts/py文件 ---------------+"
 isok="false"
@@ -177,10 +173,10 @@ for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "ts" ]; then
         [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
         if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
-	    if [ isok = "false" ]; then
-	       echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
-	        npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
-	    fi
+            if [ isok = "false" ]; then
+                echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
+                npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
+            fi
             tsc ${ScriptsDir}/${file}
             echo " ${file}已转成${file%%.*}.js"
         fi
@@ -196,28 +192,26 @@ wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/mai
 
 echo -e "+--------------------------------------------+\n"
 
-
 echo -e "+----------------- 添加注释 -----------------+"
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
-	#echo -e "${ScriptsDir}/${Cron##* }.js"
-	jname=${Cron##* }
-	if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-		jbz=`sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js`
-		jbz=$(echo ${jbz/\"/\'})
-		jbz=$(echo ${jbz/\"/\'})
-		jbz=$(echo ${jbz#*\'})
-		jbz=$(echo ${jbz%\'*})
-		#echo " $jname : $jbz"
-		#grep -cEi "^# ${jbz}\$" ${ListCron}
-		if  [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ];then
-			echo " $jname : $jbz"
-			sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
-		fi
-	fi
+    #echo -e "${ScriptsDir}/${Cron##* }.js"
+    jname=${Cron##* }
+    if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
+        jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz#*\'})
+        jbz=$(echo ${jbz%\'*})
+        #echo " $jname : $jbz"
+        #grep -cEi "^# ${jbz}\$" ${ListCron}
+        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
+            echo " $jname : $jbz"
+            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+        fi
+    fi
 done
 echo -e "+--------------------------------------------+\n"
-
 
 echo -e "+----------------- 清理内置 -----------------+"
 
@@ -253,15 +247,11 @@ done
 
 echo -e "+--------------------------------------------+\n"
 
-
-
 #echo -e "+-------------- Lxk0301 脚本 ---------------+"
 #替换内置
 #perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
 #替换内置码库链接
 #echo -e "+--------------------------------------------+\n"
-
-
 
 echo -e "+------------ JDHelloWorld 脚本 -------------+"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
@@ -289,8 +279,6 @@ sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/
 
 echo -e "+--------------------------------------------+\n"
 
-
-
 echo -e "+-------------- passerby 脚本 ---------------+"
 #perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/passerby_jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
 perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/passerby_jd_fruit2.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
@@ -303,8 +291,6 @@ perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunsha
 #perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/passerby_jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 
 echo -e "+--------------------------------------------+\n"
-
-
 
 echo -e "+--------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
@@ -319,7 +305,6 @@ n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
 }" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
-
 
 echo -e "+----------------- 处理脚本 -----------------+"
 HtmlDir=${ShellDir}/panel/public
@@ -382,7 +367,6 @@ echo -e "+--------------------------------------------+\n"
 ## bug fix
 #[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
 
-
 #检查添加京喜团ID变量
 if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
     perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="T_zZaWP6by9yA1wehxM4mg=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
@@ -416,7 +400,6 @@ done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
 echo -e "+--------------------------------------------+\n"
-
 
 ############################## 同步文件 ##########################################
 #cd $ConfigDir
