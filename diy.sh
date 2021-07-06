@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-05 14:50\n"
+echo -e "2021-07-06 10:50\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -60,7 +60,7 @@ if [ ${iCan} = "true" ]; then
 
     ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz"
+    author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito songyangzz cdle"
 
     # 自用库
     scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -117,6 +117,10 @@ if [ ${iCan} = "true" ]; then
     # songyangzz
     scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
     my_scripts_list_songyangzz="jd_joy.js"
+    
+    # cdle
+    scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
+    my_scripts_list_cdle="jd_dogsEmploy.js"
     
     ############################## 随机函数 ##########################################
     rand() {
