@@ -27,7 +27,7 @@ echo -e "2021-07-06 21:35\n"
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
 Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com' 'raw.githubusercontent.com')
 cat /etc/hosts | grep -qEi "^[0-9].+?raw.githubusercontent.com"
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
     for ((i = 0; i <= ${#Host_IP[@]}; i++)); do
         echo "${Host_IP[$i]} ${Host_Name[$i]}" >>/etc/hosts
     done
