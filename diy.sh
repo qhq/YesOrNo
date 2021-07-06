@@ -170,6 +170,27 @@ if [ ${iCan} = "true" ]; then
     echo -e "+--------------------------------------------+\n"
 fi
 
+
+echo -e "+--------------- 处理ts文件 ----------------+"
+isok="false"
+for file in $(ls $ScriptsDir); do
+    if [ "${file##*.}" = "ts" ]; then
+        if [ isok = "false" ]; then
+            echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
+            npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
+        fi
+        [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
+        if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
+            tsc ${ScriptsDir}/${file}
+            echo " ${file}已转成${file%%.*}.js"
+        fi
+        isok="true"
+        [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
+    fi
+done
+echo -e "+--------------------------------------------+\n"
+
+
 echo -e "+----------------- 添加注释 -----------------+"
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
 for Cron in ${JsList}; do
