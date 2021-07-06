@@ -86,7 +86,7 @@ my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
 # 柠檬/panghu
 scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js jd_pk.js jd_wish.js"
+my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
 
 # star
 scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
@@ -390,7 +390,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen jd_joy_reward_new songyangzz_jd_joy cdle_jxzpk cdle_jd_dogsEmploy"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen jd_joy_reward_new songyangzz_jd_joy cdle_jxzpk cdle_jd_dogsEmploy panghu_jd_twoly"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
