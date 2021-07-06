@@ -88,7 +88,7 @@ if [ ${iCan} = "true" ]; then
 
     # 柠檬/panghu
     scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js"
+    my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_twoly.js jd_pk.js"
 
     # star
     scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
