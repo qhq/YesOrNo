@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-06 10:50\n"
+echo -e "2021-07-06 12:25\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -171,7 +171,7 @@ if [ ${iCan} = "true" ]; then
 fi
 
 
-echo -e "+--------------- 处理ts文件 ----------------+"
+echo -e "+-------------- 处理ts/py文件 ---------------+"
 isok="false"
 for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "ts" ]; then
@@ -188,6 +188,12 @@ for file in $(ls $ScriptsDir); do
         [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
     fi
 done
+wget ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Python/jd_zqfl.py -O /jd/scripts/jd_zqfl.py
+[ $(grep -c "jd_zqfl.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * source /etc/profile && cd /jd/scripts && python3 /jd/scripts/jd_zqfl.py | tee /jd/log/jd_zqfl/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
+wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_qjd.py -O /jd/scripts/jd_qjd.py
+[ $(grep -c "jd_qjd.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * source /etc/profile && cd /jd/scripts && export qjd_zlzh=['qhqcz','czfd'] && python3 /jd/scripts/jd_qjd.py | tee /jd/log/jd_qjd/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
+wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/sendNotify.py -O /jd/scripts/sendNotify.py
+
 echo -e "+--------------------------------------------+\n"
 
 
