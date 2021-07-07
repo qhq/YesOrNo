@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-06 23:22\n"
+echo -e "2021-07-07 09:22\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -33,7 +33,6 @@ if [ $? -eq 0 ]; then
     done
 fi
 
-PROXY_URL=https://ghproxy.com/
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
 if [[ ${EnableExtraShellProxyDownload} == true ]]; then
     DownloadJudgment=${ExtraShellProxyUrl}
