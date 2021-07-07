@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-07 09:22\n"
+echo -e "2021-07-07 09:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -57,7 +57,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -105,7 +105,7 @@ my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-my_scripts_list_SuperManito="jd_jxzpk.js"
+my_scripts_list_SuperManito="jd_jxzpk.js jdJxncTokens.js jx_cfd_lottery.js"
 
 # songyangzz
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
@@ -118,6 +118,12 @@ my_scripts_list_cdle="jd_dogsEmploy.js"
 # qqsdff
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
 my_scripts_list_qqsdff="jd_jbczy.js"
+
+## curtinlv
+scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
+my_scripts_list_curtinlv="jd_zjd.py jd_qjd.py jd_cashHelp.py"
+
+
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -185,8 +191,8 @@ for file in $(ls $ScriptsDir); do
 done
 wget ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Python/jd_zqfl.py -O /jd/scripts/jd_zqfl.py
 [ $(grep -c "jd_zqfl.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * source /etc/profile && cd /jd/scripts && python3 /jd/scripts/jd_zqfl.py | tee /jd/log/jd_zqfl/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
-wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_qjd.py -O /jd/scripts/jd_qjd.py
-[ $(grep -c "jd_qjd.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * source /etc/profile && cd /jd/scripts && export qjd_zlzh=['qhqcz','czfd'] && python3 /jd/scripts/jd_qjd.py | tee /jd/log/jd_qjd/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
+#wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_qjd.py -O /jd/scripts/jd_qjd.py
+[ $(grep -c "curtinlv_jd_qjd.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * source /etc/profile && cd /jd/scripts && export qjd_zlzh=['qhqcz','czfd'] && python3 /jd/scripts/curtinlv_jd_qjd.py | tee /jd/log/jd_qjd/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
 wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/sendNotify.py -O /jd/scripts/sendNotify.py
 
 echo -e "+--------------------------------------------+\n"
@@ -400,6 +406,7 @@ done
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
 echo -e "+--------------------------------------------+\n"
 
+
 ############################## 同步文件 ##########################################
 #cd $ConfigDir
 #echo -e "下载 server.js "
@@ -413,3 +420,8 @@ echo -e "+--------------------------------------------+\n"
 #fi
 #cp /jd/config/server.js /jd/panel/server.js
 #pm2 restart /jd/panel/server.js
+
+## remove env
+grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
+
+
