@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-07 14:33\n"
+echo -e "2021-07-08 21:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -43,7 +43,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public Tsukasa007"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -61,17 +61,13 @@ my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
 scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
 my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
 
-# Andy
-scripts_base_url_Andy=${DownloadJudgment}https://raw.githubusercontent.com/zsm85887823/AndyJD/main/own/
-my_scripts_list_Andy="Andy_sendBeans.js"
-
 # moposmall
 scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
 my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
 # 柠檬/panghu
 scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
+my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js jd_senbeans.js"
 
 # star
 scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
@@ -111,11 +107,11 @@ my_scripts_list_curtinlv="jd_zjd.py jd_qjd.py jd_cashHelp.py"
 
 ## Tsukasa007
 scripts_base_url_Tsukasa007=${DownloadJudgment}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
-my_scripts_list_Tsukasa007="jd_sign.js"
+my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 ## smiek2221
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="sign_graphics_validate.js jd_sign_graphics.js jd_summer_movement.js MovementFaker.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js"
 
 ## Public
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
@@ -305,6 +301,12 @@ a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\
 }" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
 
+echo -e "+-------------- smiek2221 脚本 --------------+"
+sed -i "/\\$.inviteList.push({/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/summer/$\{data.data.result.inviteId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日私库已添加"
+sed -i "/开始内部京东账号【邀请好友助力】/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));"  ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日私库已添加"
+echo -e "+--------------------------------------------+\n"
+
+
 echo -e "+----------------- 处理脚本 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
@@ -330,16 +332,16 @@ sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
 sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
-sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
+#sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
-sed -i "s|let updateFlag = false;|let updateFlag = true;|" ${ShellDir}/panel/server.js && echo -e " CK自动添加已关闭"
+
 
 ## 验证
 #sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
 [ -f ${ScriptsDir}/sign_graphics_validate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 [ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
-[ -f ${ScriptsDir}/MovementFaker.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/MovementFaker.js -O ${ScriptsDir}/MovementFaker.js
+#[ -f ${ScriptsDir}/MovementFaker.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/MovementFaker.js -O ${ScriptsDir}/MovementFaker.js
 
 
 
@@ -384,7 +386,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_MovementFaker smiek2221_sign_graphics_validate"
+js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -401,7 +403,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen songyangzz_jd_joy cdle_jxzpk cdle_jd_dogsEmploy panghu_jd_twoly qqsdff_jd_jbczy Tsukasa007_jd_sign"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
@@ -426,8 +428,3 @@ echo -e "+--------------------------------------------+\n"
 
 ## remove env
 #grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
-
-
-
-
-
