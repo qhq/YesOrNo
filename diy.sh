@@ -375,7 +375,7 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop"
+js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_MovementFaker smiek2221_sign_graphics_validate"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
@@ -416,4 +416,5 @@ echo -e "+--------------------------------------------+\n"
 #pm2 restart /jd/panel/server.js
 
 ## remove env
-grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
+#grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
+#wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O /jd/scripts/JDJRValidator_Pure.js
