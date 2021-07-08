@@ -43,7 +43,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -79,7 +79,7 @@ my_scripts_list_star261="jd_jxmc.js"
 
 # Wenmoux 温某人
 scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js"
+my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js jd_wxFans.js"
 
 # 二代
 scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
@@ -91,7 +91,7 @@ my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-my_scripts_list_SuperManito="jd_jxzpk.js jx_cfd_lottery.js"
+my_scripts_list_SuperManito="jd_jxzpk.js jx_cfd_lottery.js jd_khyl.js"
 
 # songyangzz
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
@@ -116,6 +116,11 @@ my_scripts_list_Tsukasa007="jd_sign.js"
 ## smiek2221
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
 my_scripts_list_smiek2221="sign_graphics_validate.js jd_sign_graphics.js jd_summer_movement.js MovementFaker.js"
+
+## Public
+scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
+my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
+
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -221,10 +226,10 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/([^\/])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
-    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
+    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
-        echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[[\s\S]*?" ${ScriptsDir}/${file})
-        perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList) = \[)([\s\S]*?)(\])/\1''\3/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file})
+        perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[)([\s\S]*?)(\])/\1''\3/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(helpAu.*?) = true" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
