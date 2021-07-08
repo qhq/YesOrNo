@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-07 09:33\n"
+echo -e "2021-07-07 14:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -40,28 +40,14 @@ else
     DownloadJudgment=
 fi
 
-## 短期或长期活动：
-# jd_try.js                    京东试用
-# jd_sqdyj.js                  省钱大赢家翻翻乐             （柠檬版）
-# jd_sq.js                     省钱大赢家翻翻乐获取邀请码
-# jd_wsdlb.js                  柠檬我是大老板农场           （需要种水果）
-# jd_SplitRedPacket.js         天降红包                    （默认助力第一个账号）
-# jd_ddnc_farmpark.js          东东乐园
-# jx_cfdtx.js                  京喜财富岛提现
-# jx_mc_coin.js                京喜牧场收集金币
-# jx_mc_emptycabbage.js        京喜牧场清空白菜
-# Andy_sendBeans.js            送豆得豆
-# ddo_pk.js                    京享值PK
-# long_half_redrain.js         半点红包雨
-# long_super_redrain.js        整点红包雨
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu Andy moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js"
+my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -105,7 +91,7 @@ my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-my_scripts_list_SuperManito="jd_jxzpk.js jdJxncTokens.js jx_cfd_lottery.js"
+my_scripts_list_SuperManito="jd_jxzpk.js jx_cfd_lottery.js"
 
 # songyangzz
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
@@ -113,7 +99,7 @@ my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
 scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
-my_scripts_list_cdle="jd_dogsEmploy.js"
+my_scripts_list_cdle="jd_dogsEmploy.js jd_joy_park_help.js"
 
 # qqsdff
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
@@ -123,7 +109,13 @@ my_scripts_list_qqsdff="jd_jbczy.js"
 scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
 my_scripts_list_curtinlv="jd_zjd.py jd_qjd.py jd_cashHelp.py"
 
+## Tsukasa007
+scripts_base_url_Tsukasa007=${DownloadJudgment}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
+my_scripts_list_Tsukasa007="jd_sign.js"
 
+## smiek2221
+scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
+my_scripts_list_smiek2221="sign_graphics_validate.js jd_sign_graphics.js jd_summer_movement.js MovementFaker.js"
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -172,7 +164,7 @@ for author in $author_list; do
 done
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+-------------- 处理ts/py文件 ---------------+"
+echo -e "+---------------- 处理ts文件 ----------------+"
 isok="false"
 for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "ts" ]; then
@@ -189,13 +181,10 @@ for file in $(ls $ScriptsDir); do
         [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
     fi
 done
-wget ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Python/jd_zqfl.py -O /jd/scripts/jd_zqfl.py
-[ $(grep -c "jd_zqfl.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * source /etc/profile && cd /jd/scripts && python3 /jd/scripts/jd_zqfl.py | tee /jd/log/jd_zqfl/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
-#wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/jd_qjd.py -O /jd/scripts/jd_qjd.py
-[ $(grep -c "curtinlv_jd_qjd.py" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * source /etc/profile && cd /jd/scripts && export qjd_zlzh=['qhqcz','czfd'] && python3 /jd/scripts/curtinlv_jd_qjd.py | tee /jd/log/jd_qjd/$(date "+%Y-%m-%d-%H-%M-%S").log" /jd/config/crontab.list
-wget ${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/sendNotify.py -O /jd/scripts/sendNotify.py
-
+[ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
+[ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
 echo -e "+--------------------------------------------+\n"
+
 
 echo -e "+----------------- 添加注释 -----------------+"
 JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
@@ -340,6 +329,11 @@ sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bas
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
 sed -i "s|let updateFlag = false;|let updateFlag = true;|" ${ShellDir}/panel/server.js && echo -e " CK自动添加已关闭"
 
+sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
+sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
+
+
+
 if [ ${iCan} = "true" ]; then
     echo -e " 腾讯新闻"
     #sed -i "s/process\.env\.\w*\?$/''/g" ${ScriptsDir}/Sunert_txnews_task.js
@@ -381,14 +375,14 @@ fi
 
 ## 注释指定活动
 echo -e "+--------------- 暂时停用脚本 ---------------+"
-js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop jd_joy_reward_new"
+js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop"
 for js_item in $js_List; do
     sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
 echo -e "+--------------- 强制开启脚本 ---------------+"
-js_List=""
+js_List="jd_joy_park2"
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
     sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " $js_item 已开启"
@@ -398,7 +392,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen songyangzz_jd_joy cdle_jxzpk cdle_jd_dogsEmploy panghu_jd_twoly qqsdff_jd_jbczy"
+js_List="star261_jd_star_shop JDHelloWorld_jd_cfd_SlotMachine ddo_pk qhqcz_jd_necklace JDHelloWorld_jd_joy_new panghu_jd_hwsx jd_enen songyangzz_jd_joy cdle_jxzpk cdle_jd_dogsEmploy panghu_jd_twoly qqsdff_jd_jbczy Tsukasa007_jd_sign"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
@@ -423,5 +417,3 @@ echo -e "+--------------------------------------------+\n"
 
 ## remove env
 grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
-
-
