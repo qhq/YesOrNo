@@ -4,7 +4,7 @@ https://wbbny.m.jd.com/babelDiy/Zeus/2rtpffK8wqNyPBH6wyUDuBKoAbCt/index.html
 
 5 1-20/1 * * * https://raw.githubusercontent.com/smiek2221/scripts/master/jd_summer_movement.js, tag=京东资产变动通知, 
 
- */
+*/
 
 const $ = new Env('燃动夏季纯助力版');
 const notify = $.isNode() ? require('./sendNotify') : '';
