@@ -47,7 +47,7 @@ author_list="qhqcz Sunert yangtingxiao longzhuzhu moposmall panghu star261 Wenmo
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py"
+my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -335,7 +335,6 @@ sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${Script
 #sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
 
-
 ## 验证
 #sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
@@ -428,3 +427,4 @@ echo -e "+--------------------------------------------+\n"
 
 ## remove env
 #grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
+
