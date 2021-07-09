@@ -96,6 +96,8 @@ const UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT :
     $.innerShInviteList = getRandomArrayElements([...$.innerShInviteList, ...res], [...$.innerShInviteList, ...res].length);
     $.ShInviteList.push(...$.innerShInviteList);
   }
+  await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));
+  console.log($.inviteList)
   for (let i = 0; i < cookiesArr.length; i++) {
     $.cookie = cookiesArr[i];
     $.canHelp = true;
@@ -121,21 +123,14 @@ const UA = $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT :
       $.canHelp = true;
     }
     */
-    await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));
     if ($.inviteList && $.inviteList.length) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
     for (let j = 0; j < $.inviteList.length && $.canHelp; j++) {
-      $.oneInviteInfo = $.inviteList[j];
-      if ($.oneInviteInfo.ues === $.UserName || $.oneInviteInfo.max) {
-        continue;
-      }
-      if(aabbiill()){
+        $.inviteId = $.inviteList[j];
         //console.log($.oneInviteInfo);
-        $.inviteId = $.oneInviteInfo.inviteId;
-        console.log(`${$.UserName}去助力${$.oneInviteInfo.ues},助力码${$.inviteId}`);
+        console.log(`${$.UserName} 去助力 ${$.inviteId}`);
         //await takePostRequest('helpHomeData');
         await takePostRequest('help');
         await $.wait(2000);
-      }
     }
   }
   
@@ -199,7 +194,7 @@ async function movement() {
       }
     }
     */
-    console.log(`\n做任务\n`);
+    //console.log(`\n做任务\n`);
     await takePostRequest('olympicgames_getTaskDetail');
     await $.wait(1000);
     /*
@@ -517,13 +512,8 @@ async function dealReturn(type, res) {
       if (data.data && data.data.bizCode === 0) {
         console.log(`互助码：${data.data.result && data.data.result.inviteId || '助力已满，获取助力码失败'}\n`);
         if (data.data.result && data.data.result.inviteId) {
-		await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/summer/${data.data.result.inviteId}/${$.UserName}`).then((text) => (console.log(text)));
-          $.inviteList.push({
-            'ues': $.UserName,
-            // 'secretp': $.secretp,
-            'inviteId': data.data.result.inviteId,
-            'max': false
-          });
+	  await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/summer/${data.data.result.inviteId}/${$.UserName}`).then((text) => (console.log(text)));
+          $.inviteList.push(data.data.result.inviteId);
         }
         $.taskList = data.data.result && data.data.result.taskVos || [];
       } else if (data.data && data.data.bizMsg) {
