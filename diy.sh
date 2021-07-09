@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-08 21:33\n"
+echo -e "2021-07-10 00:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -87,7 +87,7 @@ my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-my_scripts_list_SuperManito="jd_jxzpk.js jx_cfd_lottery.js jd_khyl.js"
+my_scripts_list_SuperManito="jx_cfd_lottery.js jd_khyl.js"
 
 # songyangzz
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
@@ -95,7 +95,7 @@ my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
 scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
-my_scripts_list_cdle="jd_dogsEmploy.js jd_joy_park_help.js"
+my_scripts_list_cdle="jd_joy_park_help.js"
 
 # qqsdff
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
@@ -220,7 +220,7 @@ for file in $(ls $ScriptsDir); do
         #perl -0777 -i -pe "s/(^|.*?)\\$.UserName = (decodeURIComponent.*?)\n/\1\\$.UserName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/([^\/])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
