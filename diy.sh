@@ -111,7 +111,7 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 ## smiek2221
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js"
 
 ## Public
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
@@ -341,7 +341,7 @@ sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo 
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
 [ -f ${ScriptsDir}/sign_graphics_validate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 [ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
-#[ -f ${ScriptsDir}/MovementFaker.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/MovementFaker.js -O ${ScriptsDir}/MovementFaker.js
+[ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 
 
 
