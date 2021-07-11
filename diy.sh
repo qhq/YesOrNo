@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-10 00:33\n"
+echo -e "2021-07-11 20:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -43,7 +43,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu moposmall panghu star261 Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public Tsukasa007"
+author_list="qhqcz Sunert yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public Tsukasa007"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -111,7 +111,7 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 ## smiek2221
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js"
 
 ## Public
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
@@ -175,8 +175,7 @@ for file in $(ls $ScriptsDir); do
                 echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
                 npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
             fi
-            tsc ${ScriptsDir}/${file}
-            echo " ${file}已转成${file%%.*}.js"
+            tsc ${ScriptsDir}/${file} && echo " ${file}已转成${file%%.*}.js"
         fi
         isok="true"
         [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
@@ -291,14 +290,14 @@ echo -e "+--------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-sed -i "
-/inviteCodeList\[k\]\.code/ {
-n
-n
-n
-n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => \(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
-}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
+#sed -i "
+#/inviteCodeList\[k\]\.code/ {
+#n
+#n
+#n
+#n
+#a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => #\(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
+#}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
 echo -e "+--------------------------------------------+\n"
 
 #echo -e "+-------------- smiek2221 脚本 --------------+"
@@ -332,6 +331,7 @@ sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
 sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
+grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c2 9 * * * bash jd jqhqcz_post_code' ${ListCron}
 #sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
 sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " 去你🐎的正道的光"
