@@ -31,7 +31,6 @@ python_model_check()
       echo "0"
   fi
 }
-#How to use
 result=`python_model_check $1`
 if [ $result == 1 ]
 then
@@ -44,7 +43,7 @@ fi
 版权声明：本文为CSDN博主「SameWorld」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/baidu_26678247/article/details/103024826
 
-echo -e "2021-07-12 20:33\n"
+echo -e "2021-07-12 21:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
