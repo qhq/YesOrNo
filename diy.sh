@@ -24,7 +24,7 @@ fi
 ############################## 环境判断 ##############################
 python_model_check()
 {
-  if python -c "import $1" >/dev/null 2>&1
+  if python3 -c "import $1" >/dev/null 2>&1
   then
       echo "1"
   else
@@ -39,9 +39,6 @@ else
   echo "NO"
 fi
 
-————————————————
-版权声明：本文为CSDN博主「SameWorld」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/baidu_26678247/article/details/103024826
 
 echo -e "2021-07-12 21:33\n"
 
