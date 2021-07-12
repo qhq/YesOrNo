@@ -24,7 +24,7 @@ fi
 ############################## 环境判断 ##############################
 python_model_check()
 {
-  if python3 -c "import $1" >/dev/null 2>&1
+  if python3 -c '''print("JD")''' >/dev/null 2>&1
   then
       echo "1"
   else
@@ -34,9 +34,10 @@ python_model_check()
 result=`python_model_check $1`
 if [ $result == 1 ]
 then
-  echo "OK"
+  echo "Python3环境已安装"
 else
-  echo "NO"
+  echo "Python3环境安装中"
+  apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
 
 
@@ -195,8 +196,8 @@ for file in $(ls $ScriptsDir); do
                 npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
             fi
             tsc ${ScriptsDir}/${file} && echo " ${file}已转成${file%%.*}.js"
+            isok="true"
         fi
-        isok="true"
         [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
     fi
 done
