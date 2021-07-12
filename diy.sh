@@ -21,7 +21,7 @@ else
     fi
 fi
 
-echo -e "2021-07-12 00:33\n"
+echo -e "2021-07-12 20:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
@@ -111,7 +111,7 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 ## smiek2221
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js"
 
 ## Public
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
@@ -394,7 +394,7 @@ for js_item in $js_List; do
 done
 echo -e "+--------------------------------------------+\n"
 echo -e "+--------------- 强制开启脚本 ---------------+"
-js_List="jd_joy_park2"
+js_List=""
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
     sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " $js_item 已开启"
