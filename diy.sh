@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo -e "2021-07-12 22:33\n"
+
 ############################## DIY更新状态检查 ##############################
 iCan=true
 FileDiy=${ConfigDir}/diy.sh
@@ -40,8 +42,6 @@ else
   apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
 
-
-echo -e "2021-07-12 22:33\n"
 
 #添加hosts;如无法正常下载Github Raw文件，请注释掉
 Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
