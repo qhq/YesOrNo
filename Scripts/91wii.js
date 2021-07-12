@@ -19,7 +19,7 @@ if (typeof $request != "undefined") {
 function checkin() {	
     $.post({	
         "url": `https://www.91wii.com/plugin.php?id=dc_signin:sign&inajax=1`,	
-        "body": `formhash=${formhash}&signsubmit=yes&handlekey=signin&emotid=1&signpn=true`,	
+        "body": `formhash=${formhash}&signsubmit=yes&handlekey=signin&emotid=1&referer=https%3A%2F%2Fwww.91wii.com%2Fforum-125-1.html&content=%BC%C7%C9%CF%D2%BB%B1%CA%A3%AChold%D7%A1%CE%D2%B5%C4%BF%EC%C0%D6%A3%A1`,	
         "headers": {	
             "Host": "www.91wii.com",	
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",	
