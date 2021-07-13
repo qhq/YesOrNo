@@ -175,8 +175,9 @@ for author in $author_list; do
 done
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+---------------- 处理ts文件 ----------------+"
+
 if [[ $AutoTs = "true" ]]; then
+echo -e "+---------------- 处理ts文件 ----------------+"
     isok="false"
     for file in $(ls $ScriptsDir); do
         if [ "${file##*.}" = "ts" ]; then
@@ -194,8 +195,8 @@ if [[ $AutoTs = "true" ]]; then
     done
     [ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
     [ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
-fi
 echo -e "+--------------------------------------------+\n"
+fi
 
 
 echo -e "+----------------- 添加注释 -----------------+"
@@ -298,7 +299,7 @@ perl -0777 -i -pe "s|http:\/\/51\.15\.187\.136:8080\/query.*?\`|http://xinhunsha
 
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+--------------- star261 脚本 ---------------+"
+#echo -e "+--------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
@@ -310,7 +311,7 @@ echo -e "+--------------- star261 脚本 ---------------+"
 #n
 #a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxmc\/5\/10\"\)\.then\(\(text\) => #\(codeList\.push\(JSON\.parse\(text\)\.data\)\)\)
 #}" ${ScriptsDir}/star261_jd_jxmc.js && echo -e " 京喜牧场已内置私库"
-echo -e "+--------------------------------------------+\n"
+#echo -e "+--------------------------------------------+\n"
 
 #echo -e "+-------------- smiek2221 脚本 --------------+"
 #sed -i "/\\$.inviteList.push({/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/summer/$\{data.data.result.inviteId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日私库已添加"
@@ -318,7 +319,7 @@ echo -e "+--------------------------------------------+\n"
 #echo -e "+--------------------------------------------+\n"
 
 
-echo -e "+----------------- 处理脚本 -----------------+"
+echo -e "+----------------- 处理文件 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
     if [ "${file##*.}" = "html" ]; then
