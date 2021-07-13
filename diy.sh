@@ -176,7 +176,7 @@ done
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+---------------- 处理ts文件 ----------------+"
-if [ ${AutoTs} = "true" ]; then
+if [[ $AutoTs = "true" ]]; then
     isok="false"
     for file in $(ls $ScriptsDir); do
         if [ "${file##*.}" = "ts" ]; then
@@ -358,7 +358,7 @@ sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo 
 
 
 
-if [ ${iCan} = "true" ]; then
+if [[ $iCan = "true" ]]; then
     echo -e " 腾讯新闻"
     #sed -i "s/process\.env\.\w*\?$/''/g" ${ScriptsDir}/Sunert_txnews_task.js
     #sed -i "33r ${ScriptsDir}/Sunert_txnews_task.txt" ${ScriptsDir}/Sunert_txnews_task.js
