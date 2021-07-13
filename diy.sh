@@ -176,24 +176,24 @@ done
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+---------------- 处理ts文件 ----------------+"
-if 1=0; then
-isok="false"
-for file in $(ls $ScriptsDir); do
-    if [ "${file##*.}" = "ts" ]; then
-        [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
-        #if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
-            if [ isok = "false" ]; then
-                echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
-                npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
-            fi
-            tsc ${ScriptsDir}/${file} && echo " ${file}已转成${file%%.*}.js"
-            isok="true"
-        #fi
-        [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
-    fi
-done
-[ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
-[ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
+if [ ${AutoTs} = "true" ]; then
+    isok="false"
+    for file in $(ls $ScriptsDir); do
+        if [ "${file##*.}" = "ts" ]; then
+            [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
+            #if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
+                if [ isok = "false" ]; then
+                    echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
+                    npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
+                fi
+                tsc ${ScriptsDir}/${file} && echo " ${file}已转成${file%%.*}.js"
+                isok="true"
+            #fi
+            [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
+        fi
+    done
+    [ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
+    [ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
 fi
 echo -e "+--------------------------------------------+\n"
 
