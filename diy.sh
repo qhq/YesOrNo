@@ -36,9 +36,9 @@ python_model_check()
 result=`python_model_check $1`
 if [ $result == 1 ]
 then
-  echo -e "Python3环境已安装\n"
+  echo -e " Python3环境已安装\n"
 else
-  echo -e "Python3环境安装中"
+  echo -e " Python3环境安装中"
   apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
 
@@ -424,7 +424,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help qhqcz_91wii"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help qhqcz_91wii SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
