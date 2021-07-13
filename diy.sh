@@ -36,9 +36,9 @@ python_model_check()
 result=`python_model_check $1`
 if [ $result == 1 ]
 then
-  echo "Python3环境已安装\n"
+  echo -e "Python3环境已安装\n"
 else
-  echo "Python3环境安装中"
+  echo -e "Python3环境安装中"
   apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
 
