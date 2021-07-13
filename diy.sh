@@ -43,16 +43,6 @@ else
 fi
 
 
-#添加hosts;如无法正常下载Github Raw文件，请注释掉
-Host_IP=('151.101.88.133' '151.101.228.133' '185.199.108.133')
-Host_Name=('raw.githubusercontent.com' 'raw.githubusercontent.com' 'raw.githubusercontent.com')
-cat /etc/hosts | grep -qEi "^[0-9].+?raw.githubusercontent.com"
-if [ $? -eq 0 ]; then
-    for ((i = 0; i <= ${#Host_IP[@]}; i++)); do
-        echo "${Host_IP[$i]} ${Host_Name[$i]}" >>/etc/hosts
-    done
-fi
-
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
 if [[ ${EnableExtraShellProxyDownload} == true ]]; then
     DownloadJudgment=${ExtraShellProxyUrl}
@@ -67,7 +57,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js"
+my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -426,7 +416,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help qhqcz_91wii SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
