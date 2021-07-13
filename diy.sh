@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "2021-07-12 22:33\n"
+echo -e "2021-07-12 22:33"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -36,7 +36,7 @@ python_model_check()
 result=`python_model_check $1`
 if [ $result == 1 ]
 then
-  echo "Python3环境已安装"
+  echo "Python3环境已安装\n"
 else
   echo "Python3环境安装中"
   apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
@@ -190,14 +190,14 @@ isok="false"
 for file in $(ls $ScriptsDir); do
     if [ "${file##*.}" = "ts" ]; then
         [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " log/${file%%.*} 已新建"
-        if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
+        #if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
             if [ isok = "false" ]; then
                 echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
                 npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
             fi
             tsc ${ScriptsDir}/${file} && echo " ${file}已转成${file%%.*}.js"
             isok="true"
-        fi
+        #fi
         [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
     fi
 done
