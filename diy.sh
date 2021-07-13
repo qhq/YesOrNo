@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-13 23:52"
+echo -e " 2021-07-13 23:56"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -266,7 +266,7 @@ perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\`|ig" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
+perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\`|ig" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
 perl -0777 -i -pe "s|http:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
