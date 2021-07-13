@@ -63,7 +63,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby SuperManito curtinlv cdle smiek2221 Public Tsukasa007"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -95,7 +95,7 @@ my_scripts_list_star261="jd_jxmc.js"
 
 # Wenmoux 温某人
 scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_europeancup.js jd_wxFans.js"
+my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_wxFans.js"
 
 # 二代
 scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
@@ -107,7 +107,7 @@ my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
-my_scripts_list_SuperManito="jx_cfd_lottery.js jd_khyl.js"
+my_scripts_list_SuperManito=""
 
 # songyangzz
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
@@ -115,7 +115,7 @@ my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
 scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
-my_scripts_list_cdle="jd_joy_park_help.js"
+my_scripts_list_cdle=""
 
 # qqsdff
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
@@ -424,7 +424,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker jd_ts_test jd_validate_read"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
 done
