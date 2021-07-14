@@ -215,7 +215,7 @@ async function movement() {
       }
     }
     */
-    console.log(`\n做任务\n`);
+    //console.log(`\n做任务\n`);
     if(!$.hotFlag) await takePostRequest('olympicgames_getTaskDetail');
     if(`${summer_movement_HelpHelpHelpFlag}` === "true") return
     await $.wait(1000);
@@ -557,12 +557,7 @@ async function dealReturn(type, res) {
       if (data.data && data.data.bizCode === 0) {
         console.log(`互助码：${data.data.result && data.data.result.inviteId || '助力已满，获取助力码失败'}\n`);
         if (data.data.result && data.data.result.inviteId) {
-          $.inviteList.push({
-            'ues': $.UserName,
-            // 'secretp': $.secretp,
-            'inviteId': data.data.result.inviteId,
-            'max': false
-          });
+          $.inviteList.push(data.data.result.inviteId);
         }
         $.taskList = data.data.result && data.data.result.taskVos || [];
       } else if (data.data && data.data.bizMsg) {
