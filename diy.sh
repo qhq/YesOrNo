@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-14 20:33"
+echo -e " 2021-07-14 20:44"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -53,7 +53,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 airacg"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 Aaron-lv"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -131,9 +131,9 @@ my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
 scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
 my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
-## airacg
-scripts_base_url_airacg=${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/
-my_scripts_list_airacg="jx_task_fortune.js"
+## Aaron-lv
+scripts_base_url_Aaron-lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
+my_scripts_list_Aaron-lv="jd_cfd.js"
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -420,7 +420,7 @@ echo -e "+--------------------------------------------+\n"
 echo -e "+--------------- 暂时停用脚本 ---------------+"
 js_List="jd_bean_change passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_jd_summer_movement_help"
 for js_item in $js_List; do
-    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " $js_item 已注释"
+    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " 已注释 $js_item"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
@@ -430,16 +430,16 @@ echo -e "+--------------- 强制开启脚本 ---------------+"
 js_List=""
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
-    sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " $js_item 已开启"
+    sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " 已开启 $js_item"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2 airacg_jx_task_fortune"
 for js_item in $js_List; do
-    rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " $js_item 已删除"
+    rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
