@@ -124,12 +124,8 @@ function randomString(e) {
     $.index = i + 1;
     if ($.inviteList && $.inviteList.length) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
     for (let j = 0; j < $.inviteList.length && $.canHelp; j++) {
-      $.oneInviteInfo = $.inviteList[j];
-      if ($.oneInviteInfo.ues === $.UserName || $.oneInviteInfo.max) {
-        continue;
-      }
-      $.inviteId = $.oneInviteInfo.inviteId;
-      console.log(`${$.UserName}去助力${$.oneInviteInfo.ues},助力码${$.inviteId}`);
+      $.inviteId = $.inviteList[j];
+      console.log(`${$.UserName}去助力：${$.inviteId}`);
       await takePostRequest('help');
       await $.wait(2000);
     }
