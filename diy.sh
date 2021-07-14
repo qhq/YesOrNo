@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-14 20:44"
+echo -e " 2021-07-14 23:11"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -53,7 +53,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 Aaron_lv"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 Aaron-lv"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -132,8 +132,8 @@ scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com
 my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 ## Aaron-lv
-scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js"
+scripts_base_url_Aaron-lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
+my_scripts_list_Aaron-lv="jd_cfd.js"
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -329,6 +329,16 @@ sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001
 sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)"  ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
 echo -e "+--------------------------------------------+\n"
 
+echo -e "+--------------- Aaron-lv 脚本 --------------+"
+sed -i "/\\$.strMyShareIds = /a\$.strMyShareIds = [];" ${ScriptsDir}/Aaron_lv_jd_cfd.js >/dev/null 2>&1
+sed -i "
+/await cfd();/ {
+n
+n
+n
+a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxcfd\/1\/10\"\)\.then\(\(text\) => \($.shareCodes\.push\(JSON\.parse\(text\)\.data\)\)\)
+}" ${ScriptsDir}/Aaron_lv_jd_cfd.js && echo -e " 京喜财富岛已内置私库"
+echo -e "+--------------------------------------------+\n"
 
 echo -e "+----------------- 处理文件 -----------------+"
 HtmlDir=${ShellDir}/panel/public
