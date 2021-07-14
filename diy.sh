@@ -318,7 +318,7 @@ echo -e "+-------------- smiek2221 脚本 --------------+"
 #sed -i "/\\$.inviteList.push({/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/summer/$\{data.data.result.inviteId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日私库已添加"
 #sed -i "/开始内部京东账号【邀请好友助力】/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));"  ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日私库已添加"
 sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
-sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => (var $.inviteList = $.inviteList.concat(JSON.parse(text).data)));"  ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
+sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => (let $.inviteList = $.inviteList.concat(JSON.parse(text).data)));"  ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
 echo -e "+--------------------------------------------+\n"
 
 
