@@ -91,7 +91,7 @@ my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_wxFans.js"
 scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
 my_scripts_list_JDHelloWorld="jd_api_test.js"
 
-# 写着玩
+# 写着玩 passerby
 scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
 my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
