@@ -53,7 +53,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -127,6 +127,13 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
 my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
 
+## Annyoo2021
+scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
+my_scripts_list_Annyoo2021="jd_jxzpk.js"
+
+## airacg
+scripts_base_url_airacg=${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/
+my_scripts_list_airacg="jx_task_fortune.js"
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -284,7 +291,7 @@ sed -i "/【水果名称】/a await $.get({url: 'http://51.15.187.136:8080/activ
 sed -i "/好友互助码】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFactoryCode?code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂passerby互助码激活已添加"
 sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/activeJdCfdCode?code=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 财富岛passerby互助码激活已添加"
 sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
-#sed -i "/(homePageInfo.data.sharekey)/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{UserName\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
+sed -i "/(homePageInfo.data.sharekey)/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{UserName\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
 sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null 2>&1 && echo -e " MD5验证已移除"
 echo -e "+--------------------------------------------+\n"
 
@@ -360,6 +367,10 @@ sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo 
 [ -f ${ScriptsDir}/sign_graphics_validate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 [ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 [ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
+[ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
+[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
+[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
+[ -f ${ScriptsDir}/utils/jxAlgo.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jxAlgo.js -O ${ScriptsDir}/utils/jxAlgo.js
 
 
 
