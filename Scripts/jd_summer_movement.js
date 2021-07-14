@@ -111,6 +111,8 @@ function randomString(e) {
     }
   }
   // 助力
+  await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));
+  console.log($.inviteList)
   for (let i = 0; i < cookiesArr.length; i++) {
     $.cookie = cookiesArr[i];
     $.canHelp = true;
