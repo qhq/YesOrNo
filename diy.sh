@@ -368,10 +368,13 @@ sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo 
 [ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 [ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 [ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
-[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
-[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
-[ -f ${ScriptsDir}/utils/jxAlgo.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jxAlgo.js -O ${ScriptsDir}/utils/jxAlgo.js
 
+[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
+[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
+[ -f ${ScriptsDir}/utils/jdcookie.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdcookie.js -O ${ScriptsDir}/utils/jdcookie.js
+[ -f ${ScriptsDir}/utils/jdValidate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdValidate.js -O ${ScriptsDir}/utils/jdValidate.js
+[ -f ${ScriptsDir}/utils/jxAlgo.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jxAlgo.js -O ${ScriptsDir}/utils/jxAlgo.js
+[ -f ${ScriptsDir}/utils/sendNotify.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/sendNotify.js -O ${ScriptsDir}/utils/sendNotify.js
 
 
 if [[ $iCan = "true" ]]; then
