@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-14 11:26"
+echo -e " 2021-07-14 11:28"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -284,7 +284,7 @@ sed -i "/【水果名称】/a await $.get({url: 'http://51.15.187.136:8080/activ
 sed -i "/好友互助码】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFactoryCode?code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂passerby互助码激活已添加"
 sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/activeJdCfdCode?code=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1 && echo -e " 财富岛passerby互助码激活已添加"
 sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
-sed -i "/(homePageInfo.data.sharekey)/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
+sed -i "/(homePageInfo.data.sharekey)/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{UserName\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
