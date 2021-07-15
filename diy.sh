@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-15 11:22"
+echo -e " 2021-07-15 22:22"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -57,7 +57,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js"
+my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_jxsign.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -133,7 +133,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 ## Aaron-lv
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js"
 
 ############################## 随机函数 ##########################################
 rand() {
