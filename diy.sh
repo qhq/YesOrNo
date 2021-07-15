@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-15 22:23"
+echo -e " 2021-07-15 22:24"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -257,11 +257,11 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/await getAuthorShareCode(|\d)\(\);//ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         #sed -ig "/await getAuthorShareCode\(\|\S\)();$/d" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
-    if [ $(grep -cEi "invokeKey=NRp8OPxZMFXmGkaE" ${ScriptsDir}/${file}) -ne '0' ]; then
-        echo -en " ${file} | "
-        echo $(grep -nEi "invokeKey=NRp8OPxZMFXmGkaE" ${ScriptsDir}/${file})
-        perl -0777 -i -pe "s/invokeKey=NRp8OPxZMFXmGkaE/invokeKey=qRKHmL4sna8ZOP9F/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    fi
+    #if [ $(grep -cEi "invokeKey=NRp8OPxZMFXmGkaE" ${ScriptsDir}/${file}) -ne '0' ]; then
+    #    echo -en " ${file} | "
+    #    echo $(grep -nEi "invokeKey=NRp8OPxZMFXmGkaE" ${ScriptsDir}/${file})
+    #    perl -0777 -i -pe "s/invokeKey=NRp8OPxZMFXmGkaE/invokeKey=qRKHmL4sna8ZOP9F/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #fi
 done
 
 echo -e "+--------------------------------------------+\n"
