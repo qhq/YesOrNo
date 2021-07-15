@@ -77,7 +77,7 @@ my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
 # 柠檬/panghu
 scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
-my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js jd_senbeans.js"
+my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
 
 # star
 scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
@@ -133,7 +133,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 ## Aaron-lv
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js"
 
 ############################## 随机函数 ##########################################
 rand() {
@@ -452,7 +452,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2 airacg_jx_task_fortune"
+js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2 airacg_jx_task_fortune panghu_jd_senbeans"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
