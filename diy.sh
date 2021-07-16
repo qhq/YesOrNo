@@ -101,7 +101,7 @@ my_scripts_list_JDHelloWorld="jd_api_test.js"
 # 写着玩 passerby
 # https://github.com/passerby-b/JDDJ/
 scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
-my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
+my_scripts_list_passerby=""
 
 # SuperManito
 # https://github.com/SuperManito/scripts
@@ -469,7 +469,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy curtinlv_jd_qjd"
+js_List="qqsdff_jd_jbczy curtinlv_jd_qjd passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
