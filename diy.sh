@@ -123,32 +123,32 @@ my_scripts_list_cdle=""
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
 my_scripts_list_qqsdff="jd_jbczy.js"
 
-## curtinlv
+# curtinlv
 # https://github.com/curtinlv/JD-Script
 scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
 my_scripts_list_curtinlv="jd_zjd.py jd_cashHelp.py"
 
-## Tsukasa007
+# Tsukasa007
 # https://github.com/Tsukasa007/my_script
 scripts_base_url_Tsukasa007=${DownloadJudgment}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
 my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
-## smiek2221
+# smiek2221
 # https://github.com/smiek2221/scripts
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
 my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js"
 
-## Public
+# Public
 # https://github.com/jiulan/platypus/
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
 my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
 
-## Annyoo2021
+# Annyoo2021
 # https://github.com/Annyoo2021/scripts
 scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
 my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
-## Aaron-lv
+# Aaron-lv
 # https://github.com/Aaron-lv/sync
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
 my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js"
