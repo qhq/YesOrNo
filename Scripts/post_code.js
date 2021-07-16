@@ -782,25 +782,25 @@ async function getSgmh(timeout = 0) {
 //闪购盲盒结束
 
 //财富岛开始
-function getCFD(showInvite = true) {
-    function taskUrl(function_path, body) {
-        let url = `https://m.jingxi.com/jxcfd/${function_path}?strZone=jxcfd&bizCode=jxcfd&source=jxcfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=138631.26.55&${body}&_stk=_cfd_t%2CbizCode%2CddwTaskId%2CdwEnv%2Cptag%2Csource%2CstrShareId%2CstrZone&_ste=1`;
-        url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}&sceneval=2&g_login_type=1&g_ty=ls`;
-        return {
-            url,
-            headers: {
-                Cookie: cookie,
-                Accept: "*/*",
-                Connection: "keep-alive",
-                Referer: "https://st.jingxi.com/fortune_island/index.html?ptag=138631.26.55",
-                "Accept-Encoding": "gzip, deflate, br",
-                Host: "m.jingxi.com",
-                "User-Agent": `jdpingou;iPhone;3.15.2;14.2.1;ea00763447803eb0f32045dcba629c248ea53bb3;network/wifi;model/iPhone13,2;appBuild/100365;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/0;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2015_311210;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`,
-                "Accept-Language": "zh-cn",
-            },
-            timeout: 10000
-        };
-    }
+function getCFD() {
+	function taskUrl(function_path, body = '') {
+	  let url = `https://m.jingxi.com/jxbfd/${function_path}?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=138631.26.55&${body}&_stk=_cfd_t%2CbizCode%2CddwTaskId%2CdwEnv%2Cptag%2Csource%2CstrShareId%2CstrZone&_ste=1`;
+	  url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}&sceneval=2&g_login_type=1&g_ty=ls`;
+	  return {
+		url,
+		headers: {
+		  Cookie: cookie,
+		  Accept: "*/*",
+		  Connection: "keep-alive",
+		  Referer:"https://st.jingxi.com/fortune_island/index.html?ptag=138631.26.55",
+		  "Accept-Encoding": "gzip, deflate, br",
+		  Host: "m.jingxi.com",
+		  "User-Agent":`jdpingou;iPhone;3.15.2;14.2.1;ea00763447803eb0f32045dcba629c248ea53bb3;network/wifi;model/iPhone13,2;appBuild/100365;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/0;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2015_311210;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`,
+		  "Accept-Language": "zh-cn",
+		},
+		timeout: 10000
+	  };
+	}
     return new Promise(async (resolve) => {
         $.get(taskUrl(`user/QueryUserInfo`), (err, resp, data) => {
             try {
@@ -820,9 +820,7 @@ function getCFD(showInvite = true) {
                         strPin,
                         dwLevel,
                     } = data;
-                    //$.log(`\n获取用户信息：${sErrMsg}\n${$.showLog ? data : ""}`);
-                    //$.log(`\n当前等级:${dwLevel},财富值:${data['ddwMoney']}\n`)
-                    if (showInvite && strMyShareId) {
+                    if (strMyShareId) {
                         //console.log(`财富岛好友互助码每次运行都变化,旧的可继续使用`);
                         $.log(`【京东账号${$.index}（${$.UserName}）京喜财富岛】${strMyShareId}`);
                         $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/${strMyShareId}/${$.UserName}`).then((text) => (console.log(text)));
