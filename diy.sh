@@ -64,74 +64,92 @@ scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
 my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
 
 # yangtingxiao
+# https://github.com/yangtingxiao/QuantumultX/tree/master
 scripts_base_url_yangtingxiao=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
 my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
 
 # 龙王庙红包雨
+# https://github.com/longzhuzhu/nianyu/
 scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
 my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
 
 # moposmall
+# https://github.com/moposmall/Script
 scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
 my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
 # 柠檬/panghu
+# https://github.com/panghu999/panghu/
 scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
 my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
 
 # star
-scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/yuthpoetry/autosync/star261/scripts/
+# https://github.com/star261/jd/tree/main/
+scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/tree/main/scripts
 my_scripts_list_star261="jd_jxmc.js"
 
 # Wenmoux 温某人
+# https://github.com/Wenmoux/scripts/wen/jd/
 scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
 my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_wxFans.js"
 
 # 二代
+# https://github.com/JDHelloWorld/jd_scripts/
 scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
 my_scripts_list_JDHelloWorld="jd_api_test.js"
 
 # 写着玩 passerby
+# https://github.com/passerby-b/JDDJ/
 scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
 my_scripts_list_passerby="jd_cfd2.js jd_dreamFactory2.js jd_fruit2.js"
 
 # SuperManito
+# https://github.com/SuperManito/scripts
 scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
 my_scripts_list_SuperManito=""
 
 # songyangzz
+# https://github.com/songyangzz/jd_scripts
 scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
 my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
+# https://github.com/cdle/jd_study
 scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
 my_scripts_list_cdle=""
 
 # qqsdff
+# https://github.com/qqsdff/script
 scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
 my_scripts_list_qqsdff="jd_jbczy.js"
 
 ## curtinlv
+# https://github.com/curtinlv/JD-Script
 scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
-my_scripts_list_curtinlv="jd_zjd.py jd_qjd.py jd_cashHelp.py"
+my_scripts_list_curtinlv="jd_zjd.py jd_cashHelp.py"
 
 ## Tsukasa007
+# https://github.com/Tsukasa007/my_script
 scripts_base_url_Tsukasa007=${DownloadJudgment}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
 my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 ## smiek2221
+# https://github.com/smiek2221/scripts
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
 my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js"
 
 ## Public
+# https://github.com/jiulan/platypus/
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
 my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
 
 ## Annyoo2021
+# https://github.com/Annyoo2021/scripts
 scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
 my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 ## Aaron-lv
+# https://github.com/Aaron-lv/sync
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
 my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js"
 
@@ -451,7 +469,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy Tsukasa007_jd_sign Andy_Andy_sendBeans smiek2221_MovementFaker SuperManito_jd_khyl SuperManito_jx_cfd_lottery Wenmoux_jd_europeancup cdle_jd_joy_park_help SuperManito_jd_jxzpk passerby_jd_fruit2 passerby_jd_dreamFactory2 passerby_jd_cfd2 airacg_jx_task_fortune panghu_jd_senbeans"
+js_List="qqsdff_jd_jbczy curtinlv_jd_qjd"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
