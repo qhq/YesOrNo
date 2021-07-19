@@ -85,7 +85,7 @@ my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js
 
 # star
 # https://github.com/star261/jd/tree/main/
-scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/tree/main/scripts
+scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
 my_scripts_list_star261="jd_jxmc.js"
 
 # Wenmoux 温某人
