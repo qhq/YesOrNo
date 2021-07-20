@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-15 22:24"
+echo -e " 2021-07-20 12:24"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -250,15 +250,15 @@ echo -e "+----------------- 清理内置 -----------------+"
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
     #[[ ${array[@]/${var}/} != ${array[@]} ]] && echo "Yes" || echo "No"
-    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName" ${ScriptsDir}/${file}) -ne '0' ] && [ $(grep -cEi "custName" ${ScriptsDir}/${file}) -eq '0' ]; then
-        #perl -0777 -i -pe "s/(^|.*?)\\$.nickName = (['\\$].+)\n/\1\\$.nickName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
-        #perl -0777 -i -pe "s/(^|\s+)\\$.nickName = (''|\\$.*?);/\1\\$.nickName = \2;\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/(.*?) \\$.nickName = (.*?)\n/\1 \\$.nickName = \2\n\1 \\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
-        #perl -0777 -i -pe "s/(^|.*?)\\$.UserName = (decodeURIComponent.*?)\n/\1\\$.UserName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    fi
+    #if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName" ${ScriptsDir}/${file}) -ne '0' ] && [ $(grep -cEi "custName" ${ScriptsDir}/${file}) -eq '0' ]; then
+    #    #perl -0777 -i -pe "s/(^|.*?)\\$.nickName = (['\\$].+)\n/\1\\$.nickName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    #perl -0777 -i -pe "s/(^|\s+)\\$.nickName = (''|\\$.*?);/\1\\$.nickName = \2;\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    perl -0777 -i -pe "s/(.*?) \\$.nickName = (.*?)\n/\1 \\$.nickName = \2\n\1 \\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    #perl -0777 -i -pe "s/(^|.*?)\\$.UserName = (decodeURIComponent.*?)\n/\1\\$.UserName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #    perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    #fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
         echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file})
@@ -291,16 +291,16 @@ echo -e "+--------------------------------------------+\n"
 #echo -e "+--------------------------------------------+\n"
 
 echo -e "+------------ JDHelloWorld 脚本 -------------+"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\'|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\'|ig" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\'|http://xinhunshang.xyz:6001/help/v3/get/jxmc/5/10\'|ig" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-perl -0777 -i -pe "s|https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\'|http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\'|ig" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\'|http://xinhunshang.xyz:6001/help/v3/get/jxmc/5/10\'|ig" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
+perl -0777 -i -pe "s|[^']https:\/\/api\.sharecode\.ga\/api\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
 sed -i "
 /await jdDreamFactory()/ {
