@@ -93,10 +93,10 @@ my_scripts_list_star261="jd_jxmc.js"
 scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
 my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_wxFans.js"
 
-# 二代
+# JDHelloWorld
 # https://github.com/JDHelloWorld/jd_scripts/
 scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-my_scripts_list_JDHelloWorld="jd_api_test.js"
+my_scripts_list_JDHelloWorld="jd_api_test.ts"
 
 # 写着玩 passerby
 # https://github.com/passerby-b/JDDJ/
