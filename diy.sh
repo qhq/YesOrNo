@@ -53,7 +53,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle Public Tsukasa007 Annyoo2021 Aaron_lv"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron_lv"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -138,10 +138,10 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
 my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js"
 
-# Public
+# jiulan
 # https://github.com/jiulan/platypus/
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_Public="jd_lsj.js jd_nzmh.js"
+my_scripts_list_Public="jd_lsj.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
@@ -469,7 +469,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy curtinlv_jd_qjd passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2"
+js_List="qqsdff_jd_jbczy curtinlv_jd_qjd passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
