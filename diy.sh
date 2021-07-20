@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-20 12:44"
+echo -e " 2021-07-20 13:44"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -141,7 +141,7 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace
 # jiulan
 # https://github.com/jiulan/platypus/
 scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_Public="jd_lsj.js"
+my_scripts_list_Public="jd_lsj.js jd_shop_sign.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
@@ -394,13 +394,12 @@ grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c2 9,10,13,1
 #sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
 sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " 去你🐎的正道的光"
 
-## 验证
+## 验证调用
 #sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
 [ -f ${ScriptsDir}/sign_graphics_validate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 [ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 [ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
-
 #[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
 #[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
 #[ -f ${ScriptsDir}/utils/jdcookie.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdcookie.js -O ${ScriptsDir}/utils/jdcookie.js
@@ -492,6 +491,9 @@ echo -e "+--------------------------------------------+\n"
 #cp /jd/config/server.js /jd/panel/server.js
 #pm2 restart /jd/panel/server.js
 
-## remove env
-#grep -q "JD_COOKIE" /etc/profile && sed -i "/JD_COOKIE/d" /etc/profile
 
+## 删除不知如何产生的垃圾文件
+DeletedCacheFiles="app.eb41fc5f.js"
+for del in ${DeletedCacheFiles}; do
+  [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
+done
