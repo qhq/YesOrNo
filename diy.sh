@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-21 12:55"
+echo -e " 2021-07-21 13:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -502,3 +502,6 @@ DeletedCacheFiles="app.eb41fc5f.js"
 for del in ${DeletedCacheFiles}; do
   [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
 done
+
+cp ${ScriptsDir}/account.json ${ScriptsDir}/tools/account.json
+
