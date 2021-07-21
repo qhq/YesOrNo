@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-21 13:55"
+echo -e " 2021-07-21 14:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -140,8 +140,8 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace
 
 # jiulan
 # https://github.com/jiulan/platypus/
-scripts_base_url_Public=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_Public="jd_lsj.js jd_shop_sign.js jd_cfdtx.js"
+scripts_base_url_jiulan=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
+my_scripts_list_jiulan="jd_lsj.js jd_shop_sign.js jd_cfdtx.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
