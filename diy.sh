@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-20 13:44"
+echo -e " 2021-07-21 10:44"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -316,6 +316,9 @@ sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/ac
 sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
 sed -i "/'助力码：'/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{cookie.match(/pt_pin=([^;]*)/)\![1]\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
 sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null 2>&1 && echo -e " MD5验证已移除"
+sed -i "s|if(_0x\w\{6\}==='1'|if('1'==='1'|" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 尝试"
+sed -i "s|if(_0x\w\{6\}==='1'|if('1'==='1'|" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 尝试"
+sed -i "s|if(_0x\w\{6\}==='1'|if('1'==='1'|" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 尝试"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
