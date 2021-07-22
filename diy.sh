@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-22 12:55"
+echo -e " 2021-07-22 13:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -507,5 +507,5 @@ for del in ${DeletedCacheFiles}; do
   [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
 done
 
-cp ${ScriptsDir}/account.json ${ScriptsDir}/tools/account.json
+[ -f ${ConfigDir}/account.json ] && cp ${ConfigDir}/account.json ${ScriptsDir}/tools/account.json
 
