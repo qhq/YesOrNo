@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-21 14:55"
+echo -e " 2021-07-22 14:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -53,7 +53,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron_lv"
+author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron_lv shufflewzc"
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -153,6 +153,10 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
 my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js"
 
+# shufflewzc
+# https://github.com/shufflewzc/faker2
+scripts_base_url_shufflewzc=${DownloadJudgment}https://raw.githubusercontent.com/shufflewzc/faker2/main/
+my_scripts_list_shufflewzc="jd_mb.js"
 ############################## 随机函数 ##########################################
 rand() {
     min=$1
