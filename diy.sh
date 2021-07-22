@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-22 13:55"
+echo -e " 2021-07-22 20:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -305,6 +305,7 @@ perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xin
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/cash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
 sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
 sed -i "
 /await jdDreamFactory()/ {
