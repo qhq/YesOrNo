@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-23 12:55"
+echo -e " 2021-07-23 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -409,9 +409,9 @@ sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1
 ## 验证调用
 #sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
-[ -f ${ScriptsDir}/sign_graphics_validate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
-[ -f ${ScriptsDir}/JDJRValidator_Pure.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
-[ -f ${ScriptsDir}/ZooFaker_Necklace.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
+wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
+wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
+wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 #[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
 #[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
 #[ -f ${ScriptsDir}/utils/jdcookie.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdcookie.js -O ${ScriptsDir}/utils/jdcookie.js
