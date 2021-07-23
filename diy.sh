@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-23 11:55"
+echo -e " 2021-07-23 12:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -86,7 +86,7 @@ my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js
 # star261
 # https://github.com/star261/jd/tree/main/
 scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
-my_scripts_list_star261="jd_jxmc.js jd_summer_movement.js"
+my_scripts_list_star261="jd_jxmc.js jd_summer_movement.js jd_summer_movement_bet.js"
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
