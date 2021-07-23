@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-22 20:55"
+echo -e " 2021-07-23 11:55"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -86,7 +86,7 @@ my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js
 # star261
 # https://github.com/star261/jd/tree/main/
 scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
-my_scripts_list_star261="jd_jxmc.js"
+my_scripts_list_star261="jd_jxmc.js jd_summer_movement.js"
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
@@ -157,6 +157,8 @@ my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js
 # https://github.com/shufflewzc/faker2
 scripts_base_url_shufflewzc=${DownloadJudgment}https://raw.githubusercontent.com/shufflewzc/faker2/main/
 my_scripts_list_shufflewzc="jd_mb.js"
+
+
 ############################## 随机函数 ##########################################
 rand() {
     min=$1
