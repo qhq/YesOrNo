@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-25 18:00"
+echo -e " 2021-07-25 19:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -368,7 +368,7 @@ echo -e "+-------------- smiek2221 脚本 --------------+"
 n
 n
 a $.InviteLists = []\n$.InviteLists.push(...$.InviteList);\nawait $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)"
-}" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
+}" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js && echo -e " 财富大陆拉取私库已添加"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+--------------- Aaron-lv 脚本 --------------+"
