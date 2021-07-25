@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-25 14:00"
+echo -e " 2021-07-25 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -136,7 +136,7 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 # smiek2221
 # https://github.com/smiek2221/scripts
 scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js"
 
 # jiulan
 # https://github.com/jiulan/platypus/
