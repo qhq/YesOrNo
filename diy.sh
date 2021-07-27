@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-26 14:00"
+echo -e " 2021-07-26 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -274,6 +274,15 @@ for file in $(ls $ScriptsDir); do
         echo -en " ${file} | "
         echo $(grep -nEi "(helpAu.*?) = true" ${ScriptsDir}/${file})
         perl -0777 -i -pe "s/(helpAu.*?) = true/\1 = false/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    fi
+    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "await getAuthorShareCode" ${ScriptsDir}/${file}) -ne '0' ]; then
+        echo -en " ${file} | "
+        echo $(grep -nEi "await getAuthorShareCode" ${ScriptsDir}/${file})
+
+        #perl -0777 -i -pe "s/await getAuthorShareCode(|\d)\(\);//ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        [ $(grep -c "function getAuthorShareCode999" ${ScriptsDir}/${file}) -eq 0 ] && sed -i "/function getAuthorShareCode/i\ function getAuthorShareCode999(){}" ${ScriptsDir}/${file} >/dev/null 2>&1
+        [ $(grep -c "function getAuthorShareCode999" ${ScriptsDir}/${file}) -ne 0 ] && perl -0777 -i -pe "s/await getAuthorShareCode(|\d)\(/await getAuthorShareCode999(/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        #sed -ig "/await getAuthorShareCode\(\|\S\)();$/d" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "await getAuthorShareCode(|\d)\(\);$" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
