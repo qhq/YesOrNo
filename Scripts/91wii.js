@@ -7,6 +7,7 @@ F12开发工具中切到网络，刷新页面，查看Cookie，将值填入Secre
 const CookieQ = process.env.COOKIE_91WII	
 const formhash = process.env.COOKIE_91WII_FORMHASH	
 
+
 const  $ = new Env('91WII签到');	
 const notify = $.isNode() ? require('./sendNotify') : '';	
 
@@ -22,12 +23,12 @@ function checkin() {
         "body": `formhash=${formhash}&signsubmit=yes&handlekey=signin&emotid=1&referer=https%3A%2F%2Fbbs.naxgen.cn%2Fforum-125-1.html&content=%BC%C7%C9%CF%D2%BB%B1%CA%A3%AChold%D7%A1%CE%D2%B5%C4%BF%EC%C0%D6%A3%A1`,	
         "headers": {	
             "Host": "bbs.naxgen.cn",	
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",	
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",	
             "Connection": "keep-alive",	
-            "Content-Type": "application/x-www-form-urlencoded; charset=gb2312",	
+            "Content-Type": "application/x-www-form-urlencoded",	
             "Cookie": CookieQ || $.getdata("CookieQ"),	
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",	
-            "Accept-Language": "zh-cn",	
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36",	
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",	
             "Referer": "https://bbs.naxgen.cn/home.php?mod=space&do=notice&view=mypost",	
             "Accept-Encoding": "gzip, deflate, br"	
                   }	
@@ -36,7 +37,7 @@ function checkin() {
             $.log(error);	
             $.msg(`${$.name}`, "签到请求失败 ‼️‼️", error)	
         } else {	
-            //console.log(data);	
+            console.log(data);	
             if (data.match(/(ÒÑÍê³É|\u606d\u559c\u60a8|ǩ���ɹ�~�����������ֵ)/)) {	
                 $.msg(`${$.name}`, "", date.getMonth() + 1 + "月" + date.getDate() + "日，签到成功 🎉")	
                 if ($.isNode()) {	notify.sendNotify(`${$.name}`, date.getMonth() + 1 + "月" + date.getDate() + "日，签到成功 🎉")}
