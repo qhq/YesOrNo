@@ -37,7 +37,7 @@ function checkin() {
             $.log(error);	
             $.msg(`${$.name}`, "签到请求失败 ‼️‼️", error)	
         } else {	
-            console.log(data);	
+            //console.log(data);	
             if (data.match(/(ÒÑÍê³É|\u606d\u559c\u60a8|ǩ���ɹ�~�����������ֵ)/)) {	
                 $.msg(`${$.name}`, "", date.getMonth() + 1 + "月" + date.getDate() + "日，签到成功 🎉")	
                 if ($.isNode()) {	notify.sendNotify(`${$.name}`, date.getMonth() + 1 + "月" + date.getDate() + "日，签到成功 🎉")}
