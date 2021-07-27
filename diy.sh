@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-26 15:00"
+echo -e " 2021-07-26 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -422,7 +422,7 @@ grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c2 9,10,13,1
 sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " 取消正道的光"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
-sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
+#sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
 #sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
 #sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
 sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
