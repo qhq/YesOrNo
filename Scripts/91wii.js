@@ -18,17 +18,17 @@ if (typeof $request != "undefined") {
 }	
 function checkin() {	
     $.post({	
-        "url": `https://www.91wii.com/plugin.php?id=dc_signin:sign&inajax=1`,	
-        "body": `formhash=${formhash}&signsubmit=yes&handlekey=signin&emotid=1&referer=https%3A%2F%2Fwww.91wii.com%2Fforum-125-1.html&content=%BC%C7%C9%CF%D2%BB%B1%CA%A3%AChold%D7%A1%CE%D2%B5%C4%BF%EC%C0%D6%A3%A1`,	
+        "url": `https://bbs.naxgen.cn/plugin.php?id=dc_signin:sign&inajax=1`,	
+        "body": `formhash=${formhash}&signsubmit=yes&handlekey=signin&emotid=1&referer=https%3A%2F%2Fbbs.naxgen.cn%2Fforum-125-1.html&content=%BC%C7%C9%CF%D2%BB%B1%CA%A3%AChold%D7%A1%CE%D2%B5%C4%BF%EC%C0%D6%A3%A1`,	
         "headers": {	
-            "Host": "www.91wii.com",	
+            "Host": "bbs.naxgen.cn",	
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",	
             "Connection": "keep-alive",	
             "Content-Type": "application/x-www-form-urlencoded; charset=gb2312",	
             "Cookie": CookieQ || $.getdata("CookieQ"),	
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36",	
             "Accept-Language": "zh-cn",	
-            "Referer": "https://www.91wii.com/home.php?mod=space&do=notice&view=mypost",	
+            "Referer": "https://bbs.naxgen.cn/home.php?mod=space&do=notice&view=mypost",	
             "Accept-Encoding": "gzip, deflate, br"	
                   }	
     },function(error, response, data) {	
