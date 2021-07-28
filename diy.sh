@@ -161,7 +161,7 @@ my_scripts_list_shufflewzc="jd_mb.js"
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${DownloadJudgment}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205=""
+my_scripts_list_zero205="jd_jxqd.js"
 
 
 
@@ -508,7 +508,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign zero205_jd_jxqd"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
