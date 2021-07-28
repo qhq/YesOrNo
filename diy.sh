@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-28 08:00"
+echo -e " 2021-07-28 09:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -416,7 +416,6 @@ sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已
 sed -i 's|Name1=.*\?)|Name1=(fruit pet plantBean jdfactory dreamFactory crazy_joy jdzz cash sgmh cfd health)|' $ShellDir/jd.sh
 sed -i 's|Name2=.*\?)|Name2=(东东农场 东东萌宠 京东种豆得豆 东东工厂 京喜工厂 crazyJoy任务 京东赚赚 签到领现金 闪购盲盒 京喜财富岛 东东健康社区)|' $ShellDir/jd.sh
 sed -i 's|Name3=.*\?)|Name3=(Fruit Pet Bean JdFactory dreamFactory Joy Jdzz Cash Sgmh Cfd Health)|' $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
-sed -i "/## 生成互助规则模板/a HelpType=1" $ShellDir/jd.sh && echo -e " 修改生成互助规则模板"
 sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
