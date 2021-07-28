@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-28 09:00"
+echo -e " 2021-07-28 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -151,7 +151,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
@@ -439,7 +439,7 @@ sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
-#[ -f ${ScriptsDir}/utils/common.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/common.js -O ${ScriptsDir}/utils/common.js
+wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
 #[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
 #[ -f ${ScriptsDir}/utils/jdcookie.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdcookie.js -O ${ScriptsDir}/utils/jdcookie.js
 #[ -f ${ScriptsDir}/utils/jdValidate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdValidate.js -O ${ScriptsDir}/utils/jdValidate.js
