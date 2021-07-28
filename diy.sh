@@ -161,7 +161,7 @@ my_scripts_list_shufflewzc="jd_mb.js"
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${DownloadJudgment}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205="jd_jxqd.js"
+my_scripts_list_zero205=""
 
 
 
@@ -416,7 +416,7 @@ sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已
 sed -i 's|Name1=.*\?)|Name1=(fruit pet plantBean jdfactory dreamFactory crazy_joy jdzz cash sgmh cfd health)|' $ShellDir/jd.sh
 sed -i 's|Name2=.*\?)|Name2=(东东农场 东东萌宠 京东种豆得豆 东东工厂 京喜工厂 crazyJoy任务 京东赚赚 签到领现金 闪购盲盒 京喜财富岛 东东健康社区)|' $ShellDir/jd.sh
 sed -i 's|Name3=.*\?)|Name3=(Fruit Pet Bean JdFactory dreamFactory Joy Jdzz Cash Sgmh Cfd Health)|' $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
-sed -i "/## 生成互助规则模板/a \tHelpType=1" $ShellDir/jd.sh && echo -e " 修改生成互助规则模板"
+sed -i "/## 生成互助规则模板/a HelpType=1" $ShellDir/jd.sh && echo -e " 修改生成互助规则模板"
 sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
 sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
@@ -508,7 +508,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign zero205_jd_jxqd"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
