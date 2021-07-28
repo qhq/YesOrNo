@@ -126,7 +126,7 @@ my_scripts_list_qqsdff="jd_jbczy.js"
 # curtinlv
 # https://github.com/curtinlv/JD-Script
 scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
-my_scripts_list_curtinlv="jd_zjd.py jd_cashHelp.py jd_qjd.py"
+my_scripts_list_curtinlv="jd_cashHelp.py jd_qjd.py"
 
 # Tsukasa007
 # https://github.com/Tsukasa007/my_script
@@ -507,7 +507,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign jiulan_jd_shop_sign"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj qhqcz_jd_jxsign jiulan_jd_shop_sign curtinlv_jd_zjd"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
