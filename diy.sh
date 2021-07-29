@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 12:00"
+echo -e " 2021-07-29 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -576,6 +576,7 @@ install_dependencies_force(){
                 #    rm -rf /usr/local/lib/node_modules/lodash/*
                 #fi
                 if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                    echo -e " 正在安装 $i"
                     apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source --force
                 fi
                 ;;
@@ -591,6 +592,7 @@ install_dependencies_force(){
                 #    rm -rf /usr/local/lib/node_modules/lodash/*
                 #fi
                 if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                    echo -e " 正在安装 $i"
                     npm i $i -g --force
                 fi
                 ;;
