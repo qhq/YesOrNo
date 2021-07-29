@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 16:00"
+echo -e " 2021-07-29 22:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -132,7 +132,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_bean_sign.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_bean_sign.js jx_sign.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
@@ -142,7 +142,7 @@ my_scripts_list_shufflewzc="jd_mb.js"
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${DownloadJudgment}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205="jd_jxqd.js"
+my_scripts_list_zero205=""
 
 
 
@@ -487,7 +487,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj jiulan_jd_shop_sign curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj jiulan_jd_shop_sign curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
