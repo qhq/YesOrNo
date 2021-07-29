@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 15:00"
+echo -e " 2021-07-29 11:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -603,5 +603,5 @@ install_dependencies_all(){
         install_dependencies_force $i
     done
 }
-install_dependencies_all &
+install_dependencies_all
 
