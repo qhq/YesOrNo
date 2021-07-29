@@ -549,6 +549,7 @@ install_dependencies_normal(){
                 #    npm uninstall $i
                 #fi
                 if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                    echo -e " 正在安装 $i"
                     apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source
                 fi
                 ;;
@@ -559,6 +560,7 @@ install_dependencies_normal(){
                 #    npm uninstall $i -g
                 #fi
                 if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                    echo -e " 正在安装 $i"
                     [[ $i = "typescript" ]] && npm i $i -g --force || npm i $i -g
                 fi
                 ;;
@@ -601,9 +603,9 @@ install_dependencies_force(){
 }
 install_dependencies_all(){
     install_dependencies_normal $package_name
-    for i in $package_name; do
-        install_dependencies_force $i
-    done
+    #for i in $package_name; do
+    #    install_dependencies_force $i
+    #done
 }
 install_dependencies_all
 
