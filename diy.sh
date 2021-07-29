@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 11:00"
+echo -e " 2021-07-29 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -538,7 +538,7 @@ else
 fi
 
 # 依赖
-package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
+package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
 
 install_dependencies_normal(){
     for i in $@; do
