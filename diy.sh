@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 12:00"
+echo -e " 2021-07-29 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -41,6 +41,77 @@ else
   echo -e " Python3环境安装中"
   apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
+
+# 依赖
+package_name="canvas png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
+
+install_dependencies_normal(){
+    for i in $@; do
+        case $i in
+            canvas)
+                cd /ql/scripts
+                if [[ "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
+                    npm uninstall $i
+                fi
+                if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /ql/scripts --build-from-source
+                fi
+                ;;
+            *)
+                if [[ "$(npm ls $i)" =~ $i ]]; then
+                    npm uninstall $i
+                elif [[ "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
+                    npm uninstall $i -g
+                fi
+                if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                    [[ $i = "typescript" ]] && npm i $i -g --force || npm i $i -g
+                fi
+                ;;
+        esac
+    done
+}
+
+install_dependencies_force(){
+    for i in $@; do
+        case $i in
+            canvas)
+                cd /ql/scripts
+                if [[ "$(npm ls $i)" =~ $i && "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
+                    npm uninstall $i
+                    rm -rf /ql/scripts/node_modules/$i
+                    rm -rf /usr/local/lib/node_modules/lodash/*
+                fi
+                if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /ql/scripts --build-from-source --force
+                fi
+                ;;
+            *)
+                cd /ql/scripts
+                if [[ "$(npm ls $i)" =~ $i ]]; then
+                    npm uninstall $i
+                    rm -rf /ql/scripts/node_modules/$i
+                    rm -rf /usr/local/lib/node_modules/lodash/*
+                elif [[ "$(npm ls $i -g)" =~ $i && "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
+                    npm uninstall $i -g
+                    rm -rf /ql/scripts/node_modules/$i
+                    rm -rf /usr/local/lib/node_modules/lodash/*
+                fi
+                if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                    npm i $i -g --force
+                fi
+                ;;
+        esac
+    done
+}
+
+install_dependencies_all(){
+    install_dependencies_normal $package_name
+    for i in $package_name; do
+        install_dependencies_force $i
+    done
+}
+
+install_dependencies_all &
 
 
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
