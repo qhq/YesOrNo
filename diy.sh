@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-28 16:00"
+echo -e " 2021-07-28 17:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -57,7 +57,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="91wii.js iQIYI.js post_code.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_jxsign.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_jxsign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -507,7 +507,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj jiulan_jd_shop_sign curtinlv_jd_zjd"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj jiulan_jd_shop_sign curtinlv_jd_zjd qhqcz_91wii"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
