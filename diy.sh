@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-29 11:00"
+echo -e " 2021-07-29 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -151,7 +151,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
@@ -441,11 +441,7 @@ wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/m
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
-#[ -f ${ScriptsDir}/utils/eval.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/eval.js -O ${ScriptsDir}/utils/eval.js
-#[ -f ${ScriptsDir}/utils/jdcookie.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdcookie.js -O ${ScriptsDir}/utils/jdcookie.js
-#[ -f ${ScriptsDir}/utils/jdValidate.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jdValidate.js -O ${ScriptsDir}/utils/jdValidate.js
-#[ -f ${ScriptsDir}/utils/jxAlgo.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/jxAlgo.js -O ${ScriptsDir}/utils/jxAlgo.js
-#[ -f ${ScriptsDir}/utils/sendNotify.js ] || wget -q ${DownloadJudgment}https://raw.githubusercontent.com/airacg/jd_task/main/utils/sendNotify.js -O ${ScriptsDir}/utils/sendNotify.js
+wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
 
 
 if [[ $iCan = "true" ]]; then
