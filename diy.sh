@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-30 11:00"
+echo -e " 2021-07-30 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -454,8 +454,9 @@ echo -e "+--------------------------------------------+\n"
 #if [ $? -ne 0 ]; then
 #  echo -e '# 京东试用脚本添加的取关定时任务\n5 10 * * * bash jd jd_unsubscribe' >>${ListCron}
 #fi
+
 ## 修正定时
-#grep -q "jdJxncTokens" ${ListCron} && sed -i '/&*jdJxncTokens/c#4 8 * * * bash jd jdJxncTokens' ${ListCron}
+grep -q "bash git_pull" ${ListCron} && sed -i '/&*bash git_pull/c#${cron_min} 1,7,13,19 * * * bash git_pull' ${ListCron}
 
 ## bug fix
 #[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
