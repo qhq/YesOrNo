@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-30 13:00"
+echo -e " 2021-07-30 11:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -456,7 +456,7 @@ echo -e "+--------------------------------------------+\n"
 #fi
 
 ## 修正定时
-grep -q "bash git_pull" ${ListCron} && sed -i '/&*bash git_pull/c$(rand 1 59) 1,7,13,19 * * * bash git_pull >>${JD_DIR}/log/git_pull.log 2>&1' ${ListCron}
+grep -q "bash git_pull" ${ListCron} && sed -i '/&*bash git_pull/c${$(rand 1 59)} 1,7,13,19 * * * bash git_pull >>${JD_DIR}/log/git_pull.log 2>&1' ${ListCron}
 
 ## bug fix
 #[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
