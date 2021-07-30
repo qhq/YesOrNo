@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-30 13:00"
+echo -e " 2021-07-30 11:00"
 
 sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
+
 ############################## DIY更新状态检查 ##############################
 iCan=true
 FileDiy=${ConfigDir}/diy.sh
@@ -456,7 +457,7 @@ echo -e "+--------------------------------------------+\n"
 #fi
 
 ## 修正定时
-grep -q "bash git_pull" ${ListCron} && sed -i 's|.*bash git_pull|${cron_min} 1,7,13,19 \* \* \* bash git_pull|' ${ListCron}
+grep -q "bash git_pull" ${ListCron} && sed -i 's|.*bash git_pull|7 1,7,13,19 \* \* \* bash git_pull|' ${ListCron}
 
 ## bug fix
 #[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
