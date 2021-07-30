@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-30 12:00"
+echo -e " 2021-07-30 13:00"
 
+sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 ############################## DIY更新状态检查 ##############################
 iCan=true
 FileDiy=${ConfigDir}/diy.sh
@@ -390,7 +391,6 @@ for file in $(ls $HtmlDir); do
         #sed -i '/<canvas id="sakura"/' ${HtmlDir}/${file}
     fi
 done
-sed -i 's|\(0xa\|0x23\)|0xa1|g' $ShellDir/jd.sh && echo -e " 不解释"
 sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
