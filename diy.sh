@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-01 11:00"
+echo -e " 2021-08-01 12:00"
 
-sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
+#sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
