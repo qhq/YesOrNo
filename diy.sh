@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-07-30 08:00"
+echo -e " 2021-08-01 08:00"
 
 sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -155,6 +155,7 @@ rand() {
     num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
     echo $(($num % $max + $min))
 }
+
 echo -e "+----------------- 下载脚本 -----------------+"
 cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
 #index=1
@@ -245,15 +246,12 @@ echo -e "+----------------- 清理内置 -----------------+"
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
     #[[ ${array[@]/${var}/} != ${array[@]} ]] && echo "Yes" || echo "No"
-    #if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName" ${ScriptsDir}/${file}) -ne '0' ] && [ $(grep -cEi "custName" ${ScriptsDir}/${file}) -eq '0' ]; then
-    #    #perl -0777 -i -pe "s/(^|.*?)\\$.nickName = (['\\$].+)\n/\1\\$.nickName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #    #perl -0777 -i -pe "s/(^|\s+)\\$.nickName = (''|\\$.*?);/\1\\$.nickName = \2;\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #    perl -0777 -i -pe "s/(.*?) \\$.nickName = (.*?)\n/\1 \\$.nickName = \2\n\1 \\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/i" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #    #perl -0777 -i -pe "s/(^|.*?)\\$.UserName = (decodeURIComponent.*?)\n/\1\\$.UserName = \2\n\1\\$.custName = (process.env.CUSTNAME ? process.env.CUSTNAME : '').split(',')[i];\n/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName ||" ${ScriptsDir}/${file}) -ne '0' ]; then
     #    perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     #    perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     #    perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #fi
+        perl -0777 -i -pe "s/京东账号(.*?)\\$\{\\$.nickName \|\| /京东账号\1\\$\{/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+    fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
         echo -en " ${file} | "
         echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file})
