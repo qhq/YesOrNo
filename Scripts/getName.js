@@ -62,7 +62,7 @@ if ($.isNode()) {
       remarks: remarks[i]
     })
   }
-console.log(JSON.stringify(str).replace(/\*/g,"\\\\*"));
+console.log(JSON.stringify(str));
 })()
     .catch((e) => {
       $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -82,7 +82,7 @@ function unique(arr){
 			newArr.push(arr[i]);
         }
     }
-    return newStr.replace("*","\*").substr(0,newStr.lastIndexOf("|"));
+    return newStr.replace("*","\\\*").substr(0,newStr.lastIndexOf("|"));
 }  
 function decrypt(time, stk, type, url) {
   stk = stk || (url ? getUrlData(url, '_stk') : '')
