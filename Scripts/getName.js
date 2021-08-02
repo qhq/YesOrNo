@@ -28,7 +28,7 @@ if ($.isNode()) {
     $.getdata("CookieJD2"),
     ...$.toObj($.getdata("CookiesJD") || "[]").map((item) => item.cookie)].filter((item) => !!item);
 }
-//cookiesArr = ["pt_key=AAJhA1BoADA1S4ImWFKiZ9VgnEaVsMqpXsZDZxNBm6wxHi9C5X5o4F2-Q4K1WJ9mAeiqmTDSzg8;pt_pin=1187375374-263519;"];
+//cookiesArr = [];
 !(async () => {
   $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
   await requestAlgo();
