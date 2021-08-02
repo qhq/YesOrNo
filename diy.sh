@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-02 12:00"
+echo -e " 2021-08-02 11:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -124,7 +124,7 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace
 # jiulan
 # https://github.com/jiulan/platypus/
 scripts_base_url_jiulan=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_jiulan="jd_shop_sign.js jd_lsj.js jd_cfdtx.js"
+my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
@@ -144,7 +144,7 @@ my_scripts_list_shufflewzc="jd_mb.js"
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${DownloadJudgment}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205=""
+my_scripts_list_zero205="jd_dpqd.js"
 
 
 
@@ -489,7 +489,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
