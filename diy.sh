@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-02 11:00"
+echo -e " 2021-08-02 12:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -40,7 +40,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_jxsign.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_jxsign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
