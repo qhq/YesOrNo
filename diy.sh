@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-02 12:00"
+echo -e " 2021-08-02 13:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -519,7 +519,7 @@ for del in ${DeletedCacheFiles}; do
   [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
 done
 
-[ -f ${ConfigDir}/account.json ] && cp ${ConfigDir}/account.json ${ScriptsDir}/tools/account.json
+#[ -f ${ConfigDir}/account.json ] && cp ${ConfigDir}/account.json ${ScriptsDir}/tools/account.json
 
 
 ############################## 环境判断 ##############################
