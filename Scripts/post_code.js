@@ -900,7 +900,7 @@ function getJdCash() {
 //领现金结束
 
 //京东健康获取互助码开始
-function getHalth(taskId = '') {
+function getHalth(taskId = 6) {
     return new Promise(resolve => {
         $.get(taskHalthUrl('jdhealth_getTaskDetail', { "buildingId": "", taskId: taskId === -1 ? '' : taskId, "channelId": 1 }),
             async (err, resp, data) => {
