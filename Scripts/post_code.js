@@ -1243,6 +1243,7 @@ async function getShareCode(num) {
     await getCFD();
     await getJdCash();
     await getJxmc();
+    await getHalth();
     //}
     console.log(`\n======账号${$.index}结束======\n`)
 }
