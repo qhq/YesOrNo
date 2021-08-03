@@ -782,7 +782,7 @@ async function getSgmh(timeout = 0) {
 //闪购盲盒结束
 
 //财富岛开始
-function getCFD() {
+async function getCFD() {
 	function taskUrl(function_path, body = '') {
 	  let url = `https://m.jingxi.com/jxbfd/${function_path}?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=138631.26.55&${body}&_stk=_cfd_t%2CbizCode%2CddwTaskId%2CdwEnv%2Cptag%2Csource%2CstrShareId%2CstrZone&_ste=1`;
 	  url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}&sceneval=2&g_login_type=1&g_ty=ls`;
@@ -857,7 +857,7 @@ function getCFD() {
 //财富岛结束
 
 //领现金开始
-function getJdCash() {
+async function getJdCash() {
     function taskUrl(functionId, body = {}) {
         return {
             url: `https://api.m.jd.com/client.action?functionId=${functionId}&body=${escape(JSON.stringify(body))}&appid=CashRewardMiniH5Env&appid=9.1.0`,
@@ -900,7 +900,7 @@ function getJdCash() {
 //领现金结束
 
 //京东健康获取互助码开始
-function getHalth(taskId = 6) {
+async function getHalth(taskId = 6) {
     return new Promise(resolve => {
         $.get(taskHalthUrl('jdhealth_getTaskDetail', { "buildingId": "", taskId: taskId === -1 ? '' : taskId, "channelId": 1 }),
             async (err, resp, data) => {
@@ -911,7 +911,7 @@ function getHalth(taskId = 6) {
                             if (data?.data?.result?.taskVos) {
                                 console.log(`【京东账号${$.index}（${$.UserName}）京东健康】${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}`);
                                 // console.log('好友助力码：' + data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken)
-                                $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/health/${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
+                                await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/health/${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
                                 //$.wait(2000);
                             }
                         }
