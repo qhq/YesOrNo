@@ -74,7 +74,7 @@ my_scripts_list_star261="jd_jxmc.js jd_summer_movement.js jd_summer_movement_bet
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
 scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
-my_scripts_list_Wenmoux="jd_ddnc_farmpark.js jd_wxFans.js"
+my_scripts_list_Wenmoux="jd_ddnc_farmpark.js"
 
 # JDHelloWorld
 # https://github.com/JDHelloWorld/jd_scripts/
@@ -489,7 +489,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign Wenmoux_jd_wxFans"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
 done
