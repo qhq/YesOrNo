@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-06 11:00"
+echo -e " 2021-08-06 12:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -167,7 +167,7 @@ for author in $author_list; do
     repository_branch=$(echo $format_url | awk -F '/' '{print$4}')
     reformat_url=$(echo $format_url | sed "s|$repository_branch|tree/$repository_branch|g")
     if [[ ${EnableExtraShellProxyDownload} == true ]]; then
-      DownloadJudgment="使用代理"
+      DownloadJudgment="[代理]"
     else
       DownloadJudgment=""
     fi
@@ -177,8 +177,8 @@ for author in $author_list; do
     DownloadJudgment=""
   fi
   repository_url=$(echo "$repository_platform$reformat_url")
-  echo -e "\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
-  echo -e " $repository_url "
+  echo -e "\033[33m[更新]\033[0m $author 的活动脚本${DownloadJudgment}:"
+  echo -e "$repository_url "
 
   for js in $scripts_list; do
     eval url=$url_list$js
