@@ -154,7 +154,7 @@ rand() {
   echo $(($num % $max + $min))
 }
 
-echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔"
+echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔\n"
 echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
   eval scripts_list=\$my_scripts_list_$author
@@ -177,7 +177,7 @@ for author in $author_list; do
     DownloadJudgment=""
   fi
   repository_url=$(echo "$repository_platform$reformat_url")
-  echo -e "\n\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
+  echo -e "\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
   echo -e " $repository_url "
 
   for js in $scripts_list; do
