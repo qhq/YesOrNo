@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-06 14:00"
+echo -e " 2021-08-06 15:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -27,172 +27,197 @@ fi
 
 
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
-if [[ ${EnableExtraShellProxyDownload} == true ]]; then
-    DownloadJudgment=${ExtraShellProxyUrl}
-else
-    DownloadJudgment=
-fi
-
+[[ ${EnableExtraShellProxyDownload} == true ]] && ProxyJudge=${ExtraShellProxyUrl} || ProxyJudge=""
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
 author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron_lv shufflewzc zero205"
 
 # 自用库
-scripts_base_url_qhqcz=${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
+scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
 my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js gua_doge.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
-scripts_base_url_Sunert=https://gitee.com/Sunert/Scripts/raw/master/Task/
+scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
 my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
 
 # yangtingxiao
 # https://github.com/yangtingxiao/QuantumultX/tree/master
-scripts_base_url_yangtingxiao=${DownloadJudgment}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
+scripts_base_url_yangtingxiao=${ProxyJudge}https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/
 my_scripts_list_yangtingxiao="jd_lotteryMachine.js"
 
 # 龙王庙红包雨
 # https://github.com/longzhuzhu/nianyu/
-scripts_base_url_longzhuzhu=${DownloadJudgment}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
+scripts_base_url_longzhuzhu=${ProxyJudge}https://raw.githubusercontent.com/longzhuzhu/nianyu/main/qx/
 my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
 
 # moposmall
 # https://github.com/moposmall/Script
-scripts_base_url_moposmall=${DownloadJudgment}https://raw.githubusercontent.com/moposmall/Script/main/Me/
+scripts_base_url_moposmall=${ProxyJudge}https://raw.githubusercontent.com/moposmall/Script/main/Me/
 my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 
 # 柠檬/panghu
 # https://github.com/panghu999/panghu/
-scripts_base_url_panghu=${DownloadJudgment}https://raw.githubusercontent.com/panghu999/panghu/master/
+scripts_base_url_panghu=${ProxyJudge}https://raw.githubusercontent.com/panghu999/panghu/master/
 my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
 
 # star261
 # https://github.com/star261/jd/tree/main/
-scripts_base_url_star261=${DownloadJudgment}https://raw.githubusercontent.com/star261/jd/main/scripts/
+scripts_base_url_star261=${ProxyJudge}https://raw.githubusercontent.com/star261/jd/main/scripts/
 my_scripts_list_star261="jd_jxmc.js jd_summer_movement.js jd_summer_movement_bet.js jd_productZ4Brand.js"
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
-scripts_base_url_Wenmoux=${DownloadJudgment}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
+scripts_base_url_Wenmoux=${ProxyJudge}https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/
 my_scripts_list_Wenmoux="jd_ddnc_farmpark.js"
 
 # JDHelloWorld
 # https://github.com/JDHelloWorld/jd_scripts/
-scripts_base_url_JDHelloWorld=${DownloadJudgment}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
+scripts_base_url_JDHelloWorld=${ProxyJudge}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
 my_scripts_list_JDHelloWorld="jd_api_test.ts"
 
 # 写着玩 passerby
 # https://github.com/passerby-b/JDDJ/
-scripts_base_url_passerby=${DownloadJudgment}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
+scripts_base_url_passerby=${ProxyJudge}https://raw.githubusercontent.com/passerby-b/JDDJ/main/
 my_scripts_list_passerby=""
 
 # SuperManito
 # https://github.com/SuperManito/scripts
-scripts_base_url_SuperManito=https://gitee.com/SuperManito/scripts/raw/master/
+scripts_base_url_SuperManito=${ProxyJudge}https://gitee.com/SuperManito/scripts/raw/master/
 my_scripts_list_SuperManito=""
 
 # songyangzz
 # https://github.com/songyangzz/jd_scripts
-scripts_base_url_songyangzz=${DownloadJudgment}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
+scripts_base_url_songyangzz=${ProxyJudge}https://raw.githubusercontent.com/songyangzz/jd_scripts/master/
 my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
 # https://github.com/cdle/jd_study
-scripts_base_url_cdle=${DownloadJudgment}https://raw.githubusercontent.com/cdle/jd_study/main/
+scripts_base_url_cdle=${ProxyJudge}https://raw.githubusercontent.com/cdle/jd_study/main/
 my_scripts_list_cdle="jd_angryBean.js"
 
 # qqsdff
 # https://github.com/qqsdff/script
-scripts_base_url_qqsdff=${DownloadJudgment}https://raw.githubusercontent.com/qqsdff/script/main/jd/
+scripts_base_url_qqsdff=${ProxyJudge}https://raw.githubusercontent.com/qqsdff/script/main/jd/
 my_scripts_list_qqsdff="jd_jbczy.js"
 
 # curtinlv
 # https://github.com/curtinlv/JD-Script
-scripts_base_url_curtinlv=${DownloadJudgment}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
+scripts_base_url_curtinlv=${ProxyJudge}https://raw.githubusercontent.com/curtinlv/JD-Script/main/
 my_scripts_list_curtinlv="jd_cashHelp.py jd_qjd.py"
 
 # Tsukasa007
 # https://github.com/Tsukasa007/my_script
-scripts_base_url_Tsukasa007=${DownloadJudgment}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
+scripts_base_url_Tsukasa007=${ProxyJudge}https://raw.githubusercontent.com/Tsukasa007/my_script/master/
 my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 
 # smiek2221
 # https://github.com/smiek2221/scripts
-scripts_base_url_smiek2221=${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/
+scripts_base_url_smiek2221=${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/
 my_scripts_list_smiek2221="jd_sign_graphics.js jd_summer_movement.js jd_necklace.js jd_summer_movement_help.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js gua_doge.js"
 
 # jiulan
 # https://github.com/jiulan/platypus/
-scripts_base_url_jiulan=${DownloadJudgment}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
+scripts_base_url_jiulan=${ProxyJudge}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
 my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
-scripts_base_url_Annyoo2021=${DownloadJudgment}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
+scripts_base_url_Annyoo2021=${ProxyJudge}https://raw.githubusercontent.com/Annyoo2021/scripts/main/
 my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
-scripts_base_url_Aaron_lv=${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
+scripts_base_url_Aaron_lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
 my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
-scripts_base_url_shufflewzc=${DownloadJudgment}https://raw.githubusercontent.com/shufflewzc/faker2/main/
+scripts_base_url_shufflewzc=${ProxyJudge}https://raw.githubusercontent.com/shufflewzc/faker2/main/
 my_scripts_list_shufflewzc="jd_mb.js"
 
 # zero205
 # https://github.com/zero205/JD_tencent_scf
-scripts_base_url_zero205=${DownloadJudgment}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
+scripts_base_url_zero205=${ProxyJudge}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
 my_scripts_list_zero205="jd_dpqd.js"
 
 
-
 ############################## 随机函数 ##########################################
+cd ${ShellDir}
+git remote -v | grep "supermanito" -wq
+[ $? -ne 0 ] && clear && echo -e "\033[31m\n非本项目用户禁止使用！\n\033[0m" && exit 1
 rand() {
-    min=$1
-    max=$(($2 - $min + 1))
-    num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
-    echo $(($num % $max + $min))
+  min=$1
+  max=$(($2 - $min + 1))
+  num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
+  echo $(($num % $max + $min))
 }
 
 echo -e "+----------------- 下载脚本 -----------------+"
-cd $ScriptsDir # 在 git_pull.sh 中已经定义 ScriptsDir 此变量，diy.sh 由 git_pull.sh 调用，因此可以直接使用此变量
-#index=1
+echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔"
 for author in $author_list; do
-    echo -e " 下载 $author 的脚本"
-    # 下载my_scripts_list中的每个js文件，重命名增加前缀"作者昵称_"，增加后缀".new"
-    eval scripts_list=\$my_scripts_list_$author
-    #echo $scripts_list
-    eval url_list=\$scripts_base_url_$author
-    #echo $url_list
-    for js in $scripts_list; do
-        eval url=$url_list$js
-        echo " 地址 $url"
-        eval name=$author"_"$js
-        #echo $name
-        wget -q --no-check-certificate $url -O $name.new
+  eval scripts_list=\$my_scripts_list_$author
+  eval url_list=\$scripts_base_url_$author
 
-        # 如果上一步下载没问题，才去掉后缀".new"，如果上一步下载有问题，就保留之前正常下载的版本
-        # 随机添加个cron到crontab.list
-        if [ $? -eq 0 ]; then
-            mv -f $name.new $name
-            echo -e " 更新 $name 完成...\n"
-            croname=$(echo "$name" | awk -F\. '{print $1}')
-            script_date=$(cat $name | grep "http" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
-            if [ -z "${script_date}" ]; then
-                cron_min=$(rand 1 59)
-                cron_hour=$(rand 7 9)
-                [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${cron_min} ${cron_hour} * * * bash jd $croname" /jd/config/crontab.list
-            else
-                [ $(grep -c "$croname" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a${script_date} bash jd $croname" /jd/config/crontab.list
-            fi
+  ## 判断脚本来源仓库
+  format_url=$(echo $url_list | awk -F '.com' '{print$NF}' | sed 's/.$//')
+  if [[ $(echo $url_list | egrep -o "github|gitee") == "github" ]]; then
+    repository_platform="https://github.com"
+    repository_branch=$(echo $format_url | awk -F '/' '{print$4}')
+    reformat_url=$(echo $format_url | sed "s|$repository_branch|tree/$repository_branch|g")
+    if [[ ${EnableExtraShellProxyDownload} == true ]]; then
+      DownloadJudgment="使用代理"
+    else
+      DownloadJudgment=""
+    fi
+  elif [[ $(echo $url_list | egrep -o "github|gitee") == "gitee" ]]; then
+    repository_platform="https://gitee.com"
+    reformat_url=$(echo $format_url | sed "s|/raw/|/tree/|g")
+    DownloadJudgment=""
+  fi
+  repository_url=$(echo "$repository_platform$reformat_url")
+  echo -e "\n\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
+  echo -e "$repository_url\n"
+
+  for js in $scripts_list; do
+    eval url=$url_list$js
+    eval name=$author"_"$js
+    wget -q --no-check-certificate $url -O ${ScriptsDir}/$name.new
+    if [ $? -eq 0 ]; then
+      mv -f ${ScriptsDir}/$name.new ${ScriptsDir}/$name
+      echo -e "\033[32m[Done]\033[0m $name"
+
+      [[ $name == "jddj_cookie.js" ]] && continue
+      [[ $name == "sign_graphics_validate.js" ]] && continue
+      [[ $name == "JDJRValidator_Pure.js" ]] && continue
+      [[ $name == "ZooFaker_Necklace.js" ]] && continue
+
+      croname=$(echo "$name" | awk -F\. '{print $1}')
+      script_date_standard=$(cat ${ScriptsDir}/$name | grep "https" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
+      if [[ $name == "jd_cashHelp.py" ]]; then
+        script_date="8 */4 * * *" # 指定签到领现金脚本定时
+      elif [[ $name == "jd_jxgc_tuan.py" ]]; then
+        script_date="0 0,7,10 * * *" # 指定京喜工厂开团脚本定时
+      else
+        if [[ ${script_date_standard} == "" ]]; then
+          script_date=$(cat ${ScriptsDir}/$name | grep "cron" | head -n 1 | sed "s/[a-zA-Z]//g" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5; else if ($1~/^[*]/) print $2,$3,$4,$5,$6}')
         else
-            [ -f $name.new ] && rm -f $name.new
-            echo -e " 更新 $name 失败，使用上一次正常的版本...\n"
+          script_date=${script_date_standard}
         fi
-    done
-    #index=$(($index + 1))
+      fi
+
+      if [ -z "${script_date}" ]; then
+        cron_min=$(rand 1 59)
+        cron_hour=$(rand 7 9)
+        [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${cron_min} ${cron_hour} * * * bash jd $croname" ${ListCron}
+      else
+        [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${script_date} bash jd $croname" ${ListCron}
+      fi
+    else
+      [ -f ${ScriptsDir}/$name.new ] && rm -f ${ScriptsDir}/$name.new
+      echo -e "\033[31m[ERROR]\033[0m $name 更新失败，使用上一次正常的版本\n"
+    fi
+  done
 done
 echo -e "+--------------------------------------------+\n"
 
@@ -241,8 +266,8 @@ for Cron in ${JsList}; do
 done
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+----------------- 清理内置 -----------------+"
 
+echo -e "+----------------- 清理内置 -----------------+"
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
     #[[ ${array[@]/${var}/} != ${array[@]} ]] && echo "Yes" || echo "No"
@@ -284,8 +309,8 @@ for file in $(ls $ScriptsDir); do
     #    perl -0777 -i -pe "s/invokeKey=NRp8OPxZMFXmGkaE/invokeKey=qRKHmL4sna8ZOP9F/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     #fi
 done
-
 echo -e "+--------------------------------------------+\n"
+
 
 #echo -e "+-------------- Lxk0301 脚本 ---------------+"
 #替换内置
@@ -377,6 +402,7 @@ n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxcfd\/1\/10\"\)\.then\(\(text\) => \($.shareCodes\.push\(...JSON\.parse\(text\)\.data\)\)\);\nconsole.log($.shareCodes)
 }" ${ScriptsDir}/Aaron_lv_jd_cfd.js && echo -e " 京喜财富岛已内置私库"
 echo -e "+--------------------------------------------+\n"
+
 
 echo -e "+----------------- 处理文件 -----------------+"
 HtmlDir=${ShellDir}/panel/public
@@ -496,8 +522,6 @@ echo -e "+--------------------------------------------+\n"
 #pm2 restart /jd/panel/server.js
 
 
-#sed -i '380c #[ -d ${ShellDir}/.git ] && Git_PullShell' /jd/git_pull.sh && echo "ExtraShell" >>/jd/git_pull.sh
-#git fetch --all && git reset --hard
 ##############################  自  定  义  命  令  ##############################
 
 ## 京东试用脚本添加取关定时任务
@@ -508,9 +532,6 @@ echo -e "+--------------------------------------------+\n"
 
 ## 修正定时
 #grep -q "bash git_pull" ${ListCron} && sed -i "/&*bash git_pull/c$(rand 1 59) 1,7,13,19 \* \* \* sleep $(rand 1 59) && bash git_pull >>\$\{JD_DIR\}\/log\/git_pull.log 2>&1" ${ListCron}
-
-## bug fix
-#[ -f ${ScriptsDir}/main.3b9712aa.js ] && rm -rf ${ScriptsDir}/main.3b9712aa.js
 
 #检查添加京喜团ID变量
 #if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
