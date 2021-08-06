@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-06 16:00"
+echo -e " 2021-08-06 17:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -481,7 +481,7 @@ echo -e "+--------------------------------------------+\n"
 echo -e "+--------------- 暂时停用脚本 ---------------+"
 js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_jd_summer_movement_help jd_speed_redEnvelope jd_joy_park panghu_jd_joy-park panghu_jd_pk jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign"
 for js_item in $js_List; do
-    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " 已注释 $js_item"
+    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " \033[32m[已注释]\033[0m $js_item"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
@@ -491,7 +491,7 @@ echo -e "+--------------- 强制开启脚本 ---------------+"
 js_List=""
 for js_item in $js_List; do
     sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
-    sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " 已开启 $js_item"
+    sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " \033[32m[已开启]\033[0m $js_item"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
@@ -500,7 +500,7 @@ echo -e "+--------------------------------------------+\n"
 echo -e "+-------------- 失效/过期脚本 ---------------+"
 js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign Wenmoux_jd_wxFans qhqcz_jd_jxsign"
 for js_item in $js_List; do
-    rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " 已删除 $js_item"
+    rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
 #rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
 #rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
@@ -639,4 +639,4 @@ install_dependencies_all(){
     #done
 }
 install_dependencies_all
-
+echo -e "\033[32m[Done]\033[0m 结束🔔\n"
