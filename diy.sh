@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-06 17:00"
+echo -e " 2021-08-06 18:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -146,6 +146,7 @@ my_scripts_list_zero205="jd_dpqd.js"
 cd ${ShellDir}
 git remote -v | grep "supermanito" -wq
 [ $? -ne 0 ] && clear && echo -e "\033[31m\n非本项目用户禁止使用！\n\033[0m" && exit 1
+
 rand() {
   min=$1
   max=$(($2 - $min + 1))
@@ -153,8 +154,8 @@ rand() {
   echo $(($num % $max + $min))
 }
 
-echo -e "+----------------- 下载脚本 -----------------+"
 echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔"
+echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
   eval scripts_list=\$my_scripts_list_$author
   eval url_list=\$scripts_base_url_$author
@@ -177,7 +178,7 @@ for author in $author_list; do
   fi
   repository_url=$(echo "$repository_platform$reformat_url")
   echo -e "\n\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
-  echo -e "$repository_url "
+  echo -e " $repository_url "
 
   for js in $scripts_list; do
     eval url=$url_list$js
