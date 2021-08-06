@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-06 15:00"
+echo -e " 2021-08-06 16:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -177,7 +177,7 @@ for author in $author_list; do
   fi
   repository_url=$(echo "$repository_platform$reformat_url")
   echo -e "\n\033[33m[*]\033[0m ${DownloadJudgment}更新 $author 的活动脚本:"
-  echo -e "$repository_url\n"
+  echo -e "$repository_url "
 
   for js in $scripts_list; do
     eval url=$url_list$js
@@ -215,7 +215,7 @@ for author in $author_list; do
       fi
     else
       [ -f ${ScriptsDir}/$name.new ] && rm -f ${ScriptsDir}/$name.new
-      echo -e "\033[31m[ERROR]\033[0m $name 更新失败，使用上一次正常的版本\n"
+      echo -e "\033[31m[ERROR]\033[0m $name 更新失败，使用上一次正常的版本"
     fi
   done
 done
