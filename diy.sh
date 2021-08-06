@@ -498,13 +498,11 @@ done
 echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
-echo -e "+-------------- 失效/过期脚本 ---------------+"
-js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign Wenmoux_jd_wxFans qhqcz_jd_jxsign"
+echo -e "+-------------- 删除过期脚本 ---------------+"
+js_List="qqsdff_jd_jbczy passerby_jd_cfd2 passerby_jd_dreamFactory2 passerby_jd_fruit2 Public_jd_nzmh Public_jd_lsj curtinlv_jd_zjd qhqcz_91wii zero205_jd_bean_sign zero205_jd_jxqd jiulan_jd_shop_sign Wenmoux_jd_wxFans qhqcz_jd_jxsign qhqcz_gua_doge"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
-#rm -rf ${ScriptsDir}/monk_shop_follow_sku.js && sed -i "/monk_shop_follow_sku/d" ${ListCron}
-#rm -rf ${ScriptsDir}/zooOpencard01.js && sed -i "/zooOpencard01/d" ${ListCron}
 echo -e "+--------------------------------------------+\n"
 
 
