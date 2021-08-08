@@ -35,7 +35,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_summer_movement.js jd_enen.js jd_unsubscriLive.js jd_cleancart.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -500,7 +500,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 删除过期脚本 ---------------+"
-js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement"
+js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement qhqcz_jd_summer_movement"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
