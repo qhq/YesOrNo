@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 08:00"
+echo -e " 2021-08-08 10:00"
 
 #sed -i 's|\(0xa\|0x23\)|40|g' $ShellDir/jd.sh && echo -e " 不解释"
 
@@ -350,6 +350,13 @@ sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
+sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
+sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
+#sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
+#sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
+#sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
+#sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
+sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
@@ -403,6 +410,13 @@ n
 n
 a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxcfd\/1\/10\"\)\.then\(\(text\) => \($.shareCodes\.push\(...JSON\.parse\(text\)\.data\)\)\);\nconsole.log($.shareCodes)
 }" ${ScriptsDir}/Aaron_lv_jd_cfd.js && echo -e " 京喜财富岛已内置私库"
+
+[ $(grep -c "qhq/YesOrNo/main/json/friendPins.json" ${ScriptsDir}/Aaron_lv_jd_joy_run.js) -eq 0 ] && perl -0777 -i -pe "s|\".*?friendPins.json\"|\"https://raw.githubusercontent.com/qhq/YesOrNo/main/json/friendPins.json\"|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑助力库已替换"
+perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/joy\/query\/1\/|http://xinhunshang.xyz:6001/help/v3/get/LKYLToken/5/1|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑Token已替换"
+sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力读取网络Token"
+sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
+sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
+sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
 echo -e "+--------------------------------------------+\n"
 
 
@@ -427,27 +441,13 @@ sed -i 's|Name1=.*\?)|Name1=(fruit pet plantBean jdfactory dreamFactory crazy_jo
 sed -i 's|Name2=.*\?)|Name2=(东东农场 东东萌宠 京东种豆得豆 东东工厂 京喜工厂 crazyJoy任务 京东赚赚 签到领现金 闪购盲盒 京喜财富岛 东东健康社区)|' $ShellDir/jd.sh
 sed -i 's|Name3=.*\?)|Name3=(Fruit Pet Bean JdFactory dreamFactory Joy Jdzz Cash Sgmh Cfd Health)|' $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
 #sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
-sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
-sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
 sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
-#sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
 grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c2 9,10,13,14 * * * bash jd qhqcz_post_code' ${ListCron}
 #sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
-#sed -i "s|'User-Agent': '.*\?'|'User-Agent': 'jdapp;android;9.3.5;10;2346663656561603-4353564623932316;network/wifi;model/ONEPLUS A5010;addressid/138709979;aid/2dfceea045ed292a;oaid/;osVer/29;appBuild/86390;partner/jingdong;eufv/1;Mozilla/5.0 (Linux; Android 10; ONEPLUS A5010 Build/QKQ1.191014.012; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045230 Mobile Safari/537.36'|g" ${ShellDir}/panel/server.js && echo -e " 扫码已修复"
-sed -i "s|ccdd == 1|true|g" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " 取消正道的光"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
-#sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
-#sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
-#sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
-sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task.js && echo -e " 汪汪乐园ck失效通知移除"
 [ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }"  ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
-
-[ $(grep -c "qhq/YesOrNo/main/json/friendPins.json" ${ScriptsDir}/Aaron_lv_jd_joy_run.js) -eq 0 ] && perl -0777 -i -pe "s|\".*?friendPins.json\"|\"https://raw.githubusercontent.com/qhq/YesOrNo/main/json/friendPins.json\"|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑助力库已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/joy\/query\/1\/|http://xinhunshang.xyz:6001/help/v3/get/LKYLToken/5/1|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑Token已替换"
-sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力读取网络Token"
-sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
 
 
 ## 验证调用
