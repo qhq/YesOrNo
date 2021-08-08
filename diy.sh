@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 14:00"
+echo -e " 2021-08-08 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -57,7 +57,7 @@ my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
 # 柠檬/panghu
 # https://github.com/panghu999/panghu/
 scripts_base_url_panghu=${ProxyJudge}https://raw.githubusercontent.com/panghu999/panghu/master/
-my_scripts_list_panghu="jd_wsdlb.js jd_lsj.js jd_joy-park.js jd_pk.js jd_wish.js"
+my_scripts_list_panghu=""
 
 # star261
 # https://github.com/star261/jd/tree/main/
@@ -500,7 +500,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 删除过期脚本 ---------------+"
-js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement qhqcz_jd_summer_movement"
+js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement qhqcz_jd_summer_movement panghu_jd_wish panghu_jd_wsdlb"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
