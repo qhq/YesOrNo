@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 11:00"
+echo -e " 2021-08-08 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -175,6 +175,7 @@ for author in $author_list; do
     DownloadJudgment=""
   fi
   repository_url=$(echo "$repository_platform$reformat_url")
+  echo -e $scripts_list
   echo -e "\033[33m[更新]\033[0m $author 的活动脚本${DownloadJudgment}:"
   echo -e "\033[33m[仓库]\033[0m $repository_url "
 
