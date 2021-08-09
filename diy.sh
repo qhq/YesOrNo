@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 14:00"
+echo -e " 2021-08-08 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -33,7 +33,7 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js gua_carnivalcity.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -112,7 +112,7 @@ my_scripts_list_Tsukasa007="jd_joypark_joy.js jd_joypark_task.js"
 # smiek2221
 # https://github.com/smiek2221/scripts
 scripts_base_url_smiek2221=${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js gua_doge.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js gua_doge.js gua_carnivalcity.js"
 
 # jiulan
 # https://github.com/jiulan/platypus/
@@ -501,7 +501,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 删除过期脚本 ---------------+"
-js_List="qhqcz_jd_plantBean Sunert_jukan"
+js_List="qhqcz_jd_plantBean Sunert_jukan qhqcz_gua_carnivalcity"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
