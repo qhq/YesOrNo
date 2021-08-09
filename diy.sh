@@ -453,13 +453,13 @@ sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task
 ## 验证调用
 #sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
 #sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
-wget -q ${DownloadJudgment}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
 
 
 if [[ $iCan = "true" ]]; then
@@ -510,7 +510,7 @@ echo -e "+--------------------------------------------+\n"
 ############################## 同步文件 ##########################################
 #cd $ConfigDir
 #echo -e "下载 server.js "
-#wget -q --no-check-certificate ${DownloadJudgment}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
+#wget -q --no-check-certificate ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
 #if [ $? -eq 0 ]; then
 #  mv -f server.js.new server.js
 #  echo -e "更新 server.js 完成"
