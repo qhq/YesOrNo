@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 12:00"
+echo -e " 2021-08-08 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -29,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron-lv shufflewzc zero205"
+author_list="Aaron-lv qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron-lv shufflewzc zero205"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -126,7 +126,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
-scripts_base_url_Aaron-lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
+scripts_base_url_Aaron-lv=`${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/`
 my_scripts_list_Aaron-lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js"
 
 # shufflewzc
@@ -157,7 +157,7 @@ echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
   eval scripts_list=\$my_scripts_list_$author
   eval url_list=\$scripts_base_url_$author
-echo -e $url_list
+    echo -e $url_list
   ## 判断脚本来源仓库
   format_url=$(echo $url_list | awk -F '.com' '{print$NF}' | sed 's/.$//')
   if [[ $(echo $url_list | egrep -o "github|gitee") == "github" ]]; then
