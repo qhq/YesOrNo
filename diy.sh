@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 14:00"
+echo -e " 2021-08-08 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -395,7 +395,8 @@ echo -e "+-------------- smiek2221 脚本 --------------+"
 n
 a $.InviteLists = []\n$.InviteLists.push(...$.InviteList);\nawait $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)
 }" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js && echo -e " 财富大陆拉取私库已添加"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|https:\/\/jd\.smiek\.tk\/info_carnivalcity|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|https:\/\/cdn\.jsdelivr\.net\/.*?\.json||ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+--------------- Aaron-lv 脚本 --------------+"
