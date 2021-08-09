@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 15:00"
+echo -e " 2021-08-08 19:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -127,7 +127,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
@@ -416,6 +416,8 @@ sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${S
 sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
 sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
 sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
+sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
+perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
 
