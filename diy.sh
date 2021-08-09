@@ -417,7 +417,7 @@ sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e 
 sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
 sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
 sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
 
