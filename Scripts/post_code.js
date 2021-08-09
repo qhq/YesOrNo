@@ -1,4 +1,5 @@
 /*
+/*
 一键获取我仓库所有需要互助类脚本的互助码(邀请码)(其中京东赚赚jd_jdzz.js如果今天达到5人助力则不能提取互助码)
 没必要设置(cron)定时执行，需要的时候，自己手动执行一次即可
 ============Quantumultx===============
@@ -939,6 +940,62 @@ function taskHalthUrl(function_id, body = {}) {
 }
 //京东健康获取互助码结束
 
+//手机狂欢城获取互助码结束
+function getCarnivalcity() {
+  return new Promise(resolve => {
+    const options = taskCarnPostUrl("/khc/task/getSupport", {});
+    $.post(options, async (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`${$.name} API请求失败，请检查网路重试`)
+        } else {
+          data = JSON.parse(data);
+          if (data.code === 200) {
+            $.log(`【京东账号${$.index}（${$.UserName}）手机狂欢城】${data.data.shareId}\n\n`);
+            await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/carnivalcity/${data.data.shareId}/${$.UserName}`).then((text) => (console.log(text)));
+          } else {
+            console.log(`获取邀请码失败：${JSON.stringify(data)}`);
+            if (data.code === 1002) $.blockAccount = true;
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
+function randomString(e) {
+  e = e || 32;
+  let t = "abcdef0123456789", a = t.length, n = "";
+  for (i = 0; i < e; i++)
+    n += t.charAt(Math.floor(Math.random() * a));
+  return n
+}
+
+function taskCarnPostUrl(a,t = {}) {
+  const body = $.toStr({...t,"apiMapping":`${a}`})
+  return {
+    url: `${JD_API_HOST}`,
+    body: `appid=guardian-starjd&functionId=carnivalcity_jd_prod&body=${body}&t=${Date.now()}&loginType=2`,
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Accept-Language": "zh-cn",
+      "Connection": "keep-alive",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Origin": "https://carnivalcity.m.jd.com",
+      "Referer": "https://carnivalcity.m.jd.com/",
+      "Cookie": cookie,
+      "User-Agent": `jdapp;iPhone;10.0.10;14.3;${randomString(40)};network/wifi;model/iPhone12,1;addressid/4199175193;appBuild/167741;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`
+
+    }
+  }
+}
+//手机狂欢城获取互助码结束
+
 //惊喜牧场获取互助码开始
 const JXUserAgent = $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``) : ``;
 async function getJxmc() {
@@ -1231,6 +1288,7 @@ async function getShareCode(num) {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
     console.log(`======账号${$.index}开始======\n`)
     //if (new Date(nowTime).getHours() > 1) {
+	await getCarnivalcity();
     await getJDFruit();
     await getJdPet();
     await getPlantBean();
