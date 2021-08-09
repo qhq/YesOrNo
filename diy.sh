@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 15:00"
+echo -e " 2021-08-08 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -33,11 +33,11 @@ author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wen
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_plantBean.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
-my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js jukan.js txnews.js"
+my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js txnews.js"
 
 # yangtingxiao
 # https://github.com/yangtingxiao/QuantumultX/tree/master
@@ -483,7 +483,7 @@ echo -e "+--------------------------------------------+\n"
 echo -e "+--------------- 暂时停用脚本 ---------------+"
 js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_jd_summer_movement_help jd_speed_redEnvelope jd_joy_park panghu_jd_joy-park panghu_jd_pk jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign"
 for js_item in $js_List; do
-    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " \033[32m[已注释]\033[0m $js_item"
+    sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " \033[32m[已停用]\033[0m $js_item"
     #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
 done
 echo -e "+--------------------------------------------+\n"
@@ -500,7 +500,7 @@ echo -e "+--------------------------------------------+\n"
 
 ## 删除过期活动
 echo -e "+-------------- 删除过期脚本 ---------------+"
-js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement qhqcz_jd_summer_movement panghu_jd_wish panghu_jd_wsdlb"
+js_List="star261_jd_summer_movement star261_jd_summer_movement_bet smiek2221_jd_summer_movement_help smiek2221_jd_summer_movement qhqcz_jd_summer_movement panghu_jd_wish panghu_jd_wsdlb Sunert_jukan"
 for js_item in $js_List; do
     rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
 done
