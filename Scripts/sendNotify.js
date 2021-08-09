@@ -212,6 +212,8 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
   //提供6种通知
   //desp += author;//增加作者信息，防止被贩卖等
   let PPTs = '';
+  let DD_BOT_TOKEN = '';
+  let DD_BOT_SECRET = '';
   if (process.env.PUSH_PLUS_TOKEN) {
     PUSH_PLUS_TOKEN = process.env.PUSH_PLUS_TOKEN;
   }
