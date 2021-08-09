@@ -1287,22 +1287,22 @@ function submitCode(code, type) {
 async function getShareCode(num) {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
     console.log(`======账号${$.index}开始======\n`)
-    //if (new Date(nowTime).getHours() > 1) {
-	await getCarnivalcity();
-    await getJDFruit();
-    await getJdPet();
-    await getPlantBean();
-    await getJdFactory();
-    await getJxFactory();
-    await getJxNc();
-    await getJdZZ();
-    await getJoy();
-    await getSgmh();
-    await getCFD();
-    await getJdCash();
-    await getJxmc();
-    await getHalth();
-    //}
+    await getCarnivalcity();
+    if (new Date(nowTime).getHours() > 1) {
+	    await getJDFruit();
+	    await getJdPet();
+	    await getPlantBean();
+	    await getJdFactory();
+	    await getJxFactory();
+	    await getJxNc();
+	    await getJdZZ();
+	    await getJoy();
+	    await getSgmh();
+	    await getCFD();
+	    await getJdCash();
+	    await getJxmc();
+	    await getHalth();
+    }
     console.log(`\n======账号${$.index}结束======\n`)
 }
 // prettier-ignore
