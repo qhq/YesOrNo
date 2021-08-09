@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 17:00"
+echo -e " 2021-08-08 14:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -386,8 +386,6 @@ echo -e "+--------------------------------------------+\n"
 #echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- smiek2221 脚本 --------------+"
-#[ $(grep -c "xinhunshang.xyz:6001/submit_activity_codes" ${ScriptsDir}/smiek2221_jd_summer_movement.js) -eq 0 ] && sed -i "/\\$.inviteList.push({/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/summer/$\{data.data.result.inviteId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日提交私库已添加"
-#[ $(grep -c "xinhunshang.xyz:6001/help" ${ScriptsDir}/smiek2221_jd_summer_movement.js) -eq 0 ] && sed -i "/开始内部京东账号【邀请好友助力】/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/summer/2/5').then((text) => ($.inviteList = $.inviteList.concat(JSON.parse(text).data)));"  ${ScriptsDir}/smiek2221_jd_summer_movement.js >/dev/null 2>&1 && echo -e " 燃动夏日拉取私库已添加"
 #[ $(grep -c "xinhunshang" ${ScriptsDir}/smiek2221_gua_wealth_island.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
 #[ $(grep -c "xinhunshang" ${ScriptsDir}/smiek2221_gua_wealth_island.js) -eq 0 ] && sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)"  ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
 [ $(grep -c "xinhunshang.xyz:6001/submit_activity_codes" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
@@ -397,6 +395,7 @@ echo -e "+-------------- smiek2221 脚本 --------------+"
 n
 a $.InviteLists = []\n$.InviteLists.push(...$.InviteList);\nawait $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)
 }" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js && echo -e " 财富大陆拉取私库已添加"
+perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+--------------- Aaron-lv 脚本 --------------+"
@@ -447,8 +446,6 @@ sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
 sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task.js && echo -e " 汪汪乐园ck失效通知移除"
 [ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }"  ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
-
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/.*?\`|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/qhqcz_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 
 
 ## 验证调用
