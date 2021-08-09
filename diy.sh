@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 14:00"
+echo -e " 2021-08-08 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -157,7 +157,7 @@ echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
   eval scripts_list=\$my_scripts_list_$author
   eval url_list=\$scripts_base_url_$author
-
+echo -e $url_list
   ## 判断脚本来源仓库
   format_url=$(echo $url_list | awk -F '.com' '{print$NF}' | sed 's/.$//')
   if [[ $(echo $url_list | egrep -o "github|gitee") == "github" ]]; then
@@ -182,6 +182,7 @@ for author in $author_list; do
 
   for js in $scripts_list; do
     eval url=$url_list$js
+    echo -e $url
     eval name=$author"_"$js
     wget -q --no-check-certificate $url -O ${ScriptsDir}/$name.new
     if [ $? -eq 0 ]; then
