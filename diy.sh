@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-08 15:00"
+echo -e " 2021-08-08 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -62,7 +62,7 @@ my_scripts_list_panghu=""
 # star261
 # https://github.com/star261/jd/tree/main/
 scripts_base_url_star261=${ProxyJudge}https://raw.githubusercontent.com/star261/jd/main/scripts/
-my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js jd_fan.js"
+my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js jd_fan.js jd_golden_machine.js"
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
