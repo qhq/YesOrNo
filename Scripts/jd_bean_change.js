@@ -28,6 +28,7 @@ const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const JD_API_HOST = 'https://api.m.jd.com/', actCode = 'visa-card-001';
 let allMessage = '';
+let ONE_BY_ONE = $.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
 if ($.isNode()) {
@@ -88,7 +89,7 @@ if ($.isNode()) {
 async function showMsg() {
   if ($.errorMsg) return
   allMessage += `账号${$.index}：${$.UserName}\n今日收入：${$.todayIncomeBean}京豆\n昨日收入：${$.incomeBean}京豆\n昨日支出：${$.expenseBean}京豆\n当前京豆：${$.beanCount}(今日将过期${$.expirejingdou})京豆${$.message}${$.index !== cookiesArr.length ? '\n\n' : ''}`;
-  if ($.isNode()) {
+  if ($.isNode() && ONE_BY_ONE) {
     await notify.sendNotify2(`${$.name} - 账号${$.index} - ${$.UserName}`, `账号${$.index}：${$.UserName}\n昨日收入：${$.incomeBean}京豆\n昨日支出：${$.expenseBean}京豆\n当前京豆：${$.beanCount}京豆${$.message}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
   }
   $.msg($.name, '', `账号${$.index}：${$.UserName}\n今日收入：${$.todayIncomeBean}京豆\n昨日收入：${$.incomeBean}京豆\n昨日支出：${$.expenseBean}京豆\n当前京豆：${$.beanCount}(今日将过期${$.expirejingdou})京豆${$.message}`, {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
