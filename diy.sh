@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-10 15:00"
+echo -e " 2021-08-10 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -200,7 +200,7 @@ for author in $author_list; do
         script_date="0 0,7,10 * * *" # 指定京喜工厂开团脚本定时
       else
         if [[ ${script_date_standard} == "" ]]; then
-          script_date=$(cat ${ScriptsDir}/$name | grep "cron" | head -n 1 | sed "s/[a-zA-Z]//g" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5; else if ($1~/^[*]/) print $2,$3,$4,$5,$6}')
+          script_date=$(cat ${ScriptsDir}/$name | egrep "cron|script-path|tag|$name" | head -n 1 | sed "s/[a-zA-Z\"\-\.\=\:\_]//g" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5; else if ($1~/^[*]/) print $2,$3,$4,$5,$6}')
         else
           script_date=${script_date_standard}
         fi
