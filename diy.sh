@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-10 11:00"
+echo -e " 2021-08-10 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -358,7 +358,7 @@ sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不�
 sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
 [ $(grep -c "ONE_BY_ONE" scripts/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\let ONE_BY_ONE = \\$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';"  scripts/jd_dreamFactory.js >/dev/null 2>&1
-[ $(grep -c "&& ONE_BY_ONE" scripts/jd_dreamFactory.js) -eq 0 ] && sed -i "/&& allMessage/i\    if (\$.isNode() && allMessage && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`\${allMessage}\`, { url: jxOpenUrl })\n    }"  scripts/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 1对1推送已添加"
+[ $(grep -c "&& ONE_BY_ONE" scripts/jd_dreamFactory.js) -eq 0 ] && sed -i "/await jdDreamFactory()/a\    if (\$.isNode() && allMessage && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`\${allMessage}\`, { url: jxOpenUrl })\n    }"  scripts/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 1对1推送已添加"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
