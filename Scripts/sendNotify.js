@@ -265,9 +265,10 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
         //serverWecomNotify(text, desp), // 自建server酱推送
         pushPlusNotify(text, desp)//pushplus(推送加)
     ])
+    PUSH_PLUS_TOKEN = ''
     //由于上述两种微信通知需点击进去才能查看到详情，故text(标题内容)携带了账号序号以及昵称信息，方便不点击也可知道是哪个京东哪个活动
-    text = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
     /*
+    text = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
     await Promise.all([
         BarkNotify(text, desp, params),//iOS Bark APP
         tgBotNotify(text, desp),//telegram 机器人
