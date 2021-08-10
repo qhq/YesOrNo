@@ -364,9 +364,9 @@ if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ]; then
 fi
 [ $(grep -c "let ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\let ONE_BY_ONE = \\$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
 if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ]; then
-    sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
+    sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+    sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+    sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\\\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
 fi
 echo -e "+--------------------------------------------+\n"
 
