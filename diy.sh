@@ -359,7 +359,7 @@ sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力
 sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
 [ $(grep -c "ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\let ONE_BY_ONE = \\$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';"  ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
 [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/await jdDreamFactory()/a\    if (\$.isNode() && allMessage && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`\${allMessage}\`, { url: jxOpenUrl })\n    }"  ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂1对1推送已添加"
-[ $(grep -c "ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/const jdCookieNode/a\let ONE_BY_ONE = \\$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+[ $(grep -c "ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\let ONE_BY_ONE = \\$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
 [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE) {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
 echo -e "+--------------------------------------------+\n"
 
