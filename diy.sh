@@ -473,30 +473,6 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 
-## 自动提取脚本名称注释
-js_List=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
-if [ -n "$js_List" ]; then
-echo -e "+----------------- 添加注释 -----------------+"
-    for Cron in ${js_List}; do
-        #echo -e "${ScriptsDir}/${Cron##* }.js"
-        jname=${Cron##* }
-        if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-            jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
-            jbz=$(echo ${jbz/\"/\'})
-            jbz=$(echo ${jbz/\"/\'})
-            jbz=$(echo ${jbz#*\'})
-            jbz=$(echo ${jbz%\'*})
-            #echo " $jname : $jbz"
-            #grep -cEi "^# ${jbz}\$" ${ListCron}
-            if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
-                echo " $jname : $jbz"
-                sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
-            fi
-        fi
-    done
-echo -e "+--------------------------------------------+\n"
-fi
-
 ## 注释指定活动
 js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign Aaron_lv_jd_cfdtx"
 if [ -n "$js_List" ]; then
@@ -529,6 +505,28 @@ echo -e "+-------------- 删除过期脚本 ---------------+"
     done
 echo -e "+--------------------------------------------+\n"
 fi
+
+## 自动提取脚本名称注释
+echo -e "+----------------- 添加注释 -----------------+"
+js_List=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
+for Cron in ${js_List}; do
+    #echo -e "${ScriptsDir}/${Cron##* }.js"
+    jname=${Cron##* }
+    if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
+        jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz#*\'})
+        jbz=$(echo ${jbz%\'*})
+        #echo " $jname : $jbz"
+        #grep -cEi "^# ${jbz}\$" ${ListCron}
+        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
+            echo " $jname : $jbz"
+            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+        fi
+    fi
+done
+echo -e "+--------------------------------------------+\n"
 
 
 ############################## 同步文件 ##########################################
