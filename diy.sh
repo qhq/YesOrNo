@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-10 12:00"
+echo -e " 2021-08-10 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -257,8 +257,7 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/京东账号(.*?)\\$\{\\$.nickName\}/京东账号\1\\$\{\\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
-        echo -e " ${file}："
-        echo -e "\n"
+        echo -en " ${file} | "
         echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file})
         perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[)([\s\S]*?)(\])/\1''\3/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
@@ -475,26 +474,28 @@ echo -e "+--------------------------------------------+\n"
 
 
 ## 自动提取脚本名称注释
+js_List=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
+if [ -n "$js_List" ]; then
 echo -e "+----------------- 添加注释 -----------------+"
-JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
-for Cron in ${JsList}; do
-    #echo -e "${ScriptsDir}/${Cron##* }.js"
-    jname=${Cron##* }
-    if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-        jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
-        jbz=$(echo ${jbz/\"/\'})
-        jbz=$(echo ${jbz/\"/\'})
-        jbz=$(echo ${jbz#*\'})
-        jbz=$(echo ${jbz%\'*})
-        #echo " $jname : $jbz"
-        #grep -cEi "^# ${jbz}\$" ${ListCron}
-        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
-            echo " $jname : $jbz"
-            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+    for Cron in ${js_List}; do
+        #echo -e "${ScriptsDir}/${Cron##* }.js"
+        jname=${Cron##* }
+        if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
+            jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
+            jbz=$(echo ${jbz/\"/\'})
+            jbz=$(echo ${jbz/\"/\'})
+            jbz=$(echo ${jbz#*\'})
+            jbz=$(echo ${jbz%\'*})
+            #echo " $jname : $jbz"
+            #grep -cEi "^# ${jbz}\$" ${ListCron}
+            if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
+                echo " $jname : $jbz"
+                sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+            fi
         fi
-    fi
-done
+    done
 echo -e "+--------------------------------------------+\n"
+fi
 
 ## 注释指定活动
 js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign Aaron_lv_jd_cfdtx"
