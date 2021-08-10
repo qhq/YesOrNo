@@ -485,7 +485,7 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
-js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop smiek2221_jd_summer_movement_help jd_speed_redEnvelope jd_joy_park panghu_jd_joy-park panghu_jd_pk jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign"
+js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign shufflewzc_jd_try"
 if [ -n "$js_List" ]; then
 echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
