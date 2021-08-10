@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-09 13:00"
+echo -e " 2021-08-10 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -132,7 +132,7 @@ my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js
 # shufflewzc
 # https://github.com/shufflewzc/faker2
 scripts_base_url_shufflewzc=${ProxyJudge}https://raw.githubusercontent.com/shufflewzc/faker2/main/
-my_scripts_list_shufflewzc="jd_mb.js"
+my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js"
 
 # zero205
 # https://github.com/zero205/JD_tencent_scf
@@ -508,7 +508,7 @@ echo -e "+--------------------------------------------+\n"
 fi
 
 ## 删除过期活动
-js_List="qhqcz_jd_plantBean Sunert_jukan qhqcz_gua_carnivalcity"
+js_List="qhqcz_jd_plantBean Sunert_jukan qhqcz_gua_carnivalcity shufflewzc_jd_mb"
 if [ -n "$js_List" ]; then
 echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
