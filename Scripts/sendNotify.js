@@ -239,6 +239,9 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
             if (text.match(new RegExp(account['pt_pin'], 'gm')) && account['PUSH_PLUS_TOKEN'] !== '') {
                 PUSH_PLUS_TOKEN = account['PUSH_PLUS_TOKEN']
             }
+            if (desp.match(new RegExp(account['pt_pin'], 'gm')) && account['PUSH_PLUS_TOKEN'] !== '') {
+                PUSH_PLUS_TOKEN = account['PUSH_PLUS_TOKEN']
+            }
         }
     }
 
