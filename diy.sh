@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-10 14:00"
+echo -e " 2021-08-10 15:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -245,28 +245,6 @@ echo -e "+--------------------------------------------+\n"
 fi
 
 
-echo -e "+----------------- 添加注释 -----------------+"
-JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
-for Cron in ${JsList}; do
-    #echo -e "${ScriptsDir}/${Cron##* }.js"
-    jname=${Cron##* }
-    if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
-        jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
-        jbz=$(echo ${jbz/\"/\'})
-        jbz=$(echo ${jbz/\"/\'})
-        jbz=$(echo ${jbz#*\'})
-        jbz=$(echo ${jbz%\'*})
-        #echo " $jname : $jbz"
-        #grep -cEi "^# ${jbz}\$" ${ListCron}
-        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
-            echo " $jname : $jbz"
-            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
-        fi
-    fi
-done
-echo -e "+--------------------------------------------+\n"
-
-
 echo -e "+----------------- 清理内置 -----------------+"
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
@@ -279,8 +257,8 @@ for file in $(ls $ScriptsDir); do
         perl -0777 -i -pe "s/京东账号(.*?)\\$\{\\$.nickName\}/京东账号\1\\$\{\\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file}) -ne '0' ]; then
-        echo -en " ${file} | "
-        echo $(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?" ${ScriptsDir}/${file})
+        echo -e " ${file}："
+        echo -e `\n$(grep -nEi "(let \w+Codes|const \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[[\s\S]*?"` ${ScriptsDir}/${file})
         perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID|const shareCodeArr|innerPkInviteList|authorCodeList|InviteList) = \[)([\s\S]*?)(\])/\1''\3/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "(helpAu.*?) = true" ${ScriptsDir}/${file}) -ne '0' ]; then
@@ -492,6 +470,29 @@ if [[ $iCan = "true" ]]; then
     sed -i "/YouthBodys = \[process\.env\.YOUTH_READ\]$/r ${ScriptsDir}/Sunert_Youth_Read.txt" ${ScriptsDir}/Sunert_Youth_Read.js
     sed -i "/timebodyVal = \$\.getdata('autotime_zq');$/r ${ScriptsDir}/Sunert_Youth_Read_Time.txt" ${ScriptsDir}/Sunert_Youth_Read.js
 fi
+echo -e "+--------------------------------------------+\n"
+
+
+## 自动提取脚本名称注释
+echo -e "+----------------- 添加注释 -----------------+"
+JsList=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
+for Cron in ${JsList}; do
+    #echo -e "${ScriptsDir}/${Cron##* }.js"
+    jname=${Cron##* }
+    if [ -e ${ScriptsDir}/${Cron##* }.js ]; then
+        jbz=$(sed -n "/new Env(\S\+);/p" ${ScriptsDir}/${Cron##* }.js)
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz/\"/\'})
+        jbz=$(echo ${jbz#*\'})
+        jbz=$(echo ${jbz%\'*})
+        #echo " $jname : $jbz"
+        #grep -cEi "^# ${jbz}\$" ${ListCron}
+        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
+            echo " $jname : $jbz"
+            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+        fi
+    fi
+done
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
