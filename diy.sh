@@ -117,7 +117,7 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_s
 # jiulan
 # https://github.com/jiulan/platypus/
 scripts_base_url_jiulan=${ProxyJudge}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js"
+my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js jd_shop_sign.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
