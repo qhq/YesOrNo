@@ -297,7 +297,7 @@ function goCQhttp(text, desp) {
 
         return new Promise(resolve => {
             $.get({
-                url: `http://${go_cqhttp_url}/${go_cqhttp_method}?${recv_id}=${go_cqhttp_qq}&message=${escape(msg)}`
+                url: `http://${go_cqhttp_url}/${go_cqhttp_method}?${recv_id}=${go_cqhttp_qq}&message=${encodeURIComponent(msg)}`
             }, (err, resp, data) => {
                 if (!err) {
                     try {
