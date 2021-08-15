@@ -91,7 +91,7 @@ my_scripts_list_songyangzz="jd_joy.js"
 
 # cdle
 # https://github.com/cdle/jd_study
-scripts_base_url_cdle=${ProxyJudge}https://raw.githubusercontent.com/cdle/jd_study/main/
+scripts_base_url_cdle=${ProxyJudge}https://raw.githubusercontent.com/cdle/xdd/main/scripts/
 my_scripts_list_cdle="jd_angryBean.js"
 
 # qqsdff
