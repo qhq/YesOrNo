@@ -213,7 +213,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n仅供用于学
         qywxBotNotify(text, desp), //企业微信机器人
         qywxamNotify(text, desp), //企业微信应用消息推送
         iGotNotify(text, desp, params),//iGot
-        goCQhttp(text, desp)  // go-cqhttp
+        goCQhttp2(text, desp)  // go-cqhttp
     ])
 }
 async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于学习') {
@@ -280,25 +280,28 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
         qywxBotNotify(text, desp), //企业微信机器人
         qywxamNotify(text, desp), //企业微信应用消息推送
         iGotNotify(text, desp, params),//iGot
-        goCQhttp(text, desp)  // go-cqhttp
+        goCQhttp2(text, desp)  // go-cqhttp
     ])
     */
 }
 function goCQhttp(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
-        let msg = (text + '\n' + desp).replace("\n\n仅供用于学习", '');
-
+        let msg = (text + '\n' + desp);
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
         } else if (go_cqhttp_method === 'send_group_msg') {
             recv_id = 'group_id'
         }
-
         return new Promise(resolve => {
             $.get({
-                url: `http://${go_cqhttp_url}/${go_cqhttp_method}?${recv_id}=${go_cqhttp_qq}&message=${encodeURIComponent(msg)}`
+                url: `http://${go_cqhttp_url}/${go_cqhttp_method}?${recv_id}=${go_cqhttp_qq}&message=${encodeURIComponent(msg)}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                timeout
             }, (err, resp, data) => {
+                console.log(resp)
                 if (!err) {
                     try {
                         // console.log(data);
@@ -317,6 +320,66 @@ function goCQhttp(text, desp) {
             })
         })
     }
+}
+
+function goCQhttp2(text, desp) {
+    if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
+        let msg = (text + '\n' + desp);
+		let msgArr=getStrArr(msg,100);
+        let recv_id = ''
+        if (go_cqhttp_method === 'send_private_msg') {
+            recv_id = 'user_id'
+        } else if (go_cqhttp_method === 'send_group_msg') {
+            recv_id = 'group_id'
+        }
+		for(var i=0;i<msgArr.length;i++){
+			sendCQhttp(go_cqhttp_url,go_cqhttp_method,go_cqhttp_qq,recv_id,msgArr[i]);
+			$.wait(1000);
+			
+		}
+    }
+}
+
+function sendCQhttp(go_cqhttp_url,go_cqhttp_method,go_cqhttp_qq,recv_id,msg){
+	  return new Promise(resolve => {
+				$.get({
+					url: `http://${go_cqhttp_url}/${go_cqhttp_method}?${recv_id}=${go_cqhttp_qq}&message=${encodeURI(msg)}`,
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					timeout
+				}, (err, resp, data) => {
+					console.log(resp)
+					if (!err) {
+						try {
+							// console.log(data);
+							data = JSON.parse(data);
+							if (data.retcode === 0 && data.status === 'ok') {
+								console.log('go-cqhttp发送通知消息成功🎉\n')
+							} else {
+								console.log(`go-cqhttp发送通知消息异常\n`)
+							}
+						} catch (e) {
+							$.logErr(e, resp)
+						} finally {
+							resolve(200)
+						}
+					}
+				})
+			})
+}
+function getStrArr(msg,size){
+	let msgArr=[];
+	while(true){
+		if(msg.length>size){
+			msgArr.push(msg.substr(0,size));
+			msg=msg.substr(size,msg.length);
+		}else{
+			msgArr.push(msg);
+			break;
+		}
+	}
+	return msgArr;
 }
 
 function serverNotify(text, desp, time = 2100) {
