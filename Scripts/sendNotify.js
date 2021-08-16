@@ -337,7 +337,7 @@ function goCQhttp(text, desp) {
             })
         })
     } else {
-        console.log('\n\n您未提供自建go-cqhttp的参数，取消推送go-cqhttp消息通知🚫\n');
+        console.log('您未提供自建go-cqhttp的参数，取消推送go-cqhttp消息通知🚫\n');
         resolve()
     }
 }
@@ -358,7 +358,7 @@ function goCQhttp2(text, desp) {
 
         }
     } else {
-        console.log('\n\n您未提供自建go-cqhttp的参数，取消推送go-cqhttp消息通知🚫\n');
+        console.log('您未提供自建go-cqhttp的参数，取消推送go-cqhttp消息通知🚫\n');
         resolve()
     }
 }
@@ -444,7 +444,7 @@ function serverNotify(text, desp, time = 2100) {
                 })
             }, time)
         } else {
-            console.log('\n\n您未提供server酱的SCKEY，取消微信推送消息通知🚫\n');
+            console.log('您未提供server酱的SCKEY，取消微信推送消息通知🚫\n');
             resolve()
         }
     })
@@ -489,7 +489,7 @@ function serverWecomNotify(text, desp, time = 2100) {
                 })
             }, time)
         } else {
-            console.log('\n\n您未提供自建server酱的SCKEY，取消推送自建server酱消息通知🚫\n');
+            console.log('您未提供自建server酱的SCKEY，取消推送自建server酱消息通知🚫\n');
             resolve()
         }
     })
