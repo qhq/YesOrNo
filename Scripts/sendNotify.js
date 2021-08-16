@@ -285,7 +285,7 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
         //qywxBotNotify(text, desp), //企业微信机器人
         //qywxamNotify(text, desp), //企业微信应用消息推送
         //iGotNotify(text, desp, params),//iGot
-        goCQhttp(text, desp)  // go-cqhttp
+        goCQhttp2(text, desp)  // go-cqhttp
     ])
 
     if (process.env.PUSH_PLUS_TOKEN) {
@@ -303,7 +303,7 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
 }
 function goCQhttp(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
-        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g', '');
+        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g','');
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
@@ -344,8 +344,8 @@ function goCQhttp(text, desp) {
 
 function goCQhttp2(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
-        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g', '');
-        let msgArr = getStrArr(msg, 1000);
+        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g','');
+		let msgArr=getStrArr(msg,2000);
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
