@@ -28,7 +28,7 @@ Object.keys(jdCookieNode).forEach((item) => {
   var array = remarks.match(/## pt_pin=(.*?) 上次更新：(.*?) /g);
   //console.log(array);
   let nowTime = new Date(parseInt(new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000)).toLocaleDateString();
-  cookiesArr = ["pt_key=aAJhCKwnADDUkK7JYIVg2lK-aWJxsTwdblZ34N9v5YsXM9IeWkSb6rG8h83Al4JUrfJxlprPTB4;pt_pin=qhqcz;"]
+
   for (let i = 0; i < cookiesArr.length; i++) {
     $.cookie = cookiesArr[i];
     $.isLogin = true;
