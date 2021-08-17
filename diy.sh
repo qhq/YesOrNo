@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-15 12:00"
+echo -e " 2021-08-15 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -428,9 +428,9 @@ sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNoti
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
 sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
-perl -0777 -i -pe "s|name_script=.*?\)|name_script=(\r        jd_fruit\r        jd_pet\r        jd_plantBean\r        jd_jdfactory\r        jd_dreamFactory\r        jd_jxnc\r        jd_bookshop\r        jd_cash\r        jd_sgmh\r        jd_health\r        jd_carnivalcity\r        jd_city\r    )|s" $ShellDir/jd.sh
-perl -0777 -i -pe "s|name_config=.*?\)|name_config=(\r        Fruit\r        Pet\r        Bean\r        JdFactory\r        DreamFactory\r        Jxnc\r        BookShop\r        Cash\r        Sgmh\r        Health\r        Carni\r        City\r    )|s" $ShellDir/jd.sh
-perl -0777 -i -pe "s|name_chinese=.*?\)|name_chinese=(\r        东东农场\r        东东萌宠\r        京东种豆得豆\r        东东工厂\r        京喜工厂\r        京喜农场\r        口袋书店\r        签到领现金\r        闪购盲盒\r        东东健康社区\r        京东手机狂欢城\r        城城领现金\r    )|s" $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
+perl -0777 -i -pe "s|name_script=.*?\)|name_script=(\r\n        jd_fruit\r\n        jd_pet\r\n        jd_plantBean\r\n        jd_jdfactory\r\n        jd_dreamFactory\r\n        jd_jxnc\r\n        jd_bookshop\r\n        jd_cash\r\n        jd_sgmh\r\n        jd_health\r\n        jd_carnivalcity\r\n        jd_city\r\n    )|s" $ShellDir/jd.sh
+perl -0777 -i -pe "s|name_config=.*?\)|name_config=(\r\n        Fruit\r\n        Pet\r\n        Bean\r\n        JdFactory\r\n        DreamFactory\r\n        Jxnc\r\n        BookShop\r\n        Cash\r\n        Sgmh\r\n        Health\r\n        Carni\r\n        City\r\n    )|s" $ShellDir/jd.sh
+perl -0777 -i -pe "s|name_chinese=.*?\)|name_chinese=(\r\n        东东农场\r\n        东东萌宠\r\n        京东种豆得豆\r\n        东东工厂\r\n        京喜工厂\r\n        京喜农场\r\n        口袋书店\r\n        签到领现金\r\n        闪购盲盒\r\n        东东健康社区\r\n        京东手机狂欢城\r\n        城城领现金\r\n    )|s" $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
 #sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
