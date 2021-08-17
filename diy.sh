@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-15 18:00"
+echo -e " 2021-08-15 11:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -428,9 +428,9 @@ sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNoti
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
 sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
-sed -i 's|Name1=.*\?)|Name1=(fruit pet plantBean jdfactory dreamFactory crazy_joy jdzz cash sgmh cfd health)|' $ShellDir/jd.sh
-sed -i 's|Name2=.*\?)|Name2=(东东农场 东东萌宠 京东种豆得豆 东东工厂 京喜工厂 crazyJoy任务 京东赚赚 签到领现金 闪购盲盒 京喜财富岛 东东健康社区)|' $ShellDir/jd.sh
-sed -i 's|Name3=.*\?)|Name3=(Fruit Pet Bean JdFactory dreamFactory Joy Jdzz Cash Sgmh Cfd Health)|' $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
+perl -0777 -i -pe "s|name_script=.*?\)|name_script=(\r\tjd_fruit\r\tjd_pet\r\tjd_plantBean\r\tjd_jdfactory\r\tjd_dreamFactory\r\tjd_jxnc\r\tjd_bookshop\r\tjd_cash\r\tjd_sgmh\r\tjd_health\r\tjd_carnivalcity\r\tjd_city\r    )|s" $ShellDir/jd.sh
+perl -0777 -i -pe "s|name_config=.*?\)|name_config=(\r\tFruit\r\tPet\r\tBean\r\tJdFactory\r\tDreamFactory\r\tJxnc\r\tBookShop\r\tCash\r\tSgmh\r\tHealth\r\tCarni\r\tCity\r    )|s" $ShellDir/jd.sh
+perl -0777 -i -pe "s|name_chinese=.*?\)|name_chinese=(\r\t东东农场\r\t东东萌宠\r\t京东种豆得豆\r\t东东工厂\r\t京喜工厂\r\t京喜农场\r\t口袋书店\r\t签到领现金\r\t闪购盲盒\r\t东东健康社区\r\t京东手机狂欢城\r\t城城领现金\r    )|s" $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
 #sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
