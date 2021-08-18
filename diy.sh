@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 15:00"
+echo -e " 2021-08-17 16:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -29,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 yangtingxiao longzhuzhu moposmall panghu Wenmoux JDHelloWorld passerby star261 curtinlv SuperManito cdle jiulan Tsukasa007 Annyoo2021 Aaron_lv shufflewzc zero205"
+author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiulan cdle JDHelloWorld SuperManito longzhuzhu moposmall panghu Wenmoux passerby Tsukasa007 Annyoo2021 shufflewzc zero205 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -138,6 +138,11 @@ my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js"
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${ProxyJudge}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
 my_scripts_list_zero205="jd_dpqd.js"
+
+# airacg
+# https://github.com/airacg/jd_task
+scripts_base_url_airacg=${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/
+my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js"
 
 
 ############################## 随机函数 ##########################################
@@ -445,15 +450,22 @@ grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_
 
 ## 验证调用
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/sendNotify.js -O ${ScriptsDir}/sendNotify.js
-#sed -i "s|require('\./sign_graphics_validate\.js')|require('./smiek2221_sign_graphics_validate.js')|" $ScriptsDir/smiek2221_jd_sign_graphics.js && echo -e " smiek2221_jd_sign_graphics 调用已修正"
-#sed -i "s|require('\./MovementFaker\.js')|require('./smiek2221_MovementFaker.js')|" $ScriptsDir/smiek2221_jd_summer_movement.js && echo -e " smiek2221_jd_summer_movement 调用已修正"
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/sign_graphics_validate.js -O ${ScriptsDir}/sign_graphics_validate.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
+## utils
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
+## function
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/common.js -O ${ScriptsDir}/function/common.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/config.js -O ${ScriptsDir}/function/config.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/eval.js -O ${ScriptsDir}/function/eval.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdValidate.js -O ${ScriptsDir}/function/jdValidate.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdcookie.js -O ${ScriptsDir}/function/jdcookie.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jxAlgo.js -O ${ScriptsDir}/function/jxAlgo.js
+wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/sendNotify.js -O ${ScriptsDir}/function/sendNotify.js
 
 
 if [[ $iCan = "true" ]]; then
