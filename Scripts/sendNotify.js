@@ -344,8 +344,8 @@ function goCQhttp(text, desp) {
 
 function goCQhttp2(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
-        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g','');
-		let msgArr=getStrArr(msg,2000);
+        let msg = (text + '\n' + desp)//.replace('/[^\u4e00-\u9fa5\w]/g','');
+	let msgArr=getStrArr(msg,2000);
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
