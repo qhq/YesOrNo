@@ -437,15 +437,13 @@ sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已
 #perl -0777 -i -pe "s|name_chinese=.*?\)|name_chinese=(东东农场\r\n        东东萌宠\r\n        京东种豆得豆\r\n        东东工厂\r\n        京喜工厂\r\n        京喜农场\r\n        口袋书店\r\n        签到领现金\r\n        闪购盲盒\r\n        东东健康社区\r\n        京东手机狂欢城\r\n        城城领现金\r\n    )|s" $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
 #sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
-grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
-#sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
 sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task.js && echo -e " 汪汪乐园ck失效通知移除"
 [ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }"  ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
 [ -f ${ConfigDir}/sendNotify.json ] && cp ${ConfigDir}/sendNotify.json ${ScriptsDir}/tools/sendNotify.json
 perl -0777 -i -pe "s/await \\$.notify.sendNotify\(\`\\$\{\\$.name\}\`, notifyMsg\);//ig" ${ScriptsDir}/shufflewzc_jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
-grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
+
 
 ## 验证调用
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/sendNotify.js -O ${ScriptsDir}/sendNotify.js
@@ -568,6 +566,12 @@ echo -e "+--------------------------------------------+\n"
 
 ## 修正定时
 #grep -q "bash git_pull" ${ListCron} && sed -i "/&*bash git_pull/c$(rand 1 59) 1,7,13,19 \* \* \* sleep $(rand 1 59) && bash git_pull >>\$\{JD_DIR\}\/log\/git_pull.log 2>&1" ${ListCron}
+grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
+#sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
+grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
+grep -q "airacg_jd-task-validate" ${ListCron} && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * bash jd airacg_jd-task-validate/ig" ${ListCron}
+grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*?&& bash jd airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && bash jd airacg_jd-reward-joy/ig" ${ListCron}
+grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash jd airacg_jd-reward-joy/0 0-16/8 * * * bash jd airacg_jd-reward-joy/ig" ${ListCron}
 
 #检查添加京喜团ID变量
 #if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
