@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 17:00"
+echo -e " 2021-08-17 14:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -488,7 +488,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 ## 注释指定活动
-js_List="jd_bean_change qhqcz_jd_enen passerby_jd_fruit2 passerby_jd_dreamFactory2 jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName qhqcz_jd_jxsign Aaron_lv_jd_cfdtx"
+js_List="jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager airacg_jd-task-invokeKey airacg_jd-task-price"
 if [ -n "$js_List" ]; then
 echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
@@ -511,7 +511,7 @@ echo -e "+--------------------------------------------+\n"
 fi
 
 ## 删除过期活动
-js_List="qhqcz_jd_plantBean Sunert_jukan qhqcz_gua_carnivalcity shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge"
 if [ -n "$js_List" ]; then
 echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
