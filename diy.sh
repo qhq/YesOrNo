@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 14:00"
+echo -e " 2021-08-17 12:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -142,7 +142,7 @@ my_scripts_list_zero205="jd_dpqd.js"
 # airacg
 # https://github.com/airacg/jd_task
 scripts_base_url_airacg=${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/
-my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js"
+my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js jd-task-validate.js"
 
 
 ############################## 随机函数 ##########################################
