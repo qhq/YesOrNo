@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 13:00"
+echo -e " DIY版本：2021-08-17 14:00"
+DockerName=$(hostname)
+echo -e " 当前容器：${DockerName}"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -22,7 +24,6 @@ else
         exit
     fi
 fi
-
 
 ##############################  定  义  下  载  代  理  （内置功能）  ##############################
 [[ ${EnableExtraShellProxyDownload} == true ]] && ProxyJudge=${ExtraShellProxyUrl} || ProxyJudge=""
@@ -144,120 +145,117 @@ my_scripts_list_zero205="jd_dpqd.js"
 scripts_base_url_airacg=${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/
 my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js jd-task-validate.js"
 
-
 ############################## 随机函数 ##########################################
 cd ${ShellDir}
 #git remote -v | grep "supermanito" -wq
 #[ $? -ne 0 ] && clear && echo -e "\033[31m\n非本项目用户禁止使用！\n\033[0m" && exit 1
 
 rand() {
-  min=$1
-  max=$(($2 - $min + 1))
-  num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
-  echo $(($num % $max + $min))
+    min=$1
+    max=$(($2 - $min + 1))
+    num=$(cat /proc/sys/kernel/random/uuid | cksum | awk -F ' ' '{print $1}')
+    echo $(($num % $max + $min))
 }
 
 echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔\n"
 echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
-  eval scripts_list=\$my_scripts_list_$author
-  eval url_list=\$scripts_base_url_$author
-  ## 判断脚本来源仓库
-  format_url=$(echo $url_list | awk -F '.com' '{print$NF}' | sed 's/.$//')
-  if [[ $(echo $url_list | egrep -o "github|gitee") == "github" ]]; then
-    repository_platform="https://github.com"
-    repository_branch=$(echo $format_url | awk -F '/' '{print$4}')
-    reformat_url=$(echo $format_url | sed "s|$repository_branch|tree/$repository_branch|g")
-    if [[ ${EnableExtraShellProxyDownload} == true ]]; then
-      DownloadJudgment="[代理]"
-    else
-      DownloadJudgment=""
-    fi
-  elif [[ $(echo $url_list | egrep -o "github|gitee") == "gitee" ]]; then
-    repository_platform="https://gitee.com"
-    reformat_url=$(echo $format_url | sed "s|/raw/|/tree/|g")
-    DownloadJudgment=""
-  fi
-  repository_url=$(echo "$repository_platform$reformat_url")
-  if [ -n "$scripts_list" ]; then
-      echo -e "\033[33m[更新]\033[0m $author 的活动脚本${DownloadJudgment}:"
-      echo -e "\033[33m[仓库]\033[0m $repository_url "
-  fi
-
-  for js in $scripts_list; do
-    eval url=$url_list$js
-    eval name=$author"_"$js
-    wget -q --no-check-certificate $url -O ${ScriptsDir}/$name.new
-    if [ $? -eq 0 ]; then
-      mv -f ${ScriptsDir}/$name.new ${ScriptsDir}/$name
-      echo -e "\033[32m[Done]\033[0m $name"
-
-      [[ $name == "jddj_cookie.js" ]] && continue
-      [[ $name == "sign_graphics_validate.js" ]] && continue
-      [[ $name == "JDJRValidator_Pure.js" ]] && continue
-      [[ $name == "ZooFaker_Necklace.js" ]] && continue
-
-      croname=$(echo "$name" | awk -F\. '{print $1}')
-      script_date_standard=$(cat ${ScriptsDir}/$name | grep "https" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
-      if [[ $name == "jd_cashHelp.py" ]]; then
-        script_date="8 */4 * * *" # 指定签到领现金脚本定时
-      elif [[ $name == "jd_jxgc_tuan.py" ]]; then
-        script_date="0 0,7,10 * * *" # 指定京喜工厂开团脚本定时
-      else
-        if [[ ${script_date_standard} == "" ]]; then
-          script_date=$(cat ${ScriptsDir}/$name | egrep "cron|script-path|tag|$name" | head -n 1 | sed "s/[a-zA-Z\"\-\.\=\:\_]//g" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5; else if ($1~/^[*]/) print $2,$3,$4,$5,$6}')
+    eval scripts_list=\$my_scripts_list_$author
+    eval url_list=\$scripts_base_url_$author
+    ## 判断脚本来源仓库
+    format_url=$(echo $url_list | awk -F '.com' '{print$NF}' | sed 's/.$//')
+    if [[ $(echo $url_list | egrep -o "github|gitee") == "github" ]]; then
+        repository_platform="https://github.com"
+        repository_branch=$(echo $format_url | awk -F '/' '{print$4}')
+        reformat_url=$(echo $format_url | sed "s|$repository_branch|tree/$repository_branch|g")
+        if [[ ${EnableExtraShellProxyDownload} == true ]]; then
+            DownloadJudgment="[代理]"
         else
-          script_date=${script_date_standard}
+            DownloadJudgment=""
         fi
-      fi
-
-      if [ -z "${script_date}" ]; then
-        cron_min=$(rand 1 59)
-        cron_hour=$(rand 7 9)
-        [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${cron_min} ${cron_hour} * * * bash jd $croname" ${ListCron}
-      else
-        [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${script_date} bash jd $croname" ${ListCron}
-      fi
-    else
-      [ -f ${ScriptsDir}/$name.new ] && rm -f ${ScriptsDir}/$name.new
-      echo -e "\033[31m[ERROR]\033[0m $name 更新失败，使用上一次正常的版本"
+    elif [[ $(echo $url_list | egrep -o "github|gitee") == "gitee" ]]; then
+        repository_platform="https://gitee.com"
+        reformat_url=$(echo $format_url | sed "s|/raw/|/tree/|g")
+        DownloadJudgment=""
     fi
-  done
+    repository_url=$(echo "$repository_platform$reformat_url")
+    if [ -n "$scripts_list" ]; then
+        echo -e "\033[33m[更新]\033[0m $author 的活动脚本${DownloadJudgment}:"
+        echo -e "\033[33m[仓库]\033[0m $repository_url "
+    fi
+
+    for js in $scripts_list; do
+        eval url=$url_list$js
+        eval name=$author"_"$js
+        wget -q --no-check-certificate $url -O ${ScriptsDir}/$name.new
+        if [ $? -eq 0 ]; then
+            mv -f ${ScriptsDir}/$name.new ${ScriptsDir}/$name
+            echo -e "\033[32m[Done]\033[0m $name"
+
+            [[ $name == "jddj_cookie.js" ]] && continue
+            [[ $name == "sign_graphics_validate.js" ]] && continue
+            [[ $name == "JDJRValidator_Pure.js" ]] && continue
+            [[ $name == "ZooFaker_Necklace.js" ]] && continue
+
+            croname=$(echo "$name" | awk -F\. '{print $1}')
+            script_date_standard=$(cat ${ScriptsDir}/$name | grep "https" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
+            if [[ $name == "jd_cashHelp.py" ]]; then
+                script_date="8 */4 * * *" # 指定签到领现金脚本定时
+            elif [[ $name == "jd_jxgc_tuan.py" ]]; then
+                script_date="0 0,7,10 * * *" # 指定京喜工厂开团脚本定时
+            else
+                if [[ ${script_date_standard} == "" ]]; then
+                    script_date=$(cat ${ScriptsDir}/$name | egrep "cron|script-path|tag|$name" | head -n 1 | sed "s/[a-zA-Z\"\-\.\=\:\_]//g" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5; else if ($1~/^[*]/) print $2,$3,$4,$5,$6}')
+                else
+                    script_date=${script_date_standard}
+                fi
+            fi
+
+            if [ -z "${script_date}" ]; then
+                cron_min=$(rand 1 59)
+                cron_hour=$(rand 7 9)
+                [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${cron_min} ${cron_hour} * * * bash jd $croname" ${ListCron}
+            else
+                [ $(grep -c "$croname" ${ListCron}) -eq 0 ] && sed -i "/hang up/a${script_date} bash jd $croname" ${ListCron}
+            fi
+        else
+            [ -f ${ScriptsDir}/$name.new ] && rm -f ${ScriptsDir}/$name.new
+            echo -e "\033[31m[ERROR]\033[0m $name 更新失败，使用上一次正常的版本"
+        fi
+    done
 done
 echo -e "+--------------------------------------------+\n"
 
-
 if [[ $AutoTs = "true" ]]; then
-echo -e "+---------------- 处理ts文件 ----------------+"
+    echo -e "+---------------- 处理ts文件 ----------------+"
     isok="false"
     for file in $(ls $ScriptsDir); do
         if [ "${file##*.}" = "ts" ]; then
             [ ! -d ${LogDir}/${file%%.*} ] && mkdir -p ${LogDir}/${file%%.*} && echo " 已新建 log/${file%%.*}"
             #if [ ! -e ${ScriptsDir}/${file%%.*}.js ]; then
-                if [ isok = "false" ]; then
-                    echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
-                    npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
-                fi
-                tsc ${ScriptsDir}/${file} && echo " ${file} 已转成 ${file%%.*}.js"
-                isok="true"
+            if [ isok = "false" ]; then
+                echo " npm install -g ts-node typescript axios --unsafe-perm=true --allow-root"
+                npm install -g ts-node typescript axios --unsafe-perm=true --allow-root
+            fi
+            tsc ${ScriptsDir}/${file} && echo " ${file} 已转成 ${file%%.*}.js"
+            isok="true"
             #fi
             [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
         fi
     done
     [ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
     [ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
-echo -e "+--------------------------------------------+\n"
+    echo -e "+--------------------------------------------+\n"
 fi
-
 
 echo -e "+----------------- 清理内置 -----------------+"
 exJS=(qhqcz_post_code.js) #需排除的脚本
 for file in $(ls $ScriptsDir); do
     #[[ ${array[@]/${var}/} != ${array[@]} ]] && echo "Yes" || echo "No"
     if [ "${file##*.}" = "js" ] && [[ ${exJS[@]/"${file%.*}"/} == ${exJS[@]} ]] && [ $(grep -cEi "nickName ||" ${ScriptsDir}/${file}) -ne '0' ]; then
-    #    perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #    perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
-    #    perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        #    perl -0777 -i -pe "s/\\$.nickName \|\|/\\$.custName \|\| \\$.nickName \|\|/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        #    perl -0777 -i -pe "s/\\$\{\\$.nickName\}/\\$\{\\$.custName \|\| \\$.nickName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
+        #    perl -0777 -i -pe "s/([^\/\`])\\$\{\\$.UserName\}/\1\\$\{\\$.custName \|\| \\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/京东账号(.*?)\\$\{\\$.nickName \|\| /京东账号\1\\$\{/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
         perl -0777 -i -pe "s/京东账号(.*?)\\$\{\\$.nickName\}/京东账号\1\\$\{\\$.UserName\}/ig" ${ScriptsDir}/${file} >/dev/null 2>&1
     fi
@@ -293,7 +291,6 @@ for file in $(ls $ScriptsDir); do
     #fi
 done
 echo -e "+--------------------------------------------+\n"
-
 
 #echo -e "+-------------- Lxk0301 脚本 ---------------+"
 #替换内置
@@ -340,16 +337,16 @@ sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通�
 sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
 sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
-[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);"  ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
+[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
 if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ]; then
-    sed -i "/allMessage.*小时后兑换超时/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}\${expiredTime}小时后兑换超时\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }"  ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
-    sed -i "/allMessage.*已可兑换/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}已可兑换\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }"  ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂1对1推送已添加"
+    sed -i "/allMessage.*小时后兑换超时/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}\${expiredTime}小时后兑换超时\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
+    sed -i "/allMessage.*已可兑换/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}已可兑换\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂1对1推送已添加"
 fi
-[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
 if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ]; then
-    sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\\\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }"  ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
+    sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+    sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+    sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\\\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
 fi
 echo -e "+--------------------------------------------+\n"
 
@@ -415,7 +412,6 @@ sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_
 perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
-
 echo -e "+----------------- 处理文件 -----------------+"
 HtmlDir=${ShellDir}/panel/public
 for file in $(ls $HtmlDir); do
@@ -432,18 +428,18 @@ done
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
 sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
-#perl -0777 -i -pe "s|name_script=.*?\)|name_script=(jd_fruit\r\n        jd_pet\r\n        jd_plantBean\r\n        jd_jdfactory\r\n        jd_dreamFactory\r\n        jd_jxnc\r\n        jd_bookshop\r\n        jd_cash\r\n        jd_sgmh\r\n        jd_health\r\n        jd_carnivalcity\r\n        jd_city\r\n    )|s" $ShellDir/jd.sh
-#perl -0777 -i -pe "s|name_config=.*?\)|name_config=(Fruit\r\n        Pet\r\n        Bean\r\n        JdFactory\r\n        DreamFactory\r\n        Jxnc\r\n        BookShop\r\n        Cash\r\n        Sgmh\r\n        Health\r\n        Carni\r\n        City\r\n    )|s" $ShellDir/jd.sh
-#perl -0777 -i -pe "s|name_chinese=.*?\)|name_chinese=(东东农场\r\n        东东萌宠\r\n        京东种豆得豆\r\n        东东工厂\r\n        京喜工厂\r\n        京喜农场\r\n        口袋书店\r\n        签到领现金\r\n        闪购盲盒\r\n        东东健康社区\r\n        京东手机狂欢城\r\n        城城领现金\r\n    )|s" $ShellDir/jd.sh && echo -e " 互助码整理脚本已更新"
-#sed -i "s|\"j\[drx\]_|\"^j[drx]_|g" $ShellDir/jd.sh && echo -e " 第三方脚本识别已修正"
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
 sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task.js && echo -e " 汪汪乐园ck失效通知移除"
-[ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }"  ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
+[ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }" ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
 #[ -f ${ConfigDir}/sendNotify.json ] && cp ${ConfigDir}/sendNotify.json ${ScriptsDir}/tools/sendNotify.json
 perl -0777 -i -pe "s/await \\$.notify.sendNotify\(\`\\$\{\\$.name\}\`, notifyMsg\);//ig" ${ScriptsDir}/shufflewzc_jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
 
+names="jd_Q"
+if [[ "${names[@]}" =~ ${DockerName} ]]; then
+    perl -0777 -i -pe "s/await notify.sendNotify\((.*?)账号/await notify.sendNotify2\(\1账号/ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 京东萌宠已启用1对1推送"
+fi
 
 ## 验证调用
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/sendNotify.js -O ${ScriptsDir}/sendNotify.js
@@ -493,38 +489,37 @@ if [[ $iCan = "true" ]]; then
 fi
 echo -e "+--------------------------------------------+\n"
 
-
 ## 注释指定活动
 js_List="jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager airacg_jd-task-price"
 if [ -n "$js_List" ]; then
-echo -e "+--------------- 暂时停用脚本 ---------------+"
+    echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
         sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " \033[32m[已停用]\033[0m $js_item"
         #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
     done
-echo -e "+--------------------------------------------+\n"
+    echo -e "+--------------------------------------------+\n"
 fi
 
 ## 强制取消定时注释
 js_List=""
 if [ -n "$js_List" ]; then
-echo -e "+--------------- 强制开启脚本 ---------------+"
+    echo -e "+--------------- 强制开启脚本 ---------------+"
     for js_item in $js_List; do
         sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
         sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " \033[32m[已开启]\033[0m $js_item"
         #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
     done
-echo -e "+--------------------------------------------+\n"
+    echo -e "+--------------------------------------------+\n"
 fi
 
 ## 删除过期活动
 js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge"
 if [ -n "$js_List" ]; then
-echo -e "+-------------- 删除过期脚本 ---------------+"
+    echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
         rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
     done
-echo -e "+--------------------------------------------+\n"
+    echo -e "+--------------------------------------------+\n"
 fi
 
 ## 自动提取脚本名称注释
@@ -549,7 +544,6 @@ for Cron in ${js_List}; do
 done
 echo -e "+--------------------------------------------+\n"
 
-
 ############################## 同步文件 ##########################################
 #cd $ConfigDir
 #echo -e "下载 server.js "
@@ -563,7 +557,6 @@ echo -e "+--------------------------------------------+\n"
 #fi
 #cp /jd/config/server.js /jd/panel/server.js
 #pm2 restart /jd/panel/server.js
-
 
 ##############################  自  定  义  命  令  ##############################
 
@@ -592,94 +585,88 @@ grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash
 ## 删除不知如何产生的垃圾文件
 DeletedCacheFiles="app.eb41fc5f.js"
 for del in ${DeletedCacheFiles}; do
-  [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
+    [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
 done
 
-
 ############################## 环境判断 ##############################
-python_model_check()
-{
-  if python3 -c '''print("JD")''' >/dev/null 2>&1
-  then
-      echo "1"
-  else
-      echo "0"
-  fi
+python_model_check() {
+    if python3 -c '''print("JD")''' >/dev/null 2>&1; then
+        echo "1"
+    else
+        echo "0"
+    fi
 }
-result=`python_model_check $1`
-if [ $result == 1 ]
-then
-  echo -e " Python3环境已安装\n"
-else
-  echo -e " Python3环境安装中"
-  apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
+result=$(python_model_check $1)
+if [ $result != 1 ]; then
+    echo -e " Python3环境安装中"
+    apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
 fi
 
 # 依赖
 package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib jsdom"
 
-install_dependencies_normal(){
+install_dependencies_normal() {
     for i in $@; do
         case $i in
-            canvas)
-                cd /jd/scripts
-                #if [[ "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
-                #    npm uninstall $i
-                #fi
-                if [[ "$(npm ls $i)" =~ (empty) ]]; then
-                    echo -e " 正在安装 $i"
-                    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source
-                fi
-                ;;
-            *)
-                #if [[ "$(npm ls $i)" =~ $i ]]; then
-                #    npm uninstall $i
-                #elif [[ "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
-                #    npm uninstall $i -g
-                #fi
-                if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
-                    echo -e " 正在安装 $i"
-                    [[ $i = "typescript" ]] && npm i $i -g --force || npm i $i -g
-                fi
-                ;;
+        canvas)
+            cd /jd/scripts
+            #if [[ "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
+            #    npm uninstall $i
+            #fi
+            if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                echo -e " 正在安装 $i"
+                apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source
+            fi
+            ;;
+        *)
+            #if [[ "$(npm ls $i)" =~ $i ]]; then
+            #    npm uninstall $i
+            #elif [[ "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
+            #    npm uninstall $i -g
+            #fi
+            if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                echo -e " 正在安装 $i"
+                [[ $i = "typescript" ]] && npm i $i -g --force || npm i $i -g
+            fi
+            ;;
         esac
     done
 }
-install_dependencies_force(){
+install_dependencies_force() {
     for i in $@; do
         case $i in
-            canvas)
-                cd /jd/scripts
-                #if [[ "$(npm ls $i)" =~ $i && "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
-                #    npm uninstall $i
-                #    rm -rf /jd/scripts/node_modules/$i
-                #    rm -rf /usr/local/lib/node_modules/lodash/*
-                #fi
-                if [[ "$(npm ls $i)" =~ (empty) ]]; then
-                    echo -e " 正在安装 $i"
-                    apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source --force
-                fi
-                ;;
-            *)
-                cd /jd/scripts
-                #if [[ "$(npm ls $i)" =~ $i ]]; then
-                #    npm uninstall $i
-                #    rm -rf /jd/scripts/node_modules/$i
-                #    rm -rf /usr/local/lib/node_modules/lodash/*
-                #elif [[ "$(npm ls $i -g)" =~ $i && "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
-                #    npm uninstall $i -g
-                #    rm -rf /jd/scripts/node_modules/$i
-                #    rm -rf /usr/local/lib/node_modules/lodash/*
-                #fi
-                if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
-                    echo -e " 正在安装 $i"
-                    npm i $i -g --force
-                fi
-                ;;
+        canvas)
+            cd /jd/scripts
+            #if [[ "$(npm ls $i)" =~ $i && "$(echo $(npm ls $i) | grep ERR)" != "" ]]; then
+            #    npm uninstall $i
+            #    rm -rf /jd/scripts/node_modules/$i
+            #    rm -rf /usr/local/lib/node_modules/lodash/*
+            #fi
+            if [[ "$(npm ls $i)" =~ (empty) ]]; then
+                echo -e " 正在安装 $i"
+                apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i $i --prefix /jd/scripts --build-from-source --force
+            fi
+            ;;
+        *)
+            cd /jd/scripts
+            #if [[ "$(npm ls $i)" =~ $i ]]; then
+            #    npm uninstall $i
+            #    rm -rf /jd/scripts/node_modules/$i
+            #    rm -rf /usr/local/lib/node_modules/lodash/*
+            #elif [[ "$(npm ls $i -g)" =~ $i && "$(echo $(npm ls $i -g) | grep ERR)" != "" ]]; then
+            #    npm uninstall $i -g
+            #    rm -rf /jd/scripts/node_modules/$i
+            #    rm -rf /usr/local/lib/node_modules/lodash/*
+            #fi
+            if [[ "$(npm ls $i -g)" =~ (empty) ]]; then
+                echo -e " 正在安装 $i"
+                npm i $i -g --force
+            fi
+            ;;
         esac
     done
 }
-install_dependencies_all(){
+install_dependencies_all() {
     install_dependencies_normal $package_name
     #for i in $package_name; do
     #    install_dependencies_force $i
