@@ -187,8 +187,8 @@ async function sendNotify(text, desp, params = {}, author = '\n\n仅供用于学
         const titleIndex = notifySkipList.findIndex((item) => item === text);
         if (titleIndex !== -1) {
             console.log(`
-  🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
-  `);
+   🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
+   `);
             return;
         }
         fs.accessSync('./tools/account.json')
@@ -224,7 +224,7 @@ async function sendNotify(text, desp, params = {}, author = '\n\n仅供用于学
 async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于学习') {
     //提供6种通知
     //desp += author;//增加作者信息，防止被贩卖等
-    let sendNs = '';
+    let ACCOUNTS = '';
     PUSH_PLUS_TOKEN = ''
     go_cqhttp_qq = ''
     go_cqhttp_method = ''
@@ -233,16 +233,16 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
         const titleIndex = notifySkipList.findIndex((item) => item === text);
         if (titleIndex !== -1) {
             console.log(`
-  🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
-  `);
+   🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
+   `);
             return;
         }
-        fs.accessSync('./tools/sendNotify.json')
-        sendNs = JSON.parse(fs.readFileSync('./tools/sendNotify.json').toString())
+        fs.accessSync('./tools/account.json')
+        ACCOUNTS = JSON.parse(fs.readFileSync('./tools/account.json').toString())
     } catch (e) {
     }
-    if (sendNs) {
-        for (let account of sendNs) {
+    if (ACCOUNTS) {
+        for (let account of ACCOUNTS) {
             if (text.match(new RegExp(account['pt_pin'], 'gm')) && account['PUSH_PLUS_TOKEN'] !== '') {
                 PUSH_PLUS_TOKEN = account['PUSH_PLUS_TOKEN']
                 go_cqhttp_qq = account['go_cqhttp_qq']
@@ -253,17 +253,6 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
                 go_cqhttp_qq = account['go_cqhttp_qq']
                 go_cqhttp_method = account['go_cqhttp_method']
             }
-        }
-    }
-
-    let remarks = '';
-    try {
-        fs.accessSync('./tools/account.json')
-        remarks = JSON.parse(fs.readFileSync('./tools/account.json').toString())
-    } catch (e) {
-    }
-    if (remarks) {
-        for (let account of remarks) {
             if (account['pt_pin'] && account['remarks']) {
                 text = text.replace(new RegExp(account['pt_pin'], 'gm'), account['remarks'])
                 desp = desp.replace(new RegExp(account['pt_pin'], 'gm'), account['remarks'])
@@ -303,7 +292,7 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
 }
 function goCQhttp(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
-        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g','');
+        let msg = (text + '\n' + desp).replace('/[^\u4e00-\u9fa5\w]/g', '');
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
@@ -345,7 +334,7 @@ function goCQhttp(text, desp) {
 function goCQhttp2(text, desp) {
     if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
         let msg = (text + '\n' + desp)//.replace('/[^\u4e00-\u9fa5\w]/g','');
-	let msgArr=getStrArr(msg,2000);
+        let msgArr = getStrArr(msg, 2000);
         let recv_id = ''
         if (go_cqhttp_method === 'send_private_msg') {
             recv_id = 'user_id'
