@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 12:00"
+echo -e " 2021-08-17 13:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -571,7 +571,7 @@ grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18
 grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
 grep -q "airacg_jd-task-validate" ${ListCron} && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * bash jd airacg_jd-task-validate/ig" ${ListCron}
 grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*?&& bash jd airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && bash jd airacg_jd-reward-joy/ig" ${ListCron}
-grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash jd airacg_jd-reward-joy/0 0-16/8 * * * bash jd airacg_jd-reward-joy/ig" ${ListCron}
+grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash jd airacg_jd-reward-joy/0 0-16\/8 * * * bash jd airacg_jd-reward-joy/ig" ${ListCron}
 
 #检查添加京喜团ID变量
 #if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
