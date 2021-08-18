@@ -488,7 +488,7 @@ echo -e "+--------------------------------------------+\n"
 
 
 ## 注释指定活动
-js_List="jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager airacg_jd-task-invokeKey airacg_jd-task-price"
+js_List="jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager airacg_jd-task-price"
 if [ -n "$js_List" ]; then
 echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
