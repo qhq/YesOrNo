@@ -147,8 +147,8 @@ my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js j
 
 ############################## 随机函数 ##########################################
 cd ${ShellDir}
-git remote -v | grep "supermanito" -wq
-[ $? -ne 0 ] && clear && echo -e "\033[31m\n非本项目用户禁止使用！\n\033[0m" && exit 1
+#git remote -v | grep "supermanito" -wq
+#[ $? -ne 0 ] && clear && echo -e "\033[31m\n非本项目用户禁止使用！\n\033[0m" && exit 1
 
 rand() {
   min=$1
