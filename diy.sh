@@ -429,7 +429,6 @@ for file in $(ls $HtmlDir); do
         #sed -i '/<canvas id="sakura"/' ${HtmlDir}/${file}
     fi
 done
-sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
 sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
 sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
@@ -467,6 +466,7 @@ wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/funct
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jxAlgo.js -O ${ScriptsDir}/function/jxAlgo.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/sendNotify.js -O ${ScriptsDir}/function/sendNotify.js
 
+sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 
 if [[ $iCan = "true" ]]; then
     echo -e " 腾讯新闻"
