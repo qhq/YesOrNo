@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " DIY版本：2021-08-17 14:00"
+echo -e " DIY版本：2021-08-17 15:00"
 DockerName=$(hostname)
 echo -e " 当前容器：${DockerName}"
 
@@ -436,10 +436,23 @@ sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task
 #[ -f ${ConfigDir}/sendNotify.json ] && cp ${ConfigDir}/sendNotify.json ${ScriptsDir}/tools/sendNotify.json
 perl -0777 -i -pe "s/await \\$.notify.sendNotify\(\`\\$\{\\$.name\}\`, notifyMsg\);//ig" ${ScriptsDir}/shufflewzc_jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
 
-names="jd_Q"
-if [[ "${names[@]}" =~ ${DockerName} ]]; then
+#names="jd_Q"
+#if [[ "${names[@]}" =~ ${DockerName} ]]; then
+#    perl -0777 -i -pe "s/await notify.sendNotify\((.*?)账号/await notify.sendNotify2\(\1账号/ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 京东萌宠已启用1对1推送"
+#fi
+case ${DockerName} in
+jd_Q)
+    echo -e " jd_Q 容器独立代码"
     perl -0777 -i -pe "s/await notify.sendNotify\((.*?)账号/await notify.sendNotify2\(\1账号/ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 京东萌宠已启用1对1推送"
-fi
+    ;;
+jdQ)
+    echo -e " jdQ 容器独立代码"
+    ;;
+*)
+    echo "默认参数"
+    ;;
+esac
+
 
 ## 验证调用
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/sendNotify.js -O ${ScriptsDir}/sendNotify.js
