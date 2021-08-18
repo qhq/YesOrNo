@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e " 2021-08-17 16:00"
+echo -e " 2021-08-17 17:00"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -458,6 +458,7 @@ wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
 ## function
+[ ! -d ${ScriptsDir}/function ] && mkdir ${ScriptsDir}/function
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/common.js -O ${ScriptsDir}/function/common.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/config.js -O ${ScriptsDir}/function/config.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/eval.js -O ${ScriptsDir}/function/eval.js
