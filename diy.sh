@@ -603,7 +603,7 @@ else
 fi
 
 # 依赖
-package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
+package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib jsdom"
 
 install_dependencies_normal(){
     for i in $@; do
