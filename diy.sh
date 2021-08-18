@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo -e " DIY版本：2021-08-17 15:00"
+echo -e "\033[33m[*]\033[0m DIY版本：2021-08-17 16:00"
 DockerName=$(hostname)
-echo -e " 当前容器：${DockerName}"
+echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
@@ -337,17 +337,6 @@ sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通�
 sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
 sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
-[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
-if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ]; then
-    sed -i "/allMessage.*小时后兑换超时/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}\${expiredTime}小时后兑换超时\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
-    sed -i "/allMessage.*已可兑换/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}已可兑换\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂1对1推送已添加"
-fi
-[ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ]; then
-    sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
-    sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\\\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
-fi
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
@@ -436,13 +425,20 @@ sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task
 #[ -f ${ConfigDir}/sendNotify.json ] && cp ${ConfigDir}/sendNotify.json ${ScriptsDir}/tools/sendNotify.json
 perl -0777 -i -pe "s/await \\$.notify.sendNotify\(\`\\$\{\\$.name\}\`, notifyMsg\);//ig" ${ScriptsDir}/shufflewzc_jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
 
-#names="jd_Q"
-#if [[ "${names[@]}" =~ ${DockerName} ]]; then
-#    perl -0777 -i -pe "s/await notify.sendNotify\((.*?)账号/await notify.sendNotify2\(\1账号/ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 京东萌宠已启用1对1推送"
-#fi
 case ${DockerName} in
 jd_Q)
-    echo -e " jd_Q 容器独立代码"
+    #echo -e " jd_Q 容器独立代码"
+    [ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/const jdCookieNode/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
+    if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ]; then
+        sed -i "/allMessage.*小时后兑换超时/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}\${expiredTime}小时后兑换超时\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1
+        sed -i "/allMessage.*已可兑换/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`【京东账号\${\$.index}】\${\$.UserName}\\\\n【生产商品】\${\$.productName}已可兑换\\\n【兑换截止时间】\${\$.exchangeEndTime}\\\n请速去京喜APP->我的->京喜工厂进行兑换\`, { url: jxOpenUrl })\n    }" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂1对1推送已添加"
+    fi
+    [ $(grep -c "const ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/new Env/a\const ONE_BY_ONE = \$.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false'):'false';\nconsole.log(\`1对1推送：\${ONE_BY_ONE}\`);" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+    if [ $(grep -c "&& ONE_BY_ONE" ${ScriptsDir}/jd_fruit.js) -eq 0 ]; then
+        sed -i "/(isFruitFinished)/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+        sed -i "/farmInfo.treeState === 2/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n\${\$.farmInfo.farmUserPro.name}已可领取\\\n请去京东APP或微信小程序查看\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1
+        sed -i "/farmInfo.treeState === 0/a\    if (\$.isNode() && ONE_BY_ONE == 'true') {\n        await notify.sendNotify2(\`\${\$.name} - \${\$.UserName}\`, \`京东账号\${\$.index} \${\$.UserName}\\\n您忘了种植新的水果\\\n请去京东APP或微信小程序选购并种植新的水果\`,)\n    }" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 京东农场1对1推送已添加"
+    fi
     perl -0777 -i -pe "s/await notify.sendNotify\((.*?)账号/await notify.sendNotify2\(\1账号/ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 京东萌宠已启用1对1推送"
     ;;
 jdQ)
