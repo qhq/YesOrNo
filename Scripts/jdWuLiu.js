@@ -7,7 +7,7 @@
  * > 同时支持使用 NobyDa 与 domplin 脚本的京东 cookie
  * > https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
  * > https://raw.githubusercontent.com/dompling/Script/master/jd/JD_extra.js
- *
+ * cron 0 12 * * * jdWuLiu.js
  * # Surge
  * Tasks: 京东物流派件提醒 = type=cron,cronexp=0 12 * * *,script-path=https://raw.githubusercontent.com/id77/QuantumultX/master/task/jdWuLiu.js,wake-system=true
  *
