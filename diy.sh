@@ -451,19 +451,28 @@ wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 ## utils
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
+[ ! -d ${ScriptsDir}/utils ] && mkdir ${ScriptsDir}/utils
+js_List="JDJRValidator_Pure JDSignValidator JD_DailyBonus ZooFaker_Necklace"
+for js_item in $js_List; do
+    wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/$js_item.js -O ${ScriptsDir}/utils/$js_item.js
+done
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
 ## function
 [ ! -d ${ScriptsDir}/function ] && mkdir ${ScriptsDir}/function
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/common.js -O ${ScriptsDir}/function/common.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/config.js -O ${ScriptsDir}/function/config.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/eval.js -O ${ScriptsDir}/function/eval.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdValidate.js -O ${ScriptsDir}/function/jdValidate.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdcookie.js -O ${ScriptsDir}/function/jdcookie.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jxAlgo.js -O ${ScriptsDir}/function/jxAlgo.js
-wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/sendNotify.js -O ${ScriptsDir}/function/sendNotify.js
+js_List="common config eval jdValidate jdcookie jxAlgo sendNotify"
+for js_item in $js_List; do
+    wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/$js_item.js -O ${ScriptsDir}/function/$js_item.js
+done
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/common.js -O ${ScriptsDir}/function/common.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/config.js -O ${ScriptsDir}/function/config.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/eval.js -O ${ScriptsDir}/function/eval.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdValidate.js -O ${ScriptsDir}/function/jdValidate.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdcookie.js -O ${ScriptsDir}/function/jdcookie.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jxAlgo.js -O ${ScriptsDir}/function/jxAlgo.js
+#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/sendNotify.js -O ${ScriptsDir}/function/sendNotify.js
 
 sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 
