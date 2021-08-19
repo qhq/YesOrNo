@@ -34,7 +34,7 @@ author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiula
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_superBrand.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -526,7 +526,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
