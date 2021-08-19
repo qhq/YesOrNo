@@ -337,6 +337,9 @@ sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通�
 sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
 sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
 sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
+[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/【水果名称】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=farm&code=' + $.farmInfo.farmUserPro.shareCode}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场helpu互助码激活已添加"
+[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/好友互助码】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=jxfactory&code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂helpu互助码激活已添加"
+[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_cfd.ts) -eq 0 ] && sed -i "/旧的可继续使用/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?code=' + $\{res.strMyShareId\} + '&type=jxcfd&user=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 财富岛helpu互助码激活已添加"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
@@ -400,11 +403,6 @@ sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run
 sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
 perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
-
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/【水果名称】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=farm&code=' + $.farmInfo.farmUserPro.shareCode}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场helpu互助码激活已添加"
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/好友互助码】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=jxfactory&code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂helpu互助码激活已添加"
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_cfd.ts) -eq 0 ] && sed -i "/旧的可继续使用/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?code=' + $\{res.strMyShareId\} + '&type=jxcfd&user=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 财富岛helpu互助码激活已添加"
-
 
 
 echo -e "+----------------- 处理文件 -----------------+"
