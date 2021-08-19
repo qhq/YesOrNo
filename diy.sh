@@ -118,7 +118,7 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_s
 # jiulan
 # https://github.com/jiulan/platypus/
 scripts_base_url_jiulan=${ProxyJudge}https://raw.githubusercontent.com/jiulan/platypus/main/scripts/
-my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js jd_shop_sign.js"
+my_scripts_list_jiulan="jd_lsj.js jd_cfdtx.js"
 
 # Annyoo2021
 # https://github.com/Annyoo2021/scripts
@@ -526,7 +526,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
