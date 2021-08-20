@@ -243,13 +243,10 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
     }
     if (ACCOUNTS) {
         for (let account of ACCOUNTS) {
-            if (text.match(new RegExp(account['pt_pin'], 'gm')) && account['PUSH_PLUS_TOKEN'] !== '') {
+            if ((text.match(new RegExp(account['pt_pin'], 'gm')) || desp.match(new RegExp(account['pt_pin'], 'gm'))) && account['PUSH_PLUS_TOKEN'] !== '') {
                 PUSH_PLUS_TOKEN = account['PUSH_PLUS_TOKEN']
-                go_cqhttp_qq = account['go_cqhttp_qq']
-                go_cqhttp_method = account['go_cqhttp_method']
             }
-            if (desp.match(new RegExp(account['pt_pin'], 'gm')) && account['PUSH_PLUS_TOKEN'] !== '') {
-                PUSH_PLUS_TOKEN = account['PUSH_PLUS_TOKEN']
+            if ((text.match(new RegExp(account['pt_pin'], 'gm')) || desp.match(new RegExp(account['pt_pin'], 'gm'))) && account['go_cqhttp_qq'] !== '') {
                 go_cqhttp_qq = account['go_cqhttp_qq']
                 go_cqhttp_method = account['go_cqhttp_method']
             }
