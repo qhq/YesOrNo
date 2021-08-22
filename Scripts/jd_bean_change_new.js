@@ -128,12 +128,6 @@ async function showMsg() {
             ReturnMessage+=`东东农场：${$.JdFarmProdName}\n`;
         }
     }
-    if ($.jxFactoryInfo) {
-        ReturnMessage += `京喜工厂：${$.jxFactoryInfo}\n`
-    }
-    if ($.ddFactoryInfo) {
-        ReturnMessage += `东东工厂：${$.ddFactoryInfo}\n`
-    }
 
     const response = await await PetRequest('energyCollect');
     const initPetTownRes = await PetRequest('initPetTown');
@@ -146,6 +140,14 @@ async function showMsg() {
 
         }
     }
+    
+    if ($.jxFactoryInfo) {
+        ReturnMessage += `京喜工厂：${$.jxFactoryInfo}\n`
+    }
+    if ($.ddFactoryInfo) {
+        ReturnMessage += `东东工厂：${$.ddFactoryInfo}\n`
+    }
+    
     ReturnMessage+=`🧧 红包明细 🧧`;
     ReturnMessage+=`${$.message}\n`;
     allMessage+=ReturnMessage;
