@@ -63,7 +63,7 @@ my_scripts_list_panghu=""
 # star261
 # https://github.com/star261/jd/tree/main/
 scripts_base_url_star261=${ProxyJudge}https://raw.githubusercontent.com/star261/jd/main/scripts/
-my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js jd_fan.js jd_golden_machine.js jd_decompression.js"
+my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js jd_fan.js jd_decompression.js"
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
@@ -329,8 +329,6 @@ sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
-sed -i 's|当前总红包：|当前红包：|' $ScriptsDir/jd_bean_change.js
-sed -i 's|极速版红包：|极速红包：|' $ScriptsDir/jd_bean_change.js && echo -e " 京豆变动通知内容格式已调整"
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
 sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
 sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
@@ -526,7 +524,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
