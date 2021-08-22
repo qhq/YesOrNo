@@ -34,7 +34,7 @@ author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiula
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -133,7 +133,7 @@ my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js
 # shufflewzc
 # https://github.com/shufflewzc/faker2
 scripts_base_url_shufflewzc=${ProxyJudge}https://raw.githubusercontent.com/shufflewzc/faker2/main/
-my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js"
+my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js jd_dwapp.js"
 
 # zero205
 # https://github.com/zero205/JD_tencent_scf
