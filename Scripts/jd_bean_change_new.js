@@ -1,5 +1,5 @@
 /*
-cron "2 8,18 * * *" jd_bean_change_new.js, tag:资产变化强化版by-ccwav
+cron "2 8,18 * * *" https://raw.githubusercontent.com/shufflewzc/faker2/main/jd_bean_change_new.js, tag:资产变化强化版by-ccwav
 */
 
 //更新by ccwav,20210821
