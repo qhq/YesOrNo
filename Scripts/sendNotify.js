@@ -324,7 +324,6 @@
          })
      } else {
          console.log('您未提供自建go-cqhttp的参数，取消推送go-cqhttp消息通知🚫\n');
-         resolve()
      }
  }
  
