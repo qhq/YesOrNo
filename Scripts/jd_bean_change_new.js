@@ -77,7 +77,7 @@ if ($.isNode()) {
             await getDdFactoryInfo(); // 京东工厂
             await showMsg();
         }
-        if ($.isNode() && allMessage && ($.index % 15 === 0 || $.index === cookiesArr.length)) {
+        if ($.isNode() && allMessage && ($.index % 8 === 0 || $.index === cookiesArr.length)) {
             await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` });
             allMessage = '';
         }
