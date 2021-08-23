@@ -228,6 +228,7 @@
      PUSH_PLUS_TOKEN = ''
      go_cqhttp_qq = ''
      go_cqhttp_method = ''
+     TG_USER_ID = '';
      try {
          const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];
          const titleIndex = notifySkipList.findIndex((item) => item === text);
@@ -250,6 +251,9 @@
                  go_cqhttp_qq = account['go_cqhttp_qq']
                  go_cqhttp_method = account['go_cqhttp_method']
              }
+             if ((text.match(new RegExp(account['pt_pin'], 'gm')) || desp.match(new RegExp(account['pt_pin'], 'gm'))) && account['TG_USER_ID'] !== '') {
+                TG_USER_ID = account['TG_USER_ID']
+             }
              if (account['pt_pin'] && account['remarks']) {
                  text = text.replace(new RegExp(account['pt_pin'], 'gm'), account['remarks'])
                  desp = desp.replace(new RegExp(account['pt_pin'], 'gm'), account['remarks'])
@@ -266,7 +270,7 @@
      text = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
      await Promise.all([
          //BarkNotify(text, desp, params),//iOS Bark APP
-         //tgBotNotify(text, desp),//telegram 机器人
+         tgBotNotify(text, desp),//telegram 机器人
          //ddBotNotify(text, desp),//钉钉机器人
          //qywxBotNotify(text, desp), //企业微信机器人
          //qywxamNotify(text, desp), //企业微信应用消息推送
@@ -285,7 +289,13 @@
      } else {
          go_cqhttp_qq = ''
          go_cqhttp_method = ''
+     } 
+     if (process.env.TG_USER_ID) {
+        TG_USER_ID = process.env.TG_USER_ID;
+     } else {
+        TG_USER_ID = ''
      }
+
  }
  function goCQhttp(text, desp) {
      if (go_cqhttp_url && go_cqhttp_qq && go_cqhttp_method) {
