@@ -11,6 +11,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let allMessage = '';
 let ReturnMessage = '';
 const ONE_BY_ONE = process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false';
+const SPLIT_NUM = $.isNode() ? (process.env.SPLIT_NUM ? process.env.SPLIT_NUM : '8') : '8';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
@@ -77,7 +78,7 @@ if ($.isNode()) {
             await getDdFactoryInfo(); // 京东工厂
             await showMsg();
         }
-        if ($.isNode() && allMessage && ($.index % 8 === 0 || $.index === cookiesArr.length)) {
+        if ($.isNode() && allMessage && ($.index % SPLIT_NUM === 0 || $.index === cookiesArr.length)) {
             await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` });
             allMessage = '';
         }
@@ -153,7 +154,7 @@ async function showMsg() {
     }
     
     ReturnMessage+=`🧧 红包明细 🧧`;
-    ReturnMessage+=`${$.message}\n`;
+    ReturnMessage+=`${$.message}\n\n`;
     allMessage+=ReturnMessage;
     $.msg($.name, '', ReturnMessage , {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
     if ($.isNode() && ONE_BY_ONE == 'true') {
