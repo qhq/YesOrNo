@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[33m[*]\033[0m DIY版本：2021-08-24 12:00"
+echo -e "\033[33m[*]\033[0m DIY版本：2021-08-24 16:00"
 DockerName=$(hostname)
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
@@ -34,7 +34,7 @@ author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiula
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js notice.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -503,7 +503,7 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
-js_List="jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager"
+js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
