@@ -35,6 +35,7 @@ Object.keys(jdCookieNode).forEach((item) => {
     $.isLogin = true;
     $.UserName = decodeURIComponent($.cookie.match(/pt_pin=([^; ]+)(?=;?)/) && $.cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     $.pt_pin = $.cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1];
+    $.index = i + 1;
     $.update = '';
     $.remainder = 0;
     $.levelName = '';
@@ -54,35 +55,35 @@ Object.keys(jdCookieNode).forEach((item) => {
         //console.log($.update);
       }
       if ($.update != '') {
-        console.log(`京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天`);
+        console.log(`京东账号${$.index}：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天`);
         console.log('----------');
         allMsg =
           allMsg +
           '\n----------\n' +
-          `京东账号 ${i + 1}：${$.UserName}\n更新日期：${$.update}\n剩余天数：${$.remainder}天`;
+          `京东账号 ${$.index}：${$.UserName}\n更新日期：${$.update}\n剩余天数：${$.remainder}天`;
         if ($.isNode() && $.remainder <= REMIND_DAY && ONE_BY_ONE == 'true') {
           await notify.sendNotify2(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
         } else if ($.isNode() && $.remainder <= REMIND_DAY) {
           await notify.sendNotify(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
         }
       } else {
-        console.log(`京东账号 ${i + 1}：${$.UserName} \t有效`);
+        console.log(`京东账号 ${$.index}：${$.UserName} 有效\t等级名称：${$.levelName}\t用户等级：${$.userLevel}`);
         allMsg =
           allMsg +
           '\n' +
-          `京东账号 ${i + 1}：${$.UserName} \t有效\t等级名称：${$.levelName}\t用户等级：${$.userLevel}`;
+          `京东账号 ${$.index}：${$.UserName} 有效\t等级名称：${$.levelName}\t用户等级：${$.userLevel}`;
       }
 
     } else {
-      console.log(`京东账号 ${i + 1}：${$.UserName} \t失效`);
+      console.log(`京东账号 ${$.index}：${$.UserName} \t失效`);
       allMsg =
         allMsg +
         '\n' +
-        `京东账号 ${i + 1}：${$.UserName} \t失效`;
+        `京东账号 ${$.index}：${$.UserName} \t失效`;
       if ($.isNode() && ONE_BY_ONE == 'true') {
-        await notify.sendNotify2(`${$.name}`, `京东账号 ${i + 1}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        await notify.sendNotify2(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
       } else if ($.isNode()) {
-        await notify.sendNotify(`${$.name}`, `京东账号 ${i + 1}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        await notify.sendNotify(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
       }
     }
   }
