@@ -182,9 +182,11 @@
      //提供6种通知
      //desp += author;//增加作者信息，防止被贩卖等
      let remarks = '';
+     let title = '';
      try {
          const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];
-         const titleIndex = notifySkipList.findIndex((item) => item === text);
+         title = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
+         const titleIndex = notifySkipList.findIndex((item) => item === title);
          if (titleIndex !== -1) {
              console.log(`
     🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
@@ -229,9 +231,11 @@
      go_cqhttp_qq = ''
      go_cqhttp_method = ''
      TG_USER_ID = '';
+     let title = '';
      try {
          const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];
-         const titleIndex = notifySkipList.findIndex((item) => item === text);
+         title = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
+         const titleIndex = notifySkipList.findIndex((item) => item === title);
          if (titleIndex !== -1) {
              console.log(`
     🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
