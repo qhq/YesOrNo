@@ -138,7 +138,7 @@ my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js jd
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${ProxyJudge}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205="jd_dpqd.js jd_ccSign.js jd_kxcdz.js"
+my_scripts_list_zero205="jd_dpqd.js jd_ccSign.js"
 
 # airacg
 # https://github.com/airacg/jd_task
@@ -526,7 +526,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
