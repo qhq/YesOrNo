@@ -117,13 +117,16 @@ async function showMsg() {
         ReturnMessage += `JD领现金：${$.JDCash}元\n`;
     }
     if (typeof $.JDtotalcash !== "undefined") {
-        ReturnMessage += `极速金币：${$.JDtotalcash}金币(≈${($.JDtotalcash / 10000).toFixed(2)}元)\n`;
+        //ReturnMessage += `极速金币：${$.JDtotalcash}金币(≈${($.JDtotalcash / 10000).toFixed(2)}元)\n`;
+        ReturnMessage += `极速金币：${($.JDtotalcash / 10000).toFixed(2)}元\n`;
     }
     if (typeof $.JdzzNum !== "undefined") {
-        ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
+        //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
+        ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
     }
     if ($.JdMsScore != 0) {
-        ReturnMessage += `京东秒杀：${$.JdMsScore}秒秒币(≈${($.JdMsScore / 1000).toFixed(2)}元)\n`;
+        //ReturnMessage += `京东秒杀：${$.JdMsScore}秒秒币(≈${($.JdMsScore / 1000).toFixed(2)}元)\n`;
+        ReturnMessage += `京东秒杀：${($.JdMsScore / 1000).toFixed(2)}元\n`;
     }
     if (typeof $.JDEggcnt !== "undefined") {
         ReturnMessage += `京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
@@ -848,16 +851,16 @@ function getJxFactory() {
                                 infoMsg = `${$.jxProductName} ,进度:${((production.investedElectric / production.needElectric) * 100).toFixed(2)}%`;
                                 if (production.investedElectric >= production.needElectric) {
                                     if (production['exchangeStatus'] === 1) {
-                                        infoMsg = `${$.productName} ,已经可兑换，请手动兑换`;
+                                        infoMsg = `${$.productName} ,已可兑换，请手动兑换`;
                                     }
                                     if (production['exchangeStatus'] === 3) {
                                         if (new Date().getHours() === 9) {
-                                            infoMsg = `${$.productName} ,兑换已超时，请选择新商品进行制造`;
+                                            infoMsg = `${$.productName} ,兑换超时，选择新商品制造`;
                                         }
                                     }
                                     // await exchangeProNotify()
                                 } else {
-                                    infoMsg += ` ,预计${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(2)}天可兑换`
+                                    infoMsg += ` ,${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(1)}天可兑`
                                 }
                                 if (production.status === 3) {
                                     infoMsg = "${$.productName} ,已经超时失效, 请选择新商品进行制造"
@@ -865,10 +868,10 @@ function getJxFactory() {
                             } else {
                                 $.unActive = false;//标记是否开启了京喜活动或者选购了商品进行生产
                                 if (!data.factoryList) {
-                                    infoMsg = "当前未生产商品,请手动去京喜APP>我的>京喜工厂 开启活动"
+                                    infoMsg = "手动去京喜APP>我的>京喜工厂 选择商品"
                                     // $.msg($.name, '【提示】', `京东账号${$.index}[${$.nickName}]京喜工厂活动未开始\n请手动去京东APP->游戏与互动->查看更多->京喜工厂 开启活动`);
                                 } else if (data.factoryList && !data.productionList) {
-                                    infoMsg = "当前未生产商品,请手动去京喜APP>我的>京喜工厂 开启活动"
+                                    infoMsg = "手动去京喜APP>我的>京喜工厂 选择商品"
                                 }
                             }
                         }
@@ -965,15 +968,15 @@ async function getDdFactoryInfo() {
                                     couponCount,
                                     name
                                 } = data.data.result.factoryInfo;
-                                infoMsg = `${name} 剩余${couponCount};电力投入情况 ${useScore}/${totalScore};当前总电力:${remainScore * 1 + useScore * 1} ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1)).toFixed(2) * 100}%`
+                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore}/${totalScore};当前电力:${remainScore * 1 + useScore * 1} ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1)).toFixed(2) * 100}%`
 
                                 if (((remainScore * 1 + useScore * 1) >= totalScore * 1 + 100000) && (couponCount * 1 > 0)) {
                                     // await jdfactory_addEnergy();
-                                    infoMsg = `${name} ,目前数量:${couponCount},当前总电量为：${remainScore * 1 + useScore * 1},已经可以兑换此商品所需总电量：${totalScore},请🔥速去活动页面查看`
+                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${remainScore * 1 + useScore * 1}/${totalScore},已可兑换,请🔥速去活动页面查看`
                                 }
 
                             } else {
-                                infoMsg = `当前未选择商品(或未开启活动) , 请到京东APP>首页>京东电器>(底栏)东东工厂 选择商品!`
+                                infoMsg = `请到京东APP>首页>京东电器>(底栏)东东工厂 选择商品!`
                             }
                         } else {
                             $.ddFactoryInfo = "获取失败!"
