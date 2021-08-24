@@ -175,6 +175,10 @@ async function GetJDUserInfoUnion() {
             data = data.replace("GetJDUserInfoUnion(", "")
             data = data.substr(0, data.length - 1);
             data = JSON.parse(data)
+            if (data['retcode'] === '1001') {
+              $.isLogin = false; //cookie过期
+              return;
+            }
             if (data.data && data.data.userInfo && data.data.userInfo.baseInfo && data.data.userInfo.baseInfo.nickname) {
               $.levelName = data.data.userInfo.baseInfo.levelName;
               $.userLevel = data.data.userInfo.baseInfo.userLevel;
