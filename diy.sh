@@ -138,7 +138,7 @@ my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js jd
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${ProxyJudge}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205="jd_dpqd.js"
+my_scripts_list_zero205="jd_dpqd.js jd_ccSign.js jd_kxcdz.js"
 
 # airacg
 # https://github.com/airacg/jd_task
