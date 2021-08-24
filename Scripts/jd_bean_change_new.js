@@ -135,7 +135,7 @@ async function showMsg() {
         if ($.JdtreeEnergy != 0) {
             ReturnMessage += `东东农场：${$.JdFarmProdName},进度${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
             if ($.JdwaterD != 'Infinity' && $.JdwaterD != '-Infinity') {
-                ReturnMessage += `,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天后'}可兑\n`;
+                ReturnMessage += `,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天'}可兑\n`;
             } else {
                 ReturnMessage += `\n`;
             }
@@ -860,7 +860,7 @@ function getJxFactory() {
                                     }
                                     // await exchangeProNotify()
                                 } else {
-                                    infoMsg += ` ,${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(1)}天可兑`
+                                    infoMsg += `,${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(1)}天可兑`
                                 }
                                 if (production.status === 3) {
                                     infoMsg = "${$.productName} ,已经超时失效, 请选择新商品进行制造"
