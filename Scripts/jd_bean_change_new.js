@@ -76,6 +76,7 @@ if ($.isNode()) {
             await JxmcGetRequest();
             await bean();
             await jdCash();
+            await necklace_homePage();
             await getJxFactory();   //惊喜工厂
             await getDdFactoryInfo(); // 京东工厂
             await showMsg();
@@ -113,20 +114,23 @@ async function showMsg() {
 
     ReturnMessage += `${$.message}\n`;
 
-    if ($.JDCash != 0) {
-        ReturnMessage += `JD领现金：${$.JDCash}元\n`;
-    }
     if (typeof $.JDtotalcash !== "undefined") {
         //ReturnMessage += `极速金币：${$.JDtotalcash}金币(≈${($.JDtotalcash / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `极速金币：${($.JDtotalcash / 10000).toFixed(2)}元\n`;
+    }    
+    if ($.JDCash != 0) {
+        ReturnMessage += `JD领现金：${$.JDCash}元\n`;
     }
-    if (typeof $.JdzzNum !== "undefined") {
-        //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
-        ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
+    if ($.necklace_totalScore != 0) {
+        ReturnMessage += `JD点点券：${($.necklace_totalScore/1000).toFixed(2)}元\n`;
     }
     if ($.JdMsScore != 0) {
         //ReturnMessage += `京东秒杀：${$.JdMsScore}秒秒币(≈${($.JdMsScore / 1000).toFixed(2)}元)\n`;
         ReturnMessage += `京东秒杀：${($.JdMsScore / 1000).toFixed(2)}元\n`;
+    }
+    if (typeof $.JdzzNum !== "undefined") {
+        //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
+        ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
     }
     if (typeof $.JDEggcnt !== "undefined") {
         ReturnMessage += `京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
@@ -1177,6 +1181,59 @@ function getJxmcUrlData(url, name) {
         return ''
     }
 }
+
+function necklace_homePage() {
+    $.taskConfigVos = [];
+    $.bubbles = [];
+    $.signInfo = {};
+    return new Promise(resolve => {
+        $.post(taskPostUrl('necklace_homePage'), async (err, resp, data) => {
+            try {
+                if (err) {
+                    console.log(`${JSON.stringify(err)}`)
+                    console.log(`${$.name} API请求失败，请检查网路重试`)
+                } else {
+                    if (safeGet(data)) {
+                        data = JSON.parse(data);
+                        if (data.rtn_code === 0) {
+                            if (data.data.biz_code === 0) {
+                                $.necklace_totalScore = data.data.result.totalScore;
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                $.logErr(e, resp)
+            } finally {
+                resolve();
+            }
+        })
+    })
+}
+function taskPostUrl(function_id, body = {}) {
+    const time = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
+    return {
+        url: `https://api.m.jd.com/api?functionId=${function_id}&appid=coupon-necklace&loginType=2&client=coupon-necklace&t=${Date.now()}`,
+        body: `body=${escape(JSON.stringify(body))}`,
+        headers: {
+            'Host': 'api.m.jd.com',
+            'accept': 'application/json, text/plain, */*',
+            'content-type': 'application/x-www-form-urlencoded',
+            'origin': 'https://h5.m.jd.com',
+            'accept-language': 'zh-cn',
+            'User-Agent': $.UA,
+            'referer': 'https://h5.m.jd.com/',
+            'cookie': cookie + `joyytoken=${"50082" + $.joyytoken};`
+        }
+    }
+}
+
+
+function getUA(){
+    $.UA = `jdapp;iPhone;10.0.10;14.3;${randomString(40)};network/wifi;model/iPhone12,1;addressid/4199175193;appBuild/167741;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`
+    $.UUID = $.UA.split(';') && $.UA.split(';')[4] || ''
+    $.joyytoken = ''
+  }
 
 function jsonParse(str) {
     if (typeof str == "string") {
