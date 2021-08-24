@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[33m[*]\033[0m DIY版本：2021-08-23 16:00"
+echo -e "\033[33m[*]\033[0m DIY版本：2021-08-24 12:00"
 DockerName=$(hostname)
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
@@ -514,7 +514,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 强制取消定时注释
-js_List=""
+js_List="qhqcz_jd_ckcheck"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 强制开启脚本 ---------------+"
     for js_item in $js_List; do
@@ -582,6 +582,7 @@ echo -e "+--------------------------------------------+\n"
 ## 修正定时
 #grep -q "bash git_pull" ${ListCron} && sed -i "/&*bash git_pull/c$(rand 1 59) 1,7,13,19 \* \* \* sleep $(rand 1 59) && bash git_pull >>\$\{JD_DIR\}\/log\/git_pull.log 2>&1" ${ListCron}
 grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
+grep -q "qhqcz_jd_ckcheck" ${ListCron} && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * bash jd qhqcz_jd_ckcheck' ${ListCron}
 #sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
 #grep -q "airacg_jd-task-validate" ${ListCron} && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * bash jd airacg_jd-task-validate/ig" ${ListCron}
