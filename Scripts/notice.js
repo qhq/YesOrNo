@@ -27,9 +27,13 @@ if ($.isNode()) {
         $.index = i + 1;
 
         if ($.isNode() && SEND_NOTICE && ONE_BY_ONE == 'true') {
-            await notify.sendNotify2(`${$.name}`, `${$.pt_pin}\n  您好：\n${SEND_NOTICE}`)
+            console.log(`\n********开始【京东账号${$.index}】${$.nickName || $.UserName}******\n`);
+            await notify.sendNotify2(`${$.name}`, `${$.pt_pin}\n  您好：\n${SEND_NOTICE}`);
+            await $.wait(2000);
         } else if ($.isNode() && SEND_NOTICE) {
-            await notify.sendNotify(`${$.name}`, `${$.pt_pin}\n  您好：\n${SEND_NOTICE}`)
+            console.log(`\n********开始【京东账号${$.index}】${$.nickName || $.UserName}******\n`);
+            await notify.sendNotify(`${$.name}`, `${$.pt_pin}\n  您好：\n${SEND_NOTICE}`);
+            await $.wait(2000);
         }
     }
 })()
