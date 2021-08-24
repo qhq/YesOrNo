@@ -24,6 +24,7 @@ if ($.isNode()) {
 } else {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
+
 !(async () => {
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -117,12 +118,12 @@ async function showMsg() {
     if (typeof $.JDtotalcash !== "undefined") {
         //ReturnMessage += `极速金币：${$.JDtotalcash}金币(≈${($.JDtotalcash / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `极速金币：${($.JDtotalcash / 10000).toFixed(2)}元\n`;
-    }    
+    }
     if ($.JDCash != 0) {
         ReturnMessage += `JD领现金：${$.JDCash}元\n`;
     }
     if ($.necklace_totalScore != 0) {
-        ReturnMessage += `JD点点券：${($.necklace_totalScore/1000).toFixed(2)}元\n`;
+        ReturnMessage += `JD点点券：${($.necklace_totalScore / 1000).toFixed(2)}元\n`;
     }
     if ($.JdMsScore != 0) {
         //ReturnMessage += `京东秒杀：${$.JdMsScore}秒秒币(≈${($.JdMsScore / 1000).toFixed(2)}元)\n`;
@@ -692,9 +693,10 @@ function getSign(functionid, body, uuid) {
             "clientVersion": "10.1.0"
         }
         let options = {
-            url: `https://service-ft43gk13-1302176878.sh.apigw.tencentcs.com/release/ddo`,
+            url: `https://jdsign.cf/ddo`,
             body: JSON.stringify(data),
             headers: {
+                "Host": "jdsign.tk",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
             }
         }
@@ -855,11 +857,11 @@ function getJxFactory() {
                                 infoMsg = `${$.jxProductName} ,进度:${((production.investedElectric / production.needElectric) * 100).toFixed(2)}%`;
                                 if (production.investedElectric >= production.needElectric) {
                                     if (production['exchangeStatus'] === 1) {
-                                        infoMsg = `${$.productName} ,已可兑换，请手动兑换`;
+                                        infoMsg = `${$.jxProductName} ,已可兑换，请手动兑换`;
                                     }
                                     if (production['exchangeStatus'] === 3) {
                                         if (new Date().getHours() === 9) {
-                                            infoMsg = `${$.productName} ,兑换超时，选择新商品制造`;
+                                            infoMsg = `${$.jxProductName} ,兑换超时，选择新商品制造`;
                                         }
                                     }
                                     // await exchangeProNotify()
@@ -867,7 +869,7 @@ function getJxFactory() {
                                     infoMsg += `,${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(1)}天可兑`
                                 }
                                 if (production.status === 3) {
-                                    infoMsg = "${$.productName} ,已经超时失效, 请选择新商品进行制造"
+                                    infoMsg = `${$.jxProductName} ,已经超时失效, 请选择新商品进行制造`
                                 }
                             } else {
                                 $.unActive = false;//标记是否开启了京喜活动或者选购了商品进行生产
@@ -972,11 +974,11 @@ async function getDdFactoryInfo() {
                                     couponCount,
                                     name
                                 } = data.data.result.factoryInfo;
-                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore}/${totalScore};当前电力:${remainScore * 1 + useScore * 1} ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1)).toFixed(2) * 100}%`
+                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore/10000}w/${totalScore/10000}w;当前电力:${(remainScore * 1 + useScore * 1)/10000}w ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1) * 100).toFixed(2)}%`
 
                                 if (((remainScore * 1 + useScore * 1) >= totalScore * 1 + 100000) && (couponCount * 1 > 0)) {
                                     // await jdfactory_addEnergy();
-                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${remainScore * 1 + useScore * 1}/${totalScore},已可兑换,请🔥速去活动页面查看`
+                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${(remainScore * 1 + useScore * 1)/10000}w/${totalScore/10000}w,已可兑换,请🔥速去活动页面查看`
                                 }
 
                             } else {
@@ -1229,11 +1231,11 @@ function taskPostUrl(function_id, body = {}) {
 }
 
 
-function getUA(){
+function getUA() {
     $.UA = `jdapp;iPhone;10.0.10;14.3;${randomString(40)};network/wifi;model/iPhone12,1;addressid/4199175193;appBuild/167741;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`
     $.UUID = $.UA.split(';') && $.UA.split(';')[4] || ''
     $.joyytoken = ''
-  }
+}
 
 function jsonParse(str) {
     if (typeof str == "string") {
