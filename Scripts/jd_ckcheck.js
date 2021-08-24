@@ -1,6 +1,6 @@
 /*
 京东账号检测
-cron 0 8,13,18 * * * jd_ckcheck.js
+cron 0 7-20/2 * * * jd_ckcheck.js
 */
 const $ = new Env('京东账号检测');
 const fs = require('fs');
