@@ -62,9 +62,9 @@ Object.keys(jdCookieNode).forEach((item) => {
           '\n----------\n' +
           `京东账号 ${$.index}：${$.UserName}\n更新日期：${$.update}\n剩余天数：${$.remainder}天`;
         if ($.isNode() && $.remainder <= REMIND_DAY && ONE_BY_ONE == 'true') {
-          await notify.sendNotify2(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+          await notify.sendNotify2(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n账号过期将影响操作，请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
         } else if ($.isNode() && $.remainder <= REMIND_DAY) {
-          await notify.sendNotify(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+          await notify.sendNotify(`${$.name}`, `京东账号：${$.UserName}\n等级名称：${$.levelName}\n用户等级：${$.userLevel}\n更新日期：${$.update}\n剩余天数：${$.remainder}天\n账号过期将影响操作，请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
         }
       } else {
         console.log(`京东账号 ${$.index}：${$.UserName} 有效\t等级名称：${$.levelName}\t用户等级：${$.userLevel}`);
@@ -81,9 +81,9 @@ Object.keys(jdCookieNode).forEach((item) => {
         '\n' +
         `京东账号 ${$.index}：${$.UserName} \t失效`;
       if ($.isNode() && ONE_BY_ONE == 'true') {
-        await notify.sendNotify2(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        await notify.sendNotify2(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n账号过期将影响操作，请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
       } else if ($.isNode()) {
-        await notify.sendNotify(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        await notify.sendNotify(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n账号过期将影响操作，请尽快点击下方链接更新\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
       }
     }
   }
