@@ -169,6 +169,7 @@ async function showMsg() {
     }
 
     allMessage += ReturnMessage;
+    allMessage += `\n`;
     $.msg($.name, '', ReturnMessage, { "open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean" });
     if ($.isNode() && ONE_BY_ONE == 'true') {
         await notify.sendNotify2(`${$.name} - 账号${$.index} - ${$.UserName}`, ReturnMessage, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
