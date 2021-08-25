@@ -34,7 +34,7 @@ author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiula
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js notice.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js jd_redPacket.js jd_live.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js notice.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -128,7 +128,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js jd_redPacket.js jd_live.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
