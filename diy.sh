@@ -128,7 +128,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js jd_redPacket.js jd_live.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js jd_redPacket.js jd_live.js jd_ccSign.js"
 
 # shufflewzc
 # https://github.com/shufflewzc/faker2
@@ -138,7 +138,7 @@ my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js jd
 # zero205
 # https://github.com/zero205/JD_tencent_scf
 scripts_base_url_zero205=${ProxyJudge}https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/
-my_scripts_list_zero205="jd_dpqd.js jd_ccSign.js"
+my_scripts_list_zero205="jd_dpqd.js"
 
 # airacg
 # https://github.com/airacg/jd_task
@@ -526,7 +526,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan zero205_jd_ccSign"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
