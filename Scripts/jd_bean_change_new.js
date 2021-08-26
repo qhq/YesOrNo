@@ -975,11 +975,11 @@ async function getDdFactoryInfo() {
                                     couponCount,
                                     name
                                 } = data.data.result.factoryInfo;
-                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore/10000}w/${totalScore/10000}w;当前电力:${(remainScore * 1 + useScore * 1)/10000}w ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1) * 100).toFixed(2)}%`
+                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore/10000}/${totalScore/10000}w;当前电力:${((remainScore * 1 + useScore * 1)/10000).toFixed(2)}w ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1) * 100).toFixed(2)}%`
 
                                 if (((remainScore * 1 + useScore * 1) >= totalScore * 1 + 100000) && (couponCount * 1 > 0)) {
                                     // await jdfactory_addEnergy();
-                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${(remainScore * 1 + useScore * 1)/10000}w/${totalScore/10000}w,已可兑换,请🔥速去活动页面查看`
+                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${(remainScore * 1 + useScore * 1)/10000}/${totalScore/10000}w,已可兑换,请🔥速去活动页面查看`
                                 }
 
                             } else {
