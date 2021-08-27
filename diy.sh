@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[33m[*]\033[0m DIY版本：2021-08-25 16:00"
+echo -e "\033[33m[*]\033[0m DIY版本：2021-08-28 08:00"
 DockerName=$(hostname)
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
@@ -43,12 +43,12 @@ my_scripts_list_Sunert="baidu_speed.js youth.js Youth_Read.js txnews.js"
 # Aaron-lv
 # https://github.com/Aaron-lv/sync/tree/jd_scripts
 scripts_base_url_Aaron_lv=${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/
-my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_carnivalcity_help.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js jd_redPacket.js jd_live.js jd_ccSign.js"
+my_scripts_list_Aaron_lv="jd_cfd.js jd_sendBeans.js jd_big_winner.js jd_cfdtx.js jd_necklace.js jd_joy_reward.js jd_joy_run.js jd_bean_sign.js jx_sign.js jd_mohe.js jd_jxmc.js jd_nzmh.js jd_wish.js jd_daily_lottery.js jd_health.js jd_cash.js jd_redPacket.js jd_live.js jd_ccSign.js"
 
 # smiek2221
 # https://github.com/smiek2221/scripts
 scripts_base_url_smiek2221=${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/
-my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js gua_carnivalcity.js"
+my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_steal.js gua_wealth_island.js gua_MMdou.js gua_wealth_island_help.js"
 
 # star261
 # https://github.com/star261/jd/tree/main/
@@ -527,7 +527,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression smiek2221_gua_carnivalcity Aaron_lv_jd_carnivalcity_help"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
