@@ -590,12 +590,9 @@ grep -q "qhqcz_jd_ckcheck" ${ListCron} && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 
 #grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*?&& bash jd airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && bash jd airacg_jd-reward-joy/ig" ${ListCron}
 #grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash jd airacg_jd-reward-joy/0 0-16\/8 * * * bash jd airacg_jd-reward-joy/ig" ${ListCron}
 
-#检查添加京喜团ID变量
-#if [[ $(grep -cEi 'export TUAN_ACTIVEID=".+?"' ${ConfigDir}/config.sh) -ne '0' ]]; then
-#    perl -0777 -i -pe 's/export TUAN_ACTIVEID=".+?"/export TUAN_ACTIVEID="T_zZaWP6by9yA1wehxM4mg=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
-#else
-#    perl -0777 -i -pe 's/## export/## export\n#京喜团ID\nexport TUAN_ACTIVEID="T_zZaWP6by9yA1wehxM4mg=="/i' ${ConfigDir}/config.sh >/dev/null 2>&1
-#fi
+## 检查配置文件变量
+[ $(grep -c 'export invokeKey=".+?"' ${ConfigDir}/config.sh) -eq 0 ] && perl -0777 -i -pe 's/export invokeKey=".+?"/export invokeKey="RtKLB8euDo7KwsO0"/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+
 
 ## 删除不知如何产生的垃圾文件
 DeletedCacheFiles="app.eb41fc5f.js"
