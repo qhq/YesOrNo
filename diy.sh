@@ -53,7 +53,7 @@ my_scripts_list_smiek2221="jd_sign_graphics.js jd_necklace.js jd_joy.js jd_joy_s
 # star261
 # https://github.com/star261/jd/tree/main/
 scripts_base_url_star261=${ProxyJudge}https://raw.githubusercontent.com/star261/jd/main/scripts/
-my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js jd_decompression.js"
+my_scripts_list_star261="jd_jxmc.js jd_productZ4Brand.js"
 
 # yangtingxiao
 # https://github.com/yangtingxiao/QuantumultX/tree/master
@@ -527,7 +527,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
