@@ -253,7 +253,7 @@ function getJdFactory() {
                                             `【京东账号${$.index}（${$.UserName}）东东工厂】${item.assistTaskDetailVo.taskToken}`
                                         );
 										ddfactoryCode.push(item.assistTaskDetailVo.taskToken);
-                                        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/ddfactory/${item.assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
+                                        $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/ddfactory/${item.assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
                                         //$.wait(2000);
                                     }
                                 });
@@ -323,7 +323,7 @@ function getJxFactory() {
                                     // subTitle = data.user.pin;
                                     console.log(`【京东账号${$.index}（${$.UserName}）京喜工厂】${data.user.encryptPin}`);
 									jxfactoryCode.push(data.user.encryptPin);
-                                    $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxfactory/${data.user.encryptPin}/${$.UserName}`).then((text) => (console.log(text)));
+                                    $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxfactory/${data.user.encryptPin}/${$.UserName}`).then((text) => (console.log(text)));
                                     //$.wait(2000);
                                 }
                             } else {
@@ -394,7 +394,7 @@ function getJxNc() {
                                     };
                                     //console.log(`注意：京喜农场 种植种子发生变化的时候，互助码也会变！！`);
                                     console.log(`【京东账号${$.index}（${$.UserName}）京喜农场】` + JSON.stringify(shareCodeJson));
-                                    $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxnc/` + JSON.stringify(shareCodeJson) + `/${$.UserName}`).then((text) => (console.log(text)));
+                                    $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxnc/` + JSON.stringify(shareCodeJson) + `/${$.UserName}`).then((text) => (console.log(text)));
                                     //$.wait(2000);
                                 } else {
                                     console.log(`【京东账号${$.index}（${$.UserName}）京喜农场】未选择种子，请先去京喜农场选择种子`);
@@ -471,7 +471,7 @@ function getJdPet() {
                             `【京东账号${$.index}（${$.UserName}）京东萌宠】${$.petInfo.shareCode}`
                         );
 						petCode.push($.petInfo.shareCode);
-                        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/pet/${$.petInfo.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
+                        $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/pet/${$.petInfo.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
                         //$.wait(2000);
                     } else if (initPetTownRes.code === "0") {
                         console.log(`初始化萌宠失败:  ${initPetTownRes.message}`);
@@ -505,7 +505,7 @@ async function getJdZZ() {
                             $.taskList = data.data.taskDetailResList;
                             if ($.taskList.filter(item => !!item && item['taskId'] === 3) && $.taskList.filter(item => !!item && item['taskId'] === 3).length) {
                                 console.log(`【京东账号${$.index}（${$.UserName}）京东赚赚】${$.taskList.filter(item => !!item && item['taskId'] === 3)[0]['itemId']}`);
-                                $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdzz/${$.taskList.filter(item => !!item && item['taskId'] === 3)[0]['itemId']}/${$.UserName}`).then((text) => (console.log(text)))
+                                $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jdzz/${$.taskList.filter(item => !!item && item['taskId'] === 3)[0]['itemId']}/${$.UserName}`).then((text) => (console.log(text)))
                                 //$.wait(2000);
                             }
                         }
@@ -610,7 +610,7 @@ async function getPlantBean() {
             $.myPlantUuid = getParam(shareUrl, "plantUuid");
             console.log(`【京东账号${$.index}（${$.UserName}）种豆得豆】${$.myPlantUuid}`);
 			beanCode.push($.myPlantUuid);
-            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/bean/${$.myPlantUuid}/${$.UserName}`).then((text) => (console.log(text)));
+            $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/bean/${$.myPlantUuid}/${$.UserName}`).then((text) => (console.log(text)));
             //$.wait(2000);
         } else {
             console.log(
@@ -681,7 +681,7 @@ async function getJDFruit() {
                 `【京东账号${$.index}（${$.UserName}）京东农场】${$.farmInfo.farmUserPro.shareCode}`
             );
 			farmCode.push($.farmInfo.farmUserPro.shareCode);
-            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/farm/${$.farmInfo.farmUserPro.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
+            $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/farm/${$.farmInfo.farmUserPro.shareCode}/${$.UserName}`).then((text) => (console.log(text)));
             //$.wait(2000);
         } else {
             /*console.log(
@@ -730,7 +730,7 @@ async function getJoy() {
                         data = JSON.parse(data);
                         if (data.success && data.data && data.data.userInviteCode) {
                             console.log(`【京东账号${$.index}（${$.UserName}）crazyJoy】${data.data.userInviteCode}`)
-                            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdcrazyjoy/${data.data.userInviteCode}/${$.UserName}`).then((text) => (console.log(text)));
+                            $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jdcrazyjoy/${data.data.userInviteCode}/${$.UserName}`).then((text) => (console.log(text)));
                             //$.wait(2000);
                         }
                     }
@@ -770,7 +770,7 @@ async function getSgmh(timeout = 0) {
                         const invites = data.data.result.taskVos.filter(item => item['taskName'] === '邀请好友助力');
                         console.log(`【京东账号${$.index}（${$.UserName}）闪购盲盒】${invites && invites[0]['assistTaskDetailVo']['taskToken']}`)
                         sgmhCode.push(invites && invites[0]['assistTaskDetailVo']['taskToken']);
-						$.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/sgmh/${invites && invites[0]['assistTaskDetailVo']['taskToken']}/${$.UserName}`).then((text) => (console.log(text)));
+						$.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/sgmh/${invites && invites[0]['assistTaskDetailVo']['taskToken']}/${$.UserName}`).then((text) => (console.log(text)));
                         //$.wait(2000);
                     }
                 } catch (e) {
@@ -826,7 +826,7 @@ async function getCFD() {
                     if (strMyShareId) {
                         //console.log(`财富岛好友互助码每次运行都变化,旧的可继续使用`);
                         $.log(`【京东账号${$.index}（${$.UserName}）京喜财富岛】${strMyShareId}`);
-                        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/${strMyShareId}/${$.UserName}`).then((text) => (console.log(text)));
+                        $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxcfd/${strMyShareId}/${$.UserName}`).then((text) => (console.log(text)));
                         //$.wait(2000);
                     }
                     $.info = {
@@ -887,7 +887,7 @@ async function getJdCash() {
                         data = JSON.parse(data);
                         if (data.code === 0 && data.data.result) {
                             console.log(`【京东账号${$.index}（${$.UserName}）签到领现金】${data.data.result.inviteCode}`);
-                            $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jdcash/${data.data.result.inviteCode}/${$.UserName}`).then((text) => (console.log(text)));
+                            $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jdcash/${data.data.result.inviteCode}/${$.UserName}`).then((text) => (console.log(text)));
                             //$.wait(2000);
                         }
                     }
@@ -914,7 +914,7 @@ async function getHalth(taskId = 6) {
                             if (data?.data?.result?.taskVos) {
                                 console.log(`【京东账号${$.index}（${$.UserName}）京东健康】${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}`);
                                 // console.log('好友助力码：' + data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken)
-                                await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/health/${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
+                                await $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/health/${data?.data?.result?.taskVos[0].assistTaskDetailVo.taskToken}/${$.UserName}`).then((text) => (console.log(text)));
                                 //$.wait(2000);
                             }
                         }
@@ -955,7 +955,7 @@ function getCarnivalcity() {
           data = JSON.parse(data);
           if (data.code === 200) {
             $.log(`【京东账号${$.index}（${$.UserName}）手机狂欢城】${data.data.shareId}\n\n`);
-            await $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/carnivalcity/${data.data.shareId}/${$.UserName}`).then((text) => (console.log(text)));
+            await $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/carnivalcity/${data.data.shareId}/${$.UserName}`).then((text) => (console.log(text)));
           } else {
             console.log(`获取邀请码失败：${JSON.stringify(data)}`);
             if (data.code === 1002) $.blockAccount = true;
@@ -1012,7 +1012,7 @@ async function getJxmc() {
             return;
         }
         $.log(`【京东账号${$.index}（${$.UserName}）惊喜牧场】${$.homeInfo.sharekey}`);
-        $.getScript(`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/${$.homeInfo.sharekey}/${$.UserName}`).then((text) => (console.log(text)));
+        $.getScript(`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxmc/${$.homeInfo.sharekey}/${$.UserName}`).then((text) => (console.log(text)));
         //$.wait(2000);
     }
 }
