@@ -310,7 +310,7 @@ perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xin
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
-sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
+sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/v3/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
 sed -i "
 /await jdDreamFactory()/ {
 n
@@ -323,7 +323,7 @@ sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_S
 [ $(grep -c "51.15.187.136" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/好友互助码】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFactoryCode?code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂passerby互助码激活已添加"
 [ $(grep -c "51.15.187.136" ${ScriptsDir}/jd_cfd.ts) -eq 0 ] && sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/activeJdCfdCode?code=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 财富岛passerby互助码激活已添加"
 sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1
-[ $(grep -c "xinhunshang.xyz:6001/submit_activity_codes" ${ScriptsDir}/jd_jxmc.ts) -eq 0 ] && sed -i "/'助力码：'/a\await axios.get\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{cookie.match(/pt_pin=([^;]*)/)\![1]\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
+[ $(grep -c "xinhunshang.xyz:6001/v3/submit_activity_codes" ${ScriptsDir}/jd_jxmc.ts) -eq 0 ] && sed -i "/'助力码：'/a\await axios.get\(\`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{cookie.match(/pt_pin=([^;]*)/)\![1]\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
 sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null 2>&1 && echo -e " MD5验证已移除"
 #sed -i "s|if(_0x\w\{6\}==='1'|if('1'==='1'|" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 尝试"
 sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
@@ -357,7 +357,7 @@ echo -e "+--------------------------------------------+\n"
 #echo -e "+--------------- star261 脚本 ---------------+"
 #perl -0777 -i -pe "s|https:\/\/raw\.githubusercontent\.com\/star261\/jd\/main\/code\/dreamFactory_tuan\.json|http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20|ig" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "/res = await getAuthorShareCode/a await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxtuan/2/20').then((text) => (res = JSON.parse(text).data))" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-#sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
+#sed -i "/开团成功tuanId为/a $.getScript\(\`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxtuan/$\{data.data['tuanId']\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/qhqcz_jd_dreamFactory_tuan.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
 #sed -i "
 #/inviteCodeList\[k\]\.code/ {
 #n
@@ -369,9 +369,9 @@ echo -e "+--------------------------------------------+\n"
 #echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- smiek2221 脚本 --------------+"
-#[ $(grep -c "xinhunshang" ${ScriptsDir}/smiek2221_gua_wealth_island.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
+#[ $(grep -c "xinhunshang" ${ScriptsDir}/smiek2221_gua_wealth_island.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
 #[ $(grep -c "xinhunshang" ${ScriptsDir}/smiek2221_gua_wealth_island.js) -eq 0 ] && sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)"  ${ScriptsDir}/smiek2221_gua_wealth_island.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
-[ $(grep -c "xinhunshang.xyz:6001/submit_activity_codes" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
+[ $(grep -c "xinhunshang.xyz:6001/v3/submit_activity_codes" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js) -eq 0 ] && sed -i "/\\$.InviteList.push(/i\await $.getScript\(\`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxcfd/$\{$.HomeInfo.strMyShareId\}/$\{$.UserName\}\`\).then\(\(text\) => \(console.log\(text\)\)\);" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js >/dev/null 2>&1 && echo -e " 财富大陆提交私库已添加"
 #[ $(grep -c "xinhunshang.xyz:6001/help" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js) -eq 0 ] && sed -i "/(HelpAuthorFlag)/i\await $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)"  ${ScriptsDir}/smiek2221_gua_wealth_island_help.js >/dev/null 2>&1 && echo -e " 财富大陆拉取私库已添加"
 [ $(grep -c "xinhunshang.xyz:6001/help" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js) -eq 0 ] && sed -i "
 /\\$.InviteList);/ {
