@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo -e "\033[33m[*]\033[0m DIY版本：2021-08-28 08:00"
+echo -e "\033[33m[*]\033[0m DIY版本：2021-08-28 09:00"
 DockerName=$(hostname)
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
@@ -143,7 +143,7 @@ my_scripts_list_zero205="jd_dpqd.js"
 # airacg
 # https://github.com/airacg/jd_task
 scripts_base_url_airacg=${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/
-my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js jd-task-validate.js"
+my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js jd-task-validate.js jx-help-cashback.js"
 
 ############################## 随机函数 ##########################################
 cd ${ShellDir}
