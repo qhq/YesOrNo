@@ -653,11 +653,14 @@ function safeGet(data) {
 }
 
 async function jdCash(info = true) {
-    let functionId = "cash_homePage"
-    let body = "%7B%7D"
-    let uuid = randomString(16)
-    let sign = await getSign(functionId, decodeURIComponent(body), uuid)
-    let url = `https://api.m.jd.com/client.action?functionId=${functionId}&build=167774&client=apple&clientVersion=10.1.0&uuid=${uuid}&${sign}`
+    let iosVer = ["14.5.1", "14.4", "14.3", "14.2", "14.1", "14.0.1", "13.7", "13.1.2", "13.1.1"]
+    let body = `%7B%7D&build=167724&client=apple&clientVersion=10.0.6&d_brand=apple&d_model=iPhone13%2C4&eid=&isBackground=N&joycious=82&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=809409cbd5bb8a0fa8fff41378c1afe91b8075ad&osVersion=${iosVer[Math.floor((Math.random()*iosVer.length))]}&partner=apple&rfs=0000&scope=10&screen=1125%2A2436&sign=5b8aa440653bb1fcbad0f0ff71671cae&st=1625368739358&sv=122&//uemps=0-0&uts=&uuid=&wifiBssid=unknown`
+    let url = `https://api.m.jd.com/client.action?functionId=cash_exchangePage`
+    //let functionId = "cash_homePage"
+    //let body = "%7B%7D"
+    //let uuid = randomString(16)
+    //let sign = await getSign(functionId, decodeURIComponent(body), uuid)
+    //let url = `https://api.m.jd.com/client.action?functionId=${functionId}&build=167774&client=apple&clientVersion=10.1.0&uuid=${uuid}&${sign}`
     return new Promise((resolve) => {
         $.post(apptaskUrl(url, body), async (err, resp, data) => {
             try {
@@ -694,10 +697,10 @@ function getSign(functionid, body, uuid) {
             "clientVersion": "10.1.0"
         }
         let options = {
-            url: `https://jdsign.cf/ddo`,
+            url: `https://cdn.jdsign.cf/ddo`,
             body: JSON.stringify(data),
             headers: {
-                "Host": "jdsign.tk",
+                "Host": "jdsign.cf",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
             }
         }
