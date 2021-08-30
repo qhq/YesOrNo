@@ -308,7 +308,7 @@ perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http:/
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jxmc/5/10\`|ig" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+#perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
 sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/v3/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
 sed -i "
@@ -378,8 +378,8 @@ echo -e "+-------------- smiek2221 脚本 --------------+"
 n
 a $.InviteLists = []\n$.InviteLists.push(...$.InviteList);\nawait $.getScript('http://xinhunshang.xyz:6001/help/v3/get/jxcfd/2/5').then((text) => ($.InviteList.push(...JSON.parse(text).data)));\nconsole.log($.InviteList)
 }" ${ScriptsDir}/smiek2221_gua_wealth_island_help.js && echo -e " 财富大陆拉取私库已添加"
-perl -0777 -i -pe "s|https:\/\/jd\.smiek\.tk\/info_carnivalcity|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
-perl -0777 -i -pe "s|https:\/\/cdn\.jsdelivr\.net\/.*?\.json||ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+#perl -0777 -i -pe "s|https:\/\/jd\.smiek\.tk\/info_carnivalcity|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+#perl -0777 -i -pe "s|https:\/\/cdn\.jsdelivr\.net\/.*?\.json||ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+--------------- Aaron-lv 脚本 --------------+"
@@ -399,8 +399,8 @@ sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${S
 sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
 sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
 sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
-sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+#sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
+#perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/Aaron_lv_jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
 sed -i "/cookiesArr.length/i\ $.authorCode = []" ${ScriptsDir}/Aaron_lv_jd_cash.js
 echo -e "+--------------------------------------------+\n"
