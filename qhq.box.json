@@ -64,7 +64,8 @@
         "id": "dockerck",
         "name": "容器CK更新",
         "keys": [
-          "qhq_docker_cookie"
+          "qhq_HOSTURL",
+          "qhq_APITOKEN"
         ],
         "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js",
         "author": "@qhq",
