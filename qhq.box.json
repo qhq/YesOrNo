@@ -115,6 +115,13 @@
         ],
         "settings": [
           {
+            "id": "qhq_TG_API_HOST",
+            "name": "TG_API_HOST",
+            "val": "",
+            "type": "text",
+            "desc": "Telegram api自建反向代理地址（选填）"
+          },
+          {
             "id": "qhq_TGBotToken",
             "name": "TGBOT_TOKEN",
             "val": "",
