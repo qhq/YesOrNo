@@ -94,18 +94,54 @@
           }
         ]
       },
-      {
-        "id": "ysf",
-        "name": "云闪付签到",
+        {
+        "id": "uploadCK",
+        "name": "CK更新通知",
         "keys": [
-          "qhq_ysf_keys"
+            "qhq_TGBotToken",
+            "qhq_TGUserID",
+          "qhq_HOSTURL",
+          "qhq_APITOKEN"
         ],
-        "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/ysf.js",
+        "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/uploadJDCookie.js",
         "author": "@qhq",
         "repo": "https://gitee.com/qhqcz/quan-x/",
         "icons": [
           "",
-          "https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/ysf.png"
+          ""
+        ],
+        "descs_html": [
+          "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
+        ],
+        "settings": [
+          {
+            "id": "qhq_TGBotToken",
+            "name": "TGBOT_TOKEN",
+            "val": "",
+            "type": "text",
+            "desc": "123456:xxxxxxxxxxxxx"
+          },
+          {
+            "id": "qhq_TGUserID",
+            "name": "TG用户ID",
+            "val": "",
+            "type": "text",
+            "desc": "123456,123456"
+          },
+          {
+            "id": "qhq_HOSTURL",
+            "name": "服务器地址",
+            "val": "",
+            "type": "text",
+            "desc": "xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx"
+          },
+          {
+            "id": "qhq_APITOKEN",
+            "name": "容器TOEKN",
+            "val": "",
+            "type": "text",
+            "desc": "xxxxxxxxx,xxxxxxxxx"
+          }
         ]
       }
     ]
