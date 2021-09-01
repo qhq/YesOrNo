@@ -189,7 +189,7 @@
          const titleIndex = notifySkipList.findIndex((item) => item === title);
          if (titleIndex !== -1) {
              console.log(`
-    🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
+    🔕  ${title} 在推送黑名单中，已跳过推送 🔕
     `);
              return;
          }
@@ -238,7 +238,7 @@
          const titleIndex = notifySkipList.findIndex((item) => item === title);
          if (titleIndex !== -1) {
              console.log(`
-    🔕🔕  在推送黑名单中，已跳过推送 🔕🔕
+    🔕  ${title} 在推送黑名单中，已跳过推送 🔕
     `);
              return;
          }
