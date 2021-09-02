@@ -101,7 +101,8 @@
             "qhq_TGBotToken",
             "qhq_TGUserID",
           "qhq_HOSTURL",
-          "qhq_APITOKEN"
+          "qhq_APITOKEN",
+            "qhq_ForceUpdate"
         ],
         "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/uploadJDCookie.js",
         "author": "@qhq",
@@ -114,6 +115,13 @@
           "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
         ],
         "settings": [
+          {
+            "id": "qhq_ForceUpdate",
+            "name": "是否强制更新推送",
+            "val": false,
+            "type": "boolean",
+            "desc": "不勾选仅在有变化才更新推送"
+          },
           {
             "id": "qhq_TG_API_HOST",
             "name": "TG_API_HOST",
