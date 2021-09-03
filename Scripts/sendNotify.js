@@ -195,8 +195,8 @@ async function sendNotify(text, desp, params = {}, author = '\n\n仅供用于学
     `);
             return;
         }
-        fs.accessSync('./tools/account.json')
-        remarks = JSON.parse(fs.readFileSync('./tools/account.json').toString())
+        fs.accessSync('../config/account.json')
+        remarks = JSON.parse(fs.readFileSync('../config/account.json').toString())
     } catch (e) {
     }
     if (remarks) {
@@ -246,8 +246,8 @@ async function sendNotify2(text, desp, params = {}, author = '\n\n仅供用于�
     `);
             return;
         }
-        fs.accessSync('./tools/account.json')
-        ACCOUNTS = JSON.parse(fs.readFileSync('./tools/account.json').toString())
+        fs.accessSync('../config/account.json')
+        ACCOUNTS = JSON.parse(fs.readFileSync('../config/account.json').toString())
     } catch (e) {
     }
     
