@@ -1,8 +1,9 @@
 /*
 cron "2 8,18 * * *" https://raw.githubusercontent.com/shufflewzc/faker2/main/jd_bean_change_new.js, tag:资产变化强化版by-ccwav
+20210905
 */
 
-//更新by ccwav,20210821
+
 const $ = new Env('京东资产变动通知');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const JXUserAgent = $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USER_AGENT : ``) : ``;
@@ -10,7 +11,7 @@ const JXUserAgent = $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USE
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let allMessage = '';
 let ReturnMessage = '';
-const ONE_BY_ONE = process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false';
+const ONE_BY_ONE = process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'true';
 const SPLIT_NUM = $.isNode() ? (process.env.SPLIT_NUM ? process.env.SPLIT_NUM : '8') : '8';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
@@ -24,7 +25,7 @@ if ($.isNode()) {
 } else {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
-
+cookiesArr=["pt_key=app_openAAJhMozTADDYuIAFbRfaJ--PLNCwZwdCHuT88WLH4raIXc1nDbheJMrMg2VkpsRj7IenATa3lho;pt_pin=%E7%8E%8B%E8%80%81%E8%99%8E%E6%8A%A2%E4%BA%B2;"]
 !(async () => {
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -58,6 +59,7 @@ if ($.isNode()) {
             $.JDEggcnt = 0;
             $.JDCash = 0;
             $.Jxmctoken = '';
+            $.JxCFDcfz = '';
             await TotalBean();
             console.log(`\n********开始【京东账号${$.index}】${$.nickName || $.UserName}******\n`);
             if (!$.isLogin) {
@@ -68,12 +70,15 @@ if ($.isNode()) {
                 }
                 continue
             }
+
+            //Jxmctoken = await getJxToken()
             await getJdZZ();
             await getMs();
             await jdfruitRequest('taskInitForFarm', { "version": 14, "channel": 1, "babelChannel": "120" });
             await getjdfruit();
             await cash();
             await requestAlgo();
+            await cfdUserInfo();
             await JxmcGetRequest();
             await bean();
             await jdCash();
@@ -132,6 +137,9 @@ async function showMsg() {
     if (typeof $.JdzzNum !== "undefined") {
         //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
+    }
+    if (typeof $.JxCFDcfz !== "undefined") {
+        ReturnMessage += `JX财富岛：${$.JxCFDcfz}\n`;
     }
     if (typeof $.JDEggcnt !== "undefined") {
         ReturnMessage += `京喜牧场：${$.JDEggcnt}枚鸡蛋\n`;
@@ -1234,7 +1242,45 @@ function taskPostUrl(function_id, body = {}) {
     }
 }
 
+function cfdUserInfo() {
+    return new Promise(async (resolve) => {
+      $.get(taskUrl(`user/QueryUserInfo`, `ddwTaskId=&strShareId=&strMarkList=${escape('guider_step,collect_coin_auth,guider_medal,guider_over_flag,build_food_full,build_sea_full,build_shop_full,build_fun_full,medal_guider_show,guide_guider_show,guide_receive_vistor,daily_task,guider_daily_task')}&strPgUUNum=${$.Jxmctoken['farm_jstoken']}&strPgtimestamp=${$.Jxmctoken['timestamp']}&strPhoneID=${$.Jxmctoken['phoneid']}`), (err, resp, data) => {
+        try {
+          if (err) {
+            console.log(`${JSON.stringify(err)}`)
+            console.log(`${$.name} QueryUserInfo API请求失败，请检查网路重试`)
+          } else {
+            data = JSON.parse(data);
+            $.JxCFDcfz = data.ddwRichBalance
+            //console.log(`\n当前等级:${dwLandLvl},金币:${ddwCoinBalance},财富值:${ddwRichBalance},连续营业天数:${Business.dwBussDayNum},离线收益:${Business.ddwCoin}\n`)
+          }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve();
+        }
+      })
+    })
+  }
 
+  function taskUrl(function_path, body = '', dwEnv = 7) {
+    let url = `https://m.jingxi.com/jxbfd/${function_path}?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=${dwEnv}&_cfd_t=${Date.now()}&ptag=138631.26.55&${body}&_stk=_cfd_t%2CbizCode%2CddwTaskId%2CdwEnv%2Cptag%2Csource%2CstrShareId%2CstrZone&_ste=1`;
+    url += `&h5st=${decrypt(Date.now(), '', '', url)}&_=${Date.now() + 2}&sceneval=2&g_login_type=1&g_ty=ls`;
+    return {
+      url,
+      headers: {
+        Cookie: cookie,
+        Accept: "*/*",
+        Connection: "keep-alive",
+        Referer:"https://st.jingxi.com/fortune_island/index.html?ptag=138631.26.55",
+        "Accept-Encoding": "gzip, deflate, br",
+        Host: "m.jingxi.com",
+        "User-Agent": $.UA,
+        "Accept-Language": "zh-cn",
+      },
+      timeout: 10000
+    };
+  }
 function getUA() {
     $.UA = `jdapp;iPhone;10.0.10;14.3;${randomString(40)};network/wifi;model/iPhone12,1;addressid/4199175193;appBuild/167741;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`
     $.UUID = $.UA.split(';') && $.UA.split(';')[4] || ''
