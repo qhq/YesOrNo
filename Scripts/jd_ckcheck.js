@@ -12,6 +12,8 @@ const CKGG = $.isNode() ? (process.env.CKGG ? process.env.CKGG : 'false') : 'fal
 const REMIND_DAY = $.isNode() ? (process.env.REMIND_DAY ? process.env.REMIND_DAY : '2') : '2';
 const GET_COOKIES_URL = $.isNode() ? (process.env.GET_COOKIES_URL ? process.env.GET_COOKIES_URL : 'https://bean.m.jd.com/bean/signIndex.action') : 'https://bean.m.jd.com/bean/signIndex.action';
 const ONE_BY_ONE = $.isNode() ? (process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false') : 'false';
+const W2P_URL = $.isNode() ? (process.env.W2P_URL ? process.env.W2P_URL : '') : '';
+const W2P_TOKEN = $.isNode() ? (process.env.W2P_TOKEN ? process.env.W2P_TOKEN : '') : '';
 
 Object.keys(jdCookieNode).forEach((item) => {
   cookiesArr.push(jdCookieNode[item]);
@@ -76,14 +78,17 @@ Object.keys(jdCookieNode).forEach((item) => {
 
     } else {
       console.log(`京东账号 ${$.index}：${$.UserName} \t失效`);
-      allMsg =
-        allMsg +
-        '\n' +
-        `京东账号 ${$.index}：${$.UserName} \t失效`;
-      if ($.isNode() && ONE_BY_ONE == 'true') {
-        await notify.sendNotify2(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请复制下方链接在浏览器内打开，点击APP登录或使用京东APP扫码\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
-      } else if ($.isNode()) {
-        await notify.sendNotify(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请复制下方链接在浏览器内打开，点击APP登录或使用京东APP扫码\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+      await updataCK($.pt_pin);
+      if (!$.isLogin) {
+        allMsg =
+          allMsg +
+          '\n' +
+          `京东账号 ${$.index}：${$.UserName} \t失效`;
+        if ($.isNode() && ONE_BY_ONE == 'true') {
+          await notify.sendNotify2(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请复制下方链接在浏览器内打开，点击APP登录或使用京东APP扫码\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        } else if ($.isNode()) {
+          await notify.sendNotify(`${$.name}`, `京东账号 ${$.index}：${$.UserName}\n已经失效\n请复制下方链接在浏览器内打开，点击APP登录或使用京东APP扫码\n${GET_COOKIES_URL}`, { url: `${GET_COOKIES_URL}` })
+        }
       }
     }
   }
@@ -187,6 +192,42 @@ async function GetJDUserInfoUnion() {
             }
           } else {
             console.log(`京东服务器返回空数据`)
+            $.isLogin = false
+          }
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+        $.isLogin = false
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
+
+async function updataCK(pt_pin) {
+  return new Promise(async resolve => {
+    const options = {
+      "url": W2P_URL,
+      "headers": {
+        'token': W2P_TOKEN,
+      },
+      "body": `pin=${pt_pin}`,
+    };
+    $.post(options, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          //console.log(`${$.name} API请求失败，请检查网路重试`)
+        } else {
+          if (data) {
+            data = JSON.parse(data)
+            if(data.status == 'ok'){
+              console.log(`京东账号 ${$.index}：${$.UserName} \tCookie已更新`)
+              $.isLogin = true
+            }
+          } else {
+            console.log(`服务器返回空数据`)
             $.isLogin = false
           }
         }
