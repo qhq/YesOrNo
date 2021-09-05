@@ -125,13 +125,13 @@ async function showMsg() {
         //ReturnMessage += `极速金币：${$.JDtotalcash}金币(≈${($.JDtotalcash / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `极速金币：${($.JDtotalcash / 10000).toFixed(2)}元\n`;
     }
-    if ($.JDCash != 0) {
+    if ($.JDCash > 0) {
         ReturnMessage += `JD领现金：${$.JDCash}元\n`;
     }
-    if ($.necklace_totalScore != 0) {
+    if ($.necklace_totalScore > 0) {
         ReturnMessage += `JD点点券：${($.necklace_totalScore / 1000).toFixed(2)}元\n`;
     }
-    if ($.JdMsScore != 0) {
+    if ($.JdMsScore > 0) {
         //ReturnMessage += `京东秒杀：${$.JdMsScore}秒秒币(≈${($.JdMsScore / 1000).toFixed(2)}元)\n`;
         ReturnMessage += `京东秒杀：${($.JdMsScore / 1000).toFixed(2)}元\n`;
     }
@@ -139,7 +139,7 @@ async function showMsg() {
         //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
     }
-    if (typeof $.JxCFDcfz !== 0) {
+    if (typeof $.JxCFDcfz > 0) {
         ReturnMessage += `JX财富岛：${$.JxCFDcfz}\n`;
     }
     if (typeof $.JDEggcnt !== "undefined") {
