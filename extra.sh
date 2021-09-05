@@ -446,7 +446,7 @@ js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_u
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
-        sed -i "s|\(^[0-9].*task\) $js_item|# \1 $js_item|" $ListCrontabUser && echo -e " \033[32m[已停用]\033[0m $js_item"
+        sed -i "s|\(^[0-9].*task\) $js_item$|# \1 $js_item|" $ListCrontabUser && echo -e " \033[32m[已停用]\033[0m $js_item"
         #sed -i "/$js_item/d" $ListCrontabUser && echo -e "$js_item已删除"
     done
     echo -e "+--------------------------------------------+\n"
@@ -457,8 +457,8 @@ js_List="qhqcz_jd_ckcheck"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 强制开启脚本 ---------------+"
     for js_item in $js_List; do
-        sed -i "s/^#\([0-9].*task\) $js_item/\1 $js_item/g" $ListCrontabUser
-        sed -i "s/^# \([0-9].*task\) $js_item/\1 $js_item/g" $ListCrontabUser && echo -e " \033[32m[已开启]\033[0m $js_item"
+        sed -i "s/^#\([0-9].*task\) $js_item$/\1 $js_item/g" $ListCrontabUser
+        sed -i "s/^# \([0-9].*task\) $js_item$/\1 $js_item/g" $ListCrontabUser && echo -e " \033[32m[已开启]\033[0m $js_item"
         #sed -i "/$js_item/d" $ListCrontabUser && echo -e "$js_item已删除"
     done
     echo -e "+--------------------------------------------+\n"
@@ -469,7 +469,7 @@ js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_supe
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
-        rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" $ListCrontabUser && echo -e " \033[32m[已删除]\033[0m $js_item"
+        rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item$/d" $ListCrontabUser && echo -e " \033[32m[已删除]\033[0m $js_item"
     done
     echo -e "+--------------------------------------------+\n"
 fi
@@ -490,7 +490,7 @@ for Cron in ${js_List}; do
         #grep -cEi "^# ${jbz}\$" $ListCrontabUser
         if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" $ListCrontabUser) -eq '0' ]; then
             echo " $jname : $jbz"
-            sed -i "s/\(.*\?task\) $jname/# $jbz\n\1 task $jname/g" $ListCrontabUser
+            sed -i "s/\(.*\?task\) $jname$/# $jbz\n\1 task $jname/g" $ListCrontabUser
         fi
     fi
 done
