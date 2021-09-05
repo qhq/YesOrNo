@@ -147,9 +147,9 @@ async function showMsg() {
     }
     if ($.JdFarmProdName != "") {
         if ($.JdtreeEnergy != 0) {
-            ReturnMessage += `东东农场：${$.JdFarmProdName},进度${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
-            if ($.JdwaterD != 'Infinity' && $.JdwaterD != '-Infinity') {
-                ReturnMessage += `,${$.JdwaterD === 1 ? '明天' : $.JdwaterD === 2 ? '后天' : $.JdwaterD + '天'}可兑\n`;
+			ReturnMessage+=`东东农场：${$.JdFarmProdName},进度:${(($.JdtreeEnergy / $.JdtreeTotalEnergy) * 100).toFixed(2)}%`;
+			if($.JdwaterD!='Infinity' && $.JdwaterD!='-Infinity'){
+			  ReturnMessage+=`(${$.JdwaterD}天)\n`;
             } else {
                 ReturnMessage += `\n`;
             }
@@ -697,37 +697,40 @@ async function jdCash(info = true) {
     })
 }
 function getSign(functionid, body, uuid) {
-    return new Promise(async resolve => {
-        let data = {
-            "functionId": functionid,
-            "body": body,
-            "uuid": uuid,
-            "client": "apple",
-            "clientVersion": "10.1.0"
-        }
-        let options = {
-            url: `https://cdn.jdsign.cf/ddo`,
-            body: JSON.stringify(data),
-            headers: {
-                "Host": "jdsign.cf",
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-            }
-        }
-        $.post(options, (err, resp, data) => {
-            try {
-                if (err) {
-                    console.log(`${JSON.stringify(err)}`)
-                    console.log(`${$.name} getSign API请求失败，请检查网路重试`)
-                } else {
+  return new Promise(async resolve => {
+    let data = {
+      "functionId":functionid,
+      "body":body,
+      "uuid":uuid,
+      "client":"apple",
+      "clientVersion":"10.1.0"
+    }
+    let HostArr = ['jdsign.cf', 'signer.nz.lu']
+    let Host = HostArr[Math.floor((Math.random() * HostArr.length))]
+    let options = {
+      url: `https://cdn.nz.lu/ddo`,
+      body: JSON.stringify(data),
+      headers: {
+        Host,
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+      },
+      timeout: 15000
+    }
+    $.post(options, (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`${$.name} getSign API请求失败，请检查网路重试`)
+        } else {
 
-                }
-            } catch (e) {
-                $.logErr(e, resp)
-            } finally {
-                resolve(data);
-            }
-        })
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve(data);
+      }
     })
+  })
 }
 
 function apptaskUrl(url, body) {
@@ -867,7 +870,7 @@ function getJxFactory() {
                                 $.commodityDimId = production.commodityDimId;
                                 // subTitle = data.user.pin;
                                 await GetCommodityDetails();//获取已选购的商品信息
-                                infoMsg = `${$.jxProductName} ,进度:${((production.investedElectric / production.needElectric) * 100).toFixed(2)}%`;
+                                infoMsg = `${$.jxProductName},进度:${((production.investedElectric / production.needElectric) * 100).toFixed(2)}%`;
                                 if (production.investedElectric >= production.needElectric) {
                                     if (production['exchangeStatus'] === 1) {
                                         infoMsg = `${$.jxProductName} ,已可兑换，请手动兑换`;
@@ -879,7 +882,7 @@ function getJxFactory() {
                                     }
                                     // await exchangeProNotify()
                                 } else {
-                                    infoMsg += `,${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(1)}天可兑`
+                                    infoMsg += `(${((production.needElectric - production.investedElectric) / (2 * 60 * 60 * 24)).toFixed(0)}天)`;
                                 }
                                 if (production.status === 3) {
                                     infoMsg = `${$.jxProductName} ,已经超时失效, 请选择新商品进行制造`
@@ -987,11 +990,16 @@ async function getDdFactoryInfo() {
                                     couponCount,
                                     name
                                 } = data.data.result.factoryInfo;
-                                infoMsg = `${name} 剩余${couponCount};电力投入 ${useScore/10000}/${totalScore/10000}w;当前电力:${((remainScore * 1 + useScore * 1)/10000).toFixed(2)}w ;完成度:${((remainScore * 1 + useScore * 1) / (totalScore * 1) * 100).toFixed(2)}%`
-
+								if (couponCount==0){
+									infoMsg = `${name} 没货了,死了这条心吧!`
+								} else {									
+									infoMsg = `${name},进度:${((remainScore * 1 + useScore * 1) / (totalScore * 1)* 100).toFixed(2)}%(剩${couponCount}件)`
+								}
                                 if (((remainScore * 1 + useScore * 1) >= totalScore * 1 + 100000) && (couponCount * 1 > 0)) {
                                     // await jdfactory_addEnergy();
-                                    infoMsg = `${name} ,目前数量:${couponCount},当前电量：${(remainScore * 1 + useScore * 1)/10000}/${totalScore/10000}w,已可兑换,请🔥速去活动页面查看`
+                                    infoMsg = `${name} 可以兑换了!`
+									$.DdFactoryReceive=`${name}`;
+									
                                 }
 
                             } else {
