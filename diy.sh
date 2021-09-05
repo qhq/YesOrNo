@@ -584,6 +584,8 @@ echo -e "+--------------------------------------------+\n"
 #grep -q "bash git_pull" ${ListCron} && sed -i "/&*bash git_pull/c$(rand 1 59) 1,7,13,19 \* \* \* sleep $(rand 1 59) && bash git_pull >>\$\{JD_DIR\}\/log\/git_pull.log 2>&1" ${ListCron}
 grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
 grep -q "qhqcz_jd_ckcheck" ${ListCron} && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * bash jd qhqcz_jd_ckcheck' ${ListCron}
+grep -q "qhqcz_jd_cleancart" ${ListCron} && sed -i '/&*qhqcz_jd_cleancart$/c35 6-21/3 * * * bash jd qhqcz_jd_cleancart' ${ListCron}
+grep -q "qhqcz_jd_cleancart_sku" ${ListCron} && sed -i '/&*qhqcz_jd_cleancart_sku$/c15 6-21/3 * * * bash jd qhqcz_jd_cleancart_sku' ${ListCron}
 #sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 #grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
 #grep -q "airacg_jd-task-validate" ${ListCron} && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * bash jd airacg_jd-task-validate/ig" ${ListCron}
