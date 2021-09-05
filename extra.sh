@@ -361,18 +361,14 @@ echo -e "+--------------------------------------------+\n"
 
 
 echo -e "+----------------- 处理文件 -----------------+"
-HtmlDir=${ShellDir}/panel/public
-for file in $(ls $HtmlDir); do
-    if [ "${file##*.}" = "html" ]; then
-        echo -e " 已修改 ${file}"
-        perl -0777 -i -pe "s/京东薅羊毛控制面板|Dashboard/喝乌凹薅/ig" ${HtmlDir}/${file} >/dev/null 2>&1
-        perl -0777 -i -pe "s/var animating = true;/var animating = false;/ig" ${HtmlDir}/${file} >/dev/null 2>&1
-        #perl -0777 -i -pe "s|./css/main.css|https://raw.sevencdn.com/qhq/Myd/main/panel/public/css/main.css|ig" ${HtmlDir}/${file} >/dev/null 2>&1
-        #sed -i "/.\/js\/script.js/d" ${HtmlDir}/${file}
-        #sed -i "/>Stop</d" ${HtmlDir}/${file}
-        #sed -i '/<canvas id="sakura"/' ${HtmlDir}/${file}
-    fi
-done
+#HtmlDir=${ShellDir}/panel/public
+#for file in $(ls $HtmlDir); do
+#    if [ "${file##*.}" = "html" ]; then
+#        echo -e " 已修改 ${file}"
+#        perl -0777 -i -pe "s/京东薅羊毛控制面板|Dashboard/喝乌凹薅/ig" ${HtmlDir}/${file} >/dev/null 2>&1
+#        perl -0777 -i -pe "s/var animating = true;/var animating = false;/ig" ${HtmlDir}/${file} >/dev/null 2>&1
+#    fi
+#done
 
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
