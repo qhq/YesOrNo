@@ -22,6 +22,9 @@ const $ = new Env('清空购物车');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
+const fs = require("fs");
+const path = "./qhqcz_jd_cleancart_skuItems.txt";
+let itemIds=[];
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', allMessage = '', users = '';
@@ -34,6 +37,8 @@ if ($.isNode()) {
 } else {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
+
+
 !(async () => {
     if (!cookiesArr[0]) {
         $.msg('【京东账号一】清空购物车失败', '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -42,6 +47,8 @@ if ($.isNode()) {
     console.log("❗️❗️❗️❗️本脚本会清理购物车所有商品❗️❗️❗️❗️\n")
     console.log("脚本十秒后开始清理\n")
     await sleep(10 * 1000)
+    fs.accessSync(path)
+    itemIds = JSON.parse(fs.readFileSync(path).toString())
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
@@ -50,9 +57,9 @@ if ($.isNode()) {
             $.isLogin = true;
             $.nickName = '';
             await TotalBean();
-            console.log(`\n****开始【京东账号${$.index}】${$.nickName || $.UserName}*****\n`);
+            console.log(`\n****开始【京东账号${$.index}】${$.UserName}*****\n`);
             if (!$.isLogin) {
-                $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.nickName || $.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
+                $.msg($.name, `【提示】cookie已失效`, `京东账号${$.index} ${$.UserName}\n请重新登录获取\nhttps://bean.m.jd.com/bean/signIndex.action`, { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
 
                 if ($.isNode()) {
                     await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
@@ -62,9 +69,9 @@ if ($.isNode()) {
                 console.log(`❗️❗️账号在变量中，跳过此账号\n`);
                 continue
             }
-            allMessage += `京东账号${$.index} - ${$.nickName}\n`;
+            allMessage += `京东账号${$.index} - ${$.UserName}\n`;
             await getCarts();
-            allMessage += `购物车商品数：${$.cartsTotalNum}\n`;
+            allMessage += `自动加购商品数：${$.cartsTotalNum}\n`;
             if ($.cartsTotalNum > 0) {
                 for (let i = 0; i < 3; i++) {
                     await unsubscribeCartsFun();
@@ -95,6 +102,17 @@ if ($.isNode()) {
 function sleep(timeout) {
     return new Promise((resolve) => setTimeout(resolve, timeout));
 }
+
+async function deleteFile(path) {
+    // 查看文件result.txt是否存在,如果存在,先删除
+    const fileExists = await fs.existsSync(path);
+    // console.log('fileExists', fileExists);
+    if (fileExists) {
+        const unlinkRes = await fs.unlinkSync(path);
+        // console.log('unlinkRes', unlinkRes)
+    }
+}
+
 function unsubscribeCartsFun() {
     return new Promise(resolve => {
 
@@ -115,7 +133,7 @@ function unsubscribeCartsFun() {
         $.post(options, (err, resp, data) => {
             try {
                 data = JSON.parse(data);
-                if (data['errId'] == '0') { console.log('清空购物车成功') }
+                if (data['errId'] == '0') { console.log('加购删除成功') }
             } catch (e) {
                 console.log('清空购物车出错')
                 $.logErr(e, resp);
@@ -167,6 +185,10 @@ function getCarts() {
                         for (let s = 0; s < vender['sortedItems'].length; s++) {
                             const sorted = vender['sortedItems'][s];
                             itemId = sorted['itemId']
+                            const titleIndex = itemIds.findIndex((item) => item === itemId);
+                            if (titleIndex == -1) {
+                                continue;
+                            };
                             for (let m = 0; m < sorted['polyItem']['products'].length; m++) {
                                 const products = sorted['polyItem']['products'][m];
                                 if (itemId == products['mainSku']['id']) {
@@ -188,7 +210,7 @@ function getCarts() {
                     if ($.commlist.length > 0) {
                         $.commlist = encodeURIComponent($.commlist)
                     }
-                    console.log(`当前购物车商品数：${$.cartsTotalNum}个\n`)
+                    console.log(`当前加购商品数：${$.cartsTotalNum}个\n`)
                 }
             } catch (e) {
                 $.logErr(e, resp);
