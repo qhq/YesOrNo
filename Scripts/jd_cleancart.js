@@ -24,7 +24,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const fs = require("fs");
 const path = "./qhqcz_jd_cleancart_skuItems.txt";
-let itemIds=[];
+let itemIds = [];
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', allMessage = '', users = '';
@@ -38,17 +38,25 @@ if ($.isNode()) {
     cookiesArr = [$.getdata('CookieJD'), $.getdata('CookieJD2'), ...jsonParse($.getdata('CookiesJD') || "[]").map(item => item.cookie)].filter(item => !!item);
 }
 
-
 !(async () => {
     if (!cookiesArr[0]) {
         $.msg('【京东账号一】清空购物车失败', '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
     }
     console.log("将需要跳过清理的账号(cookie中的pt_pin)放到变量CleanUsers中，多个用@隔开\n")
-    console.log("❗️❗️❗️❗️本脚本会清理购物车所有商品❗️❗️❗️❗️\n")
-    console.log("脚本十秒后开始清理\n")
+    console.log("❗️❗️❗️❗️本脚本只会清理加购商品清单中商品❗️❗️❗️❗️\n")
+    if (fs.existsSync(path)) {
+        fs.accessSync(path)
+        itemIds = fs.readFileSync(path).toString()
+        if (itemIds.length == 0) {
+            console.log("加购清单文件为空，将退出。\n")
+            return;
+        }
+    } else {
+        console.log("加购清单文件不存在，将退出。\n")
+        return;
+    }
+    itemIds = JSON.parse(itemIds)
     await sleep(10 * 1000)
-    fs.accessSync(path)
-    itemIds = JSON.parse(fs.readFileSync(path).toString())
     for (let i = 0; i < cookiesArr.length; i++) {
         if (cookiesArr[i]) {
             cookie = cookiesArr[i];
