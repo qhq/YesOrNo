@@ -295,7 +295,7 @@ for file in $(ls $ScriptsDir); do
 done
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+----------------- 主库 脚本 -----------------+"
+echo -e "+---------------- 主库 脚本 -----------------+"
 [ $(grep -cEi "\\$.strMyShareIds = \[\];" ${ScriptsDir}/jd_cfd.js) -eq '0' ] && sed -i "/\\$.strMyShareIds = /a\$.strMyShareIds = [];" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
 sed -i "
 /await cfd();/ {
