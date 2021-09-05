@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-Version="2021-08-30 09:00"
+Version="2021-09-05 09:00"
 DockerName=$(hostname)
 #clear
 echo -e "\033[33m[*]\033[0m DIY版本：${Version}"
