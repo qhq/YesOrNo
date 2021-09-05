@@ -2,7 +2,7 @@
 Version="2021-09-05 09:00"
 DockerName=$(hostname)
 #clear
-echo -e "\033[33m[*]\033[0m DIY版本：${Version}"
+echo -e "\033[33m[*]\033[0m 脚本版本：${Version}"
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
 ############################## DIY更新状态检查 ##############################
