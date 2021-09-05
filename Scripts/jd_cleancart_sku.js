@@ -13,7 +13,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const fs = require("fs");
 const path = "./qhqcz_jd_cleancart_skuItems.txt";
-let itemIds=[];
+let itemIds = [];
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', allMessage = '', users = '';
@@ -48,8 +48,8 @@ if ($.isNode()) {
                     await notify.sendNotify(`${$.name}cookie已失效 - ${$.UserName}`, `京东账号${$.index} ${$.UserName}\n请重新登录获取cookie`);
                 }
                 continue
-            } else if (users.indexOf($.UserName) = -1) {
-                console.log(`❗️❗️账号在变量中，跳过此账号\n`);
+            } else if (users.indexOf($.UserName) == -1) {
+                console.log(`❗️❗️账号不在变量中，跳过此账号\n`);
                 continue
             }
             allMessage += `京东账号${$.index} - ${$.UserName}\n`;
@@ -73,8 +73,10 @@ if ($.isNode()) {
             */
         }
     }
-    await deleteFile(path);
-    fs.writeFileSync(path, JSON.stringify(itemIds), 'utf8');
+    if (itemIds.length > 0) {
+        await deleteFile(path);
+        fs.writeFileSync(path, JSON.stringify(itemIds), 'utf8');
+    }
 
 })()
     .catch((e) => {
