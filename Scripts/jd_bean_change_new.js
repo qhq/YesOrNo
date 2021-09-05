@@ -11,7 +11,7 @@ const JXUserAgent = $.isNode() ? (process.env.JX_USER_AGENT ? process.env.JX_USE
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let allMessage = '';
 let ReturnMessage = '';
-const ONE_BY_ONE = process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'true';
+const ONE_BY_ONE = process.env.ONE_BY_ONE ? process.env.ONE_BY_ONE : 'false';
 const SPLIT_NUM = $.isNode() ? (process.env.SPLIT_NUM ? process.env.SPLIT_NUM : '8') : '8';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
