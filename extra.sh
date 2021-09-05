@@ -156,7 +156,7 @@ rand() {
     echo $(($num % $max + $min))
 }
 
-echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔\n"
+#echo -e "\033[33m[*]\033[0m 执行自定义脚本🔔\n"
 echo -e "+----------------- 下载脚本 -----------------+"
 for author in $author_list; do
     eval scripts_list=\$my_scripts_list_$author
@@ -605,5 +605,5 @@ install_dependencies_all() {
     #    install_dependencies_force $i
     #done
 }
-#install_dependencies_all
-echo -e "\033[32m[Done]\033[0m 结束🔔\n"
+install_dependencies_all
+#echo -e "\033[32m[Done]\033[0m 结束🔔\n"
