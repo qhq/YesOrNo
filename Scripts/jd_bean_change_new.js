@@ -58,8 +58,9 @@ if ($.isNode()) {
             $.JDtotalcash = 0;
             $.JDEggcnt = 0;
             $.JDCash = 0;
+            $.necklace_totalScore = 0;
+            $.JxCFDcfz = 0;
             $.Jxmctoken = '';
-            $.JxCFDcfz = '';
             await TotalBean();
             console.log(`\n********开始【京东账号${$.index}】${$.nickName || $.UserName}******\n`);
             if (!$.isLogin) {
