@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-
-echo -e "\033[33m[*]\033[0m DIY版本：2021-08-30 09:00"
+Version="2021-08-30 09:00"
 DockerName=$(hostname)
+#clear
+echo -e "\033[33m[*]\033[0m DIY版本：${Version}"
 echo -e "\033[33m[*]\033[0m 当前容器：${DockerName}"
 
 ############################## DIY更新状态检查 ##############################
 iCan=true
-FileDiy=${ConfigDir}/diy.sh
+FileDiy=${ConfigDir}/extra.sh
 if [ -f ${FileDiy} ]; then
     echo " "
 else
@@ -14,8 +15,6 @@ else
     grep -iq "const diy = true;" ${JD_DIR}/scripts/sendNotify.js
     if [ $? -ne 0 ]; then
         echo "上次Pull执行DIY失败"
-        #bash git_pull >> ${JD_DIR}/log/git_pull.log 2>&1
-        #sleep 30
         ScriptsDir=${JD_DIR}/scripts
         iCan=false
         #exit
@@ -30,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert Aaron_lv smiek2221 star261 curtinlv yangtingxiao jiulan cdle JDHelloWorld SuperManito longzhuzhu moposmall panghu Wenmoux passerby Tsukasa007 Annyoo2021 shufflewzc zero205 airacg"
+author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan cdle JDHelloWorld SuperManito longzhuzhu moposmall panghu Wenmoux passerby Tsukasa007 Annyoo2021 shufflewzc zero205 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -244,11 +243,11 @@ if [[ $AutoTs = "true" ]]; then
             tsc ${ScriptsDir}/${file} && echo " ${file} 已转成 ${file%%.*}.js"
             isok="true"
             #fi
-            [ $(grep -c "bash jd ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * bash jd ${file%%.*}" /jd/config/crontab.list
+            [ $(grep -c "task ${file%%.*}" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# ${cron_min} ${cron_hour} * * * task ${file%%.*}" /jd/config/crontab.list
         fi
     done
-    [ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * bash jd jd_zqfl" /jd/config/crontab.list
-    [ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * bash jd curtinlv_jd_qjd" /jd/config/crontab.list
+    [ $(grep -c "jd_zqfl" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 领京豆-早起福利\r1 0 * * * task jd_zqfl" /jd/config/crontab.list
+    [ $(grep -c "curtinlv_jd_qjd" /jd/config/crontab.list) -eq 0 ] && sed -i "/hangup/a# 抢京豆\r0 6 * * * task curtinlv_jd_qjd" /jd/config/crontab.list
     echo -e "+--------------------------------------------+\n"
 fi
 
@@ -296,53 +295,27 @@ for file in $(ls $ScriptsDir); do
 done
 echo -e "+--------------------------------------------+\n"
 
-#echo -e "+-------------- Lxk0301 脚本 ---------------+"
-#替换内置
-#perl -0777 -i -pe "s/((?:const \w+Codes|let \w+Codes|let invite_pins|const shareID) = \[)([\s\S]*?)(\])/\1'c2dj54vowh46iieh7u2ifzwzvu\@tzyicd7vcjefooqbns6eertieu\@vznl6lnj45ygubawzy4sypmk3wp7qavhgsxarra'\3/ig" ${ScriptsDir}/jdPlantBeanShareCodes.js >/dev/null 2>&1
-#替换内置码库链接
-#echo -e "+--------------------------------------------+\n"
-
-echo -e "+------------ JDHelloWorld 脚本 -------------+"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/ddfactory/5/20\`|ig" ${ScriptsDir}/jd_jdfactory.js >/dev/null 2>&1 && echo -e " 东东工厂库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/farm/5/20\`|ig" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/bean/5/20\`|ig" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 种豆得豆库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/pet/5/20\`|ig" ${ScriptsDir}/jd_pet.js >/dev/null 2>&1 && echo -e " 东东萌宠库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jxfactory/2/20\`|ig" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jxcfd/1/20\`|ig" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 京喜财富岛库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jxmc/5/10\`|ig" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/health/5/20\`|ig" ${ScriptsDir}/jd_health.js >/dev/null 2>&1 && echo -e " 健康社区库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/sgmh/5/20\`|ig" ${ScriptsDir}/jd_sgmh.js >/dev/null 2>&1 && echo -e " 闪购盲盒库链接已替换"
-#perl -0777 -i -pe "s|([^'])https:\/\/api\.sharecode\.ga\/api\/[^r].*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20\`|ig" ${ScriptsDir}/jd_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
-sed -i "/【开团成功】tuanId/a if \(process\.env\.Auto_Post\){\n\$\.getScript\(\`http://xinhunshang\.xyz:6001/v3/submit_activity_codes/jxtuan/\${data\.data['tuanId']}/\${\$\.UserName}\`\)\.then\(\(text\) => \(console\.log\(text\)\)\);\n}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂团ID自动上传"
+echo -e "+----------------- 主库 脚本 -----------------+"
+[ $(grep -cEi "\\$.strMyShareIds = \[\];" ${ScriptsDir}/jd_cfd.js) -eq '0' ] && sed -i "/\\$.strMyShareIds = /a\$.strMyShareIds = [];" ${ScriptsDir}/jd_cfd.js >/dev/null 2>&1
 sed -i "
-/await jdDreamFactory()/ {
+/await cfd();/ {
 n
 n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxtuan\/2\/20\"\)\.then\(\(text\) => \(\$\.tuanIds = \$\.tuanIds\.concat\(JSON\.parse\(text\)\.data\)\)\)\nconsole\.log\(\$\.tuanIds\)
-}" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂已内置私库"
-sed -i "/await joinLeaderTuan/d" ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂内置已KO"
-sed -i 's|production\.status === 3|production.status === 3 \&\& process.env.JX_SXTZ|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂失效通知开关"
-[ $(grep -c "51.15.187.136" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/【水果名称】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFruitCode?code=' + $.farmInfo.farmUserPro.shareCode}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场passerby互助码激活已添加"
-[ $(grep -c "51.15.187.136" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/好友互助码】/a await $.get({url: 'http://51.15.187.136:8080/activeJdFactoryCode?code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂passerby互助码激活已添加"
-[ $(grep -c "51.15.187.136" ${ScriptsDir}/jd_cfd.ts) -eq 0 ] && sed -i "/旧的可继续使用/a await $.get({url: 'http://51.15.187.136:8080/activeJdCfdCode?code=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 财富岛passerby互助码激活已添加"
-sed -i "s|QueryUserInfo\`), (err,|QueryUserInfo\`), async (err,|" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1
-[ $(grep -c "xinhunshang.xyz:6001/v3/submit_activity_codes" ${ScriptsDir}/jd_jxmc.ts) -eq 0 ] && sed -i "/'助力码：'/a\await axios.get\(\`http://xinhunshang.xyz:6001/v3/submit_activity_codes/jxmc/$\{homePageInfo.data.sharekey\}/$\{cookie.match(/pt_pin=([^;]*)/)\![1]\}\`\).then\(\(text\) => \(console.log\(text.data\)\)\);" ${ScriptsDir}/jd_jxmc.ts >/dev/null 2>&1 && echo -e " 京喜牧场提交私库已添加"
-sed -i "s|md5 !== res.data|md5 !== md5|" ${ScriptsDir}/jd_cfd_loop.ts >/dev/null 2>&1 && echo -e " MD5验证已移除"
-#sed -i "s|if(_0x\w\{6\}==='1'|if('1'==='1'|" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 尝试"
-sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
-sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_plantBean.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
-sed -i "s|_0x\w\{6\}\['sendNotify'\].*\?\]);||" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 移除上报失败推送"
-#sed -i 's|&& allMessage)|\&\& allMessage.indexOf("已可兑换")!=-1)|' ${ScriptsDir}/jd_dreamFactory.js && echo -e " 京喜工厂改为可兑换提醒"
-sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
-sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
-sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
-sed -i "/authorCode.map/d" ${ScriptsDir}/jd_cash.js && echo -e " 领现金助力错误已修复"
-sed -i 's|首页->好物0元造进行兑换|我的->京喜工厂 进行兑换|g' $ScriptsDir/jd_dreamFactory.js
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_fruit.js) -eq 0 ] && sed -i "/【水果名称】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=farm&code=' + $.farmInfo.farmUserPro.shareCode}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_fruit.js >/dev/null 2>&1 && echo -e " 东东农场helpu互助码激活已添加"
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_dreamFactory.js) -eq 0 ] && sed -i "/好友互助码】/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?type=jxfactory&code=' + data.user.encryptPin}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_dreamFactory.js >/dev/null 2>&1 && echo -e " 京喜工厂helpu互助码激活已添加"
-[ $(grep -c "www.helpu.cf" ${ScriptsDir}/jd_cfd.ts) -eq 0 ] && sed -i "/旧的可继续使用/a await $.get({url: 'http://www.helpu.cf/jdcodes/submit.php?code=' + $\{res.strMyShareId\} + '&type=jxcfd&user=' + $.UserName}, function (err, resp, data) {console.log('互助码状态:' + resp.body);})" ${ScriptsDir}/jd_cfd.ts >/dev/null 2>&1 && echo -e " 财富岛helpu互助码激活已添加"
-perl -0777 -i -pe "s|\"inviterId\":\".*?\"|\"inviterId\":\"\/ZOWSn4R7zs=\"|ig" ${ScriptsDir}/jd_speed_sign.js >/dev/null 2>&1
+n
+n
+a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxcfd\/1\/10\"\)\.then\(\(text\) => \($.shareCodes\.push\(...JSON\.parse\(text\)\.data\)\)\);\nconsole.log($.shareCodes)
+}" ${ScriptsDir}/jd_cfd.js && echo -e " 京喜财富岛已内置私库"
+
+[ $(grep -c "qhq/YesOrNo/main/json/friendPins.json" ${ScriptsDir}/jd_joy_run.js) -eq 0 ] && perl -0777 -i -pe "s|\".*?friendPins.json\"|\"https://raw.githubusercontent.com/qhq/YesOrNo/main/json/friendPins.json\"|ig" ${ScriptsDir}/jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑助力库已替换"
+perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/joy\/query\/1\/|http://xinhunshang.xyz:6001/help/v3/get/LKYLToken/5/1|ig" ${ScriptsDir}/jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑Token已替换"
+sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${ScriptsDir}/jd_joy_run.js && echo -e " 宠汪汪赛跑助力读取网络Token"
+sed -i "s|// return;|return;|g" ${ScriptsDir}/jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
+sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/jd_joy_run.js
+sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/jd_joy_run.js
+#sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/jd_carnivalcity_help.js
+#perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
+perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
+sed -i "/cookiesArr.length/i\ $.authorCode = []" ${ScriptsDir}/jd_cash.js
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
@@ -386,29 +359,6 @@ a $.InviteLists = []\n$.InviteLists.push(...$.InviteList);\nawait $.getScript('h
 #perl -0777 -i -pe "s|https:\/\/cdn\.jsdelivr\.net\/.*?\.json||ig" ${ScriptsDir}/smiek2221_gua_carnivalcity.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 echo -e "+--------------------------------------------+\n"
 
-echo -e "+--------------- Aaron-lv 脚本 --------------+"
-[ $(grep -cEi "\\$.strMyShareIds = \[\];" ${ScriptsDir}/Aaron_lv_jd_cfd.js) -eq '0' ] && sed -i "/\\$.strMyShareIds = /a\$.strMyShareIds = [];" ${ScriptsDir}/Aaron_lv_jd_cfd.js >/dev/null 2>&1
-sed -i "
-/await cfd();/ {
-n
-n
-n
-n
-a await \$\.getScript\(\"http:\/\/xinhunshang\.xyz:6001\/help\/v3\/get\/jxcfd\/1\/10\"\)\.then\(\(text\) => \($.shareCodes\.push\(...JSON\.parse\(text\)\.data\)\)\);\nconsole.log($.shareCodes)
-}" ${ScriptsDir}/Aaron_lv_jd_cfd.js && echo -e " 京喜财富岛已内置私库"
-
-[ $(grep -c "qhq/YesOrNo/main/json/friendPins.json" ${ScriptsDir}/Aaron_lv_jd_joy_run.js) -eq 0 ] && perl -0777 -i -pe "s|\".*?friendPins.json\"|\"https://raw.githubusercontent.com/qhq/YesOrNo/main/json/friendPins.json\"|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑助力库已替换"
-perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/joy\/query\/1\/|http://xinhunshang.xyz:6001/help/v3/get/LKYLToken/5/1|ig" ${ScriptsDir}/Aaron_lv_jd_joy_run.js >/dev/null 2>&1 && echo -e " 宠汪汪赛跑Token已替换"
-sed -i "s|const readTokenRes = ''|const readTokenRes = await readToken();|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力读取网络Token"
-sed -i "s|// return;|return;|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js && echo -e " 宠汪汪赛跑助力无Token退出"
-sed -i "s|invite(new_invite_pins)|invite(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
-sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/Aaron_lv_jd_joy_run.js
-#sed -i "/updatePkActivityIdRes.length/d" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js
-#perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/Aaron_lv_jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
-perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/Aaron_lv_jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
-sed -i "/cookiesArr.length/i\ $.authorCode = []" ${ScriptsDir}/Aaron_lv_jd_cash.js
-echo -e "+--------------------------------------------+\n"
-
 
 echo -e "+----------------- 处理文件 -----------------+"
 HtmlDir=${ShellDir}/panel/public
@@ -423,9 +373,7 @@ for file in $(ls $HtmlDir); do
         #sed -i '/<canvas id="sakura"/' ${HtmlDir}/${file}
     fi
 done
-sed -i 's|cat ${FileDiy}.*\?}|echo -e ""|' $ShellDir/git_pull.sh && echo -e " 多余自定义判断已清理"
-sed -i 's|\(\$(Combin_Sub \S*\?\) \S*\?)|\1)|g' $ShellDir/jd.sh && echo -e " jd.sh内置码已清理"
-sed -i "/author;/d" $ScriptsDir/sendNotify.js && echo -e " 通知结尾提示已删除"
+
 #sed -i 's|&& allMessage)|\&\& allMessage.indexOf("可以收取")!=-1)|' ${ScriptsDir}/panghu_jd_wsdlb.js && echo -e " 大老板修改为可收取提醒"
 sed -i "s|\^export.*\?,|^export\\\s(cash_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_cashHelp.py >/dev/null 2>&1 && echo -e " cashHelp正则修改"
 sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}$',|" ${ScriptsDir}/curtinlv_jd_qjd.py >/dev/null 2>&1 && echo -e " qjd正则修改"
@@ -465,15 +413,11 @@ wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/JDJRValidator_Pure.js -O ${ScriptsDir}/JDJRValidator_Pure.js
 wget -q ${ProxyJudge}https://raw.githubusercontent.com/smiek2221/scripts/master/ZooFaker_Necklace.js -O ${ScriptsDir}/ZooFaker_Necklace.js
 ## utils
-[ ! -d ${ScriptsDir}/utils ] && mkdir ${ScriptsDir}/utils
-js_List="JDJRValidator_Pure JDSignValidator JD_DailyBonus ZooFaker_Necklace"
-for js_item in $js_List; do
-    wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/$js_item.js -O ${ScriptsDir}/utils/$js_item.js
-done
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDJRValidator_Pure.js -O ${ScriptsDir}/utils/JDJRValidator_Pure.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JDSignValidator.js -O ${ScriptsDir}/utils/JDSignValidator.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/JD_DailyBonus.js -O ${ScriptsDir}/utils/JD_DailyBonus.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/ZooFaker_Necklace.js -O ${ScriptsDir}/utils/ZooFaker_Necklace.js
+#[ ! -d ${ScriptsDir}/utils ] && mkdir ${ScriptsDir}/utils
+#js_List="JDJRValidator_Pure JDSignValidator JD_DailyBonus ZooFaker_Necklace"
+#for js_item in $js_List; do
+#    wget -q ${ProxyJudge}https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/utils/$js_item.js -O ${ScriptsDir}/utils/$js_item.js
+#done
 ## function
 [ ! -d ${ScriptsDir}/function ] && mkdir ${ScriptsDir}/function
 js_List="common config eval jdValidate jdcookie jxAlgo sendNotify"
@@ -481,12 +425,6 @@ for js_item in $js_List; do
     wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/$js_item.js -O ${ScriptsDir}/function/$js_item.js
 done
 #wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/common.js -O ${ScriptsDir}/function/common.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/config.js -O ${ScriptsDir}/function/config.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/eval.js -O ${ScriptsDir}/function/eval.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdValidate.js -O ${ScriptsDir}/function/jdValidate.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jdcookie.js -O ${ScriptsDir}/function/jdcookie.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/jxAlgo.js -O ${ScriptsDir}/function/jxAlgo.js
-#wget -q ${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/function/sendNotify.js -O ${ScriptsDir}/function/sendNotify.js
 
 sed -i '/sendNotify 推送通知功能/a const diy = true;' $ScriptsDir/sendNotify.js && echo -e " DIY已标记"
 
@@ -512,8 +450,8 @@ js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_u
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
-        sed -i "s|\(^[0-9].*bash\) jd $js_item|# \1 jd $js_item|" ${ListCron} && echo -e " \033[32m[已停用]\033[0m $js_item"
-        #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
+        sed -i "s|\(^[0-9].*task\) $js_item|# \1 $js_item|" $ListCrontabUser && echo -e " \033[32m[已停用]\033[0m $js_item"
+        #sed -i "/$js_item/d" $ListCrontabUser && echo -e "$js_item已删除"
     done
     echo -e "+--------------------------------------------+\n"
 fi
@@ -523,26 +461,26 @@ js_List="qhqcz_jd_ckcheck"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 强制开启脚本 ---------------+"
     for js_item in $js_List; do
-        sed -i "s/^#\([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron}
-        sed -i "s/^# \([0-9].*bash\) jd $js_item/\1 jd $js_item/g" ${ListCron} && echo -e " \033[32m[已开启]\033[0m $js_item"
-        #sed -i "/$js_item/d" ${ListCron} && echo -e "$js_item已删除"
+        sed -i "s/^#\([0-9].*task\) $js_item/\1 $js_item/g" $ListCrontabUser
+        sed -i "s/^# \([0-9].*task\) $js_item/\1 $js_item/g" $ListCrontabUser && echo -e " \033[32m[已开启]\033[0m $js_item"
+        #sed -i "/$js_item/d" $ListCrontabUser && echo -e "$js_item已删除"
     done
     echo -e "+--------------------------------------------+\n"
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression smiek2221_gua_carnivalcity Aaron_lv_jd_carnivalcity_help"
+js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression smiek2221_gua_carnivalcity"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
-        rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" ${ListCron} && echo -e " \033[32m[已删除]\033[0m $js_item"
+        rm -rf ${ScriptsDir}/$js_item.js && sed -i "/$js_item/d" $ListCrontabUser && echo -e " \033[32m[已删除]\033[0m $js_item"
     done
     echo -e "+--------------------------------------------+\n"
 fi
 
 ## 自动提取脚本名称注释
 echo -e "+----------------- 添加注释 -----------------+"
-js_List=$(grep -Eo "bash jd \w+" ${ConfigDir}/crontab.list)
+js_List=$(grep -Eo " task \w+" ${ConfigDir}/crontab.list)
 for Cron in ${js_List}; do
     #echo -e "${ScriptsDir}/${Cron##* }.js"
     jname=${Cron##* }
@@ -553,53 +491,32 @@ for Cron in ${js_List}; do
         jbz=$(echo ${jbz#*\'})
         jbz=$(echo ${jbz%\'*})
         #echo " $jname : $jbz"
-        #grep -cEi "^# ${jbz}\$" ${ListCron}
-        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" ${ListCron}) -eq '0' ]; then
+        #grep -cEi "^# ${jbz}\$" $ListCrontabUser
+        if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" $ListCrontabUser) -eq '0' ]; then
             echo " $jname : $jbz"
-            sed -i "s/\(.*\?bash\) jd $jname/# $jbz\n\1 jd $jname/g" ${ListCron}
+            sed -i "s/\(.*\?task\) $jname/# $jbz\n\1 task $jname/g" $ListCrontabUser
         fi
     fi
 done
 echo -e "+--------------------------------------------+\n"
 
-############################## 同步文件 ##########################################
-#cd $ConfigDir
-#echo -e "下载 server.js "
-#wget -q --no-check-certificate ${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/server.js -O server.js.new
-#if [ $? -eq 0 ]; then
-#  mv -f server.js.new server.js
-#  echo -e "更新 server.js 完成"
-#else
-#  rm -rf server.js.new
-#  echo -e "更新 server.js 失败，使用上一次正常的版本...\n"
-#fi
-#cp /jd/config/server.js /jd/panel/server.js
-#pm2 restart /jd/panel/server.js
 
 ##############################  自  定  义  命  令  ##############################
-
-## 京东试用脚本添加取关定时任务
-#[ -f ${ScriptsDir}/jd_try.js ] && grep -q "5 10 \* \* \* bash jd jd_unsubscribe" ${ListCron}
-#if [ $? -ne 0 ]; then
-#  echo -e '# 京东试用脚本添加的取关定时任务\n5 10 * * * bash jd jd_unsubscribe' >>${ListCron}
-#fi
-
 ## 修正定时
-#grep -q "bash git_pull" ${ListCron} && sed -i "/&*bash git_pull/c$(rand 1 59) 1,7,13,19 \* \* \* sleep $(rand 1 59) && bash git_pull >>\$\{JD_DIR\}\/log\/git_pull.log 2>&1" ${ListCron}
-grep -q "qhqcz_post_code" ${ListCron} && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * bash jd qhqcz_post_code' ${ListCron}
-grep -q "qhqcz_jd_ckcheck" ${ListCron} && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * bash jd qhqcz_jd_ckcheck' ${ListCron}
-#sed -i "s|\(^[0-9].*bash\) jd qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * bash jd qhqcz_jd_dreamFactory_tuan|" ${ListCron} && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
-#grep -q "Aaron_lv_jd_joy_run" ${ListCron} && perl -0777 -i -pe "s/\d.*?Aaron_lv_jd_joy_run/5 10,14 * * * bash jd Aaron_lv_jd_joy_run/ig" ${ListCron}
-#grep -q "airacg_jd-task-validate" ${ListCron} && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * bash jd airacg_jd-task-validate/ig" ${ListCron}
-#grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*?&& bash jd airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && bash jd airacg_jd-reward-joy/ig" ${ListCron}
-#grep -q "airacg_jd-reward-joy" ${ListCron} && perl -0777 -i -pe "s/\d.*? \* bash jd airacg_jd-reward-joy/0 0-16\/8 * * * bash jd airacg_jd-reward-joy/ig" ${ListCron}
+grep -q "qhqcz_post_code" $ListCrontabUser && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * task qhqcz_post_code' $ListCrontabUser
+grep -q "qhqcz_jd_ckcheck" $ListCrontabUser && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * task qhqcz_jd_ckcheck' $ListCrontabUser
+#sed -i "s|\(^[0-9].*task\) qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * task qhqcz_jd_dreamFactory_tuan|" $ListCrontabUser && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
+#grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
+#grep -q "airacg_jd-task-validate" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * task airacg_jd-task-validate/ig" $ListCrontabUser
+#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?&& task airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && task airacg_jd-reward-joy/ig" $ListCrontabUser
+#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*? \* task airacg_jd-reward-joy/0 0-16\/8 * * * task airacg_jd-reward-joy/ig" $ListCrontabUser
 
 ## 检查配置文件变量
 [ $(grep -c 'export invokeKey=\"RtKLB8euDo7KwsO0\"' ${ConfigDir}/config.sh) -eq 0 ] && perl -0777 -i -pe 's/export invokeKey=.*+/export invokeKey="RtKLB8euDo7KwsO0"/i' ${ConfigDir}/config.sh >/dev/null 2>&1
 
 
 ## 删除不知如何产生的垃圾文件
-DeletedCacheFiles="app.eb41fc5f.js"
+DeletedCacheFiles=""
 for del in ${DeletedCacheFiles}; do
     [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
 done
@@ -688,5 +605,5 @@ install_dependencies_all() {
     #    install_dependencies_force $i
     #done
 }
-install_dependencies_all
+#install_dependencies_all
 echo -e "\033[32m[Done]\033[0m 结束🔔\n"
