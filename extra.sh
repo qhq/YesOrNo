@@ -516,19 +516,6 @@ for del in ${DeletedCacheFiles}; do
 done
 
 ############################## 环境判断 ##############################
-python_model_check() {
-    if python3 -c '''print("JD")''' >/dev/null 2>&1; then
-        echo "1"
-    else
-        echo "0"
-    fi
-}
-result=$(python_model_check $1)
-if [ $result != 1 ]; then
-    echo -e " Python3环境安装中"
-    apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
-fi
-
 # 依赖
 package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib jsdom"
 
@@ -600,4 +587,18 @@ install_dependencies_all() {
     #done
 }
 install_dependencies_all
+
+python_model_check() {
+    if python3 -c '''print("JD")''' >/dev/null 2>&1; then
+        echo "1"
+    else
+        echo "0"
+    fi
+}
+result=$(python_model_check $1)
+if [ $result != 1 ]; then
+    echo -e " Python3环境安装中"
+    apk update && apk add --no-cache build-base g++ cairo-dev jpeg-dev pango-dev giflib-dev python3 py3-pip && cd /jd/scripts && npm install canvas --build-from-source && pip3 install requests && pip3 install --upgrade pip && cd /jd
+fi
+
 #echo -e "\033[32m[Done]\033[0m 结束🔔\n"
