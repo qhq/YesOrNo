@@ -1289,7 +1289,7 @@ function submitCode(code, type) {
 async function getShareCode(num) {
     let nowTime = new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000;
     console.log(`======账号${$.index}开始======\n`)
-    await getCarnivalcity();
+    //await getCarnivalcity();
     if (new Date(nowTime).getHours() > 1) {
 	    await getJDFruit();
 	    await getJdPet();
