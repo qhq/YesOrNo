@@ -142,7 +142,7 @@ my_scripts_list_zero205="jd_dpqd.js"
 # airacg
 # https://github.com/airacg/jd_task
 scripts_base_url_airacg=${ProxyJudge}https://raw.githubusercontent.com/airacg/jd_task/main/
-my_scripts_list_airacg="jd-reward-joy.js jd-task-price.js jd-task-invokeKey.js jd-task-validate.js jx-help-cashback.js"
+my_scripts_list_airacg="jd_exchange_joy.js jd_work_price.js jd_work_invokeKey.js jd_work_validate.js jx_aid_cashback.js jd_aid_grapbean.js"
 
 ############################## 随机函数 ##########################################
 cd ${ShellDir}
@@ -465,7 +465,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="shufflewzc_jd_mb star261_jd_appliances smiek2221_gua_doge qhqcz_jd_superBrand jiulan_jd_shop_sign star261_jd_golden_machine zero205_jd_kxcdz star261_jd_fan smiek2221_jd_qcshj zero205_jd_ccSign smiek2221_gua_xiaolong star261_jd_decompression smiek2221_gua_carnivalcity"
+js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
