@@ -139,7 +139,7 @@ async function showMsg() {
         //ReturnMessage += `京东赚赚：${$.JdzzNum}金币(≈${($.JdzzNum / 10000).toFixed(2)}元)\n`;
         ReturnMessage += `京东赚赚：${($.JdzzNum / 10000).toFixed(2)}元\n`;
     }
-    if (typeof $.JxCFDcfz > 0) {
+    if ($.JxCFDcfz > 0) {
         ReturnMessage += `JX财富岛：${$.JxCFDcfz}\n`;
     }
     if (typeof $.JDEggcnt !== "undefined") {
