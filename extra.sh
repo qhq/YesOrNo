@@ -189,7 +189,7 @@ for author in $author_list; do
         ;;
       esac
 
-      croname=$(echo "$name" | awk -F\. '{print $1}' | perl -pe "{s|jd_||; s|jx_||; s|jr_||;}")
+      croname=$(echo "$name" | awk -F\. '{print $1}' | perl -pe "{s|^jd_||; s|^jx_||; s|^jr_||;}")
       script_date_standard=$(cat $ScriptsDir/$name | grep "https" | awk '{if($1~/^[0-59]/) print $1,$2,$3,$4,$5}' | sort | uniq | head -n 1)
       case $name in
       jd_cashHelp.py)
@@ -499,7 +499,7 @@ grep -q "qhqcz_jd_ckcheck" $ListCrontabUser && sed -i '/&*qhqcz_jd_ckcheck/c0 7-
 grep -q "qhqcz_jd_cleancart" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart$/c35 6-21/3 * * * task qhqcz_jd_cleancart' $ListCrontabUser
 grep -q "qhqcz_jd_cleancart_sku" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart_sku$/c15 6-21/3 * * * task qhqcz_jd_cleancart_sku' $ListCrontabUser
 #sed -i "s|\(^[0-9].*task\) qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * task qhqcz_jd_dreamFactory_tuan|" $ListCrontabUser && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
-#grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
+grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
 #grep -q "airacg_jd-task-validate" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * task airacg_jd-task-validate/ig" $ListCrontabUser
 #grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?&& task airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && task airacg_jd-reward-joy/ig" $ListCrontabUser
 #grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*? \* task airacg_jd-reward-joy/0 0-16\/8 * * * task airacg_jd-reward-joy/ig" $ListCrontabUser
@@ -594,9 +594,9 @@ install_dependencies_force() {
 }
 install_dependencies_all() {
     install_dependencies_normal $package_name
-    #for i in $package_name; do
-    #    install_dependencies_force $i
-    #done
+    for i in $package_name; do
+        install_dependencies_force $i
+    done
 }
 install_dependencies_all
 #echo -e "\033[32m[Done]\033[0m 结束🔔\n"
