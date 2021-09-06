@@ -529,7 +529,7 @@ if [ $result != 1 ]; then
 fi
 
 # 依赖
-package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib jsdom"
+package_name="png-js date-fns axios crypto-js ts-md5 tslib @types/node dotenv typescript fs require tslib"
 
 install_dependencies_normal() {
     for i in $@; do
