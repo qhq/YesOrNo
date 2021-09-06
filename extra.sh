@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-Version="2021-09-05 09:00"
+Version="2021-09-06 22:00"
 DockerName=$(hostname)
 #clear
 echo -e "\033[33m[*]\033[0m 脚本版本：${Version}"
@@ -29,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan cdle JDHelloWorld SuperManito longzhuzhu moposmall panghu Wenmoux passerby Tsukasa007 Annyoo2021 shufflewzc zero205 airacg"
+author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHelloWorld SuperManito moposmall panghu Wenmoux passerby Tsukasa007 Annyoo2021 shufflewzc zero205 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -68,11 +68,6 @@ my_scripts_list_longzhuzhu="long_half_redrain.js long_super_redrain.js"
 # https://github.com/moposmall/Script
 scripts_base_url_moposmall=${ProxyJudge}https://raw.githubusercontent.com/moposmall/Script/main/Me/
 my_scripts_list_moposmall="jx_mc.js jx_mc_coin.js jx_mc_emptycabbage.js"
-
-# 柠檬/panghu
-# https://github.com/panghu999/panghu/
-scripts_base_url_panghu=${ProxyJudge}https://raw.githubusercontent.com/panghu999/panghu/master/
-my_scripts_list_panghu=""
 
 # Wenmoux 温某人
 # https://github.com/Wenmoux/scripts/wen/jd/
@@ -442,7 +437,7 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
-js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_jd_unsubscriLive qhqcz_getName jd_big_winner jd_star_shop jd_speed_redEnvelope jd_joy_park jd_EsportsManager"
+js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_big_winner jd_jxlhb jd_blueCoin"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
