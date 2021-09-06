@@ -485,7 +485,8 @@ for Cron in ${js_List}; do
         #grep -cEi "^# ${jbz}\$" $ListCrontabUser
         if [ -n "$jbz" ] && [ $(grep -cEi "^# ${jbz}\$" $ListCrontabUser) -eq '0' ]; then
             echo " $jname : $jbz"
-            sed -i "s/\(.*\?task\) $jname$/# $jbz\n\1 task $jname/g" $ListCrontabUser
+            jbz=$(echo ${jbz/\&/\\&})
+            sed -i "s/\(.*\?task\) $jname$/# $jbz\n\1 $jname/g" $ListCrontabUser
         fi
     fi
 done
@@ -594,9 +595,9 @@ install_dependencies_force() {
 }
 install_dependencies_all() {
     install_dependencies_normal $package_name
-    for i in $package_name; do
-        install_dependencies_force $i
-    done
+    #for i in $package_name; do
+    #    install_dependencies_force $i
+    #done
 }
 install_dependencies_all
 #echo -e "\033[32m[Done]\033[0m 结束🔔\n"
