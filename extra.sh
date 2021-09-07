@@ -374,7 +374,7 @@ sed -i "s|\^export.*\?,|^export\\\s(qjd_zlzh)=[\\\'\\\\\"](.*?)[\\\'\\\\\"]{0,1}
 sed -i "/请重新登录获取cookie/d" ${ScriptsDir}/Tsukasa007_jd_joypark_task.js && echo -e " 汪汪乐园ck失效通知移除"
 #[ $(grep -c "NOTIFY_SKIP_LIST" ${ScriptsDir}/sendNotify.js) -eq 0 ] && sed -i "/fs.accessSync/i\    const notifySkipList = process.env.NOTIFY_SKIP_LIST ? process.env.NOTIFY_SKIP_LIST.split('&') : [];\n    const titleIndex = notifySkipList.findIndex((item) => item === text);\n    if (titleIndex !== -1) {\n      console.log(\`\\n🔕🔕 ${text} 在推送黑名单中，已跳过推送 🔕🔕\\n\`);\n      return;\n    }" ${ScriptsDir}/sendNotify.js >/dev/null 2>&1 && echo -e " 通知黑名单已添加"
 #[ -f ${ConfigDir}/sendNotify.json ] && cp ${ConfigDir}/sendNotify.json ${ScriptsDir}/tools/sendNotify.json
-perl -0777 -i -pe "s/await showMsg();/\/\/await showMsg();/ig" ${ScriptsDir}/jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
+perl -0777 -i -pe "s/await .*?notifyMsg);//ig" ${ScriptsDir}/jd_try.js >/dev/null 2>&1 && echo -e " 京东试用取消通知"
 
 case ${DockerName} in
 jd_Q)
