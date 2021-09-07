@@ -440,7 +440,7 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
-js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_big_winner jd_jxlhb jd_blueCoin jd_live_redrain"
+js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_jxlhb jd_blueCoin jd_live_redrain"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
@@ -451,7 +451,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 强制取消定时注释
-js_List="qhqcz_jd_ckcheck"
+js_List="qhqcz_jd_ckcheck qhqcz_post_code jd_big_winner"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 强制开启脚本 ---------------+"
     for js_item in $js_List; do
