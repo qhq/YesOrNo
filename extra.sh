@@ -127,7 +127,7 @@ my_scripts_list_Annyoo2021="jd_jxzpk.js"
 # shufflewzc
 # https://github.com/shufflewzc/faker2
 scripts_base_url_shufflewzc=${ProxyJudge}https://raw.githubusercontent.com/shufflewzc/faker2/main/
-my_scripts_list_shufflewzc="jd_try.js jd_DrawEntrance.js jd_moneyTree_heip.js jd_dwapp.js jd_fan.js"
+my_scripts_list_shufflewzc="jd_DrawEntrance.js jd_moneyTree_heip.js jd_dwapp.js jd_fan.js"
 
 # zero205
 # https://github.com/zero205/JD_tencent_scf
@@ -440,7 +440,7 @@ fi
 echo -e "+--------------------------------------------+\n"
 
 ## 注释指定活动
-js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_jxlhb jd_blueCoin jd_live_redrain"
+js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_jxlhb jd_blueCoin jd_live_redrain qhqcz_jx_cfdhb"
 if [ -n "$js_List" ]; then
     echo -e "+--------------- 暂时停用脚本 ---------------+"
     for js_item in $js_List; do
@@ -463,7 +463,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback JDHelloWorld_jd_api_test Tsukasa007_jd_joypark_joy Tsukasa007_jd_joypark_task moposmall_jx_mc_coin moposmall_jx_mc_emptycabbage"
+js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback JDHelloWorld_jd_api_test Tsukasa007_jd_joypark_joy Tsukasa007_jd_joypark_task moposmall_jx_mc_coin moposmall_jx_mc_emptycabbage shufflewzc_jd_try"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
