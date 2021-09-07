@@ -77,7 +77,7 @@ my_scripts_list_Wenmoux="jd_ddnc_farmpark.js"
 # JDHelloWorld
 # https://github.com/JDHelloWorld/jd_scripts/
 scripts_base_url_JDHelloWorld=${ProxyJudge}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-my_scripts_list_JDHelloWorld="jd_api_test.ts"
+my_scripts_list_JDHelloWorld=""
 
 # 写着玩 passerby
 # https://github.com/passerby-b/JDDJ/
@@ -463,7 +463,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback"
+js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback JDHelloWorld_jd_api_test"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
