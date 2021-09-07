@@ -446,7 +446,7 @@ grep -q "qhqcz_post_code" $ListCrontabUser && sed -i '/&*qhqcz_post_code/c0 0,6,
 grep -q "qhqcz_jd_ckcheck" $ListCrontabUser && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * task qhqcz_jd_ckcheck' $ListCrontabUser
 grep -q "qhqcz_jd_cleancart" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart$/c35 6-21/3 * * * task qhqcz_jd_cleancart' $ListCrontabUser
 grep -q "qhqcz_jd_cleancart_sku" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart_sku$/c15 6-21/3 * * * task qhqcz_jd_cleancart_sku' $ListCrontabUser
-grep -q "qhqcz_jx_cfdhb" $ListCrontabUser && sed -i '/&*qhqcz_jx_cfdhb/c0 * * * * task qhqcz_jx_cfdhb rapid -c' $ListCrontabUser
+grep -q "qhqcz_jx_cfdhb" $ListCrontabUser && sed -i '/&*qhqcz_jx_cfdhb/c# 0 * * * * task qhqcz_jx_cfdhb rapid -c' $ListCrontabUser
 #sed -i "s|\(^[0-9].*task\) qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * task qhqcz_jd_dreamFactory_tuan|" $ListCrontabUser && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
 grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
 #grep -q "airacg_jd-task-validate" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * task airacg_jd-task-validate/ig" $ListCrontabUser
