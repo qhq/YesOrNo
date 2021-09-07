@@ -29,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHelloWorld SuperManito moposmall panghu Wenmoux passerby Annyoo2021 shufflewzc zero205 airacg"
+author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHelloWorld SuperManito panghu Wenmoux passerby Annyoo2021 shufflewzc zero205 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
@@ -463,7 +463,7 @@ if [ -n "$js_List" ]; then
 fi
 
 ## 删除过期活动
-js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback JDHelloWorld_jd_api_test Tsukasa007_jd_joypark_joy Tsukasa007_jd_joypark_task"
+js_List="airacg_jd-reward-joy airacg_jd-task-price airacg_jd-task-invokeKey airacg_jd-task-validate airacg_jx-help-cashback JDHelloWorld_jd_api_test Tsukasa007_jd_joypark_joy Tsukasa007_jd_joypark_task moposmall_jx_mc_coin moposmall_jx_mc_emptycabbage"
 if [ -n "$js_List" ]; then
     echo -e "+-------------- 删除过期脚本 ---------------+"
     for js_item in $js_List; do
