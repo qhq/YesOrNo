@@ -311,6 +311,9 @@ sed -i "s|run(new_run_pins)|run(friendsArr)|g" ${ScriptsDir}/jd_joy_run.js
 #perl -0777 -i -pe "s|http:\/\/share\.turinglabs\.net\/api\/v3\/carnivalcity\/query\/20\/|http://xinhunshang.xyz:6001/help/v3/get/carnivalcity/2/20|ig" ${ScriptsDir}/jd_carnivalcity_help.js >/dev/null 2>&1 && echo -e " 手机狂欢城库链接已替换"
 perl -0777 -i -pe "s|([^'])https:\/\/code\.chiang\.fun\/api\/.*?\`|\1http://xinhunshang.xyz:6001/help/v3/get/jdcash/5/20\`|ig" ${ScriptsDir}/jd_cash.js >/dev/null 2>&1 && echo -e " 领现金库链接已替换"
 sed -i "/cookiesArr.length/i\ $.authorCode = []" ${ScriptsDir}/jd_cash.js
+sed -i "/errMsg);/d" ${ScriptsDir}/jd_fruit.js && echo -e " 农场异常不做通知"
+sed -i "/errMsg);/d" ${ScriptsDir}/jd_pet.js && echo -e " 萌宠异常不做通知"
+sed -i "/errMsg);/d" ${ScriptsDir}/jd_plantBean.js && echo -e " 种豆异常不做通知"
 echo -e "+--------------------------------------------+\n"
 
 echo -e "+-------------- passerby 脚本 ---------------+"
