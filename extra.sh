@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-Version="2021-09-06 22:00"
+Version="2021-09-08 00:00"
 DockerName=$(hostname)
 #clear
 echo -e "\033[33m[*]\033[0m 脚本版本：${Version}"
@@ -33,7 +33,7 @@ author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHello
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
-my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js notice.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_cleancart_sku.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js jx_cfdhb.js jx_cfdhb.js"
+my_scripts_list_qhqcz="iQIYI.js post_code.js getName.js notice.js jd_bean_change.js jd_bean_change_new.js jd_dreamFactory_tuan.js jd_zqfl.py jd_enen.js jd_unsubscriLive.js jd_cleancart.js jd_cleancart_sku.js jd_ckcheck.js jdWuLiu.js jd_shop_sign.js jx_cfdhb.js jd_refreshInvokeKey.js"
 
 # 中青、聚看、腾讯、百度 #https://raw.sevencdn.com/Sunert/Scripts/master/Task/
 scripts_base_url_Sunert=${ProxyJudge}https://gitee.com/Sunert/Scripts/raw/master/Task/
@@ -439,6 +439,29 @@ if [[ $iCan = "true" ]]; then
 fi
 echo -e "+--------------------------------------------+\n"
 
+
+##############################  自  定  义  命  令  ##############################
+## 修正定时
+grep -q "qhqcz_post_code" $ListCrontabUser && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * task qhqcz_post_code' $ListCrontabUser
+grep -q "qhqcz_jd_ckcheck" $ListCrontabUser && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * task qhqcz_jd_ckcheck' $ListCrontabUser
+grep -q "qhqcz_jd_cleancart" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart$/c35 6-21/3 * * * task qhqcz_jd_cleancart' $ListCrontabUser
+grep -q "qhqcz_jd_cleancart_sku" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart_sku$/c15 6-21/3 * * * task qhqcz_jd_cleancart_sku' $ListCrontabUser
+grep -q "qhqcz_jx_cfdhb" $ListCrontabUser && sed -i '/&*qhqcz_jx_cfdhb/c0 * * * * task qhqcz_jx_cfdhb rapid -c' $ListCrontabUser
+#sed -i "s|\(^[0-9].*task\) qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * task qhqcz_jd_dreamFactory_tuan|" $ListCrontabUser && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
+grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
+#grep -q "airacg_jd-task-validate" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * task airacg_jd-task-validate/ig" $ListCrontabUser
+#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?&& task airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && task airacg_jd-reward-joy/ig" $ListCrontabUser
+#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*? \* task airacg_jd-reward-joy/0 0-16\/8 * * * task airacg_jd-reward-joy/ig" $ListCrontabUser
+
+## 检查配置文件变量
+#[ $(grep -c 'export invokeKey=\"RtKLB8euDo7KwsO0\"' ${ConfigDir}/config.sh) -eq 0 ] && perl -0777 -i -pe 's/export invokeKey=.*+/export invokeKey="RtKLB8euDo7KwsO0"/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+
+## 删除不知如何产生的垃圾文件
+DeletedCacheFiles=""
+for del in ${DeletedCacheFiles}; do
+    [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
+done
+
 ## 注释指定活动
 js_List="qhqcz_notice jd_bean_change qhqcz_jd_enen qhqcz_jd_cleancart qhqcz_getName jd_jxlhb jd_blueCoin jd_live_redrain qhqcz_jx_cfdhb"
 if [ -n "$js_List" ]; then
@@ -494,29 +517,6 @@ for Cron in ${js_List}; do
     fi
 done
 echo -e "+--------------------------------------------+\n"
-
-
-##############################  自  定  义  命  令  ##############################
-## 修正定时
-grep -q "qhqcz_post_code" $ListCrontabUser && sed -i '/&*qhqcz_post_code/c0 0,6,12,18 * * * task qhqcz_post_code' $ListCrontabUser
-grep -q "qhqcz_jd_ckcheck" $ListCrontabUser && sed -i '/&*qhqcz_jd_ckcheck/c0 7-19/2 * * * task qhqcz_jd_ckcheck' $ListCrontabUser
-grep -q "qhqcz_jd_cleancart" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart$/c35 6-21/3 * * * task qhqcz_jd_cleancart' $ListCrontabUser
-grep -q "qhqcz_jd_cleancart_sku" $ListCrontabUser && sed -i '/&*qhqcz_jd_cleancart_sku$/c15 6-21/3 * * * task qhqcz_jd_cleancart_sku' $ListCrontabUser
-#sed -i "s|\(^[0-9].*task\) qhqcz_jd_dreamFactory_tuan|${cron_min} * * * * task qhqcz_jd_dreamFactory_tuan|" $ListCrontabUser && echo -e " qhqcz_jd_dreamFactory_tuan 注释已修改"
-grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 10,14 * * * task jd_joy_run/ig" $ListCrontabUser
-#grep -q "airacg_jd-task-validate" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?airacg_jd-task-validate/58 7,15,23 * * * task airacg_jd-task-validate/ig" $ListCrontabUser
-#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?&& task airacg_jd-reward-joy/59 7,15,23 * * * sleep 58 && task airacg_jd-reward-joy/ig" $ListCrontabUser
-#grep -q "airacg_jd-reward-joy" $ListCrontabUser && perl -0777 -i -pe "s/\d.*? \* task airacg_jd-reward-joy/0 0-16\/8 * * * task airacg_jd-reward-joy/ig" $ListCrontabUser
-
-## 检查配置文件变量
-[ $(grep -c 'export invokeKey=\"RtKLB8euDo7KwsO0\"' ${ConfigDir}/config.sh) -eq 0 ] && perl -0777 -i -pe 's/export invokeKey=.*+/export invokeKey="RtKLB8euDo7KwsO0"/i' ${ConfigDir}/config.sh >/dev/null 2>&1
-
-
-## 删除不知如何产生的垃圾文件
-DeletedCacheFiles=""
-for del in ${DeletedCacheFiles}; do
-    [ -f ${ScriptsDir}/$del ] && rm -rf ${ScriptsDir}/$del
-done
 
 ############################## 环境判断 ##############################
 # 依赖
