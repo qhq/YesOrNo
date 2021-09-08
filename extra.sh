@@ -29,7 +29,7 @@ fi
 
 ##############################  作  者  昵  称  &  脚  本  地  址  &  脚  本  名  称  （必填）  ##############################
 
-author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHelloWorld SuperManito panghu Wenmoux passerby Annyoo2021 shufflewzc zero205 airacg"
+author_list="qhqcz Sunert smiek2221 star261 curtinlv yangtingxiao jiulan JDHelloWorld SuperManito passerby Annyoo2021 shufflewzc zero205 airacg"
 
 # 自用库
 scripts_base_url_qhqcz=${ProxyJudge}https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/
