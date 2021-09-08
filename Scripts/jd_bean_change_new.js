@@ -88,15 +88,15 @@ if ($.isNode()) {
             await getDdFactoryInfo(); // 京东工厂
             await showMsg();
         }
-        if ($.isNode() && allMessage && ($.index % SPLIT_NUM === 0 || $.index === cookiesArr.length)) {
+        if ($.isNode() && allMessage && $.index % SPLIT_NUM === 0) {
             await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` });
             allMessage = '';
         }
     }
 
-    //if ($.isNode() && allMessage) {
-    //    await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
-    //}
+    if ($.isNode() && allMessage) {
+        await notify.sendNotify(`${$.name}`, `${allMessage}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
+    }
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
