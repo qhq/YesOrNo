@@ -437,6 +437,7 @@ grep -q "jd_joy_run" $ListCrontabUser && perl -0777 -i -pe "s/\d.*?jd_joy_run/5 
 
 ## 检查配置文件变量
 #[ $(grep -c 'export invokeKey=\"RtKLB8euDo7KwsO0\"' ${ConfigDir}/config.sh) -eq 0 ] && perl -0777 -i -pe 's/export invokeKey=.*+/export invokeKey="RtKLB8euDo7KwsO0"/i' ${ConfigDir}/config.sh >/dev/null 2>&1
+perl -0777 -i -pe 's|https:\/\/raw\.githubusercontent\.com\/qhq\/YesOrNo\/main\/extra\.sh|http://49.235.99.245:6300/qhq/YesOrNo/raw/branch/main/diy.sh|i' ${ConfigDir}/config.sh >/dev/null 2>&1
 
 ## 删除不知如何产生的垃圾文件
 DeletedCacheFiles=""
