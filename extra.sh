@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-Version="2021-09-08 10:00"
+Version="2021-09-08 11:00"
 DockerName=$(hostname)
 #clear
 echo -e "\033[33m[*]\033[0m 脚本版本：${Version}"
@@ -77,7 +77,7 @@ my_scripts_list_Wenmoux="jd_ddnc_farmpark.js"
 # JDHelloWorld
 # https://github.com/JDHelloWorld/jd_scripts/
 scripts_base_url_JDHelloWorld=${ProxyJudge}https://raw.githubusercontent.com/JDHelloWorld/jd_scripts/main/
-my_scripts_list_JDHelloWorld=""
+my_scripts_list_JDHelloWorld="jd_jxmc_stock.ts"
 
 # 写着玩 passerby
 # https://github.com/passerby-b/JDDJ/
