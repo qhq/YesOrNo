@@ -71,6 +71,7 @@ if (_APITOKEN) {
 
     try {
         const cookie = `pt_key=${key};pt_pin=${pin};`;
+        console.log(`\n当前cookie：\n${cookie}`);
         const userName = pin;
         const decodeName = decodeURIComponent(userName);
         const cookiesData = JSON.parse($.getData('CookiesJD') || '[]');
@@ -97,6 +98,7 @@ if (_APITOKEN) {
             cookiesData[updateIndex].cookie = cookie;
             cookieName = '【账号' + (updateIndex + 1) + '】';
             tipPrefix = '更新京东';
+            console.log(`\npt_pin已存在`);
         } else {
             cookiesData.push({
                 userName: decodeName,
@@ -104,6 +106,7 @@ if (_APITOKEN) {
             });
             cookieName = '【账号' + cookiesData.length + '】';
             tipPrefix = '首次写入京东';
+            console.log(`\n新增cookie`);
         }
         $.setData(JSON.stringify(cookiesData), 'CookiesJD');
         // $.msg(
@@ -129,7 +132,7 @@ if (_APITOKEN) {
 
         }
 
-        
+
     } catch (error) {
         $.msg('写入京东Cookie失败', '', '请重试 ⚠️');
         console.log(
@@ -156,14 +159,15 @@ function tgBotNotify(text, TGUserID) {
                 if (err) {
                     console.log(`${JSON.stringify(err)}`);
                 } else {
+                    //console.log(data)
                     data = JSON.parse(data);
                     if (data.ok) {
                         if (text.indexOf("pt_pin=") != -1) {
                             console.log(`已发送 Cookie 给 ${TGUserID}🎉。\n`);
                             $.resData = `已发送 Cookie 给 ${TGUserID}🎉。`;
                         } else {
-                            console.log(`${data.msg.replace(/\n/g, '')}`);
-                            $.resData = `${data.msg.replace(/\n/g, '')}`;
+                            console.log(`${data.result.text}`);
+                            $.resData = `${data.result.text}`;
                         }
                     } else if (data.error_code === 400) {
                         console.log(`发送失败，请联系 ${TGUserID}。\n`);
