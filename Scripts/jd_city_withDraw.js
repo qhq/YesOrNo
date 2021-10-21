@@ -35,7 +35,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
   }
   console.log(`本次提现码：${code}`)
   for (let i = 1; i <= times; i++) {
-    //console.log(`第 ${i} 次提现`);
+    console.log(`第 ${i} 次提现`);
     await withDraw();
     if ($.data.data.bizCode === -524) {
       console.log(JSON.stringify($.data))
