@@ -47,8 +47,8 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
       $.msg($.name, '', `提现成功，剩余${$.data.data.result.poolMoney}元`)
       break;
     }
-    //console.log($.data.data.bizMsg ?? '')
-    //console.log($.data.data.result.desc ?? '')
+    console.log($.data.data.bizMsg ?? '')
+    console.log($.data.data.result.desc ?? '')
     await $.wait(delay)
   }
   console.log(`提现操作结束`);
