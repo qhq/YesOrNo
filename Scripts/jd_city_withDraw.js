@@ -51,7 +51,7 @@ let message = "";
         }
         //console.log($.data.data.bizMsg ?? '')
         //console.log($.data.data.result.desc ?? '')
-        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}`;
+        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
         await $.wait(delay)
     }
     if (message != "") {
