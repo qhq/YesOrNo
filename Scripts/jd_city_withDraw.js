@@ -13,148 +13,154 @@ var code = $.getdata('qhq_withDraw');
 var times = $.getdata('qhq_times');
 var delay = $.getdata('qhq_delay');
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
+let message = "";
 
 !(async () => {
-  if (typeof $request != "undefined") {
-    getCookie();
-    getCode();
-    return;
-  }
-  if (
-    cookie == undefined ||
-    cookie == "" ||
-    code == undefined ||
-    code == ""
-  ) {
-    $.msg(
-      $.name,
-      "",
-      "Cookie或Code未获取，无法提现",
-    );
-    return;
-  }
-  console.log(`本次提现码：${code}`)
-  for (let i = 1; i <= times; i++) {
-    console.log(`第 ${i} 次提现`);
-    await withDraw();
-    if ($.data.data.bizCode === -524) {
-      console.log(JSON.stringify($.data))
-      $.msg($.name, '', `${$.data.data.bizMsg}`)
-      break;
+    if (typeof $request != "undefined") {
+        getCookie();
+        getCode();
+        return;
     }
-    if ($.data.data.bizCode === 0) {
-      console.log(JSON.stringify($.data))
-      $.msg($.name, '', `提现成功，剩余${$.data.data.result.poolMoney}元`)
-      break;
+    if (
+        cookie == undefined ||
+        cookie == "" ||
+        code == undefined ||
+        code == ""
+    ) {
+        $.msg(
+            $.name,
+            "",
+            "Cookie或Code未获取，无法提现",
+        );
+        return;
     }
-    console.log($.data.data.bizMsg ?? '')
-    console.log($.data.data.result.desc ?? '')
-    await $.wait(delay)
-  }
-  console.log(`提现操作结束`);
-  //$.msg($.name, '', `本次提现结束.`)
+    console.log(`本次提现码：${code}`)
+    for (let i = 1; i <= times; i++) {
+        //console.log(`第 ${i} 次提现`);
+        await withDraw();
+        if ($.data.data.bizCode === -524) {
+            console.log(JSON.stringify($.data))
+            $.msg($.name, '', `${$.data.data.bizMsg}`)
+            break;
+        }
+        if ($.data.data.bizCode === 0) {
+            console.log(JSON.stringify($.data))
+            message = "";
+            $.msg($.name, '', `提现成功，剩余${$.data.data.result.poolMoney}元`)
+            break;
+        }
+        //console.log($.data.data.bizMsg ?? '')
+        //console.log($.data.data.result.desc ?? '')
+        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}`;
+        await $.wait(delay)
+    }
+    if (message != "") {
+        console.log(message);
+    }
+    console.log(`提现操作结束`);
+    //$.msg($.name, '', `本次提现结束.`)
 })()
-  .catch((e) => {
-    $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
-  })
-  .finally(() => {
-    $.done();
-  })
+    .catch((e) => {
+        $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+    })
+    .finally(() => {
+        $.done();
+    })
 
 function taskPostUrl(functionId, body) {
-  return {
-    url: `${JD_API_HOST}`,
-    body: `functionId=${functionId}&body=${escape(JSON.stringify(body))}&client=wh5&clientVersion=1.0.0`,
-    headers: {
-      'Cookie': cookie,
-      'Host': 'api.m.jd.com',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/x-www-form-urlencoded',
-      "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
-      'Accept-Language': 'zh-cn',
-      'Accept-Encoding': 'gzip, deflate, br',
+    return {
+        url: `${JD_API_HOST}`,
+        body: `functionId=${functionId}&body=${escape(JSON.stringify(body))}&client=wh5&clientVersion=1.0.0`,
+        headers: {
+            'Cookie': cookie,
+            'Host': 'api.m.jd.com',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            "User-Agent": $.isNode() ? (process.env.JD_USER_AGENT ? process.env.JD_USER_AGENT : (require('./USER_AGENTS').USER_AGENT)) : ($.getdata('JDUA') ? $.getdata('JDUA') : "jdapp;iPhone;9.4.4;14.3;network/4g;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1"),
+            'Accept-Language': 'zh-cn',
+            'Accept-Encoding': 'gzip, deflate, br',
+        }
     }
-  }
 }
 
 function withDraw() {
-  let body = { "channel": 1, "code": code };
-  return new Promise((resolve) => {
-    $.post(taskPostUrl("city_withdraw", body), async (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
-        } else {
-          if (safeGet(data)) {
-            //console.log(`${data}`);
-            $.data = JSON.parse(data);
-          }
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve(data);
-      }
+    let body = { "channel": 1, "code": code };
+    return new Promise((resolve) => {
+        $.post(taskPostUrl("city_withdraw", body), async (err, resp, data) => {
+            try {
+                if (err) {
+                    console.log(`${JSON.stringify(err)}`)
+                    console.log(`${$.name} API请求失败，请检查网路重试`)
+                } else {
+                    if (safeGet(data)) {
+                        //console.log(`${data}`);
+                        $.data = JSON.parse(data);
+                    }
+                }
+            } catch (e) {
+                $.logErr(e, resp)
+            } finally {
+                resolve(data);
+            }
+        })
     })
-  })
 }
 
 function safeGet(data) {
-  try {
-    if (typeof JSON.parse(data) == "object") {
-      return true;
+    try {
+        if (typeof JSON.parse(data) == "object") {
+            return true;
+        }
+    } catch (e) {
+        console.log(e);
+        console.log(`京东服务器访问数据为空，请检查自身设备网络情况`);
+        return false;
     }
-  } catch (e) {
-    console.log(e);
-    console.log(`京东服务器访问数据为空，请检查自身设备网络情况`);
-    return false;
-  }
 }
 
 function jsonParse(str) {
-  if (typeof str == "string") {
-    try {
-      return JSON.parse(str);
-    } catch (e) {
-      console.log(e);
-      $.msg($.name, '', '请勿随意在BoxJs输入框修改内容\n建议通过脚本去获取cookie')
-      return [];
+    if (typeof str == "string") {
+        try {
+            return JSON.parse(str);
+        } catch (e) {
+            console.log(e);
+            $.msg($.name, '', '请勿随意在BoxJs输入框修改内容\n建议通过脚本去获取cookie')
+            return [];
+        }
     }
-  }
 }
 
 function getCode() {
-  if ($request.method != 'OPTIONS' && $request.body.indexOf("city_withdraw") > -1) {
-    body = $request.body
-    //console.log(body)
-    body = decodeURIComponent(body.match(/(\{.*?\})/g));
-    code = JSON.parse(body).code;
-    if (code != '') {
-      $.setdata(code, "qhq_withDraw");
-      $.msg($.name, '', `本次提现码：${code}`)
+    if ($request.method != 'OPTIONS' && $request.body.indexOf("city_withdraw") > -1) {
+        body = $request.body
+        //console.log(body)
+        body = decodeURIComponent(body.match(/(\{.*?\})/g));
+        code = JSON.parse(body).code;
+        if (code != '') {
+            $.setdata(code, "qhq_withDraw");
+            $.msg($.name, '', `本次提现码：${code}`)
+        }
     }
-  }
 }
 function getCookie() {
-  if ($request.method != 'OPTIONS' && $request.headers && $request.url !== 'http://www.apple.com/') {
-    let acObj = {};
-    // 提取ck数据
-    let CV = ($request.headers['Cookie'] || $request.headers['cookie'] || '').replace(/ /g, '');
-    let ckItems = CV.split(';').filter(s => /^(pt_key|pt_pin)=.+/.test(s)).sort();
-    if (ckItems.length == 2) {
-      acObj.cookie = ckItems.join(';') + ';';
-      acObj.userName = decodeURIComponent(acObj.cookie.match(/pt_pin=(.+?);/)[1]);
+    if ($request.method != 'OPTIONS' && $request.headers && $request.url !== 'http://www.apple.com/') {
+        let acObj = {};
+        // 提取ck数据
+        let CV = ($request.headers['Cookie'] || $request.headers['cookie'] || '').replace(/ /g, '');
+        let ckItems = CV.split(';').filter(s => /^(pt_key|pt_pin)=.+/.test(s)).sort();
+        if (ckItems.length == 2) {
+            acObj.cookie = ckItems.join(';') + ';';
+            acObj.userName = decodeURIComponent(acObj.cookie.match(/pt_pin=(.+?);/)[1]);
+        }
+        //const sicookie = $request.headers["Cookie"];
+        //console.log(sicookie);
+        if (acObj.cookie) {
+            //console.log(acObj.cookie)
+            //$.msg($.name, '', `${cookie}`)
+            $.setdata(acObj.cookie, "qhq_jd_ck");
+            //$.msg($.name, '', `本次CK：${acObj.cookie}`)
+        }
     }
-    //const sicookie = $request.headers["Cookie"];
-    //console.log(sicookie);
-    if (acObj.cookie) {
-      //console.log(acObj.cookie)
-      //$.msg($.name, '', `${cookie}`)
-      $.setdata(acObj.cookie, "qhq_jd_ck");
-      //$.msg($.name, '', `本次CK：${acObj.cookie}`)
-    }
-  }
 }
 
 
