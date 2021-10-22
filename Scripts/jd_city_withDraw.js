@@ -41,13 +41,13 @@ let message = "";
         message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
         if ($.data.data.bizCode === -524) {
             //console.log(JSON.stringify($.data))
-            message = `第 ${i} 次提现\nJSON.stringify($.data)`;
+            message = `第 ${i} 次提现\n${JSON.stringify($.data)}`;
             $.msg($.name, '', `${$.data.data.bizMsg}`)
             break;
         }
         if ($.data.data.bizCode === 0) {
             //console.log(JSON.stringify($.data))
-            message = `第 ${i} 次提现\nJSON.stringify($.data)`;
+            message = `第 ${i} 次提现\n${JSON.stringify($.data)}`;
             $.msg($.name, '', `提现成功，剩余${$.data.data.result.poolMoney}元`)
             break;
         }
