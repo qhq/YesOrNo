@@ -38,20 +38,21 @@ let message = "";
     for (let i = 1; i <= times; i++) {
         //console.log(`第 ${i} 次提现`);
         await withDraw();
+        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
         if ($.data.data.bizCode === -524) {
-            console.log(JSON.stringify($.data))
+            //console.log(JSON.stringify($.data))
+            message = `第 ${i} 次提现\nJSON.stringify($.data)`;
             $.msg($.name, '', `${$.data.data.bizMsg}`)
             break;
         }
         if ($.data.data.bizCode === 0) {
-            console.log(JSON.stringify($.data))
-            message = "";
+            //console.log(JSON.stringify($.data))
+            message = `第 ${i} 次提现\nJSON.stringify($.data)`;
             $.msg($.name, '', `提现成功，剩余${$.data.data.result.poolMoney}元`)
             break;
         }
         //console.log($.data.data.bizMsg ?? '')
         //console.log($.data.data.result.desc ?? '')
-        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
         await $.wait(delay)
     }
     if (message != "") {
