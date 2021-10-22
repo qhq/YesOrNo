@@ -107,6 +107,7 @@ if (_APITOKEN) {
             cookieName = '【账号' + cookiesData.length + '】';
             tipPrefix = '首次写入京东';
             console.log(`\n新增cookie`);
+            $.needUpdate = true;
         }
         $.setData(JSON.stringify(cookiesData), 'CookiesJD');
         // $.msg(
