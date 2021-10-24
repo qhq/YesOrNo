@@ -38,8 +38,8 @@ let message = "";
     for (let i = 1; i <= times; i++) {
         //console.log(`第 ${i} 次提现`);
         await withDraw();
-        //message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
-        console.log(`第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`);
+        message += `第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`;
+        //console.log(`第 ${i} 次提现\n${$.data.data.bizMsg ?? ''}\n${$.data.data.result.desc ?? ''}\n`);
         if ($.data.data.bizCode === -524) {
             //console.log(JSON.stringify($.data))
             message = `第 ${i} 次提现\n${JSON.stringify($.data)}`;
@@ -58,8 +58,6 @@ let message = "";
     }
     if (message != "") {
         console.log(message);
-    } else {
-        console.log("未提现成功，详情可查看日志。");
     }
     console.log(`提现操作结束`);
     //$.msg($.name, '', `本次提现结束.`)
