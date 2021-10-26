@@ -1,7 +1,7 @@
 /*
 
 [rewrte_local]
-^https?://api\.m\.jd\.com/client\.action url script-request-body https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/jd_city_withDrawal.js
+^https?://api\.m\.jd\.com/client\.action url script-request-body https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/jd_inviteId.js
 
 [MITM]
 hostname = api.m.jd.com
@@ -136,6 +136,7 @@ console.log($request.url)
     code = JSON.parse(body).inviteId;
     if (code != '') {
       //$.setdata(code, "qhq_inviteId");
+      console.log(`\ninviteId：${code}`)
       $.msg($.name, '', `inviteId：${code}`)
     }
   }
