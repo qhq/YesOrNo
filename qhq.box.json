@@ -50,7 +50,7 @@
         "scripts": [
           {
             "name": "城城分现金提现",
-            "script": "jd_city_withDraw.js"
+            "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/jd_city_withDraw.js"
           }
         ],
         "author": "@qhq",
