@@ -12,7 +12,8 @@
           "qhq_jd_ck",
           "qhq_withDraw",
           "qhq_times",
-          "qhq_delay"
+          "qhq_delay",
+          "qhq_withDrawArr"
         ],
         "descs_html": [
           "<p>打开京东app，主页搜索“城城分现金”进入活动</p>"
@@ -45,6 +46,13 @@
             "val": "250",
             "type": "number",
             "desc": "每次尝试提现的间隔"
+          },
+          {
+            "id": "qhq_withDrawArr",
+            "name": "群组",
+            "val": "",
+            "type": "text",
+            "desc": "ck，code群组"
           }
         ],
         "scripts": [
