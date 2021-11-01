@@ -7,8 +7,8 @@
 hostname = api.m.jd.com
 
 */
-const $ = new Env('邀请码')
-//var inviteId = $.getdata('qhq_inviteId');
+const $ = new Env('助力码')
+var inviteId = $.getdata('qhq_inviteId');
 
 !(async () => {
     if (typeof $request != "undefined") {
@@ -28,13 +28,13 @@ function getCode() {
     //console.log($request.body)
     if ($request.method != 'OPTIONS' && $request.body.indexOf("inviteId") > -1) {
         body = decodeURIComponent($request.body)
-        console.log(`body:\n` + body)
+        //console.log(`body:\n` + body)
         body = body.match(/{.*}/g);
         //code = code.replace(/inviteId=(.*?)&/g,"$1");
         //console.log(`body:\n` + body)
         code = JSON.parse(body).inviteId;
-        if (code != '') {
-            //$.setdata(code, "qhq_inviteId");
+        if (code && code != inviteId) {
+            $.setdata(code, "qhq_inviteId");
             console.log(`\ninviteId：${code}`)
             $.msg($.name, '', `inviteId：${code}`)
         }
