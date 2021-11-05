@@ -5,167 +5,201 @@
     "icon": "https://portrait.gitee.com/uploads/avatars/user/455/1366795_qhqcz_1602654451.png!avatar30",
     "repo": "https://gitee.com/qhqcz/quan-x",
     "apps": [
-      {
-        "id": "jdCity",
-        "name": "城城分现金",
-        "keys": [
-          "qhq_jd_ck",
-          "qhq_withDraw",
-          "qhq_times",
-          "qhq_delay",
-          "qhq_withDrawArr"
-        ],
-        "descs_html": [
-          "<p>打开京东app，主页搜索“城城分现金”进入活动</p>"
-        ],
-        "settings": [
-          {
-            "id": "qhq_jd_ck",
-            "name": "京东cookie",
-            "val": "",
-            "type": "textarea",
-            "desc": "京东cookie"
-          },
-          {
-            "id": "qhq_withDraw",
-            "name": "提现Code",
-            "val": "",
-            "type": "textarea",
-            "desc": "提现成功后必须重新获取"
-          },
-          {
-            "id": "qhq_times",
-            "name": "尝试次数",
-            "val": "50",
-            "type": "number",
-            "desc": "连续尝试提现的次数"
-          },
-          {
-            "id": "qhq_delay",
-            "name": "延迟",
-            "val": "250",
-            "type": "number",
-            "desc": "每次尝试提现的间隔"
-          },
-          {
-            "id": "qhq_withDrawArr",
-            "name": "群组",
-            "val": "",
-            "type": "textarea",
-            "desc": "ck，code群组"
-          }
-        ],
-        "scripts": [
-          {
-            "name": "城城分现金提现",
-            "script": "jd_city_withDraw.js"
-          }
-        ],
-        "author": "@qhq",
-        "repo": "https://gitee.com/qhqcz/quan-x/",
-        "icons": [
-          "https://raw.githubusercontent.com/NobyDa/mini/master/Alpha/jd.png",
-          "https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png"
-        ]
-      },
-      {
-        "id": "dockerck",
-        "name": "容器CK更新",
-        "keys": [
-          "qhq_HOSTURL",
-          "qhq_APITOKEN"
-        ],
-        "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js",
-        "author": "@qhq",
-        "repo": "https://gitee.com/qhqcz/quan-x/",
-        "icons": [
-          "",
-          "https://www.iconninja.com/files/602/644/867/docker-app-icon.png"
-        ],
-        "descs_html": [
-          "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
-        ],
-        "settings": [
-          {
-            "id": "qhq_HOSTURL",
-            "name": "服务器地址",
-            "val": "",
-            "type": "text",
-            "desc": "xxx.xxx.xxx.xxx:xxxx"
-          },
-          {
-            "id": "qhq_APITOKEN",
-            "name": "容器TOEKN",
-            "val": "",
-            "type": "text",
-            "desc": "容器TOEKN"
-          }
-        ]
-      },
         {
-        "id": "uploadCK",
-        "name": "CK更新通知",
-        "keys": [
-            "qhq_TGBotToken",
-            "qhq_TGUserID",
-          "qhq_HOSTURL",
-          "qhq_APITOKEN",
-            "qhq_ForceUpdate"
-        ],
-        "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/uploadJDCookie.js",
-        "author": "@qhq",
-        "repo": "https://gitee.com/qhqcz/quan-x/",
-        "icons": [
-          "",
-          "https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png"
-        ],
-        "descs_html": [
-          "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
-        ],
-        "settings": [
-          {
-            "id": "qhq_ForceUpdate",
-            "name": "强制更新推送",
-            "val": false,
-            "type": "boolean",
-            "desc": "不启用时仅在CK有变化才更新推送"
-          },
-          {
-            "id": "qhq_TG_API_HOST",
-            "name": "TG_API_HOST",
-            "val": "",
-            "type": "text",
-            "desc": "Telegram api自建反向代理地址（选填）"
-          },
-          {
-            "id": "qhq_TGBotToken",
-            "name": "TGBOT_TOKEN",
-            "val": "",
-            "type": "text",
-            "desc": "123456:xxxxxxxxxxxxx"
-          },
-          {
-            "id": "qhq_TGUserID",
-            "name": "TG用户ID",
-            "val": "",
-            "type": "text",
-            "desc": "123456,123456"
-          },
-          {
-            "id": "qhq_HOSTURL",
-            "name": "服务器地址",
-            "val": "",
-            "type": "text",
-            "desc": "xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx"
-          },
-          {
-            "id": "qhq_APITOKEN",
-            "name": "容器TOEKN",
-            "val": "",
-            "type": "text",
-            "desc": "xxxxxxxxx,xxxxxxxxx"
-          }
-        ]
-      }
+            "id": "jdCity",
+            "name": "城城分现金",
+            "keys": [
+                "qhq_jd_ck",
+                "qhq_withDraw",
+                "qhq_times",
+                "qhq_delay",
+                "qhq_withDrawArr"
+            ],
+            "descs_html": [
+                "<p>打开京东app，主页搜索“城城分现金”进入活动</p>"
+            ],
+            "settings": [
+                {
+                    "id": "qhq_jd_ck",
+                    "name": "京东cookie",
+                    "val": "",
+                    "type": "textarea",
+                    "desc": "京东cookie"
+                },
+                {
+                    "id": "qhq_withDraw",
+                    "name": "提现Code",
+                    "val": "",
+                    "type": "textarea",
+                    "desc": "提现成功后必须重新获取"
+                },
+                {
+                    "id": "qhq_times",
+                    "name": "尝试次数",
+                    "val": "50",
+                    "type": "number",
+                    "desc": "连续尝试提现的次数"
+                },
+                {
+                    "id": "qhq_delay",
+                    "name": "延迟",
+                    "val": "250",
+                    "type": "number",
+                    "desc": "每次尝试提现的间隔"
+                },
+                {
+                    "id": "qhq_withDrawArr",
+                    "name": "群组",
+                    "val": "",
+                    "type": "textarea",
+                    "desc": "ck，code群组"
+                }
+            ],
+            "scripts": [
+                {
+                    "name": "城城分现金提现",
+                    "script": "jd_city_withDraw.js"
+                }
+            ],
+            "author": "@qhq",
+            "repo": "https://gitee.com/qhqcz/quan-x/",
+            "icons": [
+                "https://raw.githubusercontent.com/NobyDa/mini/master/Alpha/jd.png",
+                "https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png"
+            ]
+        },
+        {
+            "id": "dockerck",
+            "name": "容器CK更新",
+            "keys": [
+                "qhq_HOSTURL",
+                "qhq_APITOKEN"
+            ],
+            "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js",
+            "author": "@qhq",
+            "repo": "https://gitee.com/qhqcz/quan-x/",
+            "icons": [
+                "",
+                "https://www.iconninja.com/files/602/644/867/docker-app-icon.png"
+            ],
+            "descs_html": [
+                "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
+            ],
+            "settings": [
+                {
+                    "id": "qhq_HOSTURL",
+                    "name": "服务器地址",
+                    "val": "",
+                    "type": "text",
+                    "desc": "xxx.xxx.xxx.xxx:xxxx"
+                },
+                {
+                    "id": "qhq_APITOKEN",
+                    "name": "容器TOEKN",
+                    "val": "",
+                    "type": "text",
+                    "desc": "容器TOEKN"
+                }
+            ]
+        },
+        {
+            "id": "uploadCK",
+            "name": "CK更新通知",
+            "keys": [
+                "qhq_TGBotToken",
+                "qhq_TGUserID",
+                "qhq_HOSTURL",
+                "qhq_APITOKEN",
+                "qhq_ForceUpdate"
+            ],
+            "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/uploadJDCookie.js",
+            "author": "@qhq",
+            "repo": "https://gitee.com/qhqcz/quan-x/",
+            "icons": [
+                "",
+                "https://raw.githubusercontent.com/NobyDa/mini/master/Color/jd.png"
+            ],
+            "descs_html": [
+                "<h4 align=\"center\">啥都不说了<a href=\"https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/JD_extra_cookie.js\">脚本注释</a></h4>"
+            ],
+            "settings": [
+                {
+                    "id": "qhq_ForceUpdate",
+                    "name": "强制更新推送",
+                    "val": false,
+                    "type": "boolean",
+                    "desc": "不启用时仅在CK有变化才更新推送"
+                },
+                {
+                    "id": "qhq_TG_API_HOST",
+                    "name": "TG_API_HOST",
+                    "val": "",
+                    "type": "text",
+                    "desc": "Telegram api自建反向代理地址（选填）"
+                },
+                {
+                    "id": "qhq_TGBotToken",
+                    "name": "TGBOT_TOKEN",
+                    "val": "",
+                    "type": "text",
+                    "desc": "123456:xxxxxxxxxxxxx"
+                },
+                {
+                    "id": "qhq_TGUserID",
+                    "name": "TG用户ID",
+                    "val": "",
+                    "type": "text",
+                    "desc": "123456,123456"
+                },
+                {
+                    "id": "qhq_HOSTURL",
+                    "name": "服务器地址",
+                    "val": "",
+                    "type": "text",
+                    "desc": "xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx"
+                },
+                {
+                    "id": "qhq_APITOKEN",
+                    "name": "容器TOEKN",
+                    "val": "",
+                    "type": "text",
+                    "desc": "xxxxxxxxx,xxxxxxxxx"
+                }
+            ]
+        },
+        {
+            "id": "cfdhb",
+            "name": "财富岛红包抢兑",
+            "keys": [
+                "qhq_cfdCookies",
+                "qhq_cfdPrices"
+            ],
+            "script": "",
+            "author": "@qhq",
+            "repo": "https://gitee.com/qhqcz/quan-x/",
+            "icons": [
+                "",
+                "https://raw.githubusercontent.com/qhq/YesOrNo/main/icons/cfd.jpeg"
+            ],
+            "descs_html": [
+                ""
+            ],
+            "settings": [
+                {
+                    "id": "qhq_cfdCookies",
+                    "name": "抢兑Cookies",
+                    "val": "",
+                    "type": "textarea",
+                    "desc": "xxx,xxx,xxx"
+                },
+                {
+                    "id": "qhq_cfdPrices",
+                    "name": "抢兑红包金额",
+                    "val": "",
+                    "type": "textarea",
+                    "desc": "xxx,xxx,xxx"
+                }
+            ]
+        }
     ]
-  }
+}
