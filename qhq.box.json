@@ -91,6 +91,8 @@
                     "name": "服务器地址",
                     "val": "",
                     "type": "text",
+                    "autoGrow": false,
+                    "rows": 2,
                     "desc": "xxx.xxx.xxx.xxx:xxxx"
                 },
                 {
@@ -98,6 +100,8 @@
                     "name": "容器TOEKN",
                     "val": "",
                     "type": "text",
+                    "autoGrow": false,
+                    "rows": 2,
                     "desc": "容器TOEKN"
                 }
             ]
@@ -156,6 +160,8 @@
                     "name": "服务器地址",
                     "val": "",
                     "type": "text",
+                    "autoGrow": false,
+                    "rows": 2,
                     "desc": "xxx.xxx.xxx.xxx:xxxx,xxx.xxx.xxx.xxx:xxxx"
                 },
                 {
@@ -163,6 +169,8 @@
                     "name": "容器TOEKN",
                     "val": "",
                     "type": "text",
+                    "autoGrow": false,
+                    "rows": 2,
                     "desc": "xxxxxxxxx,xxxxxxxxx"
                 }
             ]
@@ -190,6 +198,8 @@
                     "name": "抢兑Cookies",
                     "val": "",
                     "type": "textarea",
+                    "autoGrow": true,
+                    "rows": 4,
                     "desc": "xxx,xxx,xxx"
                 },
                 {
@@ -197,6 +207,8 @@
                     "name": "抢兑红包金额",
                     "val": "",
                     "type": "textarea",
+                    "autoGrow": true,
+                    "rows": 4,
                     "desc": "xxx,xxx,xxx"
                 }
             ]
