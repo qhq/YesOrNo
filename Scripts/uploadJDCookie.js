@@ -215,7 +215,7 @@ function updateCookie(cookie, ipAddress, apitoken) {
                     if (data.code == 1) {
                         console.log(`${data.msg.replace(/\n/g, '')}\n`);
                         message = `${data.msg.replace(/\n/g, '')}`;
-                    } else if (data.err != 1) {
+                    } else if (data.code != 1) {
                         console.log(`${data.msg.replace(/\n/g, '')}\n`);
                         message = `${data.msg.replace(/\n/g, '')}`;
                     }
