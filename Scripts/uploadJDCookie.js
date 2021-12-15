@@ -38,19 +38,19 @@ if ($request.url.includes('appjmp')) {
 }
 const pin = CK.match(/pt_pin=(.+?);/)[1];
 const key = CK.match(/pt_key=(.+?);/)[1];
-const _TG_API_HOST = $.getData('qhq_TG_API_HOST');
-const _TGBotToken = $.getData('qhq_TGBotToken');
-const _TGUserID = $.getData('qhq_TGUserID');
-const _HOSTURL = $.getData('qhq_HOSTURL');
-const _APITOKEN = $.getData('qhq_APITOKEN');
-const ForceUpdate = $.getData('qhq_ForceUpdate') || 'false';
+const _TG_API_HOST = $.getdata('qhq_TG_API_HOST');
+const _TGBotToken = $.getdata('qhq_TGBotToken');
+const _TGUserID = $.getdata('qhq_TGUserID');
+const _HOSTURL = $.getdata('qhq_HOSTURL');
+const _APITOKEN = $.getdata('qhq_APITOKEN');
+const ForceUpdate = $.getdata('qhq_ForceUpdate') || 'false';
 
 $.TG_API_HOST = _TG_API_HOST || 'api.telegram.org';
 $.TGBotToken = _TGBotToken || '1825234231:AAEcJUh6jJ93zDd19XH9fl2cSzPiNVBX4xI';
 $.TGUserIDs = [];
 $.HOSTURLs = [];
 $.APITOKENs = [];
-let msg = "";
+let message = "";
 
 if (_TGUserID) {
     $.TGUserIDs = _TGUserID.split(',');
@@ -75,7 +75,7 @@ if (_APITOKEN) {
         console.log(`\n当前cookie：\n${cookie}`);
         const userName = pin;
         const decodeName = decodeURIComponent(userName);
-        const cookiesData = JSON.parse($.getData('CookiesJD') || '[]');
+        const cookiesData = JSON.parse($.getdata('CookiesJD') || '[]');
         let updateIndex;
         let cookieName = '【账号】';
         const existCookie = cookiesData.find((item, index) => {
@@ -110,7 +110,7 @@ if (_APITOKEN) {
             console.log(`\n新增cookie`);
             $.needUpdate = true;
         }
-        $.setData(JSON.stringify(cookiesData), 'CookiesJD');
+        $.setdata(JSON.stringify(cookiesData), 'CookiesJD');
         // $.msg(
         //   '用户名: ' + decodeName,
         //   '',
@@ -127,7 +127,7 @@ if (_APITOKEN) {
                 if ($.HOSTURLs[i] && $.APITOKENs[i]) {
                     await updateCookie(cookie, $.HOSTURLs[i], $.APITOKENs[i]);
                     for (const userId of $.TGUserIDs) {
-                        await tgBotNotify(`${$.HOSTURLs[i]} - ${$.resData}`, userId);
+                        await tgBotNotify(`${$.HOSTURLs[i]} - ${message}`, userId);
                     }
                 }
             }
@@ -166,17 +166,17 @@ function tgBotNotify(text, TGUserID) {
                     if (data.ok) {
                         if (text.indexOf("pt_pin=") != -1) {
                             console.log(`已发送 Cookie 给 ${TGUserID}🎉。\n`);
-                            msg = `已发送 Cookie 给 ${TGUserID}🎉。`;
+                            message = `已发送 Cookie 给 ${TGUserID}🎉。`;
                         } else {
                             console.log(`${data.result.text}`);
-                            msg = `${data.result.text}`;
+                            message = `${data.result.text}`;
                         }
                     } else if (data.error_code === 400) {
                         console.log(`发送失败，请联系 ${TGUserID}。\n`);
-                        $.resData = `发送失败，请联系 ${TGUserID}。`;
+                        message = `发送失败，请联系 ${TGUserID}。`;
                     } else if (data.error_code === 401) {
                         console.log(`${TGUserID} bot token 填写错误。\n`);
-                        msg = `${TGUserID} bot token 填写错误。`;
+                        message = `${TGUserID} bot token 填写错误。`;
                     }
                 }
             } catch (e) {
@@ -191,7 +191,7 @@ function tgBotNotify(text, TGUserID) {
 function updateCookie(cookie, ipAddress, apitoken) {
     return new Promise((resolve) => {
         const opts = {
-            url: `http://${ipAddress}/updateCookie`,
+            url: `http://${ipAddress}/openApi/updateCookie`,
             headers: {
                 'api-token': apitoken,
                 'Content-Type': 'application/json',
@@ -212,12 +212,12 @@ function updateCookie(cookie, ipAddress, apitoken) {
                 } else {
                     //console.log(data)
                     data = JSON.parse(data);
-                    if (data.err === 0) {
+                    if (data.code == 1) {
                         console.log(`${data.msg.replace(/\n/g, '')}\n`);
-                        $.resData = `${data.msg.replace(/\n/g, '')}`;
-                    } else if (data.err === -1) {
+                        message = `${data.msg.replace(/\n/g, '')}`;
+                    } else if (data.err != 1) {
                         console.log(`${data.msg.replace(/\n/g, '')}\n`);
-                        $.resData = `${data.msg.replace(/\n/g, '')}`;
+                        message = `${data.msg.replace(/\n/g, '')}`;
                     }
                 }
             } catch (e) {
@@ -231,406 +231,382 @@ function updateCookie(cookie, ipAddress, apitoken) {
 
 function showMsg() {
     return new Promise((resolve) => {
-        $.msg($.name, $.subt, msg || '服务不可用');
+        $.msg($.name, $.subt, message || '服务不可用');
         resolve();
     });
 }
 
-// https://github.com/chavyleung/scripts/blob/master/Env.js
 // prettier-ignore
+// https://raw.githubusercontent.com/chavyleung/scripts/master/Env.js
 function Env(name, opts) {
     class Http {
         constructor(env) {
-            this.env = env;
+            this.env = env
         }
 
         send(opts, method = 'GET') {
-            opts = typeof opts === 'string' ? { url: opts } : opts;
-            let sender = this.get;
+            opts = typeof opts === 'string' ? { url: opts } : opts
+            let sender = this.get
             if (method === 'POST') {
-                sender = this.post;
+                sender = this.post
             }
             return new Promise((resolve, reject) => {
                 sender.call(this, opts, (err, resp, body) => {
-                    if (err) reject(err);
-                    else resolve(resp);
-                });
-            });
+                    if (err) reject(err)
+                    else resolve(resp)
+                })
+            })
         }
 
         get(opts) {
-            return this.send.call(this.env, opts);
+            return this.send.call(this.env, opts)
         }
 
         post(opts) {
-            return this.send.call(this.env, opts, 'POST');
+            return this.send.call(this.env, opts, 'POST')
         }
     }
 
     return new (class {
         constructor(name, opts) {
-            this.name = name;
-            this.http = new Http(this);
-            this.data = null;
-            this.dataFile = 'box.dat';
-            this.logs = [];
-            this.isMute = false;
-            this.isNeedRewrite = false;
-            this.logSeparator = '\n';
-            this.startTime = new Date().getTime();
-            Object.assign(this, opts);
-            this.log('', `🔔${this.name}, 开始!`);
+            this.name = name
+            this.http = new Http(this)
+            this.data = null
+            this.dataFile = 'box.dat'
+            this.logs = []
+            this.isMute = false
+            this.isNeedRewrite = false
+            this.logSeparator = '\n'
+            this.encoding = 'utf-8'
+            this.startTime = new Date().getTime()
+            Object.assign(this, opts)
+            this.log('', `🔔${this.name}, 开始!`)
         }
 
         isNode() {
-            return 'undefined' !== typeof module && !!module.exports;
+            return 'undefined' !== typeof module && !!module.exports
         }
 
         isQuanX() {
-            return 'undefined' !== typeof $task;
+            return 'undefined' !== typeof $task
         }
 
         isSurge() {
-            return 'undefined' !== typeof $httpClient && 'undefined' === typeof $loon;
+            return 'undefined' !== typeof $httpClient && 'undefined' === typeof $loon
         }
 
         isLoon() {
-            return 'undefined' !== typeof $loon;
+            return 'undefined' !== typeof $loon
         }
 
         isShadowrocket() {
-            return 'undefined' !== typeof $rocket;
+            return 'undefined' !== typeof $rocket
         }
 
         toObj(str, defaultValue = null) {
             try {
-                return JSON.parse(str);
+                return JSON.parse(str)
             } catch {
-                return defaultValue;
+                return defaultValue
             }
         }
 
         toStr(obj, defaultValue = null) {
             try {
-                return JSON.stringify(obj);
+                return JSON.stringify(obj)
             } catch {
-                return defaultValue;
+                return defaultValue
             }
         }
 
-        getJson(key, defaultValue) {
-            let json = defaultValue;
-            const val = this.getData(key);
+        getjson(key, defaultValue) {
+            let json = defaultValue
+            const val = this.getdata(key)
             if (val) {
                 try {
-                    json = JSON.parse(this.getData(key));
+                    json = JSON.parse(this.getdata(key))
                 } catch { }
             }
-            return json;
+            return json
         }
 
-        setJson(val, key) {
+        setjson(val, key) {
             try {
-                return this.setData(JSON.stringify(val), key);
+                return this.setdata(JSON.stringify(val), key)
             } catch {
-                return false;
+                return false
             }
         }
 
         getScript(url) {
             return new Promise((resolve) => {
-                this.get({ url }, (err, resp, body) => resolve(body));
-            });
+                this.get({ url }, (err, resp, body) => resolve(body))
+            })
         }
 
         runScript(script, runOpts) {
             return new Promise((resolve) => {
-                let httpApi = this.getData('@chavy_boxjs_userCfgs.httpApi');
-                httpApi = httpApi ? httpApi.replace(/\n/g, '').trim() : httpApi;
-                let httpApi_timeout = this.getData(
-                    '@chavy_boxjs_userCfgs.httpApi_timeout'
-                );
-                httpApi_timeout = httpApi_timeout ? httpApi_timeout * 1 : 20;
-                httpApi_timeout =
-                    runOpts && runOpts.timeout ? runOpts.timeout : httpApi_timeout;
-                const [key, addr] = httpApi.split('@');
+                let httpapi = this.getdata('@chavy_boxjs_userCfgs.httpapi')
+                httpapi = httpapi ? httpapi.replace(/\n/g, '').trim() : httpapi
+                let httpapi_timeout = this.getdata('@chavy_boxjs_userCfgs.httpapi_timeout')
+                httpapi_timeout = httpapi_timeout ? httpapi_timeout * 1 : 20
+                httpapi_timeout = runOpts && runOpts.timeout ? runOpts.timeout : httpapi_timeout
+                const [key, addr] = httpapi.split('@')
                 const opts = {
                     url: `http://${addr}/v1/scripting/evaluate`,
-                    body: {
-                        script_text: script,
-                        mock_type: 'cron',
-                        timeout: httpApi_timeout,
-                    },
-                    headers: { 'X-Key': key, Accept: '*/*' },
-                };
-                this.post(opts, (err, resp, body) => resolve(body));
-            }).catch((e) => this.logErr(e));
+                    body: { script_text: script, mock_type: 'cron', timeout: httpapi_timeout },
+                    headers: { 'X-Key': key, 'Accept': '*/*' }
+                }
+                this.post(opts, (err, resp, body) => resolve(body))
+            }).catch((e) => this.logErr(e))
         }
 
-        loadData() {
+        loaddata() {
             if (this.isNode()) {
-                this.fs = this.fs ? this.fs : require('fs');
-                this.path = this.path ? this.path : require('path');
-                const curDirDataFilePath = this.path.resolve(this.dataFile);
-                const rootDirDataFilePath = this.path.resolve(
-                    process.cwd(),
-                    this.dataFile
-                );
-                const isCurDirDataFile = this.fs.existsSync(curDirDataFilePath);
-                const isRootDirDataFile =
-                    !isCurDirDataFile && this.fs.existsSync(rootDirDataFilePath);
+                this.fs = this.fs ? this.fs : require('fs')
+                this.path = this.path ? this.path : require('path')
+                const curDirDataFilePath = this.path.resolve(this.dataFile)
+                const rootDirDataFilePath = this.path.resolve(process.cwd(), this.dataFile)
+                const isCurDirDataFile = this.fs.existsSync(curDirDataFilePath)
+                const isRootDirDataFile = !isCurDirDataFile && this.fs.existsSync(rootDirDataFilePath)
                 if (isCurDirDataFile || isRootDirDataFile) {
-                    const datPath = isCurDirDataFile
-                        ? curDirDataFilePath
-                        : rootDirDataFilePath;
+                    const datPath = isCurDirDataFile ? curDirDataFilePath : rootDirDataFilePath
                     try {
-                        return JSON.parse(this.fs.readFileSync(datPath));
+                        return JSON.parse(this.fs.readFileSync(datPath))
                     } catch (e) {
-                        return {};
+                        return {}
                     }
-                } else return {};
-            } else return {};
+                } else return {}
+            } else return {}
         }
 
-        writeData() {
+        writedata() {
             if (this.isNode()) {
-                this.fs = this.fs ? this.fs : require('fs');
-                this.path = this.path ? this.path : require('path');
-                const curDirDataFilePath = this.path.resolve(this.dataFile);
-                const rootDirDataFilePath = this.path.resolve(
-                    process.cwd(),
-                    this.dataFile
-                );
-                const isCurDirDataFile = this.fs.existsSync(curDirDataFilePath);
-                const isRootDirDataFile =
-                    !isCurDirDataFile && this.fs.existsSync(rootDirDataFilePath);
-                const jsonData = JSON.stringify(this.data);
+                this.fs = this.fs ? this.fs : require('fs')
+                this.path = this.path ? this.path : require('path')
+                const curDirDataFilePath = this.path.resolve(this.dataFile)
+                const rootDirDataFilePath = this.path.resolve(process.cwd(), this.dataFile)
+                const isCurDirDataFile = this.fs.existsSync(curDirDataFilePath)
+                const isRootDirDataFile = !isCurDirDataFile && this.fs.existsSync(rootDirDataFilePath)
+                const jsondata = JSON.stringify(this.data)
                 if (isCurDirDataFile) {
-                    this.fs.writeFileSync(curDirDataFilePath, jsonData);
+                    this.fs.writeFileSync(curDirDataFilePath, jsondata)
                 } else if (isRootDirDataFile) {
-                    this.fs.writeFileSync(rootDirDataFilePath, jsonData);
+                    this.fs.writeFileSync(rootDirDataFilePath, jsondata)
                 } else {
-                    this.fs.writeFileSync(curDirDataFilePath, jsonData);
+                    this.fs.writeFileSync(curDirDataFilePath, jsondata)
                 }
             }
         }
 
         lodash_get(source, path, defaultValue = undefined) {
-            const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.');
-            let result = source;
+            const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.')
+            let result = source
             for (const p of paths) {
-                result = Object(result)[p];
+                result = Object(result)[p]
                 if (result === undefined) {
-                    return defaultValue;
+                    return defaultValue
                 }
             }
-            return result;
+            return result
         }
 
         lodash_set(obj, path, value) {
-            if (Object(obj) !== obj) return obj;
-            if (!Array.isArray(path)) path = path.toString().match(/[^.[\]]+/g) || [];
+            if (Object(obj) !== obj) return obj
+            if (!Array.isArray(path)) path = path.toString().match(/[^.[\]]+/g) || []
             path
                 .slice(0, -1)
-                .reduce(
-                    (a, c, i) =>
-                        Object(a[c]) === a[c]
-                            ? a[c]
-                            : (a[c] = Math.abs(path[i + 1]) >> 0 === +path[i + 1] ? [] : {}),
-                    obj
-                )[path[path.length - 1]] = value;
-            return obj;
+                .reduce((a, c, i) => (Object(a[c]) === a[c] ? a[c] : (a[c] = Math.abs(path[i + 1]) >> 0 === +path[i + 1] ? [] : {})), obj)[
+                path[path.length - 1]
+            ] = value
+            return obj
         }
 
-        getData(key) {
-            let val = this.getVal(key);
+        getdata(key) {
+            let val = this.getval(key)
             // 如果以 @
             if (/^@/.test(key)) {
-                const [, objKey, paths] = /^@(.*?)\.(.*?)$/.exec(key);
-                const objVal = objKey ? this.getVal(objKey) : '';
-                if (objVal) {
+                const [, objkey, paths] = /^@(.*?)\.(.*?)$/.exec(key)
+                const objval = objkey ? this.getval(objkey) : ''
+                if (objval) {
                     try {
-                        const objedVal = JSON.parse(objVal);
-                        val = objedVal ? this.lodash_get(objedVal, paths, '') : val;
+                        const objedval = JSON.parse(objval)
+                        val = objedval ? this.lodash_get(objedval, paths, '') : val
                     } catch (e) {
-                        val = '';
+                        val = ''
                     }
                 }
             }
-            return val;
+            return val
         }
 
-        setData(val, key) {
-            let isSuc = false;
+        setdata(val, key) {
+            let issuc = false
             if (/^@/.test(key)) {
-                const [, objKey, paths] = /^@(.*?)\.(.*?)$/.exec(key);
-                const objdat = this.getVal(objKey);
-                const objVal = objKey
-                    ? objdat === 'null'
-                        ? null
-                        : objdat || '{}'
-                    : '{}';
+                const [, objkey, paths] = /^@(.*?)\.(.*?)$/.exec(key)
+                const objdat = this.getval(objkey)
+                const objval = objkey ? (objdat === 'null' ? null : objdat || '{}') : '{}'
                 try {
-                    const objedVal = JSON.parse(objVal);
-                    this.lodash_set(objedVal, paths, val);
-                    isSuc = this.setVal(JSON.stringify(objedVal), objKey);
+                    const objedval = JSON.parse(objval)
+                    this.lodash_set(objedval, paths, val)
+                    issuc = this.setval(JSON.stringify(objedval), objkey)
                 } catch (e) {
-                    const objedVal = {};
-                    this.lodash_set(objedVal, paths, val);
-                    isSuc = this.setVal(JSON.stringify(objedVal), objKey);
+                    const objedval = {}
+                    this.lodash_set(objedval, paths, val)
+                    issuc = this.setval(JSON.stringify(objedval), objkey)
                 }
             } else {
-                isSuc = this.setVal(val, key);
+                issuc = this.setval(val, key)
             }
-            return isSuc;
+            return issuc
         }
 
-        getVal(key) {
+        getval(key) {
             if (this.isSurge() || this.isLoon()) {
-                return $persistentStore.read(key);
+                return $persistentStore.read(key)
             } else if (this.isQuanX()) {
-                return $prefs.valueForKey(key);
+                return $prefs.valueForKey(key)
             } else if (this.isNode()) {
-                this.data = this.loadData();
-                return this.data[key];
+                this.data = this.loaddata()
+                return this.data[key]
             } else {
-                return (this.data && this.data[key]) || null;
+                return (this.data && this.data[key]) || null
             }
         }
 
-        setVal(val, key) {
+        setval(val, key) {
             if (this.isSurge() || this.isLoon()) {
-                return $persistentStore.write(val, key);
+                return $persistentStore.write(val, key)
             } else if (this.isQuanX()) {
-                return $prefs.setValueForKey(val, key);
+                return $prefs.setValueForKey(val, key)
             } else if (this.isNode()) {
-                this.data = this.loadData();
-                this.data[key] = val;
-                this.writeData();
-                return true;
+                this.data = this.loaddata()
+                this.data[key] = val
+                this.writedata()
+                return true
             } else {
-                return (this.data && this.data[key]) || null;
+                return (this.data && this.data[key]) || null
             }
         }
 
         initGotEnv(opts) {
-            this.got = this.got ? this.got : require('got');
-            this.ckTough = this.ckTough ? this.ckTough : require('tough-cookie');
-            this.ckJar = this.ckJar ? this.ckJar : new this.ckTough.CookieJar();
+            this.got = this.got ? this.got : require('got')
+            this.cktough = this.cktough ? this.cktough : require('tough-cookie')
+            this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar()
             if (opts) {
-                opts.headers = opts.headers ? opts.headers : {};
+                opts.headers = opts.headers ? opts.headers : {}
                 if (undefined === opts.headers.Cookie && undefined === opts.cookieJar) {
-                    opts.cookieJar = this.ckJar;
+                    opts.cookieJar = this.ckjar
                 }
             }
         }
 
         get(opts, callback = () => { }) {
             if (opts.headers) {
-                delete opts.headers['Content-Type'];
-                delete opts.headers['Content-Length'];
+                delete opts.headers['Content-Type']
+                delete opts.headers['Content-Length']
             }
             if (this.isSurge() || this.isLoon()) {
                 if (this.isSurge() && this.isNeedRewrite) {
-                    opts.headers = opts.headers || {};
-                    Object.assign(opts.headers, { 'X-Surge-Skip-Scripting': false });
+                    opts.headers = opts.headers || {}
+                    Object.assign(opts.headers, { 'X-Surge-Skip-Scripting': false })
                 }
                 $httpClient.get(opts, (err, resp, body) => {
                     if (!err && resp) {
-                        resp.body = body;
-                        resp.statusCode = resp.status;
+                        resp.body = body
+                        resp.statusCode = resp.status
                     }
-                    callback(err, resp, body);
-                });
+                    callback(err, resp, body)
+                })
             } else if (this.isQuanX()) {
                 if (this.isNeedRewrite) {
-                    opts.opts = opts.opts || {};
-                    Object.assign(opts.opts, { hints: false });
+                    opts.opts = opts.opts || {}
+                    Object.assign(opts.opts, { hints: false })
                 }
                 $task.fetch(opts).then(
                     (resp) => {
-                        const { statusCode: status, statusCode, headers, body } = resp;
-                        callback(null, { status, statusCode, headers, body }, body);
+                        const { statusCode: status, statusCode, headers, body } = resp
+                        callback(null, { status, statusCode, headers, body }, body)
                     },
                     (err) => callback(err)
-                );
+                )
             } else if (this.isNode()) {
-                this.initGotEnv(opts);
+                let iconv = require('iconv-lite')
+                this.initGotEnv(opts)
                 this.got(opts)
                     .on('redirect', (resp, nextOpts) => {
                         try {
                             if (resp.headers['set-cookie']) {
-                                const ck = resp.headers['set-cookie']
-                                    .map(this.ckTough.Cookie.parse)
-                                    .toString();
+                                const ck = resp.headers['set-cookie'].map(this.cktough.Cookie.parse).toString()
                                 if (ck) {
-                                    this.ckJar.setCookieSync(ck, null);
+                                    this.ckjar.setCookieSync(ck, null)
                                 }
-                                nextOpts.cookieJar = this.ckJar;
+                                nextOpts.cookieJar = this.ckjar
                             }
                         } catch (e) {
-                            this.logErr(e);
+                            this.logErr(e)
                         }
-                        // this.ckJar.setCookieSync(resp.headers['set-cookie'].map(Cookie.parse).toString())
+                        // this.ckjar.setCookieSync(resp.headers['set-cookie'].map(Cookie.parse).toString())
                     })
                     .then(
                         (resp) => {
-                            const { statusCode: status, statusCode, headers, body } = resp;
-                            callback(null, { status, statusCode, headers, body }, body);
+                            const { statusCode: status, statusCode, headers, rawBody } = resp
+                            callback(null, { status, statusCode, headers, rawBody }, iconv.decode(rawBody, this.encoding))
                         },
                         (err) => {
-                            const { message: error, response: resp } = err;
-                            callback(error, resp, resp && resp.body);
+                            const { message: error, response: resp } = err
+                            callback(error, resp, resp && iconv.decode(resp.rawBody, this.encoding))
                         }
-                    );
+                    )
             }
         }
 
         post(opts, callback = () => { }) {
-            const method = opts.method ? opts.method.toLocaleLowerCase() : 'post';
+            const method = opts.method ? opts.method.toLocaleLowerCase() : 'post'
             // 如果指定了请求体, 但没指定`Content-Type`, 则自动生成
             if (opts.body && opts.headers && !opts.headers['Content-Type']) {
-                opts.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                opts.headers['Content-Type'] = 'application/x-www-form-urlencoded'
             }
-            if (opts.headers) delete opts.headers['Content-Length'];
+            if (opts.headers) delete opts.headers['Content-Length']
             if (this.isSurge() || this.isLoon()) {
                 if (this.isSurge() && this.isNeedRewrite) {
-                    opts.headers = opts.headers || {};
-                    Object.assign(opts.headers, { 'X-Surge-Skip-Scripting': false });
+                    opts.headers = opts.headers || {}
+                    Object.assign(opts.headers, { 'X-Surge-Skip-Scripting': false })
                 }
                 $httpClient[method](opts, (err, resp, body) => {
                     if (!err && resp) {
-                        resp.body = body;
-                        resp.statusCode = resp.status;
+                        resp.body = body
+                        resp.statusCode = resp.status
                     }
-                    callback(err, resp, body);
-                });
+                    callback(err, resp, body)
+                })
             } else if (this.isQuanX()) {
-                opts.method = method;
+                opts.method = method
                 if (this.isNeedRewrite) {
-                    opts.opts = opts.opts || {};
-                    Object.assign(opts.opts, { hints: false });
+                    opts.opts = opts.opts || {}
+                    Object.assign(opts.opts, { hints: false })
                 }
                 $task.fetch(opts).then(
                     (resp) => {
-                        const { statusCode: status, statusCode, headers, body } = resp;
-                        callback(null, { status, statusCode, headers, body }, body);
+                        const { statusCode: status, statusCode, headers, body } = resp
+                        callback(null, { status, statusCode, headers, body }, body)
                     },
                     (err) => callback(err)
-                );
+                )
             } else if (this.isNode()) {
-                this.initGotEnv(opts);
-                const { url, ..._opts } = opts;
+                let iconv = require('iconv-lite')
+                this.initGotEnv(opts)
+                const { url, ..._opts } = opts
                 this.got[method](url, _opts).then(
                     (resp) => {
-                        const { statusCode: status, statusCode, headers, body } = resp;
-                        callback(null, { status, statusCode, headers, body }, body);
+                        const { statusCode: status, statusCode, headers, rawBody } = resp
+                        callback(null, { status, statusCode, headers, rawBody }, iconv.decode(rawBody, this.encoding))
                     },
                     (err) => {
-                        const { message: error, response: resp } = err;
-                        callback(error, resp, resp && resp.body);
+                        const { message: error, response: resp } = err
+                        callback(error, resp, resp && iconv.decode(resp.rawBody, this.encoding))
                     }
-                );
+                )
             }
         }
         /**
@@ -644,7 +620,7 @@ function Env(name, opts) {
          *
          */
         time(fmt, ts = null) {
-            const date = ts ? new Date(ts) : new Date();
+            const date = ts ? new Date(ts) : new Date()
             let o = {
                 'M+': date.getMonth() + 1,
                 'd+': date.getDate(),
@@ -652,22 +628,13 @@ function Env(name, opts) {
                 'm+': date.getMinutes(),
                 's+': date.getSeconds(),
                 'q+': Math.floor((date.getMonth() + 3) / 3),
-                S: date.getMilliseconds(),
-            };
-            if (/(y+)/.test(fmt))
-                fmt = fmt.replace(
-                    RegExp.$1,
-                    (date.getFullYear() + '').substr(4 - RegExp.$1.length)
-                );
+                'S': date.getMilliseconds()
+            }
+            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
             for (let k in o)
                 if (new RegExp('(' + k + ')').test(fmt))
-                    fmt = fmt.replace(
-                        RegExp.$1,
-                        RegExp.$1.length == 1
-                            ? o[k]
-                            : ('00' + o[k]).substr(('' + o[k]).length)
-                    );
-            return fmt;
+                    fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length))
+            return fmt
         }
 
         /**
@@ -687,81 +654,77 @@ function Env(name, opts) {
          *
          */
         msg(title = name, subt = '', desc = '', opts) {
-            const toEnvOpts = (rawOpts) => {
-                if (!rawOpts) return rawOpts;
-                if (typeof rawOpts === 'string') {
-                    if (this.isLoon()) return rawOpts;
-                    else if (this.isQuanX()) return { 'open-url': rawOpts };
-                    else if (this.isSurge()) return { url: rawOpts };
-                    else return undefined;
-                } else if (typeof rawOpts === 'object') {
+            const toEnvOpts = (rawopts) => {
+                if (!rawopts) return rawopts
+                if (typeof rawopts === 'string') {
+                    if (this.isLoon()) return rawopts
+                    else if (this.isQuanX()) return { 'open-url': rawopts }
+                    else if (this.isSurge()) return { url: rawopts }
+                    else return undefined
+                } else if (typeof rawopts === 'object') {
                     if (this.isLoon()) {
-                        let openUrl = rawOpts.openUrl || rawOpts.url || rawOpts['open-url'];
-                        let mediaUrl = rawOpts.mediaUrl || rawOpts['media-url'];
-                        return { openUrl, mediaUrl };
+                        let openUrl = rawopts.openUrl || rawopts.url || rawopts['open-url']
+                        let mediaUrl = rawopts.mediaUrl || rawopts['media-url']
+                        return { openUrl, mediaUrl }
                     } else if (this.isQuanX()) {
-                        let openUrl = rawOpts['open-url'] || rawOpts.url || rawOpts.openUrl;
-                        let mediaUrl = rawOpts['media-url'] || rawOpts.mediaUrl;
+                        let openUrl = rawopts['open-url'] || rawopts.url || rawopts.openUrl
+                        let mediaUrl = rawopts['media-url'] || rawopts.mediaUrl
                         let updatePasteboard =
-                            rawOpts['update-pasteboard'] || rawOpts.updatePasteboard;
-                        return {
-                            'open-url': openUrl,
-                            'media-url': mediaUrl,
-                            'update-pasteboard': updatePasteboard,
-                        };
+                            rawopts['update-pasteboard'] || rawopts.updatePasteboard
+                        return { 'open-url': openUrl, 'media-url': mediaUrl, 'update-pasteboard': updatePasteboard }
                     } else if (this.isSurge()) {
-                        let openUrl = rawOpts.url || rawOpts.openUrl || rawOpts['open-url'];
-                        return { url: openUrl };
+                        let openUrl = rawopts.url || rawopts.openUrl || rawopts['open-url']
+                        return { url: openUrl }
                     }
                 } else {
-                    return undefined;
+                    return undefined
                 }
-            };
+            }
             if (!this.isMute) {
                 if (this.isSurge() || this.isLoon()) {
-                    $notification.post(title, subt, desc, toEnvOpts(opts));
+                    $notification.post(title, subt, desc, toEnvOpts(opts))
                 } else if (this.isQuanX()) {
-                    $notify(title, subt, desc, toEnvOpts(opts));
+                    $notify(title, subt, desc, toEnvOpts(opts))
                 }
             }
             if (!this.isMuteLog) {
-                let logs = ['', '==============📣系统通知📣=============='];
-                logs.push(title);
-                subt ? logs.push(subt) : '';
-                desc ? logs.push(desc) : '';
-                console.log(logs.join('\n'));
-                this.logs = this.logs.concat(logs);
+                let logs = ['', '==============📣系统通知📣==============']
+                logs.push(title)
+                subt ? logs.push(subt) : ''
+                desc ? logs.push(desc) : ''
+                console.log(logs.join('\n'))
+                this.logs = this.logs.concat(logs)
             }
         }
 
         log(...logs) {
             if (logs.length > 0) {
-                this.logs = [...this.logs, ...logs];
+                this.logs = [...this.logs, ...logs]
             }
-            console.log(logs.join(this.logSeparator));
+            console.log(logs.join(this.logSeparator))
         }
 
         logErr(err, msg) {
-            const isPrintSack = !this.isSurge() && !this.isQuanX() && !this.isLoon();
+            const isPrintSack = !this.isSurge() && !this.isQuanX() && !this.isLoon()
             if (!isPrintSack) {
-                this.log('', `❗️${this.name}, 错误!`, err);
+                this.log('', `❗️${this.name}, 错误!`, err)
             } else {
-                this.log('', `❗️${this.name}, 错误!`, err.stack);
+                this.log('', `❗️${this.name}, 错误!`, err.stack)
             }
         }
 
         wait(time) {
-            return new Promise((resolve) => setTimeout(resolve, time));
+            return new Promise((resolve) => setTimeout(resolve, time))
         }
 
         done(val = {}) {
-            const endTime = new Date().getTime();
-            const costTime = (endTime - this.startTime) / 1000;
-            this.log('', `🔔${this.name}, 结束! 🕛 ${costTime} 秒`);
-            this.log();
+            const endTime = new Date().getTime()
+            const costTime = (endTime - this.startTime) / 1000
+            this.log('', `🔔${this.name}, 结束! 🕛 ${costTime} 秒`)
+            this.log()
             if (this.isSurge() || this.isQuanX() || this.isLoon()) {
-                $done(val);
+                $done(val)
             }
         }
-    })(name, opts);
+    })(name, opts)
 }
