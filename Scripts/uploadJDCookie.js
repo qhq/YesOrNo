@@ -50,6 +50,7 @@ $.TGBotToken = _TGBotToken || '1825234231:AAEcJUh6jJ93zDd19XH9fl2cSzPiNVBX4xI';
 $.TGUserIDs = [];
 $.HOSTURLs = [];
 $.APITOKENs = [];
+let msg = "";
 
 if (_TGUserID) {
     $.TGUserIDs = _TGUserID.split(',');
@@ -165,17 +166,17 @@ function tgBotNotify(text, TGUserID) {
                     if (data.ok) {
                         if (text.indexOf("pt_pin=") != -1) {
                             console.log(`已发送 Cookie 给 ${TGUserID}🎉。\n`);
-                            $.resData = `已发送 Cookie 给 ${TGUserID}🎉。`;
+                            msg = `已发送 Cookie 给 ${TGUserID}🎉。`;
                         } else {
                             console.log(`${data.result.text}`);
-                            $.resData = `${data.result.text}`;
+                            msg = `${data.result.text}`;
                         }
                     } else if (data.error_code === 400) {
                         console.log(`发送失败，请联系 ${TGUserID}。\n`);
                         $.resData = `发送失败，请联系 ${TGUserID}。`;
                     } else if (data.error_code === 401) {
                         console.log(`${TGUserID} bot token 填写错误。\n`);
-                        $.resData = `${TGUserID} bot token 填写错误。`;
+                        msg = `${TGUserID} bot token 填写错误。`;
                     }
                 }
             } catch (e) {
@@ -230,7 +231,7 @@ function updateCookie(cookie, ipAddress, apitoken) {
 
 function showMsg() {
     return new Promise((resolve) => {
-        $.msg($.name, $.subt, $.resData || '服务不可用');
+        $.msg($.name, $.subt, msg || '服务不可用');
         resolve();
     });
 }
