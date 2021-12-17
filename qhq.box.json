@@ -180,6 +180,7 @@
             "name": "财富岛红包抢兑",
             "keys": [
                 "qhq_cfdCookies",
+                "qhq_cfdtTime",
                 "qhq_cfdPrices"
             ],
             "script": "",
@@ -199,7 +200,16 @@
                     "val": "",
                     "type": "textarea",
                     "autoGrow": true,
-                    "rows": 4,
+                    "rows": 3,
+                    "desc": "xxx,xxx,xxx"
+                },
+                {
+                    "id": "qhq_cfdtTime",
+                    "name": "抢兑红包时间",
+                    "val": "",
+                    "type": "textarea",
+                    "autoGrow": true,
+                    "rows": 3,
                     "desc": "xxx,xxx,xxx"
                 },
                 {
@@ -208,7 +218,7 @@
                     "val": "",
                     "type": "textarea",
                     "autoGrow": true,
-                    "rows": 4,
+                    "rows": 3,
                     "desc": "xxx,xxx,xxx"
                 }
             ]
