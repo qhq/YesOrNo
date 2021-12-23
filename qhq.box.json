@@ -200,7 +200,7 @@
                     "name": "整体时间调整",
                     "val": "0",
                     "type": "number",
-                    "desc": "所有定时整体提前或延迟"
+                    "desc": "所有定时整体提前或延迟ms"
                 },{
                     "id": "qhq_cfdCookies",
                     "name": "抢兑Cookies",
