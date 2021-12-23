@@ -181,7 +181,8 @@
             "keys": [
                 "qhq_cfdCookies",
                 "qhq_cfdtTime",
-                "qhq_cfdPrices"
+                "qhq_cfdPrices",
+                "qhq_cfdadjust"
             ],
             "script": "",
             "author": "@qhq",
@@ -195,6 +196,12 @@
             ],
             "settings": [
                 {
+                    "id": "qhq_cfdadjust",
+                    "name": "整体时间调整",
+                    "val": "0",
+                    "type": "number",
+                    "desc": "所有定时整体提前或延迟"
+                },{
                     "id": "qhq_cfdCookies",
                     "name": "抢兑Cookies",
                     "val": "",
