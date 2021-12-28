@@ -1,5 +1,5 @@
-#!name=京东辅助登陆
-#!desc=京东+京喜辅助登陆(UI2)
+#!name=登陆辅助
+#!desc=京东+京喜账号CK登陆辅助(UI2) 
 
 [Script]
 # > 京东系列
@@ -10,7 +10,7 @@
 京东下单 = type=http-response,pattern=^https:\/\/wq\.jd\.com\/deal\/confirmorder,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京东购物 = type=http-response,pattern=^https:\/\/p\.m\.jd\.com\/cart\/cart\.action,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京豆明细 = type=http-response,pattern=^https:\/\/bean\.m\.jd\.com\/beanDetail\/index\.action,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
-京东商品 = type=http-response,pattern=^https:\/\/item\.m\.jd\.com\/(product\/\d+\.html|ware\/view.action\?wareId=\d+|item\/jxview\?skuId=\d+),requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
+京东商品 = type=http-response,pattern=https:\/\/item\.m\.jd\.com\/(product\/\d+\.html|ware\/view.action\?wareId=\d+|item\/jxview\?skuId=\d+),requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京东店铺 = type=http-response,pattern=^https:\/\/shop\.m\.jd\.com\/(shopv2\/mzpage|\?shopId),requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京东入会 = type=http-response,pattern=^https:\/\/shopmember\.m\.jd\.com\/shopcard\/\?venderId=\d+,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京东销卡 = type=http-response,pattern=^https:\/\/cardpackage\.jd\.com,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
@@ -30,7 +30,7 @@
 
 # > 京喜系列
 京喜首页 = type=http-response,pattern=^https:\/\/m\.jingxi\.com\/mcoss\/wxmall\/home,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
-京喜商品 = type=http-response,pattern=^https:\/\/((m\.jingxi|wqitem\.jd)\.com\/item\/(jxview|view)|wq\.jd.com\/item),requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
+京喜商品 = type=http-response,pattern=^https:\/\/((m\.jingxi|wqitem\.jd)\.(com|hk)\/item\/(jxview|view)|wq\.jd.com\/item),requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京喜购物 = type=http-response,pattern=^https:\/\/u\.jingxi\.com\/cart\/mycart\?fromnav,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京喜我的 = type=http-response,pattern=^https:\/\/st\.jingxi\.com\/pingou\/account\/index\.html,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 京喜订单 = type=http-response,pattern=^https:\/\/st\.jingxi\.com\/order\/orderlist_merge\.shtml,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
@@ -46,4 +46,4 @@
 京粉礼金 = type=http-response,pattern=^https:\/\/jingfen\.jd\.com\/giftcoupon\?sku=\d+,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/dompling/Script/master/jd/jd_login_help2.js
 
 [MITM]
-hostname = %INSERT% m.jd.com, plogin.m.jd.com, home.m.jd.com, wqs.jd.com, wq.jd.com, wqsd.jd.com,wqsh.jd.com, p.m.jd.com, bean.m.jd.com, item.m.jd.com, shop.m.jd.com, shopmember.m.jd.com, cardpackage.jd.com, coupon.m.jd.com, m.jingxi.com, u.jingxi.com, st.jingxi.com, actst.jingxi.com, h5.m.jd.com, jdsupermarket.jd.com, wbbny.m.jd.com, prodev.m.jd.com, try.m.jd.com, answer.jd.com, carnivalcity.m.jd.com, pro.m.jd.com, msitepp-fm.jd.com, jingfen.jd.com, happy.m.jd.com
+hostname = %INSERT% m.jd.com, plogin.m.jd.com, home.m.jd.com, wqs.jd.com, wq.jd.com, wqsd.jd.com,wqsh.jd.com, p.m.jd.com, bean.m.jd.com, item.m.jd.com, shop.m.jd.com, shopmember.m.jd.com, cardpackage.jd.com, coupon.m.jd.com, m.jingxi.com, u.jingxi.com, st.jingxi.com, actst.jingxi.com, h5.m.jd.com, jdsupermarket.jd.com, wbbny.m.jd.com, prodev.m.jd.com, try.m.jd.com, answer.jd.com, carnivalcity.m.jd.com, pro.m.jd.com, msitepp-fm.jd.com, jingfen.jd.com, wqitem.jd.com, wqitem.jd.hk
