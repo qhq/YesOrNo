@@ -114,7 +114,8 @@
                 "qhq_TGUserID",
                 "qhq_HOSTURL",
                 "qhq_APITOKEN",
-                "qhq_ForceUpdate"
+                "qhq_ForceUpdate",
+                "qhq_NoUpdate"
             ],
             "script": "https://raw.githubusercontent.com/qhq/YesOrNo/main/Scripts/uploadJDCookie.js",
             "author": "@qhq",
@@ -133,6 +134,13 @@
                     "val": false,
                     "type": "boolean",
                     "desc": "不启用时仅在CK有变化才更新推送"
+                },
+                {
+                    "id": "qhq_NoUpdate",
+                    "name": "只抓不推送",
+                    "val": false,
+                    "type": "boolean",
+                    "desc": "启用后只抓取CK在日志输出，不刷新服务器"
                 },
                 {
                     "id": "qhq_TG_API_HOST",
