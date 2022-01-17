@@ -36,14 +36,17 @@ if ($request.url.includes('appjmp')) {
 } else {
     CK = $request.headers['Cookie'] || $request.headers['cookie'];
 }
+//console.log(`\n==========\n抓取cookie：\n${CK}\n==========`)
 const pin = CK.match(/pt_pin=(.+?);/)[1];
 const key = CK.match(/pt_key=(.+?);/)[1];
+
 const _TG_API_HOST = $.getdata('qhq_TG_API_HOST');
 const _TGBotToken = $.getdata('qhq_TGBotToken');
 const _TGUserID = $.getdata('qhq_TGUserID');
 const _HOSTURL = $.getdata('qhq_HOSTURL');
 const _APITOKEN = $.getdata('qhq_APITOKEN');
 const ForceUpdate = $.getdata('qhq_ForceUpdate') || 'false';
+const NoUpdate = $.getdata('qhq_NoUpdate') || 'true';
 
 $.TG_API_HOST = _TG_API_HOST || 'api.telegram.org';
 $.TGBotToken = _TGBotToken || '1825234231:AAEcJUh6jJ93zDd19XH9fl2cSzPiNVBX4xI';
@@ -72,7 +75,7 @@ if (_APITOKEN) {
 
     try {
         const cookie = `pt_key=${key};pt_pin=${pin};`;
-        console.log(`\n当前cookie：\n${cookie}`);
+        //console.log(`\n当前cookie：\n${cookie}`);
         const userName = pin;
         const decodeName = decodeURIComponent(userName);
         const cookiesData = JSON.parse($.getdata('CookiesJD') || '[]');
@@ -87,6 +90,7 @@ if (_APITOKEN) {
                 : null;
             const verify = userName === Account;
             if (verify) {
+                //console.log(`\n存档cookie：\n${ck}`);
                 updateIndex = index;
                 if (ck !== cookie) {
                     $.needUpdate = true;
@@ -116,6 +120,11 @@ if (_APITOKEN) {
         //   '',
         //   tipPrefix + cookieName + 'Cookie成功 🎉'
         // );
+
+        if (NoUpdate == 'true') {
+            console.log(`\n本次不上传CK\n${cookie}`)
+            return;
+        }
 
         if ($.needUpdate || ForceUpdate == 'true') {
             for (const userId of $.TGUserIDs) {
