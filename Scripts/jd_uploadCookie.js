@@ -207,9 +207,9 @@ function updateCookie(cookie, ipAddress, apitoken) {
             },
             body: JSON.stringify({
                 "cookie": cookie,
-                "userMsg": "无备注",
+                //"userMsg": "无备注",
                 "defaultStatus": "false",
-                "defaultName": "无备注",
+                //"defaultName": "无备注",
                 "defaultWeight": "1"
             }),
         };
