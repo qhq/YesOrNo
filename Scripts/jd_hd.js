@@ -51,14 +51,13 @@ try {
   let url = $request.url.replace(/&un_area=[\d_]+/g, '');
   let sku;
   let arr = [];
-
-  if (url.includes('sku=')) {
+  if (/sku=\d+/.test(url)) {
     arr = url.match(/sku=(\d+)/);
   }
-  if (url.includes('wareId=')) {
+  if (/wareId=\d+/.test(url)) {
     arr = url.match(/wareId=(\d+)/);
   }
-  if (url.includes('/product/')) {
+  if (/\/product\/(\d+)\.html/.test(url)) {
     arr = url.match(/\/.*\/(\d+)\.html/);
   }
 
@@ -94,9 +93,78 @@ try {
       `</div>`;
   }
 
-  html = html.replace(
-    /(<body.*?>)/,
-    `$1
+  let mitmFuckEid = `<script>
+   function upsetArr(arr){
+      return arr.sort(function(){ return Math.random() - 0.5});
+    }
+
+    // 极速版反跟踪phone
+    const Storage_setItem = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (key, value) {
+      // if (this === window.localStorage) {
+      //      // do what you want if setItem is called on localStorage
+      //     Storage_setItem.apply(this, [key, value]);
+      // } else {
+
+      if (key === 'appEid') {
+        let appEid = value.slice(5);
+        if (appEid) {
+          Storage_setItem.apply(this, [
+            key,
+            'eidif' + upsetArr(appEid.split('')).join(''),
+          ]);
+        }
+      } else {
+        Storage_setItem.apply(this, [key, value]);
+      }
+      // }
+    };
+  </script>`;
+
+  let scriptDoms = `<script src="https://unpkg.com/vconsole@v3.13.0/dist/vconsole.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>`;
+
+  let mitmFixContent = `<script>
+    // 兼容保价页面
+    if(!Map.prototype.set){
+      Map.prototype.set = function(_key, _value) { 
+        if (this.containsKey(_key) == true) {  
+            if(this.remove(_key) == true){ 
+              this.elements.push( { 
+                key : _key, 
+                value : _value 
+              }); 
+
+          }else{ 
+            this.elements.push( { 
+              key : _key, 
+              value : _value 
+            }); 
+          } 
+        } else { 
+          this.elements.push( { 
+            key : _key, 
+            value : _value 
+          }); 
+        } 
+      }
+      Map.prototype.has = function(_key) { 
+        var bln = false; 
+        try { 
+          for (i = 0; i < this.elements.length; i++) {  
+            if (this.elements[i].key == _key){ 
+              bln = true; 
+            } 
+          } 
+        }catch(e) { 
+          bln = false;  
+        } 
+        return bln; 
+      }
+    }
+  </script>`;
+
+  const mitmContent = `
   <style>
     .vc-tab.hide {
       display: none !important;
@@ -170,47 +238,7 @@ try {
     }
   </style>
   ${tools}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
   <script>
-
-    // 兼容保价页面
-    if(!Map.prototype.set){
-      Map.prototype.set = function(_key, _value) { 
-        if (this.containsKey(_key) == true) {  
-            if(this.remove(_key) == true){ 
-              this.elements.push( { 
-                key : _key, 
-                value : _value 
-              }); 
-
-          }else{ 
-            this.elements.push( { 
-              key : _key, 
-              value : _value 
-            }); 
-          } 
-        } else { 
-          this.elements.push( { 
-            key : _key, 
-            value : _value 
-          }); 
-        } 
-      }
-      Map.prototype.has = function(_key) { 
-        var bln = false; 
-        try { 
-          for (i = 0; i < this.elements.length; i++) {  
-            if (this.elements[i].key == _key){ 
-              bln = true; 
-            } 
-          } 
-        }catch(e) { 
-          bln = false;  
-        } 
-        return bln; 
-      }
-    }
-
     const _currentPin = Cookies.get('pt_pin');
     const _needHideSwitch = localStorage.getItem('vConsole_switch_hide') === 'Y';
 
@@ -316,22 +344,15 @@ try {
       }
     }
 
-    const _script = document.createElement('script');
-    _script.src = "https://unpkg.com/vconsole@3.12.0/dist/vconsole.min.js";
-    // _script.src = "https://unpkg.com/vconsole@latest/dist/vconsole.min.js";
-    // _script.doneState = { loaded: true, complete: true};
-    _script.onload = function() {
-      try {
-        setTimeout(() => {
-          __onReady(__init);
-        });
-        console.log("初始化成功");
-      } catch (err) {
-        console.log('_script.onload', err);
-      }
-    };
-    
-    document.getElementsByTagName('head')[0].appendChild(_script);
+    // const _script = document.createElement('script');
+    // _script.src = "https://unpkg.com/vconsole@3.12.0/dist/vconsole.min.js";
+    // // _script.src = "https://unpkg.com/vconsole@latest/dist/vconsole.min.js";
+    // // _script.doneState = { loaded: true, complete: true};
+    // _script.onload = function() {
+      
+    // };
+
+    __onReady(__init);
 
     function __onReady(fn){
       try {
@@ -379,7 +400,6 @@ try {
         __vConsole.hideSwitch();
         localStorage.setItem('vConsole_switch_hide', 'Y')
       }
-
 
       if (_cookies.length > 0) _changeBtns();
     }
@@ -433,14 +453,16 @@ try {
             }
           })
         }
-        
-        window.__vConsole = new VConsole({
+        const __vConsoleOptions = {
           onReady: () => {
             setTimeout(() => {
+              console.log("初始化成功");
               console.info(window.location.href);
             },3000);
           }
-        });
+        }
+
+        window.__vConsole = new VConsole(__vConsoleOptions);
         if (_needHideSwitch) {
           __vConsole.hideSwitch(); 
         }
@@ -586,10 +608,26 @@ try {
       }
       document.body.removeChild(input);
     }
-  </script>`
-  );
+  </script>`;
+
+  if (/<script.*v(C|c)onsole(\.min)?\.js.+script>/.test(html)) {
+    html = html.replace(/<script.*v(C|c)onsole(\.min)?\.js.+script>/, ``);
+  }
+  if (/(<\/title>)/.test(html)) {
+    html = html.replace(
+      /(<\/title>)/,
+      `$1${mitmFuckEid}${scriptDoms}${mitmContent}`
+    );
+  } else {
+    html = html.replace(
+      /(<script)/,
+      `${mitmFuckEid}${scriptDoms}${mitmContent}$1`
+    );
+  }
+  html = html.replace(/(<\/body>)/, `${mitmFixContent}$1`);
 } catch (error) {
-  console.error(arguments.callee.name, error);
+  // console.error(arguments.callee.name, error);
+  console.log(error);
 }
 
 $.done({
