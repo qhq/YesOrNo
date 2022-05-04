@@ -120,9 +120,9 @@ if (_APITOKEN) {
         //   '',
         //   tipPrefix + cookieName + 'Cookie成功 🎉'
         // );
-
+console.log(`\n获取到的CK\n${cookie}`)
         if (NoUpdate == 'true') {
-            console.log(`\n本次不上传CK\n${cookie}`)
+            console.log(`\n本次不上传CK`)
             return;
         }
 
@@ -134,6 +134,7 @@ if (_APITOKEN) {
 
             for (var i = 0; i <= $.HOSTURLs.length - 1; i++) {
                 if ($.HOSTURLs[i] && $.APITOKENs[i]) {
+
                     await updateCookie(cookie, $.HOSTURLs[i], $.APITOKENs[i]);
                     for (const userId of $.TGUserIDs) {
                         await tgBotNotify(`${$.HOSTURLs[i]} - ${message}`, userId);
@@ -207,9 +208,9 @@ function updateCookie(cookie, ipAddress, apitoken) {
             },
             body: JSON.stringify({
                 "cookie": cookie,
-                //"userMsg": "无备注",
+                "userMsg": "",//备注
                 "defaultStatus": "false",
-                //"defaultName": "无备注",
+                "defaultName": "无备注",
                 "defaultWeight": "1"
             }),
         };
