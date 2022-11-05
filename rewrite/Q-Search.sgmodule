@@ -39,7 +39,6 @@
 # > ddg：	DuckDuckGo 搜索
 # > 无指令则转 Google 搜索
 
-[URL Rewrite]
 # > gm(Google图片)
 ^https:\/\/duckduckgo.com\/\?q=gm(?:\+|%20)([^&]+).+ url 302 https://www.google.com/search?&tbm=isch&q=$1
 # > gh(GitHub)
