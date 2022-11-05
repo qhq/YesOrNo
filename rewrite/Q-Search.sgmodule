@@ -123,5 +123,4 @@
 # > 无指令: 谷歌
 ^https:\/\/duckduckgo.com\/\?q=([^&]+).+ url 302 https://www.google.com/search?q=$1
 
-[MITM]
 hostname = %APPEND% duckduckgo.com
