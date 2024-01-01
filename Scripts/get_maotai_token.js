@@ -8,14 +8,14 @@
 ^https:\/\/(app|h5)\.moutai519\.com\.cn\/xhr\/front\/mall\/(message|article)\/(unRead|unread)\/query url script-request-headers https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_maotai_token.js
 
 [MITM]
-hostname = app.moutai519.com.cn
+hostname = *.moutai519.com.cn
 ====================================================================================================
 配置 (Surge)
 [Script]
 i茅台Token = type=http-request,pattern=^https:\/\/app\.moutai519\.com\.cn\/xhr\/front\/mall\/message\/unRead\/query,requires-body=0,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_maotai_token.js,script-update-interval=0
 
 [MITM]
-hostname = %APPEND% app.moutai519.com.cn
+hostname = %APPEND% *.moutai519.com.cn
 ====================================================================================================
 */
 
