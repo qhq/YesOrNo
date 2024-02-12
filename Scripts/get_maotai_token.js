@@ -64,6 +64,7 @@ $.MT_TOKEN_WAP = $.getdata($.MT_TOKEN_WAP_KEY) || '';
         let new_MT_Token_Wap = $request.headers['Cookie'].split('MT-Token-Wap=')[1].split(';')[0];
         let old_MT_Token_Wap = $.MT_TOKEN_WAP || '';
         if (old_MT_Token_Wap !== new_MT_Token_Wap) {
+          $.setdata(new_MT_Token_Wap, $.MT_TOKEN_WAP_KEY);
           $.log(`🎉 MT_TOKEN_WAP获取成功:\n${$.MT_TOKEN_WAP}\n`);
         } else {
           $.log(`无需更新 MT-Token-Wap:\n${new_MT_Token_Wap}\n`);
