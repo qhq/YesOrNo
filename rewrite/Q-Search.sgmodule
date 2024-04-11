@@ -41,7 +41,7 @@
 # > 无指令则转 Google 搜索
 
 # > mt(秘塔AI搜索)
-^https:\/\/duckduckgo.com\/\?q=gh(?:\+|%20)([^&]+).+ url 302 https://metaso.cn/?q=$1
+^https:\/\/duckduckgo.com\/\?q=mt(?:\+|%20)([^&]+).+ url 302 https://metaso.cn/?q=$1
 
 # > gm(Google图片)
 ^https:\/\/duckduckgo.com\/\?q=gm(?:\+|%20)([^&]+).+ url 302 https://www.google.com/search?&tbm=isch&q=$1
