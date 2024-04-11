@@ -4,6 +4,7 @@
 #- Safari 内输入 命令 + 空格 + 关键词 快速指定搜索引擎搜索
 #注：先进入设置更改 Safari 默认搜索为 DuckDuckGO
 
+# > mt：	秘塔AI搜索
 # > gh：	GitHub搜索
 # > gm：	Google图片搜索
 # > sof：	Stack Overflow
@@ -38,6 +39,9 @@
 # > bd：	百度搜索
 # > ddg：	DuckDuckGo 搜索
 # > 无指令则转 Google 搜索
+
+# > mt(秘塔AI搜索)
+^https:\/\/duckduckgo.com\/\?q=gh(?:\+|%20)([^&]+).+ url 302 https://metaso.cn/?q=$1
 
 # > gm(Google图片)
 ^https:\/\/duckduckgo.com\/\?q=gm(?:\+|%20)([^&]+).+ url 302 https://www.google.com/search?&tbm=isch&q=$1
